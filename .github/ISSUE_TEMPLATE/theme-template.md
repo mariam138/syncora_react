@@ -1,13 +1,12 @@
 ---
 name: Theme Template
 about: Template for creating themes.
-title: ''
+title: 'THEME:'
 labels: ''
 assignees: ''
 
 ---
 
-# Theme Title
 ## Description
 
 ## Related Epics

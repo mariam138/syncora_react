@@ -1,11 +1,10 @@
 ---
 name: Epic Template
 about: Template to create epics
-title: ''
+title: 'EPIC:'
 labels: epic
 assignees: ''
 
 ---
 
-# Epic Title
 ## Epic Description

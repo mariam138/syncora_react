@@ -2,7 +2,7 @@
 name: Theme Template
 about: Template for creating themes.
 title: ''
-labels: Theme
+labels: ''
 assignees: ''
 
 ---

@@ -65,8 +65,48 @@ For each iteration, a new **milestone** was created. Each milestone was then giv
 
 ## Planning
 
-## Wireframes
+### Wireframes
 
-## Database Models
+### Database Models
 
 Models for the database were planned out before starting creation of the project. These models can be found in detail on the back-end repository [here](https://github.com/mariam138/syncora_drf).
+
+## Design
+
+### Colour Scheme
+
+### Typography
+
+## Features
+
+### Reusable React Components
+
+### Bugs
+
+### Future Features
+
+## Frameworks, libraries and dependencies
+
+## Testing
+
+### Manual Testing
+
+### Automated Testing
+
+### Validators
+
+#### W3C CSS Validator
+
+#### ESLint JavaScript Validator
+
+### WAVE Accessibility
+
+### Lighthouse Testing
+
+## Deployment
+
+## Accreditation
+
+### Code
+
+### Media

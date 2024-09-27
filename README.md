@@ -62,3 +62,11 @@ Each user story was then created based of the above epics. Each user story is li
 User stories were created using Github's **issues** feature. Then using Github's **projects** feature, a board was created to keep track of all user stories, epics and themes. The board was split into five main columns: one column for themes, one for epics, then three to keep track of each user story. These three were the default **To Do**, **In Progress** and **Completed** columns provided by Github when creating a project. Each user story was then labelled using the **MoSCoW** approach. Any feature that falls under CRUD functionality was labelled as a *must have* feature. Story point labels were then created using a linear scale of: **1, 2, 4, 6 and 8**. I decided **not** to use a label for **16** story points because that would be considered an epic, so this felt like a redundant label. 
 
 For each iteration, a new **milestone** was created. Each milestone was then given a due by date to help keep on track throughout the creation of this project. An initial milestone was created to act like the **Product Back Log**, where all user stories were first moved to.
+
+## Planning
+
+## Wireframes
+
+## Database Models
+
+Models for the database were planned out before starting creation of the project. These models can be found in detail on the back-end repository [here](https://github.com/mariam138/syncora_drf).

@@ -101,7 +101,9 @@ Below is the contrast grid created on [Contrast Grid by Eightshapes](https://con
 
 ### Typography
 
+Google fonts was used to provide fonts for this project. For the Syncora logo and for section headings, I decided to choose the font **Comfortaa**. It is a simple but rounded font which gives simplicity and modernity at the same time, perfect for the branding of Syncora. **Comfortaa** was found on [fontpair.co](https://www.fontpair.co/fonts/comfortaa). For all other text, I chose the font **Nunito**. Using [fontjoy.com](fontjoy.com), I generated fonts that would match **Comfortaa** but with a bit more contrast. **Nunito** was suggested, so I settled on this for all other text on the app.
 
+![Syncora font pairing](readme_assets/font-pairing.png)
 
 ## Features
 

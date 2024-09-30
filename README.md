@@ -81,7 +81,7 @@ From the start I already had a layout in mind for the dashboard for desktop, whi
 
 ![Desktop dashboard wireframe](readme_assets/desktop-dashboard-wireframe.png)
 
-All remaining desktop wireframes can be found [here](https://github.com/mariam138/syncora_react/tree/main/readme_assets/desktop-wireframes).
+All remaining desktop wireframes can be found [here](https://github.com/mariam138/syncora_react/tree/main/readme_assets/desktop-wireframes). The to-do list picture used as part of the hero image on the register/sign in pages is from geralt on [pixabay](https://pixabay.com/illustrations/lists-to-do-paper-checkbox-tasks-6131220/).
 
 ### Database Models
 

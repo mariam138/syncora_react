@@ -95,7 +95,13 @@ I envinsioned a bright pink as the main colour for Syncora, using this base to t
 
 ![Syncora colour palette](readme_assets/syncora-colour-palette.png)
 
+Below is the contrast grid created on [Contrast Grid by Eightshapes](https://contrast-grid.eightshapes.com/?version=1.1.0&background-colors=&foreground-colors=%23FB6083%0D%0A%23000010%0D%0A%23F5DFBB%0D%0A%23FFF5F5%0D%0A&es-color-form__tile-size=compact&es-color-form__show-contrast=aaa) to check for passing contrast with the colour palette.
+
+![Colour palette contrast grid](readme_assets/colour-contrast-grid.png)
+
 ### Typography
+
+
 
 ## Features
 

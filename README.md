@@ -91,6 +91,10 @@ Models for the database were planned out before starting creation of the project
 
 ### Colour Scheme
 
+I envinsioned a bright pink as the main colour for Syncora, using this base to then pick the rest of my colour palette. First, I searched different palettes based on pink to choose the shade of pink I wanted. Using [this](https://colorhunt.co/palette/ffbe98f05a7e125b9a0b8494) colour palette on *colorhunt.co*, I initially chose the colour `#F05A7E`. Entering this colour onto *coolors.co* allowed me to then choose a slightly different, more muted shade of pink - `#FB6083`. I then checked the contrast of this colour against a black to ensure it met AAA accessibility guidelines. Using [this](https://www.learnui.design/tools/accessible-color-generator.html) colour generator on *Learn UI Design*, I chose the shade `#000010`, which will be used as text on the pink shade. Locking these two colours in on my *coolors.co* colour palette, I then generated another colour to use as a secondary colour. The colour I chose was this wheat colour `#F5DFBB`. Finally, I picked a shade of white/cream as a fourth colour, again checking it's contrast on *Learn UI Design* against the above black shade. The cream/white shade I settled on to meet AAA guidelines was `#FFF5F5`. Below is the final colour palette for Syncora.
+
+![Syncora colour palette](readme_assets/syncora-colour-palette.png)
+
 ### Typography
 
 ## Features

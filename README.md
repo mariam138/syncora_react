@@ -75,13 +75,13 @@ Wireframes were created to help with the design and layout of Syncora, using the
 
 ![Mobile wireframes slide 3](readme_assets/mobile-wireframes-slide-3.png)
 
-These can be viewed in PDF format here.
+These can be viewed in PDF format [here](https://github.com/mariam138/syncora_react/blob/main/readme_assets/syncora-mobile-wireframes.pdf).
 
 From the start I already had a layout in mind for the dashboard for desktop, which the rest of the wireframes have been based around.
 
 ![Desktop dashboard wireframe](readme_assets/desktop-dashboard-wireframe.png)
 
-All remaining desktop wireframes can be found here.
+All remaining desktop wireframes can be found [here](https://github.com/mariam138/syncora_react/tree/main/readme_assets/desktop-wireframes).
 
 ### Database Models
 

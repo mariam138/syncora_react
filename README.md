@@ -77,6 +77,12 @@ Wireframes were created to help with the design and layout of Syncora, using the
 
 These can be viewed in PDF format here.
 
+From the start I already had a layout in mind for the dashboard for desktop, which the rest of the wireframes have been based around.
+
+![Desktop dashboard wireframe](readme_assets/desktop-dashboard-wireframe.png)
+
+All remaining desktop wireframes can be found here.
+
 ### Database Models
 
 Models for the database were planned out before starting creation of the project. These models can be found in detail on the back-end repository [here](https://github.com/mariam138/syncora_drf).

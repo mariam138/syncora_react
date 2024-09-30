@@ -67,6 +67,16 @@ For each iteration, a new **milestone** was created. Each milestone was then giv
 
 ### Wireframes
 
+Wireframes were created to help with the design and layout of Syncora, using the 'must-have' user stories to ensure important features were included. Wireframes for both desktop and mobile were created. Below are the wireframes for the mobile layout.
+
+![Mobile wireframes slide 1](readme_assets/mobile-wireframes-slide-1.png)
+
+![Mobile wireframes slide 2](readme_assets/mobile-wireframes-slide-2.png)
+
+![Mobile wireframes slide 3](readme_assets/mobile-wireframes-slide-3.png)
+
+These can be viewed in PDF format here.
+
 ### Database Models
 
 Models for the database were planned out before starting creation of the project. These models can be found in detail on the back-end repository [here](https://github.com/mariam138/syncora_drf).

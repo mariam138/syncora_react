@@ -114,6 +114,7 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 ### Future Features
 
 ## Frameworks, libraries and dependencies
+- **vite 5.4.8** - Vite's React template was used to start and set up the Syncora front-end project. This was chosen over **create-react-app** as it is more up-to-date and maintained. The template was installed using the command `npm create vita@latest syncora_react -- --template react`.
 
 ## Testing
 

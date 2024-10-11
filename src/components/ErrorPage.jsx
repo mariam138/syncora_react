@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouteError } from 'react-router-dom'
+import styles from "../App.module.css"
 
 function ErrorPage() {
     // Code to create the error page component is adapted from the react router docs
@@ -8,7 +9,7 @@ function ErrorPage() {
     const error = useRouteError();
     console.log(error)
   return (
-      <div>
+      <div className={styles.App}>
           <h1>Error Page</h1>
           <p>{error.statusText || error.message}</p>
     </div>

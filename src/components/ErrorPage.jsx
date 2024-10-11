@@ -2,6 +2,8 @@ import React from 'react'
 import { useRouteError } from 'react-router-dom'
 
 function ErrorPage() {
+    // Code to create the error page component is adapted from the react router docs
+    // https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors
 
     const error = useRouteError();
     console.log(error)

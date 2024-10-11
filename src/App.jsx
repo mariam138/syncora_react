@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -5,7 +6,9 @@ function App() {
   return (
     <>
       <div>
-        <p>Hello World!</p>
+        <Routes>
+          <Route index element={() => <p>Hello World!</p> }  />
+        </Routes>
       </div>
     </>
   )

@@ -140,7 +140,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 
 1. Open your Heroku dashboard and click **New**. From the dropdown menu, select *'Create new app'*.
 2. Choose a uniqe app name and an appropriate region. Click **Create app**.
-3. Install the **serve** package using the command `npm install --save serve`
+3. Install the **serve** package using the command `npm install serve`
 
 
 ## Accreditation

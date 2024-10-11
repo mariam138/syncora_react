@@ -35,28 +35,36 @@ const SideBar = () => {
                 Dashboard
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            <NavLink exact to="/events" activeClassName="activeClicked">
               <CDBSidebarMenuItem
-                icon="table"
+                icon="calendar"
                 className={styles.SidebarMenuItem}
               >
-                Tables
+                Events
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
+            <NavLink exact to="/tasks" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                icon=""
+                className={styles.SidebarMenuItem}
+              >
+                Tasks
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/notes" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                icon="note-sticky"
+                className={styles.SidebarMenuItem}
+              >
+                Notes
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 icon="user"
                 className={styles.SidebarMenuItem}
               >
-                Profile page
-              </CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/analytics" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                icon="chart-line"
-                className={styles.SidebarMenuItem}
-              >
-                Analytics
+                Profile
               </CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

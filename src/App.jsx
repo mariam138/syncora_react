@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import Root from './routes/root'
 
 function App() {
 
@@ -7,7 +8,7 @@ function App() {
     <>
       <div>
         <Routes>
-          <Route index element={() => <p>Hello World!</p> }  />
+          <Route index element={<Root/>}  />
         </Routes>
       </div>
     </>

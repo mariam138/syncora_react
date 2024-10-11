@@ -3,3 +3,8 @@
     height: 100vh;
     overflow: scroll initial;
 }
+
+.SideBar {
+    background-color: #FB6083;
+    color: #000010;
+}

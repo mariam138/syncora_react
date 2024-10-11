@@ -28,43 +28,35 @@ const SideBar = () => {
         <CDBSidebarContent className={styles.Sidebar}>
           <CDBSidebarMenu>
             <NavLink exact to="/" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                icon="columns"
-                className={styles.SidebarMenuItem}
-              >
+              <CDBSidebarMenuItem className={styles.SidebarMenuItem}>
                 Dashboard
+                <i class="fa-solid fa-table-columns"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/events" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                icon="calendar"
-                className={styles.SidebarMenuItem}
-              >
+              <CDBSidebarMenuItem className={styles.SidebarMenuItem}>
                 Events
+                <i class="fa-regular fa-calendar"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tasks" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                icon=""
-                className={styles.SidebarMenuItem}
-              >
+              <CDBSidebarMenuItem icon="" className={styles.SidebarMenuItem}>
                 Tasks
+                <i class="fa-solid fa-list-check"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/notes" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                icon="note-sticky"
-                className={styles.SidebarMenuItem}
-              >
+              <CDBSidebarMenuItem className={styles.SidebarMenuItem}>
                 Notes
+                <i class="fa-solid fa-note-sticky"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="" activeClassName="activeClicked">
               <CDBSidebarMenuItem
-                icon="user"
                 className={styles.SidebarMenuItem}
               >
                 Profile
+                <i class="fa-solid fa-user"></i>
               </CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

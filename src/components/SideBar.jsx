@@ -16,14 +16,13 @@ const SideBar = () => {
   // https://www.devwares.com/blog/create-responsive-sidebar-in-react/
   return (
     <div className={styles.Div}>
-      <CDBSidebar textColor="#fff" backgroundColor="#333">
+      <CDBSidebar className={styles.SideBar}>
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a
             href="/"
-            className="text-decoration-none"
-            style={{ color: "inherit" }}
+            className={styles.SideBarHeader}
           >
-            Sidebar
+            Syncora
           </a>
         </CDBSidebarHeader>
 

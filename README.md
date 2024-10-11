@@ -117,6 +117,7 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 - **vite 5.4.8** - Vite's React template was used to start and set up the Syncora front-end project. This was chosen over **create-react-app** as it is more up-to-date and maintained. The template was installed using the command `npm create vite@latest -- --template react`.
 - **react-bootstrap** - Bootstrap is the framework used to style the front-end of Syncora. react-bootstrap is used to ensure compatability with React.
 - **react-router-dom** - This is used to create routes/URLs for the front end of the application.
+- **CDBReact** - This framework was installed to be able to use it's responsive sidebar component, made mobile-first and compatible with React and Boostrap.
 
 ## Testing
 

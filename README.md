@@ -136,6 +136,13 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 
 ## Deployment
 
+As this React app was built using Vite, some extra steps had to be taken in order to allow for a successful deployment. Extra steps were followed from [this](https://blog.md.engineer/vite-heroku-clkmnkq8h000709l7hxqe689p) blog post by Ndagi Stanley.
+
+1. Open your Heroku dashboard and click **New**. From the dropdown menu, select *'Create new app'*.
+2. Choose a uniqe app name and an appropriate region. Click **Create app**.
+3. Install the **serve** package using the command `npm install --save serve`
+
+
 ## Accreditation
 
 ### Code

@@ -4,12 +4,16 @@
     overflow: scroll initial;
 }
 
-.SideBar {
+.Sidebar {
     background-color: #FB6083;
     color: #000010;
 }
 
-.SideBarHeader {
+.SidebarHeaderLink {
     text-decoration: none;
+    color: #000010;
+}
+
+.SidebarMenuItem {
     color: #000010;
 }

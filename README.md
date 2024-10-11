@@ -138,12 +138,15 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 
 As this React app was built using Vite, some extra steps had to be taken in order to allow for a successful deployment. Extra steps were followed from [this](https://blog.md.engineer/vite-heroku-clkmnkq8h000709l7hxqe689p) blog post by Ndagi Stanley.
 
-1. Open your Heroku dashboard and click **New**. From the dropdown menu, select *'Create new app'*.
-2. Choose a uniqe app name and an appropriate region. Click **Create app**.
+1. Open your Heroku dashboard and click **New**. From the dropdown menu, select *'Create new app'*
+2. Choose a uniqe app name and an appropriate region. Click **Create app**
 3. Install the **serve** package using the command `npm install serve`
 4. In `package.json` include the following start script:
-> `"start": "serve -s dist"`
-
+    > `"start": "serve -s dist"`
+5. Ensure all changes are pushed to your repository before deployment
+6. Back to the newly created app on Heroku, click the 'Deploy' tab. In the 'Deployment method' section, click on **GitHub**
+7. Search for the repository and link it in the 'App connected to GitHub' section
+8. In the 'Manual deploy' section, click **Deploy Branch**
 
 
 ## Accreditation

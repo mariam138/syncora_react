@@ -11,6 +11,8 @@ import { NavLink } from "react-router-dom";
 import React from 'react'
 
 const SideBar = () => {
+  // Code for sidebar adapted from:
+  // https://www.devwares.com/blog/create-responsive-sidebar-in-react/
   return (
     <div
       style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}

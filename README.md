@@ -155,6 +155,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 ### Code
 
 - Code to create the error page component was adapted from the [React Router](https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors) docs
+- Code to create the sidebar navigation is adapted from [this](https://www.devwares.com/blog/create-responsive-sidebar-in-react/) post on devwares.com
 
 ### Media
 

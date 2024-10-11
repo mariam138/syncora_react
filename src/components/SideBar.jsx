@@ -7,6 +7,7 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 import { NavLink } from "react-router-dom";
+import styles from "../styles/SideBar.module.css"
 
 import React from 'react'
 
@@ -14,9 +15,7 @@ const SideBar = () => {
   // Code for sidebar adapted from:
   // https://www.devwares.com/blog/create-responsive-sidebar-in-react/
   return (
-    <div
-      style={{ display: "flex", height: "100vh", overflow: "scroll initial" }}
-    >
+    <div className={styles.Div}>
       <CDBSidebar textColor="#fff" backgroundColor="#333">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a

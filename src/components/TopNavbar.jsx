@@ -7,9 +7,15 @@ function TopNavbar() {
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Nav className="me-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/">Home 2</Nav.Link>
-            <Nav.Link href="/">Home 3</Nav.Link>
+            <Nav.Link>
+              New Event <i class="fa-regular fa-calendar-plus"></i>
+            </Nav.Link>
+            <Nav.Link>
+              New Task <i class="fa-solid fa-file-circle-plus"></i>
+            </Nav.Link>
+            <Nav.Link>
+              New Note <i class="fa-solid fa-notes-medical"></i>
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

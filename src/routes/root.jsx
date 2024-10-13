@@ -1,11 +1,12 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
+import SignUpForm from '../pages/SignUpForm';
+
 
 const root = () => {
   return (
-    <div>
-      {/* <SideBar /> */}
-    </div>
+    <>
+      <SignUpForm />
+    </>
   );
 }
 

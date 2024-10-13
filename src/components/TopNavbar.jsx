@@ -17,7 +17,9 @@ function TopNavbar() {
             </NavLink>
             <NavLink to="/notes/new" className={styles.NavbarLinks}>
               New Note <i class="fa-solid fa-notes-medical"></i>
-            </NavLink>
+                      </NavLink>
+            {/* Welcome text to user when logged in */}
+            <Navbar.Text>Welcome, User</Navbar.Text>
           </Nav>
         </Container>
       </Navbar>

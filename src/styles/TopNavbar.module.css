@@ -1,5 +1,6 @@
 .Navbar {
     z-index: 0;
+    background-color: #FFF5F5;
 }
 
 .NavbarLinks {
@@ -10,10 +11,6 @@
 
 .NavbarLinks:hover {
     text-decoration: underline;
-}
-
-.NavbarText {
-    
 }
 
 @media (min-width: 1200px) {

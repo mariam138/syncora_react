@@ -6,9 +6,9 @@ import styles from '../styles/TopNavbar.module.css'
 function TopNavbar() {
   return (
     <>
-      <Navbar bg="light" data-bs-theme="light" fixed='top'className={styles.Navbar}>
+      <Navbar bg="light" data-bs-theme="light" fixed='top'className={`${styles.Navbar} align-middle`}>
         <Container fluid>
-          <Nav className="ms-auto">
+          <Nav className="ms-auto d-flex align-items-center">
             <NavLink to="/events/new" className={styles.NavbarLinks}>
               New Event <i class="fa-regular fa-calendar-plus"></i>
             </NavLink>

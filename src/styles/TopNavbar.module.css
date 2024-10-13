@@ -12,6 +12,10 @@
     text-decoration: underline;
 }
 
+.NavbarText {
+    
+}
+
 @media (min-width: 1200px) {
     .NavbarLinks {
         font-size: 1.375rem;

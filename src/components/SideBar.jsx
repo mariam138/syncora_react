@@ -15,7 +15,8 @@ const SideBar = () => {
   // https://www.devwares.com/blog/create-responsive-sidebar-in-react/
   return (
     <div className={styles.Div}>
-      <CDBSidebar>
+      {/* Sidebar will be collapsed on large screens and smaller */}
+      <CDBSidebar breakpoint={992}>
         {/* Header of sidebar */}
         <CDBSidebarHeader
           prefix={<i className="fa fa-bars fa-large"></i>}

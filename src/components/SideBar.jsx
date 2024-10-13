@@ -28,25 +28,31 @@ const SideBar = () => {
         <CDBSidebarContent className={styles.Sidebar}>
           <CDBSidebarMenu>
             <NavLink exact to="/" activeClassName="activeClicked">
-              <CDBSidebarMenuItem className={styles.SidebarMenuItem}>
+              <CDBSidebarMenuItem
+                icon="table-columns"
+                className={styles.SidebarMenuItem}>
                 Dashboard
                 <i class="fa-solid fa-table-columns"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/events" activeClassName="activeClicked">
-              <CDBSidebarMenuItem className={styles.SidebarMenuItem}>
+              <CDBSidebarMenuItem
+                icon="calendar"
+                className={styles.SidebarMenuItem}>
                 Events
                 <i class="fa-regular fa-calendar"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tasks" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="" className={styles.SidebarMenuItem}>
+              <CDBSidebarMenuItem icon="list" className={styles.SidebarMenuItem}>
                 Tasks
                 <i class="fa-solid fa-list-check"></i>
               </CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/notes" activeClassName="activeClicked">
-              <CDBSidebarMenuItem className={styles.SidebarMenuItem}>
+              <CDBSidebarMenuItem
+                className={styles.SidebarMenuItem}
+              icon="sticky-note">
                 Notes
                 <i class="fa-solid fa-note-sticky"></i>
               </CDBSidebarMenuItem>
@@ -54,6 +60,7 @@ const SideBar = () => {
             <NavLink exact to="" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 className={styles.SidebarMenuItem}
+                icon="user"
               >
                 Profile
                 <i class="fa-solid fa-user"></i>

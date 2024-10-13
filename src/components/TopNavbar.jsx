@@ -7,8 +7,8 @@ function TopNavbar() {
   return (
     <>
       <Navbar bg="light" data-bs-theme="light">
-        <Container>
-          <Nav className="me-auto">
+        <Container fluid>
+          <Nav className="ms-auto">
             <NavLink to="/events/new" className={styles.NavbarLinks}>
               New Event <i class="fa-regular fa-calendar-plus"></i>
             </NavLink>

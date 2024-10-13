@@ -31,7 +31,7 @@ const SideBar = () => {
             {/* Quick create links for mobile */}
             <NavLink exact to="/events/new" activeClassName="activeClicked">
               <CDBSidebarMenuItem
-                icon="plus"
+                icon="calendar-plus"
                 className={styles.CreateMenuLinks}
               >
                 New Event
@@ -39,7 +39,7 @@ const SideBar = () => {
             </NavLink>
             <NavLink exact to="/tasks/new" activeClassName="activeClicked">
               <CDBSidebarMenuItem
-                icon="plus"
+                icon="file-circle-plus"
                 className={styles.CreateMenuLinks}
               >
                 New Task
@@ -47,7 +47,7 @@ const SideBar = () => {
             </NavLink>
             <NavLink exact to="/notes/new" activeClassName="activeClicked">
               <CDBSidebarMenuItem
-                icon="plus"
+                icon="square-plus"
                 className={styles.CreateMenuLinks}
               >
                 New Note
@@ -65,7 +65,7 @@ const SideBar = () => {
             {/* Events page link */}
             <NavLink exact to="/events" activeClassName="activeClicked">
               <CDBSidebarMenuItem
-                icon="calendar"
+                icon="calendar-day"
                 className={styles.SidebarMenuItem}
               >
                 Events

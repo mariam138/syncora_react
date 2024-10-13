@@ -11,6 +11,10 @@ import styles from "../styles/SideBar.module.css";
 import React, { useEffect, useState } from "react";
 
 const SideBar = () => {
+  // Code to conditionally render the quick links in the navbar
+  // Based on the screen size is adapted from this post:
+  // https://stackoverflow.com/questions/46586165/react-conditionally-render-based-on-viewport-size
+  // From the comment by foakesm
   const [screenSize, setScreenSize] = useState(window.innerWidth < 992);
 
   const updateSidebarMenu = () => {

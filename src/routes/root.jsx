@@ -8,8 +8,10 @@ const root = () => {
   return (
     <>
       <TopNavbar />
-      <SideBar />
-      <SignUpForm />
+      <div className='d-flex'>
+        <SideBar />
+        <SignUpForm />
+      </div>
     </>
   );
 }

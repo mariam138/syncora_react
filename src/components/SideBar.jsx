@@ -10,6 +10,13 @@ import styles from "../styles/SideBar.module.css";
 
 import React, { useEffect, useState } from "react";
 
+/** Separate function for the menu links, destructuring
+ * screenSize as a prop. If screenSize = true, then the
+ * quick menu links will render. The rest of the links will
+ * render despite the screensize prop. This is then used to
+ * create a SidebarMenuLinks component which is used in the 
+ * Sidebar arrow function below.
+ */
 const SidebarMenuLinks = ({ screenSize }) => {
   return (
     <>
@@ -148,6 +155,8 @@ const SideBar = () => {
 
         <CDBSidebarContent className={styles.Sidebar}>
           <CDBSidebarMenu>
+            {/* Takes in screenSize as a prop for the conditional rendering in the
+            sidebar menu links function above */}
             <SidebarMenuLinks screenSize={screenSize}/>
           </CDBSidebarMenu>
 

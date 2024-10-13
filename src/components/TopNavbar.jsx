@@ -6,7 +6,7 @@ import styles from '../styles/TopNavbar.module.css'
 function TopNavbar() {
   return (
     <>
-      <Navbar bg="light" data-bs-theme="light">
+      <Navbar bg="light" data-bs-theme="light" fixed='top'className={styles.Navbar}>
         <Container fluid>
           <Nav className="ms-auto">
             <NavLink to="/events/new" className={styles.NavbarLinks}>

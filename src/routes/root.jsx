@@ -4,7 +4,7 @@ import SideBar from '../components/SideBar'
 const root = () => {
   return (
     <div>
-      <SideBar />
+      {/* <SideBar /> */}
     </div>
   );
 }

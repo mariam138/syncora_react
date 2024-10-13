@@ -28,6 +28,31 @@ const SideBar = () => {
 
         <CDBSidebarContent className={styles.Sidebar}>
           <CDBSidebarMenu>
+            {/* Quick create links for mobile */}
+            <NavLink exact to="/events/new" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                icon="plus"
+                className={styles.CreateMenuLinks}
+              >
+                New Event
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/tasks/new" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                icon="plus"
+                className={styles.CreateMenuLinks}
+              >
+                New Task
+              </CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/notes/new" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                icon="plus"
+                className={styles.CreateMenuLinks}
+              >
+                New Note
+              </CDBSidebarMenuItem>
+            </NavLink>
             {/* Dashboard link */}
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem
@@ -92,6 +117,15 @@ const SideBar = () => {
                 icon="right-to-bracket"
               >
                 Sign In
+              </CDBSidebarMenuItem>
+            </NavLink>
+            {/* Register link */}
+            <NavLink exact to="" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                className={styles.SidebarMenuItem}
+                icon="user-plus"
+              >
+                Register
               </CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

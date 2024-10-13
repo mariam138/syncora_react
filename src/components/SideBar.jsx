@@ -16,6 +16,7 @@ const SideBar = () => {
   return (
     <div className={styles.Div}>
       <CDBSidebar>
+        {/* Header of sidebar */}
         <CDBSidebarHeader
           prefix={<i className="fa fa-bars fa-large"></i>}
           className={styles.Sidebar}
@@ -27,43 +28,58 @@ const SideBar = () => {
 
         <CDBSidebarContent className={styles.Sidebar}>
           <CDBSidebarMenu>
+            {/* Dashboard link */}
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 icon="table-columns"
-                className={styles.SidebarMenuItem}>
+                className={styles.SidebarMenuItem}
+              >
                 Dashboard
-                <i class="fa-solid fa-table-columns"></i>
               </CDBSidebarMenuItem>
             </NavLink>
+            {/* Events page link */}
             <NavLink exact to="/events" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 icon="calendar"
-                className={styles.SidebarMenuItem}>
+                className={styles.SidebarMenuItem}
+              >
                 Events
-                <i class="fa-regular fa-calendar"></i>
               </CDBSidebarMenuItem>
             </NavLink>
+            {/* Tasks page link */}
             <NavLink exact to="/tasks" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="list" className={styles.SidebarMenuItem}>
+              <CDBSidebarMenuItem
+                icon="list"
+                className={styles.SidebarMenuItem}
+              >
                 Tasks
-                <i class="fa-solid fa-list-check"></i>
               </CDBSidebarMenuItem>
             </NavLink>
+            {/* Notes page link */}
             <NavLink exact to="/notes" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 className={styles.SidebarMenuItem}
-              icon="sticky-note">
+                icon="sticky-note"
+              >
                 Notes
-                <i class="fa-solid fa-note-sticky"></i>
               </CDBSidebarMenuItem>
             </NavLink>
+            {/* Profile page link */}
             <NavLink exact to="" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 className={styles.SidebarMenuItem}
                 icon="user"
               >
                 Profile
-                <i class="fa-solid fa-user"></i>
+              </CDBSidebarMenuItem>
+            </NavLink>
+            {/* Sign out link */}
+            <NavLink exact to="" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                className={styles.SidebarMenuItem}
+                icon="right-from-bracket"
+              >
+                Sign Out
               </CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>

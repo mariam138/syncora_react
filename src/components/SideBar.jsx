@@ -82,6 +82,15 @@ const SideBar = () => {
                 Sign Out
               </CDBSidebarMenuItem>
             </NavLink>
+            {/* Sign in link */}
+            <NavLink exact to="" activeClassName="activeClicked">
+              <CDBSidebarMenuItem
+                className={styles.SidebarMenuItem}
+                icon="right-to-bracket"
+              >
+                Sign In
+              </CDBSidebarMenuItem>
+            </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
       </CDBSidebar>

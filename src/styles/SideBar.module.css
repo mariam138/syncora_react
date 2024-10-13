@@ -17,3 +17,13 @@
 .SidebarMenuItem {
     color: #000010;
 }
+
+@media (min-width: 1200px) {
+    .SidebarHeaderLink {
+        font-size: 2rem;
+    }
+
+    .SidebarMenuItem {
+        font-size: 1.25rem;
+    }
+}

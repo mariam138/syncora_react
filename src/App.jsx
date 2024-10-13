@@ -9,14 +9,14 @@ function App() {
   return (
     <>
       <div className={styles.App}>
-        <TopNavbar />
-        <SideBar />
         <Routes>
-          <Route index element={<Root/>}  />
+          <Route index element={<Root />} />
         </Routes>
+        {/* <TopNavbar />
+        <SideBar /> */}
       </div>
     </>
-  )
+  );
 }
 
 export default App

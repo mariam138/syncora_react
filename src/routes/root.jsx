@@ -7,7 +7,7 @@ import SideBar from '../components/SideBar';
 const root = () => {
   return (
     <>
-      <TopNavbar />
+      {/* <TopNavbar /> */}
       <div className='d-flex'>
         <SideBar />
         <SignUpForm />

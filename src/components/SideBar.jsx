@@ -157,7 +157,7 @@ const SideBar = () => {
           <CDBSidebarMenu>
             {/* Takes in screenSize as a prop for the conditional rendering in the
             sidebar menu links function above */}
-            <SidebarMenuLinks screenSize={screenSize}/>
+            <SidebarMenuLinks screenSize={screenSize} />
           </CDBSidebarMenu>
 
           {/* Separate menu for sign in and register links */}

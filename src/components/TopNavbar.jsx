@@ -1,12 +1,14 @@
-import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom';
-import styles from '../styles/TopNavbar.module.css'
+import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import { Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import styles from "../styles/TopNavbar.module.css";
 
 function TopNavbar() {
   return (
     <>
-      <Navbar fixed='top'className={styles.Navbar}>
+      <Navbar fixed="top" className={styles.Navbar}>
         <Container fluid>
           <Nav className="ms-auto d-flex align-items-center">
             <NavLink to="/events/new" className={styles.NavbarLinks}>
@@ -17,7 +19,7 @@ function TopNavbar() {
             </NavLink>
             <NavLink to="/notes/new" className={styles.NavbarLinks}>
               New Note <i class="fa-solid fa-notes-medical"></i>
-                      </NavLink>
+            </NavLink>
             {/* Welcome text to user when logged in */}
             <Navbar.Text>Welcome, User</Navbar.Text>
           </Nav>
@@ -27,4 +29,4 @@ function TopNavbar() {
   );
 }
 
-export default TopNavbar
+export default TopNavbar;

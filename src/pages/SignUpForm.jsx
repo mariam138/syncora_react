@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import appStyles from "../App.module.css";
 import styles from "../styles/SignUpForm.module.css";
+import axios from "axios";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -26,6 +27,16 @@ const SignUpForm = () => {
       // handlers for each input field
       [e.target.name]: e.target.value,
     })
+  }
+
+  const handleSubmit = async (e) => {
+    // Prevents page refresh when sign up button is pressed
+    e.preventDefault();
+    try {
+      await axios.post('/dj-rest-auth/registration/', signUpData)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (

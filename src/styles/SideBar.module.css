@@ -2,6 +2,8 @@
     display: flex;
     height: 100vh;
     overflow: scroll initial;
+    position: absolute;
+    z-index: 1000;
 }
 
 .Sidebar {

@@ -43,6 +43,7 @@ const SignUpForm = () => {
                 placeholder="Enter your first name"
                 name="fname"
                 value={fname}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -53,6 +54,7 @@ const SignUpForm = () => {
                 placeholder="Choose a username"
                 name="username"
                 value={username}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -63,6 +65,7 @@ const SignUpForm = () => {
                 placeholder="Enter email"
                 name="email"
                 value={email}
+                onChange={handleChange}
               />
             </Form.Group>
 
@@ -73,6 +76,7 @@ const SignUpForm = () => {
                 placeholder="Password"
                 name="password"
                 value={password}
+                onChange={handleChange}
               />
             </Form.Group>
             <Button type="submit" className={styles.SignupButton}>

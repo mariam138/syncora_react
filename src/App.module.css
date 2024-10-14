@@ -2,6 +2,7 @@
   font-family: Nunito, sans-serif;
   background-color: white;
   min-height: 100vh;
+  /* position: absolute; */
 }
 
 .Header {

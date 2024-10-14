@@ -4,15 +4,18 @@ import { Card } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import appStyles from "../App.module.css";
-import styles from '../styles/SignUpForm.module.css';
+import styles from "../styles/SignUpForm.module.css";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
-    fname: '',
-    username: '',
-    email: '',
-    password: '',
-  })
+    fname: "",
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  // Destructure to avoid using dot notation
+  const { fname, username, email, password } = signUpData;
 
   return (
     <div className="text-center">
@@ -24,23 +27,42 @@ const SignUpForm = () => {
           <Form>
             <Form.Group className="mb-3" controlId="formFirstName">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your first name"  name="fname"/>
+              <Form.Control
+                type="text"
+                placeholder="Enter your first name"
+                name="fname"
+                value={fname}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Choose a username"
-              name="username"/>
+              <Form.Control
+                type="text"
+                placeholder="Choose a username"
+                name="username"
+                value={username}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" name="email" />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={email}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" name="password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+              />
             </Form.Group>
             <Button type="submit" className={styles.SignupButton}>
               Sign Up
@@ -56,6 +78,6 @@ const SignUpForm = () => {
       </Card>
     </div>
   );
-}
+};
 
 export default SignUpForm;

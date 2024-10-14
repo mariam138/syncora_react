@@ -18,6 +18,8 @@ const SignUpForm = () => {
   // Destructure to avoid using dot notation
   const { fname, username, email, password } = signUpData;
   const navigate = useNavigate();
+  // Set any errors initially to an empty object
+  const [error, setError] = useState({});
 
   // handle change event to get sign up data
   const handleChange = (e) => {
@@ -27,20 +29,22 @@ const SignUpForm = () => {
       // set the name property to the value, avoids writing separate
       // handlers for each input field
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e) => {
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
-      await axios.post('/dj-rest-auth/registration/', signUpData);
+      await axios.post("/dj-rest-auth/registration/", signUpData);
       // When sign up data is submitted, navigate user to index
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.log(error)
+      console.log(error);
+      // Set any errors if applicable to the error repsonse data
+      setError(error.response?.data);
     }
-  }
+  };
 
   return (
     <div className="text-center">

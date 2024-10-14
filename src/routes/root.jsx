@@ -1,19 +1,18 @@
-import React from 'react'
-import SignUpForm from '../pages/SignUpForm';
-import TopNavbar from '../components/TopNavbar';
-import SideBar from '../components/SideBar';
+import React from "react";
+import SignUpForm from "../pages/SignUpForm";
+import SideBar from "../components/SideBar";
+import {Stack } from "react-bootstrap";
 
 
 const root = () => {
   return (
     <>
-      {/* <TopNavbar /> */}
-      <div className='d-flex'>
+      <Stack direction="horizontal">
         <SideBar />
         <SignUpForm />
-      </div>
+      </Stack>
     </>
   );
-}
+};
 
-export default root
+export default root;

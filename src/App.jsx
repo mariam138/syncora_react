@@ -10,7 +10,7 @@ function App() {
     <>
       <div className={styles.App}>
         <Routes>
-          <Route index element={<Root />} />
+          <Route path='*' element={<Root />} />
         </Routes>
         {/* <TopNavbar />
         <SideBar /> */}

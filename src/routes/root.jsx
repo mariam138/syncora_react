@@ -9,7 +9,9 @@ const root = () => {
     <>
       <Stack direction="horizontal">
         <SideBar />
-        <SignUpForm />
+        <div className="mx-auto">
+          <SignUpForm />
+        </div>
       </Stack>
     </>
   );

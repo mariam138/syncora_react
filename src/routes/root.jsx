@@ -10,7 +10,7 @@ const root = () => {
     <>
       <Stack direction="horizontal">
         <SideBar />
-        <div className={`mx-auto ${appStyles.OutletDiv}`}>
+        <div className={`mx-auto `}>
           <Outlet />
         </div>
       </Stack>

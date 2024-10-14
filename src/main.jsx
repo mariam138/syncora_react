@@ -4,18 +4,19 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './components/ErrorPage.jsx'
 import SignUpForm from './pages/SignUpForm.jsx'
+import Root from './routes/root.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    path: "/*",
+    element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/signup",
+        path: 'signup',
         element: <SignUpForm />
-      }
-    ]
+      },
+    ],
   },
 ]);
 

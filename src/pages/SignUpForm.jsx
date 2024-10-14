@@ -1,15 +1,15 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Card } from "react-bootstrap";
-
 import React from "react";
 import { Link } from "react-router-dom";
+import appStyles from '../App.module.css'
 
 function SignUpForm() {
   return (
     <div>
-      <h1>Syncora</h1>
-      <h2>Let's get organised.</h2>
+      <h1 className={appStyles.Header}>Syncora</h1>
+      <h2 className={appStyles.Header}>Let's get organised.</h2>
       <Card>
         <Card.Body>
           <Card.Title>Sign up below to start using Syncora</Card.Title>
@@ -36,7 +36,9 @@ function SignUpForm() {
             <Button variant="primary" type="submit">
               Submit
             </Button>
-            <Card.Text>Already have an account? Sign in <Link>here.</Link></Card.Text>
+            <Card.Text>
+              Already have an account? Sign in <Link>here.</Link>
+            </Card.Text>
           </Form>
         </Card.Body>
       </Card>

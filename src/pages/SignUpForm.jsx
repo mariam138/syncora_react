@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap";
 import React from "react";
 import { Link } from "react-router-dom";
 import appStyles from "../App.module.css";
+import styles from '../styles/SignUpForm.module.css';
 
 function SignUpForm() {
   return (
@@ -33,11 +34,14 @@ function SignUpForm() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
+            <Button type="submit" className={styles.SignupButton}>
+              Sign Up
             </Button>
             <Card.Text>
-              Already have an account? Sign in <Link exact to='/signin'>here.</Link>
+              Already have an account? Sign in{" "}
+              <Link exact to="/signin">
+                here.
+              </Link>
             </Card.Text>
           </Form>
         </Card.Body>

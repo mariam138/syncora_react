@@ -1,0 +1,11 @@
+/* !important is used to override react bootstrap's default styling */
+.SignupButton {
+    background-color: #F5DFBB !important;
+    color: #000010 !important;
+    border-color:#00001014 !important;
+}
+
+.SignupButton:hover {
+    background-color: #FB6083 !important;
+    border-color: transparent !important;
+}

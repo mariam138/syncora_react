@@ -37,7 +37,7 @@ function SignUpForm() {
               Submit
             </Button>
             <Card.Text>
-              Already have an account? Sign in <Link>here.</Link>
+              Already have an account? Sign in <Link exact to='/signin'>here.</Link>
             </Card.Text>
           </Form>
         </Card.Body>

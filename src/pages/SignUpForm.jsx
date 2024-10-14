@@ -12,11 +12,12 @@ const SignUpForm = () => {
     fname: "",
     username: "",
     email: "",
-    password: "",
+    password1: "",
+    password2: "",
   });
 
   // Destructure to avoid using dot notation
-  const { fname, username, email, password } = signUpData;
+  const { fname, username, email, password1, password2 } = signUpData;
   const navigate = useNavigate();
   // Set any errors initially to an empty object
   const [error, setError] = useState({});
@@ -64,9 +65,11 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            {error.fname?.map((message, i) =>
-              <Alert variant="warning" key={i}>{message}</Alert>
-            )}
+            {error.fname?.map((message, i) => (
+              <Alert variant="warning" key={i}>
+                {message}
+              </Alert>
+            ))}
 
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
@@ -90,13 +93,24 @@ const SignUpForm = () => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formPassword">
+            <Form.Group className="mb-3" controlId="formPassword1">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
-                name="password"
-                value={password}
+                name="password1"
+                value={password1}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formPassword2">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password again"
+                name="password2"
+                value={password2}
                 onChange={handleChange}
               />
             </Form.Group>

@@ -17,6 +17,17 @@ const SignUpForm = () => {
   // Destructure to avoid using dot notation
   const { fname, username, email, password } = signUpData;
 
+  // handle change event to get sign up data
+  const handleChange = (e) => {
+    setSignUpData({
+      // Spread the data to create a new object
+      ...signUpData,
+      // set the name property to the value, avoids writing separate
+      // handlers for each input field
+      [e.target.name]: e.target.value,
+    })
+  }
+
   return (
     <div className="text-center">
       <h1 className={appStyles.Header}>Syncora</h1>

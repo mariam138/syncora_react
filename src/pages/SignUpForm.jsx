@@ -98,6 +98,10 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {error.email?.map((message, i) => (
+              <Alert variant="warning" key={i}>
+                {message}
+              </Alert>))}
 
             <Form.Group className="mb-3" controlId="formPassword1">
               <Form.Label>Password</Form.Label>
@@ -109,6 +113,10 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {error.password1?.map((message, i) => (
+              <Alert variant="warning" key={i}>
+                {message}
+              </Alert>))}
 
             <Form.Group className="mb-3" controlId="formPassword2">
               <Form.Label>Confirm Password</Form.Label>
@@ -120,6 +128,11 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {error.password2?.map((message, i) => (
+              <Alert variant="warning" key={i}>
+                {message}
+              </Alert>))}
+
             <Button type="submit" className={styles.SignupButton}>
               Sign Up
             </Button>

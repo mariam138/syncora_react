@@ -1,12 +1,19 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Card } from "react-bootstrap";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import appStyles from "../App.module.css";
 import styles from '../styles/SignUpForm.module.css';
 
-function SignUpForm() {
+const SignUpForm = () => {
+  const [signUpData, setSignUpData] = useState({
+    fname: '',
+    username: '',
+    email: '',
+    password: '',
+  })
+
   return (
     <div className="text-center">
       <h1 className={appStyles.Header}>Syncora</h1>
@@ -17,22 +24,23 @@ function SignUpForm() {
           <Form>
             <Form.Group className="mb-3" controlId="formFirstName">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your first name" />
+              <Form.Control type="text" placeholder="Enter your first name"  name="fname"/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
-              <Form.Control type="text" placeholder="Choose a username" />
+              <Form.Control type="text" placeholder="Choose a username"
+              name="username"/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control type="email" placeholder="Enter email" name="email" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" name="password" />
             </Form.Group>
             <Button type="submit" className={styles.SignupButton}>
               Sign Up

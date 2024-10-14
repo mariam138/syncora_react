@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Card } from "react-bootstrap";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../App.module.css";
 import styles from "../styles/SignUpForm.module.css";
 import axios from "axios";
@@ -17,6 +17,7 @@ const SignUpForm = () => {
 
   // Destructure to avoid using dot notation
   const { fname, username, email, password } = signUpData;
+  const navigate = useNavigate();
 
   // handle change event to get sign up data
   const handleChange = (e) => {
@@ -33,7 +34,9 @@ const SignUpForm = () => {
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
-      await axios.post('/dj-rest-auth/registration/', signUpData)
+      await axios.post('/dj-rest-auth/registration/', signUpData);
+      // When sign up data is submitted, navigate user to index
+      navigate('/');
     } catch (error) {
       console.log(error)
     }

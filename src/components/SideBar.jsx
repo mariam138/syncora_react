@@ -142,7 +142,7 @@ const SideBar = () => {
   return (
     <div className={styles.Div}>
       {/* Sidebar will be collapsed on large screens and smaller */}
-      <CDBSidebar breakpoint={992} toggled>
+      <CDBSidebar breakpoint={992}>
         {/* Header of sidebar */}
         <CDBSidebarHeader
           prefix={<i className="fa fa-bars fa-large"></i>}
@@ -174,7 +174,7 @@ const SideBar = () => {
             </NavLink>
 
             {/* Register link */}
-            <NavLink exact to="" activeClassName="activeClicked">
+            <NavLink exact to="/signup" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 className={styles.SidebarMenuItem}
                 icon="user-plus"

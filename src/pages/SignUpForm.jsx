@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Card } from "react-bootstrap";
+import { Alert, Card } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../App.module.css";
@@ -64,6 +64,9 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {error.fname?.map((message, i) =>
+              <Alert variant="warning" key={i}>{message}</Alert>
+            )}
 
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>

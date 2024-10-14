@@ -1,9 +1,8 @@
 import React from "react";
 import SignUpForm from "../pages/SignUpForm";
 import SideBar from "../components/SideBar";
-import {Stack } from "react-bootstrap";
+import { Stack } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
-
 
 const root = () => {
   return (

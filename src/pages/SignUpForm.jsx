@@ -49,7 +49,7 @@ const SignUpForm = () => {
       <Card>
         <Card.Body>
           <Card.Title>Sign up below to start using Syncora</Card.Title>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formFirstName">
               <Form.Label>Name</Form.Label>
               <Form.Control

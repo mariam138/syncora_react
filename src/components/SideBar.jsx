@@ -5,7 +5,7 @@ import {
   CDBSidebarMenu,
   CDBSidebarMenuItem,
 } from "cdbreact";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "../styles/SideBar.module.css";
 
 import React, { useEffect, useState } from "react";
@@ -148,9 +148,7 @@ const SideBar = () => {
           prefix={<i className="fa fa-bars fa-large"></i>}
           className={styles.Sidebar}
         >
-          <a href="/" className={styles.SidebarHeaderLink}>
-            Syncora
-          </a>
+          <Link exact to='/' className={styles.SidebarHeaderLink}>Syncora</Link>
         </CDBSidebarHeader>
 
         <CDBSidebarContent className={styles.Sidebar}>

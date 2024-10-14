@@ -118,6 +118,7 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 - **react-bootstrap** - Bootstrap is the framework used to style the front-end of Syncora. react-bootstrap is used to ensure compatability with React.
 - **react-router-dom** - This is used to create routes/URLs for the front end of the application.
 - **CDBReact** - This framework was installed to be able to use it's responsive sidebar component, made mobile-first and compatible with React and Boostrap.
+- **Axios** - The Axios framework is used to easily send and get requests from the REST API backend created for Syncora
 
 ## Testing
 

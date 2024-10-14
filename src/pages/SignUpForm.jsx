@@ -7,7 +7,7 @@ import appStyles from '../App.module.css'
 
 function SignUpForm() {
   return (
-    <div>
+    <div className="text-center">
       <h1 className={appStyles.Header}>Syncora</h1>
       <h2 className={appStyles.Header}>Let's get organised.</h2>
       <Card>

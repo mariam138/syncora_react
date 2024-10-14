@@ -9,7 +9,6 @@ import axios from "axios";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
-    fname: "",
     username: "",
     email: "",
     password1: "",
@@ -17,7 +16,7 @@ const SignUpForm = () => {
   });
 
   // Destructure to avoid using dot notation
-  const { fname, username, email, password1, password2 } = signUpData;
+  const { username, email, password1, password2 } = signUpData;
   const navigate = useNavigate();
   // Set any errors initially to an empty object
   const [error, setError] = useState({});
@@ -37,7 +36,10 @@ const SignUpForm = () => {
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData);
+      await axios.post(
+        'https://syncora-api-ecc74194384c.herokuapp.com/dj-rest-auth/registration/',
+        signUpData
+      );
       // When sign up data is submitted, navigate user to index
       navigate("/");
     } catch (error) {
@@ -55,21 +57,21 @@ const SignUpForm = () => {
         <Card.Body>
           <Card.Title>Sign up below to start using Syncora</Card.Title>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formFirstName">
+            {/* <Form.Group className="mb-3" controlId="formFirstName">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your first name"
-                name="fname"
-                value={fname}
+                name="first_name"
+                value={first_name}
                 onChange={handleChange}
               />
             </Form.Group>
-            {error.fname?.map((message, i) => (
+            {error.first_name?.map((message, i) => (
               <Alert variant="warning" key={i}>
                 {message}
               </Alert>
-            ))}
+            ))} */}
 
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
@@ -81,6 +83,10 @@ const SignUpForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            {error.username?.map((message, i) => (
+              <Alert variant="warning" key={i}>
+                {message}
+              </Alert>))}
 
             <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email address</Form.Label>

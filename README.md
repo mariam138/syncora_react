@@ -111,15 +111,19 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 
 ### Reusable React Components
 
+#### Sidebar
+
+Rather than a traditional top navigation bar, I wanted to create a side bar menu instead for Syncora. To create this, I installed the **Contrast Design Bootstrap React (CDBReact)** package from *devwares.com*, following the [documentation](https://www.devwares.com/docs/contrast/react/navigation/sidebar/) to create and customise my sidebar menu. Although in the wireframes I had designed for the sidebar component to not be visible at all when collapsed, the CDBReact sidebar did not allow for this. I found this however to make the design more interesting and colourful. To compromise and ensure that it didn't take a lot of space when collapsed on mobile screens, I changed the minimum size from 80px to 75px. The sidebar component was then imported into the **root** route so that it would appear on all pages.
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.
 
 2. Following on from the previous error, I then encountered another bug when testing the form errors for the registration form. Below is a screenshot of the console error I recieved:
 
-    ![Screenshot of CORS console error](readme_assets/cors-error-bug.png)
+   ![Screenshot of CORS console error](readme_assets/cors-error-bug.png)
 
-    I double checked that all my settings were correct in both my front-end (*under api/axiosDefaults.js*) and the back-end (*under syncora_api/settings.py*). I had also ensured I followed both the instructions from Code Institute's React walkthrough project and the **axios** documentation to ensure I had set up my API correctly. After contacting some tutors for help, it appeared that it was due to package discrepencies in the backend. Changing the version of Django used to an older but still supported version fixed the error, allowing requests to be made to the API. More information about this error can be found in the back end [README](https://github.com/mariam138/syncora_drf#bugs). 
+   I double checked that all my settings were correct in both my front-end (_under api/axiosDefaults.js_) and the back-end (_under syncora_api/settings.py_). I had also ensured I followed both the instructions from Code Institute's React walkthrough project and the **axios** documentation to ensure I had set up my API correctly. After contacting some tutors for help, it appeared that it was due to package discrepencies in the backend. Changing the version of Django used to an older but still supported version fixed the error, allowing requests to be made to the API. More information about this error can be found in the back end [README](https://github.com/mariam138/syncora_drf#bugs).
 
 ### Future Features
 

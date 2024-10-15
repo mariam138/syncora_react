@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../App.module.css";
 import styles from "../styles/SignUpForm.module.css";
-import axios from "axios";
+import api from "../api/axiosDefaults";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -36,8 +36,8 @@ const SignUpForm = () => {
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
-      await axios.post(
-        "https://syncora-api-ecc74194384c.herokuapp.com/dj-rest-auth/registration/",
+      await api.post(
+        "/dj-rest-auth/registration/",
         signUpData
       );
       // When sign up data is submitted, navigate user to index

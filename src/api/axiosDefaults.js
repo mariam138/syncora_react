@@ -1,8 +1,12 @@
 import axios from "axios";
 
-// Define url of API
-axios.defaults.baseURL = "https://syncora-api-ecc74194384c.herokuapp.com/";
+// Create axios instance and export it for use in other components
+const api = axios.create({
+  baseURL: "https://syncora-api-ecc74194384c.herokuapp.com/",
+});
 // Allow images to also be uploaded when changing profile pic
-axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
+api.defaults.headers.post["Content-Type"] = "multipart/form-data";
 // Avoid CORS errors while sending cookies
-axios.defaults.withCredentials = true;
+api.defaults.withCredentials = true;
+
+export default api;

@@ -115,9 +115,15 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 
 Rather than a traditional top navigation bar, I wanted to create a side bar menu instead for Syncora. To create this, I installed the **Contrast Design Bootstrap React (CDBReact)** package from _devwares.com_, following the [documentation](https://www.devwares.com/docs/contrast/react/navigation/sidebar/) to create and customise my sidebar menu. Although in the wireframes I had designed for the sidebar component to not be visible at all when collapsed, the CDBReact sidebar did not allow for this. I found this however to make the design more interesting and colourful. To compromise and ensure that it didn't take a lot of space when collapsed on mobile screens, I changed the minimum size from 80px to 75px. The sidebar component was then imported into the **root** route so that it would appear on all pages.
 
+#### Top Navigation Bar
+
+Alongside the sidebar menu, I created a simple and non-obstructive top navigation bar, building of the _React Bootstrap_ Navbar component. In this top nav bar, all that was included were three quick links for a user to create a new event, task or note, rather than clicking on to their respective pages first and then click to create a new entry. Also included in the top navigation bar is a simple welcome message for the user, used as a simple indication that they are logged in. Finally, on certain pages, I included a search bar to allow for the user to text search through their events, notes and tasks. This top navigation bar only appears on screens larger than 992px so as to not take up screen space on smaller screens. These three quick links are available in the sidebar menu instead when a user is on a smaller device.
+
 #### Loading Spinner
 
 Using the **Spinner** component from _React Boostrap_, I created a reusable loading spinner component. This component is used to visually indicate to users when something is loading, so was imported into other pages as needed.
+
+#### Error Page
 
 ### Bugs
 

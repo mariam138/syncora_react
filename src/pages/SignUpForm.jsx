@@ -36,10 +36,7 @@ const SignUpForm = () => {
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
-      await api.post(
-        "/dj-rest-auth/registration/",
-        signUpData
-      );
+      await api.post("/dj-rest-auth/registration/", signUpData);
       // When sign up data is submitted, navigate user to index
       navigate("/");
     } catch (error) {

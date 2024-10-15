@@ -1,6 +1,7 @@
 import axios from "axios";
 
 // Create axios instance and export it for use in other components
+// Code adapted from: https://axios-http.com/docs/config_defaults
 const api = axios.create({
   baseURL: "https://syncora-api-ecc74194384c.herokuapp.com/",
 });

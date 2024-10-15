@@ -182,6 +182,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 - Code to create the error page component is adapted from the [React Router](https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors) docs
 - Code to create the sidebar navigation is adapted from [this](https://www.devwares.com/blog/create-responsive-sidebar-in-react/) post on devwares.com
 - Code to conditionally render the quick links in the menu only on smaller screens is adapted from a comment by _foakesm_ on [this](https://stackoverflow.com/questions/46586165/react-conditionally-render-based-on-viewport-size) post on stackoverflow
+- Code which creates an instance of axios to allow use of a base URL with components was adapted from the [axios documentation](https://axios-http.com/docs/config_defaults)
 
 ### Media
 

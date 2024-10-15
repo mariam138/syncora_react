@@ -9,7 +9,7 @@ function App() {
     <>
       <div className={styles.App}>
         <Routes>
-          <Route path='*' element={<Root />} />
+          <Route exact path='/' element={<Root />} />
         </Routes>
       </div>
     </>

@@ -37,7 +37,7 @@ const SignUpForm = () => {
     e.preventDefault();
     try {
       await axios.post(
-        'https://syncora-api-ecc74194384c.herokuapp.com/dj-rest-auth/registration/',
+        "https://syncora-api-ecc74194384c.herokuapp.com/dj-rest-auth/registration/",
         signUpData
       );
       // When sign up data is submitted, navigate user to index
@@ -86,7 +86,8 @@ const SignUpForm = () => {
             {error.username?.map((message, i) => (
               <Alert variant="warning" key={i}>
                 {message}
-              </Alert>))}
+              </Alert>
+            ))}
 
             <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email address</Form.Label>
@@ -101,7 +102,8 @@ const SignUpForm = () => {
             {error.email?.map((message, i) => (
               <Alert variant="warning" key={i}>
                 {message}
-              </Alert>))}
+              </Alert>
+            ))}
 
             <Form.Group className="mb-3" controlId="formPassword1">
               <Form.Label>Password</Form.Label>
@@ -116,7 +118,8 @@ const SignUpForm = () => {
             {error.password1?.map((message, i) => (
               <Alert variant="warning" key={i}>
                 {message}
-              </Alert>))}
+              </Alert>
+            ))}
 
             <Form.Group className="mb-3" controlId="formPassword2">
               <Form.Label>Confirm Password</Form.Label>
@@ -131,7 +134,8 @@ const SignUpForm = () => {
             {error.password2?.map((message, i) => (
               <Alert variant="warning" key={i}>
                 {message}
-              </Alert>))}
+              </Alert>
+            ))}
 
             <Button type="submit" className={styles.SignupButton}>
               Sign Up

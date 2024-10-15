@@ -20,7 +20,7 @@ This repository is for the front-end of the application, made using the React fr
 
 ## User Stories
 
-Planning of the features for **Syncora** was done with user stories. While brainstorming user stories, epics were created which were then further identified into themes. 
+Planning of the features for **Syncora** was done with user stories. While brainstorming user stories, epics were created which were then further identified into themes.
 
 ### Themes
 
@@ -37,19 +37,21 @@ Three main themes were identified in the planning of this web app:
 The above themes were then split down further into the following epics:
 
 - **User Account**
-    - [#4](https://github.com/mariam138/syncora_react/issues/4) Account Registration
-    - [#5](https://github.com/mariam138/syncora_react/issues/5) User Sign In/Out
-    - [#6](https://github.com/mariam138/syncora_react/issues/6) Account Deletion
-    - [#9](https://github.com/mariam138/syncora_react/issues/9) User Profile
+
+  - [#4](https://github.com/mariam138/syncora_react/issues/4) Account Registration
+  - [#5](https://github.com/mariam138/syncora_react/issues/5) User Sign In/Out
+  - [#6](https://github.com/mariam138/syncora_react/issues/6) Account Deletion
+  - [#9](https://github.com/mariam138/syncora_react/issues/9) User Profile
 
 - **User Interface**
-    - [#7](https://github.com/mariam138/syncora_react/issues/7) Dashboard
-    - [#8](https://github.com/mariam138/syncora_react/issues/8) Navigation
+
+  - [#7](https://github.com/mariam138/syncora_react/issues/7) Dashboard
+  - [#8](https://github.com/mariam138/syncora_react/issues/8) Navigation
 
 - **App Features**
-    - [#10](https://github.com/mariam138/syncora_react/issues/10) Tasks
-    - [#11](https://github.com/mariam138/syncora_react/issues/11) Events
-    - [#12](https://github.com/mariam138/syncora_react/issues/12) Notes
+  - [#10](https://github.com/mariam138/syncora_react/issues/10) Tasks
+  - [#11](https://github.com/mariam138/syncora_react/issues/11) Events
+  - [#12](https://github.com/mariam138/syncora_react/issues/12) Notes
 
 Each epic above is directly linked to the issue created on Github as part of the Agile methodology used to create the app.
 
@@ -59,7 +61,7 @@ Each user story was then created based of the above epics. Each user story is li
 
 ## Agile Development Methodology
 
-User stories were created using Github's **issues** feature. Then using Github's **projects** feature, a board was created to keep track of all user stories, epics and themes. The board was split into five main columns: one column for themes, one for epics, then three to keep track of each user story. These three were the default **To Do**, **In Progress** and **Completed** columns provided by Github when creating a project. Each user story was then labelled using the **MoSCoW** approach. Any feature that falls under CRUD functionality was labelled as a *must have* feature. Story point labels were then created using a linear scale of: **1, 2, 4, 6 and 8**. I decided **not** to use a label for **16** story points because that would be considered an epic, so this felt like a redundant label. 
+User stories were created using Github's **issues** feature. Then using Github's **projects** feature, a board was created to keep track of all user stories, epics and themes. The board was split into five main columns: one column for themes, one for epics, then three to keep track of each user story. These three were the default **To Do**, **In Progress** and **Completed** columns provided by Github when creating a project. Each user story was then labelled using the **MoSCoW** approach. Any feature that falls under CRUD functionality was labelled as a _must have_ feature. Story point labels were then created using a linear scale of: **1, 2, 4, 6 and 8**. I decided **not** to use a label for **16** story points because that would be considered an epic, so this felt like a redundant label.
 
 For each iteration, a new **milestone** was created. Each milestone was then given a due by date to help keep on track throughout the creation of this project. An initial milestone was created to act like the **Product Back Log**, where all user stories were first moved to.
 
@@ -91,7 +93,7 @@ Models for the database were planned out before starting creation of the project
 
 ### Colour Scheme
 
-I envinsioned a bright pink as the main colour for Syncora, using this base to then pick the rest of my colour palette. First, I searched different palettes based on pink to choose the shade of pink I wanted. Using [this](https://colorhunt.co/palette/ffbe98f05a7e125b9a0b8494) colour palette on *colorhunt.co*, I initially chose the colour `#F05A7E`. Entering this colour onto *coolors.co* allowed me to then choose a slightly different, more muted shade of pink - `#FB6083`. I then checked the contrast of this colour against a black to ensure it met AAA accessibility guidelines. Using [this](https://www.learnui.design/tools/accessible-color-generator.html) colour generator on *Learn UI Design*, I chose the shade `#000010`, which will be used as text on the pink shade. Locking these two colours in on my *coolors.co* colour palette, I then generated another colour to use as a secondary colour. The colour I chose was this wheat colour `#F5DFBB`. Finally, I picked a shade of white/cream as a fourth colour, again checking it's contrast on *Learn UI Design* against the above black shade. The cream/white shade I settled on to meet AAA guidelines was `#FFF5F5`. Below is the final colour palette for Syncora.
+I envinsioned a bright pink as the main colour for Syncora, using this base to then pick the rest of my colour palette. First, I searched different palettes based on pink to choose the shade of pink I wanted. Using [this](https://colorhunt.co/palette/ffbe98f05a7e125b9a0b8494) colour palette on _colorhunt.co_, I initially chose the colour `#F05A7E`. Entering this colour onto _coolors.co_ allowed me to then choose a slightly different, more muted shade of pink - `#FB6083`. I then checked the contrast of this colour against a black to ensure it met AAA accessibility guidelines. Using [this](https://www.learnui.design/tools/accessible-color-generator.html) colour generator on _Learn UI Design_, I chose the shade `#000010`, which will be used as text on the pink shade. Locking these two colours in on my _coolors.co_ colour palette, I then generated another colour to use as a secondary colour. The colour I chose was this wheat colour `#F5DFBB`. Finally, I picked a shade of white/cream as a fourth colour, again checking it's contrast on _Learn UI Design_ against the above black shade. The cream/white shade I settled on to meet AAA guidelines was `#FFF5F5`. Below is the final colour palette for Syncora.
 
 ![Syncora colour palette](readme_assets/syncora-colour-palette.png)
 
@@ -111,9 +113,12 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 
 ### Bugs
 
+1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.
+
 ### Future Features
 
 ## Frameworks, libraries and dependencies
+
 - **vite 5.4.8** - Vite's React template was used to start and set up the Syncora front-end project. This was chosen over **create-react-app** as it is more up-to-date and maintained. The template was installed using the command `npm create vite@latest -- --template react`.
 - **react-bootstrap** - Bootstrap is the framework used to style the front-end of Syncora. react-bootstrap is used to ensure compatability with React.
 - **react-router-dom** - This is used to create routes/URLs for the front end of the application.
@@ -140,16 +145,15 @@ Google fonts was used to provide fonts for this project. For the Syncora logo an
 
 As this React app was built using Vite, some extra steps had to be taken in order to allow for a successful deployment. Extra steps were followed from [this](https://blog.md.engineer/vite-heroku-clkmnkq8h000709l7hxqe689p) blog post by Ndagi Stanley.
 
-1. Open your Heroku dashboard and click **New**. From the dropdown menu, select *'Create new app'*
+1. Open your Heroku dashboard and click **New**. From the dropdown menu, select _'Create new app'_
 2. Choose a uniqe app name and an appropriate region. Click **Create app**
 3. Install the **serve** package using the command `npm install serve`
 4. In `package.json` include the following start script:
-    > `"start": "serve -s dist"`
+   > `"start": "serve -s dist"`
 5. Ensure all changes are pushed to your repository before deployment
 6. Back to the newly created app on Heroku, click the 'Deploy' tab. In the 'Deployment method' section, click on **GitHub**
 7. Search for the repository and link it in the 'App connected to GitHub' section
 8. In the 'Manual deploy' section, click **Deploy Branch**
-
 
 ## Accreditation
 
@@ -157,7 +161,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 
 - Code to create the error page component is adapted from the [React Router](https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors) docs
 - Code to create the sidebar navigation is adapted from [this](https://www.devwares.com/blog/create-responsive-sidebar-in-react/) post on devwares.com
-- Code to conditionally render the quick links in the menu only on smaller screens is adapted from a comment by *foakesm* on [this](https://stackoverflow.com/questions/46586165/react-conditionally-render-based-on-viewport-size) post on stackoverflow
+- Code to conditionally render the quick links in the menu only on smaller screens is adapted from a comment by _foakesm_ on [this](https://stackoverflow.com/questions/46586165/react-conditionally-render-based-on-viewport-size) post on stackoverflow
 
 ### Media
 

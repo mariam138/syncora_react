@@ -1,30 +1,30 @@
 .Div {
-    display: flex;
-    height: 100vh;
-    overflow: scroll initial;
+  display: flex;
+  height: 100vh;
+  overflow: scroll initial;
 }
 
 .Sidebar {
-    background-color: #FB6083;
-    color: #000010;
+  background-color: #fb6083;
+  color: #000010;
 }
 
 .SidebarHeaderLink {
-    font-family: Comfortaa, sans-serif;
-    text-decoration: none;
-    color: #000010;
+  font-family: Comfortaa, sans-serif;
+  text-decoration: none;
+  color: #000010;
 }
 
 .SidebarMenuItem {
-    color: #000010;
+  color: #000010;
 }
 
 @media (min-width: 1200px) {
-    .SidebarHeaderLink {
-        font-size: 2rem;
-    }
+  .SidebarHeaderLink {
+    font-size: 2rem;
+  }
 
-    .SidebarMenuItem {
-        font-size: 1.25rem;
-    }
+  .SidebarMenuItem {
+    font-size: 1.25rem;
+  }
 }

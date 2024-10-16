@@ -144,6 +144,7 @@ Using the **Spinner** component from _React Boostrap_, I created a reusable load
 - **react-router-dom** - This is used to create routes/URLs for the front end of the application.
 - **CDBReact** - This framework was installed to be able to use it's responsive sidebar component, made mobile-first and compatible with React and Boostrap.
 - **Axios** - The Axios framework is used to easily send and get requests from the REST API backend created for Syncora
+- **Mock Service Worker** - This was used to help mock an API when performing automated tests throughout the creation of Syncora. Setting up of MSW for testing was done following the [documentation](https://mswjs.io/docs/getting-started). MSW was only downloaded as a development dependency.
 
 ## Testing
 

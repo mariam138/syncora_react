@@ -192,3 +192,4 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 ### Other
 
 - The instructions to prepare the repository for deployment were adapted from [this](https://blog.md.engineer/vite-heroku-clkmnkq8h000709l7hxqe689p) post by Ndagi Stanley
+- The GitHub issue for the 500 console error when registering is found [here](https://github.com/iMerica/dj-rest-auth/issues/61) on the **dj-rest-auth** GitHub repository

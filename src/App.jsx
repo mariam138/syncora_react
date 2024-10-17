@@ -4,19 +4,13 @@ import Root from "./routes/root";
 import "./api/axiosDefaults";
 
 function App() {
- 
-
   return (
     <>
-      <CurrentUserContext.Provider value={currentUser}>
-        <SetCurrentUserContext.Provider value={setCurrentUser}>
-          <div className={styles.App}>
-            <Routes>
-              <Route exact path="/" element={<Root />} />
-            </Routes>
-          </div>
-        </SetCurrentUserContext.Provider>
-      </CurrentUserContext.Provider>
+      <div className={styles.App}>
+        <Routes>
+          <Route exact path="/" element={<Root />} />
+        </Routes>
+      </div>
     </>
   );
 }

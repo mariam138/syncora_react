@@ -24,4 +24,12 @@ export const CurrentUserProvider = ({ children }) => {
   useEffect(() => {
     handleMount();
   }, []);
+
+  return (
+    <CurrentUserContext.Provider value={currentUser}>
+      <SetCurrentUserContext.Provider value={setCurrentUser}>
+        {children}
+      </SetCurrentUserContext.Provider>
+    </CurrentUserContext.Provider>
+  );
 };

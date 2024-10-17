@@ -42,7 +42,7 @@ const SignInForm = () => {
       <Card>
         <Card.Body>
           <Card.Title>Sign in below to Syncora</Card.Title>
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control

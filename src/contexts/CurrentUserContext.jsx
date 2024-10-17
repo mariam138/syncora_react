@@ -1,9 +1,17 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../api/axiosDefaults";
 
 // Creates custom context object for the current user to be passed down the component tree
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
+
+// Create custom context hooks
+export const useCurrentUser = () => {
+  useContext(CurrentUserContext);
+};
+export const useSetCurrentUser = () => {
+  useContext(SetCurrentUserContext);
+};
 
 export const CurrentUserProvider = ({ children }) => {
   // This will be used to check whether a use is logged in or not

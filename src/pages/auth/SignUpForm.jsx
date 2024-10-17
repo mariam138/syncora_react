@@ -3,9 +3,9 @@ import Form from "react-bootstrap/Form";
 import { Alert, Card } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import appStyles from "../App.module.css";
-import styles from "../styles/SignUpForm.module.css";
-import api from "../api/axiosDefaults";
+import appStyles from "../../App.module.css";
+import styles from "../../styles/SignUpForm.module.css";
+import api from "../../api/axiosDefaults";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({

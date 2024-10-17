@@ -7,8 +7,6 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/SignUpForm.module.css";
 import api from "../../api/axiosDefaults";
 
-import React from "react";
-
 const SignInForm = () => {
   return (
     <div className="text-center">

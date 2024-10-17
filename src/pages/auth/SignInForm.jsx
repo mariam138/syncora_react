@@ -8,6 +8,31 @@ import styles from "../../styles/SignUpForm.module.css";
 import api from "../../api/axiosDefaults";
 
 const SignInForm = () => {
+  const [signInData, setSignInData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const { username, password } = signInData;
+  const [error, setError] = useState({});
+
+  const handleChange = (e) => {
+    setSignInData({
+      ...signInData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.post("/dj-rest-auth/login/", signInData);
+    } catch (error) {
+        console.log(error);
+        setError(error.response?.data);
+    }
+  };
+
   return (
     <div className="text-center">
       <h1 className={appStyles.Header}>Syncora</h1>
@@ -15,7 +40,7 @@ const SignInForm = () => {
       <Card>
         <Card.Body>
           <Card.Title>Sign up below to start using Syncora</Card.Title>
-          <Form onSubmit={handleSubmit}>
+          <Form>
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
               <Form.Control

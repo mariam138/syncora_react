@@ -137,6 +137,11 @@ Using the **Spinner** component from _React Boostrap_, I created a reusable load
 
 3. When testing registration of users to Syncora, I noticed that the page wasn't refreshing or being redirected to the index like I had coded. Looking at the console showed a 500 error after registration. However, when I clicked the sign up button again with the same information, a form error would display stating that a user with that username already exists. I double checked that registration was successful by logging into the back end and finding their profile in the API. So it was unclear why a 500 error was being shown. After searching, I found a similar issue on GitHub under the **dj-rest-auth** repository. It seemed that the issue was with the e-mail set up in the back end. After adding the new email settings, I tested the registration feature again and was successfully being redirected to the index page as planned. More information about this bug can be found in the back end [documentation](https://github.com/mariam138/syncora_drf#bugs).
 
+4. I was able to get signing in to the application up and running quickly and smoothly, however I then came across a bug when trying to implement custom context hooks. I wanted to be able to tell when a user was logged in so that I could conditionally render links in the sidebar based on that property. Following along with Code Institute's Moments [walkthrough](https://github.com/Code-Institute-Solutions/moments/blob/304244f540308ff4dd3c961352f55a633a4b3bed/src/contexts/CurrentUserContext.js) to create a _Current User_ hook, I tried to import this hook into my sign up form. However, when testing the sign in functionality again, I came across this error:
+   > TypeError: setCurrentUser is not a function
+
+  Even after checking all my imports, my `setCurrentUser` function was not being recognised. Logging it to the console gave the result `undefined`. Initially, when creating the `CustomUserProvider`, I had it wrapped around the routes in App.jsx. When moving the provider to main.jsx and having it wrap around the `<RouterProvider>` element, console logging the function no longer showed undefined. Testing the log in function again, it worked successfully and the links in the sidebar menu rendered as expected.
+
 ### Future Features
 
 ## Frameworks, libraries and dependencies

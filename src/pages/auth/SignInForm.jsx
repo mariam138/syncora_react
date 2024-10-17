@@ -14,7 +14,8 @@ const SignInForm = () => {
   });
 
   const { username, password } = signInData;
-  const [error, setError] = useState({});
+    const [error, setError] = useState({});
+    const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSignInData({
@@ -26,7 +27,8 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/dj-rest-auth/login/", signInData);
+        await api.post("/dj-rest-auth/login/", signInData);
+        navigate("/");
     } catch (error) {
         console.log(error);
         setError(error.response?.data);
@@ -39,7 +41,7 @@ const SignInForm = () => {
       <h2 className={appStyles.Header}>Let's get organised.</h2>
       <Card>
         <Card.Body>
-          <Card.Title>Sign up below to start using Syncora</Card.Title>
+          <Card.Title>Sign in below to Syncora</Card.Title>
           <Form>
             <Form.Group className="mb-3" controlId="formUsername">
               <Form.Label>Username</Form.Label>
@@ -57,22 +59,6 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            {/* <Form.Group className="mb-3" controlId="formEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                name="email"
-                value={email}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {error.email?.map((message, i) => (
-              <Alert variant="warning" key={i}>
-                {message}
-              </Alert>
-            ))} */}
-
             <Form.Group className="mb-3" controlId="formPassword1">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -89,28 +75,12 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            {/* <Form.Group className="mb-3" controlId="formPassword2">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password again"
-                name="password2"
-                value={password2}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {error.password2?.map((message, i) => (
-              <Alert variant="warning" key={i}>
-                {message}
-              </Alert>
-            ))} */}
-
             <Button type="submit" className={styles.SignupButton}>
-              Sign Up
+              Sign In
             </Button>
             <Card.Text>
-              Already have an account? Sign in{" "}
-              <Link exact to="/signin">
+              Don't have an account? Sign up{" "}
+              <Link exact to="/signup">
                 here.
               </Link>
             </Card.Text>

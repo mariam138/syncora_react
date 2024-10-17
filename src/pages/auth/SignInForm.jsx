@@ -14,8 +14,8 @@ const SignInForm = () => {
   });
 
   const { username, password } = signInData;
-    const [error, setError] = useState({});
-    const navigate = useNavigate();
+  const [error, setError] = useState({});
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSignInData({
@@ -27,11 +27,11 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        await api.post("/dj-rest-auth/login/", signInData);
-        navigate("/");
+      await api.post("/dj-rest-auth/login/", signInData);
+      navigate("/");
     } catch (error) {
-        console.log(error);
-        setError(error.response?.data);
+      console.log(error);
+      setError(error.response?.data);
     }
   };
 

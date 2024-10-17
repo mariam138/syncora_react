@@ -8,16 +8,17 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import styles from "../styles/SideBar.module.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { CurrentUserContext } from "../App";
 
 /** Separate function for the menu links, destructuring
  * screenSize as a prop. If screenSize = true, then the
  * quick menu links will render. The rest of the links will
  * render despite the screensize prop. This is then used to
- * create a SidebarMenuLinks component which is used in the
+ * create a LoggedInMenuLinks component which is used in the
  * Sidebar arrow function below.
  */
-const SidebarMenuLinks = ({ screenSize }) => {
+const LoggedInMenuLinks = ({ screenSize }) => {
   return (
     <>
       {screenSize && (
@@ -122,6 +123,7 @@ const SidebarMenuLinks = ({ screenSize }) => {
 };
 
 const SideBar = () => {
+  const currentUser = useContext(CurrentUserContext);
   // Code to conditionally render the quick links in the navbar
   // Based on the screen size is adapted from this post:
   // https://stackoverflow.com/questions/46586165/react-conditionally-render-based-on-viewport-size
@@ -157,7 +159,7 @@ const SideBar = () => {
           <CDBSidebarMenu>
             {/* Takes in screenSize as a prop for the conditional rendering in the
             sidebar menu links function above */}
-            <SidebarMenuLinks screenSize={screenSize} />
+            <LoggedInMenuLinks screenSize={screenSize} />
           </CDBSidebarMenu>
 
           {/* Separate menu for sign in and register links */}

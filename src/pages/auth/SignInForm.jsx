@@ -33,6 +33,7 @@ const SignInForm = () => {
       // Destructure data from user login to be used to set the current user
       const { data } = await api.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
+      console.log(data.user);
       navigate("/");
     } catch (error) {
       console.log(error);

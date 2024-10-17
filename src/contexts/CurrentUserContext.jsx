@@ -7,10 +7,10 @@ export const SetCurrentUserContext = createContext();
 
 // Create custom context hooks
 export const useCurrentUser = () => {
-  useContext(CurrentUserContext);
+  return useContext(CurrentUserContext);
 };
 export const useSetCurrentUser = () => {
-  useContext(SetCurrentUserContext);
+  return useContext(SetCurrentUserContext);
 };
 
 export const CurrentUserProvider = ({ children }) => {

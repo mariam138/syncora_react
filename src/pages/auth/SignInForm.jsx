@@ -10,6 +10,7 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
+  console.log(setCurrentUser)
 
   const [signInData, setSignInData] = useState({
     username: "",

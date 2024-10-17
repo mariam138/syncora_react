@@ -30,5 +30,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <CurrentUserProvider>
       <RouterProvider router={router} />
     </CurrentUserProvider>
-  </StrictMode>,
+  </StrictMode>
 );

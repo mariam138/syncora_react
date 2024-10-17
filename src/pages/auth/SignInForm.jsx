@@ -57,7 +57,7 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            <Form.Group className="mb-3" controlId="formEmail">
+            {/* <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
@@ -71,15 +71,15 @@ const SignInForm = () => {
               <Alert variant="warning" key={i}>
                 {message}
               </Alert>
-            ))}
+            ))} */}
 
             <Form.Group className="mb-3" controlId="formPassword1">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
-                name="password1"
-                value={password1}
+                name="password"
+                value={password}
                 onChange={handleChange}
               />
             </Form.Group>
@@ -89,7 +89,7 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            <Form.Group className="mb-3" controlId="formPassword2">
+            {/* <Form.Group className="mb-3" controlId="formPassword2">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
@@ -103,7 +103,7 @@ const SignInForm = () => {
               <Alert variant="warning" key={i}>
                 {message}
               </Alert>
-            ))}
+            ))} */}
 
             <Button type="submit" className={styles.SignupButton}>
               Sign Up

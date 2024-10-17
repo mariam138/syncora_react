@@ -1,13 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Alert, Card } from "react-bootstrap";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/SignUpForm.module.css";
 import api from "../../api/axiosDefaults";
+import { SetCurrentUserContext } from "../../App";
 
 const SignInForm = () => {
+  const setCurrentUser = useContext(SetCurrentUserContext);
+
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -27,7 +30,9 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/dj-rest-auth/login/", signInData);
+      // Destructure data from user login to be used to set the current user
+      const { data } = await api.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
       navigate("/");
     } catch (error) {
       console.log(error);

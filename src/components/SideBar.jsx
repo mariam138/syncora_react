@@ -122,6 +122,33 @@ const LoggedInMenuLinks = ({ screenSize }) => {
   );
 };
 
+const LoggedOutMenuLinks = () => {
+  return (
+    <>
+      <NavLink exact to="signin" activeClassName="activeClicked">
+        <CDBSidebarMenuItem
+          className={styles.SidebarMenuItem}
+          icon="right-to-bracket"
+          iconSize="lg"
+        >
+          Sign In
+        </CDBSidebarMenuItem>
+      </NavLink>
+
+      {/* Register link */}
+      <NavLink to="signup" activeClassName="activeClicked">
+        <CDBSidebarMenuItem
+          className={styles.SidebarMenuItem}
+          icon="user-plus"
+          iconSize="lg"
+        >
+          Register
+        </CDBSidebarMenuItem>
+      </NavLink>
+    </>
+  );
+};
+
 const SideBar = () => {
   const currentUser = useContext(CurrentUserContext);
   // Code to conditionally render the quick links in the navbar
@@ -163,29 +190,7 @@ const SideBar = () => {
           </CDBSidebarMenu>
 
           {/* Separate menu for sign in and register links */}
-          <CDBSidebarMenu>
-            {/* Sign in link */}
-            <NavLink exact to="signin" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                className={styles.SidebarMenuItem}
-                icon="right-to-bracket"
-                iconSize="lg"
-              >
-                Sign In
-              </CDBSidebarMenuItem>
-            </NavLink>
-
-            {/* Register link */}
-            <NavLink to="signup" activeClassName="activeClicked">
-              <CDBSidebarMenuItem
-                className={styles.SidebarMenuItem}
-                icon="user-plus"
-                iconSize="lg"
-              >
-                Register
-              </CDBSidebarMenuItem>
-            </NavLink>
-          </CDBSidebarMenu>
+          <CDBSidebarMenu>{/* Sign in link */}</CDBSidebarMenu>
         </CDBSidebarContent>
       </CDBSidebar>
     </div>

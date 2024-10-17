@@ -186,11 +186,16 @@ const SideBar = () => {
           <CDBSidebarMenu>
             {/* Takes in screenSize as a prop for the conditional rendering in the
             sidebar menu links function above */}
-            <LoggedInMenuLinks screenSize={screenSize} />
+            {currentUser ? (
+              <LoggedInMenuLinks screenSize={screenSize} />
+            ) : (
+              <LoggedOutMenuLinks />
+            )}
+            {/* <LoggedInMenuLinks /> */}
           </CDBSidebarMenu>
 
           {/* Separate menu for sign in and register links */}
-          <CDBSidebarMenu>{/* Sign in link */}</CDBSidebarMenu>
+          {/* <CDBSidebarMenu>Sign in link</CDBSidebarMenu> */}
         </CDBSidebarContent>
       </CDBSidebar>
     </div>

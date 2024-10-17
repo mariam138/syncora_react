@@ -10,7 +10,7 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
-  console.log(setCurrentUser)
+  console.log(setCurrentUser);
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -66,7 +66,7 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            <Form.Group className="mb-3" controlId="formPassword1">
+            <Form.Group className="mb-3" controlId="formPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
@@ -76,7 +76,7 @@ const SignInForm = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            {error.password1?.map((message, i) => (
+            {error.password?.map((message, i) => (
               <Alert variant="warning" key={i}>
                 {message}
               </Alert>

@@ -163,7 +163,7 @@ const SideBar = () => {
           {/* Separate menu for sign in and register links */}
           <CDBSidebarMenu>
             {/* Sign in link */}
-            <NavLink exact to="" activeClassName="activeClicked">
+            <NavLink exact to="signin" activeClassName="activeClicked">
               <CDBSidebarMenuItem
                 className={styles.SidebarMenuItem}
                 icon="right-to-bracket"

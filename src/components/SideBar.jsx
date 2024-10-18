@@ -109,7 +109,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Sign out link */}
-      <NavLink exact to="" activeClassName="activeClicked">
+      <NavLink exact to="/signout" activeClassName="activeClicked">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="right-from-bracket"

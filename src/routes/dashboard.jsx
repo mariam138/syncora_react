@@ -1,12 +1,12 @@
-import React from 'react'
-import TopNavbar from '../components/TopNavbar'
+import React from "react";
+import TopNavbar from "../components/TopNavbar";
 
-const dashboard = () => {
+const Dashboard = () => {
   return (
-      <>
-        <TopNavbar/>
-      </>
-  )
-}
+    <>
+      <TopNavbar />
+    </>
+  );
+};
 
-export default dashboard
+export default Dashboard;

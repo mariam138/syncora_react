@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage.jsx";
 import SignUpForm from "./pages/auth/SignUpForm.jsx";
 import Root from "./routes/root.jsx";
+import Dashboard from "./routes/dashboard.jsx";
 import SignInForm from "./pages/auth/SignInForm.jsx";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: "signin",
         element: <SignInForm />,
       },
+      {
+        path: "dashboard",
+        element: <Dashboard />
+      }
     ],
   },
 ]);

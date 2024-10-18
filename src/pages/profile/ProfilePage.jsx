@@ -4,7 +4,7 @@ import api from "../../api/axiosDefaults";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
-    profile: { results: [] },
+    profile: {},
   });
   const { profile } = profileData;
   const currentUser = useCurrentUser();
@@ -14,7 +14,6 @@ function ProfilePage() {
   const handleMount = async () => {
     try {
       const { data } = await api.get(`/profiles/${currentUser.pk}`);
-      console.log(data);
       setProfileData({
         profile: data,
       });

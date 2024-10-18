@@ -4,8 +4,12 @@ import Container from "react-bootstrap/Container";
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/TopNavbar.module.css";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 function TopNavbar() {
+  // Gets current user information to display username
+  const currentUser = useCurrentUser();
+
   return (
     <>
       <Navbar fixed="top" className={styles.Navbar}>
@@ -21,7 +25,7 @@ function TopNavbar() {
               New Note <i class="fa-solid fa-notes-medical"></i>
             </NavLink>
             {/* Welcome text to user when logged in */}
-            <Navbar.Text>Welcome, User</Navbar.Text>
+            <Navbar.Text>Welcome, {currentUser.username}</Navbar.Text>
           </Nav>
         </Container>
       </Navbar>

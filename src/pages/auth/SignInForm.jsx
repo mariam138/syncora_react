@@ -41,7 +41,7 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center px-3">
       <h1 className={appStyles.Header}>Syncora</h1>
       <h2 className={appStyles.Header}>Let's get organised.</h2>
       <Card>

@@ -13,7 +13,7 @@ function ProfilePage() {
   // When component is mounted
   const handleMount = async () => {
     try {
-      const { data } = await api.get(`/profiles/${currentUser.pk}`);
+        const { data } = await api.get(`/profiles/${currentUser.pk}`);
       setProfileData({
         profile: data,
       });
@@ -26,12 +26,10 @@ function ProfilePage() {
   useEffect(() => {
     handleMount();
   }, []);
+    const { id, username, name, email } = profile;
   return (
     <>
-      {/* {profile.results.map(pfp => (
-                <p key={pfp.id}>{pfp.username}|{pfp.profile_image}</p> */}
-      {/* ))} */}
-      <h1>Profile</h1>
+          <h1>{username}'s Profile</h1>
     </>
   );
 }

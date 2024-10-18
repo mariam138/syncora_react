@@ -145,6 +145,12 @@ The sign in form is laid out similarly to the registration form, but instead onl
 
 ![Syncora Sign In Form](readme_assets/signin-form.png)
 
+### Sign Out Page
+
+When a user clicks the sign out link in the sidebar, they will be redirected to a page asking them to confirm if they would like to sign out. They also have the option to go back to the previous page if they change their mind. Upon signing out, the user then gets redirected back to the sign in page.
+
+![Sign out page](readme_assets/sign-out-page.png)
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

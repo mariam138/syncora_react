@@ -7,7 +7,7 @@ const root = () => {
     <>
       <Stack direction="horizontal">
         <SideBar />
-        <div className={`mx-auto `}>
+        <div className={`mx-auto`}>
           <Outlet />
         </div>
       </Stack>

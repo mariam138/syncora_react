@@ -8,6 +8,7 @@ import Dashboard from "./routes/dashboard.jsx";
 import SignInForm from "./pages/auth/SignInForm.jsx";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
 import SignOutPage from "./pages/auth/SignOutPage.jsx";
+import ProfilePage from "./pages/profile/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "profiles/:pk",
+        element: <ProfilePage />,
       },
     ],
   },

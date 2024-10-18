@@ -54,7 +54,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
           <hr />
         </>
       )}
-      <NavLink exact to="/" activeClassName="activeClicked">
+      <NavLink exact to="/dashboard" activeClassName="activeClicked">
         <CDBSidebarMenuItem
           icon="table-columns"
           iconSize="lg"

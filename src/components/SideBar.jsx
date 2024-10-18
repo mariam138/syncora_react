@@ -21,7 +21,6 @@ import { useCurrentUser } from "../contexts/CurrentUserContext";
 const LoggedInMenuLinks = ({ screenSize }) => {
   // Use pk to set id of current user, to be used in url for profile page
   const currentUser = useCurrentUser();
-  const id = currentUser.pk;
 
   return (
     <>
@@ -102,7 +101,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Profile page link */}
-      <NavLink exact to={`/profiles/${id}`} activeClassName="activeClicked">
+      <NavLink exact to={`/profiles/${currentUser?.pk}`} activeClassName="activeClicked">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="user"

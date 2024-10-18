@@ -133,6 +133,12 @@ Using the **Spinner** component from _React Boostrap_, I created a reusable load
 
 #### Error Page
 
+### Sign Up Form
+
+The sign up form allows users to access the full functionality of the website. The user is asked to enter a username, an e-mail, and a password which is confirmed again. If any fields are blank, or if a username has already been taken, this is alerted to the user. E-mail is an optional field as set by the back-end library **dj-rest-auth**, so an alert does not show up here. Underneath the form is the option to sign in if a user already has an account. This redirects the user to the sign in form instead.
+
+![Syncora Registration Form](readme_assets/registration-form.png)
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

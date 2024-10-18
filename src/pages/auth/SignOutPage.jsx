@@ -22,11 +22,17 @@ export default function SignOutPage() {
 
   return (
     <>
-      <Container fluid="lg">
+      <Container fluid="sm">
         <Row>
-          <Col>
+          <Col className="text-center">
             <h1>Are you sure you want to sign out?</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-center">
             <Button
+              className="mx-2"
+              variant="outline-secondary"
               type="button"
               onClick={() => {
                 navigate(-1);
@@ -34,7 +40,12 @@ export default function SignOutPage() {
             >
               Go back
             </Button>
-            <Button type="submit" onSubmit={handleSubmit}>
+            <Button
+              className="mx-2"
+              variant="danger"
+              type="submit"
+              onSubmit={handleSubmit}
+            >
               Sign Out
             </Button>
           </Col>

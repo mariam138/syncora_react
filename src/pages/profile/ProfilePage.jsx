@@ -8,6 +8,8 @@ function ProfilePage() {
   });
   const { profile } = profileData;
 
+  // Get list of profiles from api and log it to the console
+  // When component is mounted
   const handleMount = async () => {
     try {
       const { data } = await api.get("/profiles");
@@ -20,6 +22,7 @@ function ProfilePage() {
     }
   };
 
+  // Ensure mount only happens once
   useEffect(() => {
     handleMount();
   }, []);

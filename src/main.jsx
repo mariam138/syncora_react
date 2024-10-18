@@ -25,11 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "signout",
-        element: <SignOutPage />
+        element: <SignOutPage />,
       },
       {
         path: "dashboard",
-        element: <Dashboard />
+        element: <Dashboard />,
       },
     ],
   },

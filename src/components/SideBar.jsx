@@ -98,7 +98,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Profile page link */}
-      <NavLink exact to="" activeClassName="activeClicked">
+      <NavLink exact to="/profiles/:id" activeClassName="activeClicked">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="user"

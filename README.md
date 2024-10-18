@@ -139,6 +139,12 @@ The sign up form allows users to access the full functionality of the website. T
 
 ![Syncora Registration Form](readme_assets/registration-form.png)
 
+### Sign In Form
+
+The sign in form is laid out similarly to the registration form, but instead only asks for a username and password to be entered. There is also a link below for users who don't have an account yet to allow them to register.
+
+![Syncora Sign In Form](readme_assets/signin-form.png)
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

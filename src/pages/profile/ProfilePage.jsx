@@ -32,7 +32,7 @@ function ProfilePage() {
   return (
     <>
           <h1>{username}'s Profile</h1>
-          <Image src={profile_image} roundedCircle/>
+          {/* <Image src={profile_image} roundedCircle /> */}
     </>
   );
 }

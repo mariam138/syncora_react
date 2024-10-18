@@ -10,7 +10,6 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
-  console.log(setCurrentUser);
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -34,7 +33,6 @@ const SignInForm = () => {
       // Destructure data from user login to be used to set the current user
       const { data } = await api.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      console.log(data.user);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
@@ -54,7 +52,7 @@ const SignInForm = () => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Choose a username"
+                placeholder="Username"
                 name="username"
                 value={username}
                 onChange={handleChange}

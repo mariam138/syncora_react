@@ -44,7 +44,7 @@ export default function SignOutPage() {
               className="mx-2"
               variant="danger"
               type="submit"
-              onSubmit={handleSubmit}
+              onClick={handleSubmit}
             >
               Sign Out
             </Button>

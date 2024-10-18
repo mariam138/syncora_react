@@ -7,6 +7,7 @@ import Root from "./routes/root.jsx";
 import Dashboard from "./routes/dashboard.jsx";
 import SignInForm from "./pages/auth/SignInForm.jsx";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
+import SignOutPage from "./pages/auth/SignOutPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,9 +24,13 @@ const router = createBrowserRouter([
         element: <SignInForm />,
       },
       {
+        path: "signout",
+        element: <SignOutPage />
+      },
+      {
         path: "dashboard",
         element: <Dashboard />
-      }
+      },
     ],
   },
 ]);

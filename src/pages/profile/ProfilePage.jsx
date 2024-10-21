@@ -63,13 +63,15 @@ function ProfilePage() {
                 </Button>
               </div>
 
-              <hr />
+              <hr className={`mx-auto ${styles.Line}`} />
               <Card.Title>Name</Card.Title>
-              <Card.Text>{name ? ({ name }) : ("No name found")}</Card.Text>
-              <hr />
+              <Card.Text>{name ? { name } : "No name found"}</Card.Text>
+              <hr className={`mx-auto ${styles.Line}`} />
+
               <Card.Title>Username</Card.Title>
               <Card.Text>{username}</Card.Text>
-              <hr />
+              <hr className={`mx-auto ${styles.Line}`} />
+
               <Card.Title>Email</Card.Title>
               <Card.Text>{email}</Card.Text>
             </Card.Body>

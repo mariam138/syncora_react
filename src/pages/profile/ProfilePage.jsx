@@ -50,16 +50,16 @@ function ProfilePage() {
           <h1>Your Profile</h1>
           <Card>
             <Card.Body>
-              <div className="text-center">
+              <div className="text-center my-2">
                 <Image
                   src={profile_image}
                   roundedCircle
                   className={styles.ProfileImage}
                 />
               </div>
-              <div className="text-center">
+              <div className="text-center my-2">
                 <Button variant="warning" className="text-center">
-                  Change profile picture
+                  Upload image
                 </Button>
               </div>
 

@@ -44,39 +44,41 @@ function ProfilePage() {
   };
   return (
     <>
-      <Container fluid="lg">
-        <Row>
-          <Col md={{ span: 6, offset: 3 }}>
-            <h1>Your Profile</h1>
-          </Col>
-        </Row>
+      <Row>
+        <Col sm={{ span: 6, offset: 3 }}>
+          <h1>Your Profile</h1>
+          <Card>
+            <Card.Body>
+              <div className="text-center">
+                <Image src={profile_image} roundedCircle fluid />
+                <Button variant="warning" className="text-center">
+                  Change profile picture
+                </Button>
+              </div>
 
-        <Row>
-          <Col lg={true}>
-            <Card>
-              <Card.Body>
-                {/* <Image src={profile_image} roundedCircle /> */}
-                <Button variant="warning">Change profile picture</Button>
-                <Card.Subtitle>Name</Card.Subtitle>
-                <Card.Text>{name}</Card.Text>
-                <Card.Subtitle>Username</Card.Subtitle>
-                <Card.Text>{username}</Card.Text>
-                <Card.Subtitle>Email</Card.Subtitle>
-                <Card.Text>{email}</Card.Text>
-              </Card.Body>
-            </Card>
-            <Button variant="danger">Delete account</Button>
-          </Col>
-        </Row>
+              <Card.Subtitle>Name</Card.Subtitle>
+              <Card.Text>{name}</Card.Text>
+              <Card.Subtitle>Username</Card.Subtitle>
+              <Card.Text>{username}</Card.Text>
+              <Card.Subtitle>Email</Card.Subtitle>
+              <Card.Text>{email}</Card.Text>
+            </Card.Body>
+          </Card>
+          <Button variant="danger">Delete account</Button>
+        </Col>
+      </Row>
 
-        <Row>
-          <Col>
-            <Button variant="secondary" onClick={goBack}>
-              Back
-            </Button>
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col sm={{ span: 6, offset: 3 }}>
+          <Button variant="secondary" onClick={goBack}>
+            Back
+          </Button>
+        </Col>
+      </Row>
+
+      {/* <Row>
+        <Col></Col>
+      </Row> */}
     </>
   );
 }

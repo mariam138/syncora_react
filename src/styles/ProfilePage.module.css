@@ -1,22 +1,18 @@
 .ProfileImage {
-    max-width: 100px;
-    max-height: 100px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
-/* .Line {
-    width: 90%;
-} */
-
 @media (min-width: 768px) {
-    .ProfileImage{
-        max-width: 150px;
-        max-height: 150px;
-    }
+  .ProfileImage {
+    max-width: 150px;
+    max-height: 150px;
+  }
 }
 
 @media (min-width: 992px) {
-    .ProfileImage {
-        max-width: 200px;
-        max-height: 200px;
-    }
+  .ProfileImage {
+    max-width: 200px;
+    max-height: 200px;
+  }
 }

@@ -52,7 +52,7 @@ const SignUpForm = () => {
         <h1 className={appStyles.Header}>Syncora</h1>
         <h2 className={appStyles.Header}>Let's get organised.</h2>
       </div>
-      <Col md={6}>
+      <Col md={6} className="gx-0">
         <Card>
           <Card.Body>
             <Card.Title className="text-center">
@@ -159,7 +159,7 @@ const SignUpForm = () => {
         </Card>
       </Col>
 
-      <Col md={6}>
+      <Col md={6} className="gx-0">
         <Image
           className={`d-none d-md-block ${appStyles.Hero}`}
           src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"

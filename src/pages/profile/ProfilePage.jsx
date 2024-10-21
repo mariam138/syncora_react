@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
+import appStyles from "../../App.module.css"
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
@@ -58,7 +59,7 @@ function ProfilePage() {
                 />
               </div>
               <div className="text-center my-2">
-                <Button variant="warning" className="text-center">
+                <Button variant="warning" className={`text-center ${appStyles.Button}`}>
                   Upload image
                 </Button>
               </div>

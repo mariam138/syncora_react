@@ -5,3 +5,9 @@ matches the height of the hero image on medium screens */
         height: 380px;
     }
 }
+
+@media (min-width: 1400px) {
+    .FormCard {
+        height: 440px;
+    }
+}

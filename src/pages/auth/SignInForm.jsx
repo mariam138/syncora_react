@@ -7,6 +7,7 @@ import appStyles from "../../App.module.css";
 import api from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import Image from "react-bootstrap/Image";
+import styles from '../../styles/SignInForm.module.css'
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -46,8 +47,8 @@ const SignInForm = () => {
         <h1 className={appStyles.Header}>Syncora</h1>
         <h2 className={appStyles.Header}>Let's get organised.</h2>
       </div>
-      <Col md={6} className="gx-0">
-        <Card>
+      <Col md={6} className="gx-md-0">
+        <Card className={styles.FormCard}>
           <Card.Body>
             <Card.Title className="text-center">
               Sign in below to Syncora
@@ -103,7 +104,7 @@ const SignInForm = () => {
         </Card>
       </Col>
 
-      <Col md={6} className="gx-0">
+      <Col md={6} className="gx-md-0">
         <Image
           className={`d-none d-md-block ${appStyles.Hero}`}
           src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"

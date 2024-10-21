@@ -30,8 +30,12 @@ const root = () => {
   return (
     <>
       <Stack direction="horizontal">
+        {/* Only displays top navbar if a user is authenticated
+        and the screensize is larger than 992px */}
         {currentUser && !screenSize && <TopNavbar />}
         <SideBar />
+        {/* Displays username only if user is authenticated and
+        the screensize is smaller than 992px */}
         {currentUser && screenSize && (
           <Navbar fixed="top">
             <Container>

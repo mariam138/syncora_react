@@ -3,6 +3,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import { Button, Card, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
@@ -29,7 +30,10 @@ function ProfilePage() {
     handleMount();
   }, []);
   const { id, username, name, email, profile_image } = profile;
-  // console.log(profile_image)
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  }
   return (
     <>
       <h1>{username}'s Profile</h1>
@@ -47,7 +51,7 @@ function ProfilePage() {
         </Card.Body>
       </Card>
       <Button variant="danger">Delete account</Button>
-      <Button variant="secondary">Back</Button>
+      <Button variant="secondary" onClick={goBack}>Back</Button>
     </>
   );
 }

@@ -23,3 +23,9 @@
   background-color: #fb6083 !important;
   border-color: transparent !important;
 }
+
+.Hero {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}

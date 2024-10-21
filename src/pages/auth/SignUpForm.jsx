@@ -151,7 +151,10 @@ const SignUpForm = () => {
         </Col>
 
         <Col>
-          <Image src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg" />
+          <Image
+            className={`d-none d-md-block ${appStyles.Hero}`}
+            src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"
+          />
         </Col>
       </div>
     </Row>

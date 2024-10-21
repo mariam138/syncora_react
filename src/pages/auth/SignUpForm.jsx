@@ -51,7 +51,8 @@ const SignUpForm = () => {
       <div className="text-center px-3">
         <h1 className={appStyles.Header}>Syncora</h1>
         <h2 className={appStyles.Header}>Let's get organised.</h2>
-        <Col>
+      </div>
+        <Col md={6}>
           <Card>
             <Card.Body>
               <Card.Title>Sign up below to start using Syncora</Card.Title>
@@ -150,13 +151,12 @@ const SignUpForm = () => {
           </Card>
         </Col>
 
-        <Col>
+        <Col md={6}>
           <Image
             className={`d-none d-md-block ${appStyles.Hero}`}
             src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"
           />
         </Col>
-      </div>
     </Row>
   );
 };

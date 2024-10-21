@@ -48,11 +48,7 @@ const root = () => {
         )}
 
         <Container>
-          <Row>
-            <Col lg={{ span: 6, offset: 3 }}>
               <Outlet />
-            </Col>
-          </Row>
         </Container>
       </Stack>
     </>

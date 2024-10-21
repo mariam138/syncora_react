@@ -52,12 +52,14 @@ const SignUpForm = () => {
         <h1 className={appStyles.Header}>Syncora</h1>
         <h2 className={appStyles.Header}>Let's get organised.</h2>
       </div>
-        <Col md={6}>
-          <Card>
-            <Card.Body>
-              <Card.Title>Sign up below to start using Syncora</Card.Title>
-              <Form onSubmit={handleSubmit}>
-                {/* <Form.Group className="mb-3" controlId="formFirstName">
+      <Col md={6}>
+        <Card>
+          <Card.Body>
+            <Card.Title className="text-center">
+              Sign up below to start using Syncora
+            </Card.Title>
+            <Form onSubmit={handleSubmit}>
+              {/* <Form.Group className="mb-3" controlId="formFirstName">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
@@ -73,90 +75,96 @@ const SignUpForm = () => {
               </Alert>
             ))} */}
 
-                <Form.Group className="mb-3" controlId="formUsername">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Choose a username"
-                    name="username"
-                    value={username}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {error.username?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group className="mb-3" controlId="formUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Choose a username"
+                  name="username"
+                  value={username}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {error.username?.map((message, i) => (
+                <Alert variant="warning" key={i}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group className="mb-3" controlId="formEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    name="email"
-                    value={email}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {error.email?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {error.email?.map((message, i) => (
+                <Alert variant="warning" key={i}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group className="mb-3" controlId="formPassword1">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="password1"
-                    value={password1}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {error.password1?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group className="mb-3" controlId="formPassword1">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  name="password1"
+                  value={password1}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {error.password1?.map((message, i) => (
+                <Alert variant="warning" key={i}>
+                  {message}
+                </Alert>
+              ))}
 
-                <Form.Group className="mb-3" controlId="formPassword2">
-                  <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Enter password again"
-                    name="password2"
-                    value={password2}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {error.password2?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+              <Form.Group className="mb-3" controlId="formPassword2">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Enter password again"
+                  name="password2"
+                  value={password2}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {error.password2?.map((message, i) => (
+                <Alert variant="warning" key={i}>
+                  {message}
+                </Alert>
+              ))}
 
+              <div
+                className="text-center
+              "
+              >
                 <Button type="submit" className={appStyles.Button}>
                   Sign Up
                 </Button>
-                <Card.Text>
-                  Already have an account? Sign in{" "}
-                  <Link exact to="/signin">
-                    here.
-                  </Link>
-                </Card.Text>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
+              </div>
 
-        <Col md={6}>
-          <Image
-            className={`d-none d-md-block ${appStyles.Hero}`}
-            src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"
-          />
-        </Col>
+              <Card.Text className="text-center">
+                Already have an account? Sign in{" "}
+                <Link exact to="/signin">
+                  here.
+                </Link>
+              </Card.Text>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
+
+      <Col md={6}>
+        <Image
+          className={`d-none d-md-block ${appStyles.Hero}`}
+          src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"
+        />
+      </Col>
     </Row>
   );
 };

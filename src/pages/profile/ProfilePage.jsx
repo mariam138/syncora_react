@@ -79,7 +79,7 @@ function ProfilePage() {
             <Button variant="danger">Delete account</Button>
           </div>
           <div className="text-center mt-4">
-            <Button variant="secondary" onClick={goBack}>
+            <Button variant="outline-secondary" onClick={goBack}>
               Back
             </Button>
           </div>

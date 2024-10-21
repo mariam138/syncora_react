@@ -3,6 +3,10 @@
     max-height: 100px;
 }
 
+.Line {
+    width: 90%;
+}
+
 @media (min-width: 768px) {
     .ProfileImage{
         max-width: 150px;

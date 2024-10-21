@@ -63,11 +63,11 @@ function ProfilePage() {
                 </Button>
               </div>
 
-              <Card.Subtitle>Name</Card.Subtitle>
-              <Card.Text>{name}</Card.Text>
-              <Card.Subtitle>Username</Card.Subtitle>
+              <Card.Title>Name</Card.Title>
+              <Card.Text>{name ? ({name}) : ("No name found")}</Card.Text>
+              <Card.Title>Username</Card.Title>
               <Card.Text>{username}</Card.Text>
-              <Card.Subtitle>Email</Card.Subtitle>
+              <Card.Title>Email</Card.Title>
               <Card.Text>{email}</Card.Text>
             </Card.Body>
           </Card>

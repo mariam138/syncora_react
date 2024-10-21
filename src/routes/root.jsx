@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import TopNavbar from "../components/TopNavbar";
 import { useState, useEffect } from "react";
+import { Navbar } from "react-bootstrap";
 
 /**
  * This defines the root function, where all remaining roots become
@@ -31,6 +32,16 @@ const root = () => {
       <Stack direction="horizontal">
         {currentUser && !screenSize && <TopNavbar />}
         <SideBar />
+        {currentUser && screenSize && (
+          <Navbar fixed="top">
+            <Container>
+              <Navbar.Text className="ms-auto">
+                Welcome {currentUser?.username}
+              </Navbar.Text>
+            </Container>
+          </Navbar>
+        )}
+
         <Container>
           <Outlet />
         </Container>

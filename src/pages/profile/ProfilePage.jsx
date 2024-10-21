@@ -44,18 +44,17 @@ function ProfilePage() {
   };
   return (
     <>
-      <h1>{username}'s Profile</h1>
+      <h1>Your Profile</h1>
       <Card>
         <Card.Body>
           {/* <Image src={profile_image} roundedCircle /> */}
           <Button variant="warning">Change profile picture</Button>
-          {/* <Form.Label>Name</Form.Label> */}
-          <p>Name</p>
-          <p>{name}</p>
-          <p>Username</p>
-          <p>{username}</p>
-          <p>Email</p>
-          <p>{email}</p>
+          <Card.Subtitle>Name</Card.Subtitle>
+          <Card.Text>{name}</Card.Text>
+          <Card.Subtitle>Username</Card.Subtitle>
+          <Card.Text>{username}</Card.Text>
+          <Card.Subtitle>Email</Card.Subtitle>
+          <Card.Text>{email}</Card.Text>
         </Card.Body>
       </Card>
       <Button variant="danger">Delete account</Button>

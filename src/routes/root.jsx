@@ -1,5 +1,6 @@
 import SideBar from "../components/SideBar";
-import { Container, Stack } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import Stack from "react-bootstrap/Stack";
 import { Outlet } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import TopNavbar from "../components/TopNavbar";
@@ -30,9 +31,9 @@ const root = () => {
       <Stack direction="horizontal">
         {currentUser && !screenSize && <TopNavbar />}
         <SideBar />
-          <Container>
-            <Outlet />
-          </Container>
+        <Container>
+          <Outlet />
+        </Container>
       </Stack>
     </>
   );

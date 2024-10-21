@@ -145,6 +145,12 @@ The sign in form is laid out similarly to the registration form, but instead onl
 
 ![Syncora Sign In Form](readme_assets/signin-form.png)
 
+#### Hero Image
+
+For both the sign up and sign in forms, a hero image appears to the right when viewed on a medium sized screen or larger.
+
+![Hero Image](readme_assets/hero-image.png)
+
 ### Sign Out Page
 
 When a user clicks the sign out link in the sidebar, they will be redirected to a page asking them to confirm if they would like to sign out. They also have the option to go back to the previous page if they change their mind. Upon signing out, the user then gets redirected back to the sign in page.

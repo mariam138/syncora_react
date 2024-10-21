@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
@@ -12,8 +12,12 @@ function ProfilePage() {
   const { profile } = profileData;
   const currentUser = useCurrentUser();
 
-  // Get list of profiles from api and log it to the console
-  // When component is mounted
+  /** Get current user's profile by their primary
+   * key and set the data as the profile state.
+   * This is done on component mount, so is called
+   * in the useEffect() hook below.
+   * Log an error to the console if applicable.
+   */
   const handleMount = async () => {
     try {
       const { data } = await api.get(`/profiles/${currentUser.pk}`);
@@ -29,11 +33,15 @@ function ProfilePage() {
   useEffect(() => {
     handleMount();
   }, []);
+
+  // Destructure profile data to use variables to construct profile page
   const { id, username, name, email, profile_image } = profile;
+
+  // Create separate function to go back a page which is called when back button is clicked
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
-  }
+  };
   return (
     <>
       <h1>{username}'s Profile</h1>
@@ -51,7 +59,9 @@ function ProfilePage() {
         </Card.Body>
       </Card>
       <Button variant="danger">Delete account</Button>
-      <Button variant="secondary" onClick={goBack}>Back</Button>
+      <Button variant="secondary" onClick={goBack}>
+        Back
+      </Button>
     </>
   );
 }

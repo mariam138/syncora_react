@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function ProfilePage() {
@@ -44,23 +44,39 @@ function ProfilePage() {
   };
   return (
     <>
-      <h1>Your Profile</h1>
-      <Card>
-        <Card.Body>
-          {/* <Image src={profile_image} roundedCircle /> */}
-          <Button variant="warning">Change profile picture</Button>
-          <Card.Subtitle>Name</Card.Subtitle>
-          <Card.Text>{name}</Card.Text>
-          <Card.Subtitle>Username</Card.Subtitle>
-          <Card.Text>{username}</Card.Text>
-          <Card.Subtitle>Email</Card.Subtitle>
-          <Card.Text>{email}</Card.Text>
-        </Card.Body>
-      </Card>
-      <Button variant="danger">Delete account</Button>
-      <Button variant="secondary" onClick={goBack}>
-        Back
-      </Button>
+      <Container fluid="lg">
+        <Row>
+          <Col md={{ span: 6, offset: 3 }}>
+            <h1>Your Profile</h1>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col lg={true}>
+            <Card>
+              <Card.Body>
+                {/* <Image src={profile_image} roundedCircle /> */}
+                <Button variant="warning">Change profile picture</Button>
+                <Card.Subtitle>Name</Card.Subtitle>
+                <Card.Text>{name}</Card.Text>
+                <Card.Subtitle>Username</Card.Subtitle>
+                <Card.Text>{username}</Card.Text>
+                <Card.Subtitle>Email</Card.Subtitle>
+                <Card.Text>{email}</Card.Text>
+              </Card.Body>
+            </Card>
+            <Button variant="danger">Delete account</Button>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Button variant="secondary" onClick={goBack}>
+              Back
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

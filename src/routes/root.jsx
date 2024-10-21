@@ -5,7 +5,8 @@ import { Outlet } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import TopNavbar from "../components/TopNavbar";
 import { useState, useEffect } from "react";
-import { Navbar } from "react-bootstrap";
+import { Col, Navbar } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
 
 /**
  * This defines the root function, where all remaining roots become
@@ -47,7 +48,11 @@ const root = () => {
         )}
 
         <Container>
-          <Outlet />
+          <Row>
+            <Col lg={{ span: 6, offset: 3 }}>
+              <Outlet />
+            </Col>
+          </Row>
         </Container>
       </Stack>
     </>

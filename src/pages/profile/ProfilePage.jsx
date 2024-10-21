@@ -48,7 +48,7 @@ function ProfilePage() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           <h1>Your Profile</h1>
-          <Card>
+          <Card className="my-3">
             <Card.Body>
               <div className="text-center my-2">
                 <Image
@@ -65,7 +65,7 @@ function ProfilePage() {
 
               <hr />
               <Card.Title>Name</Card.Title>
-              <Card.Text>{name ? ({ name }) : ("No name found")}</Card.Text>
+              <Card.Text>{name ? { name } : "No name found"}</Card.Text>
               <hr />
               <Card.Title>Username</Card.Title>
               <Card.Text>{username}</Card.Text>
@@ -74,21 +74,16 @@ function ProfilePage() {
               <Card.Text>{email}</Card.Text>
             </Card.Body>
           </Card>
-          <Button variant="danger">Delete account</Button>
+          <div className="text-center">
+            <Button variant="danger">Delete account</Button>
+          </div>
+          <div className="text-center mt-4">
+            <Button variant="secondary" onClick={goBack}>
+              Back
+            </Button>
+          </div>
         </Col>
       </Row>
-
-      <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
-          <Button variant="secondary" onClick={goBack}>
-            Back
-          </Button>
-        </Col>
-      </Row>
-
-      {/* <Row>
-        <Col></Col>
-      </Row> */}
     </>
   );
 }

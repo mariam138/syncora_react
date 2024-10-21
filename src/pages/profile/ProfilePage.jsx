@@ -4,7 +4,7 @@ import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import styles from '../../styles/ProfilePage.module.css'
+import styles from "../../styles/ProfilePage.module.css";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
@@ -51,7 +51,13 @@ function ProfilePage() {
           <Card>
             <Card.Body>
               <div className="text-center">
-                <Image src={profile_image} roundedCircle className={styles.ProfileImage} />
+                <Image
+                  src={profile_image}
+                  roundedCircle
+                  className={styles.ProfileImage}
+                />
+              </div>
+              <div className="text-center">
                 <Button variant="warning" className="text-center">
                   Change profile picture
                 </Button>

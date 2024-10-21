@@ -1,0 +1,7 @@
+/* Ensures that the card for the form
+matches the height of the hero image on medium screens */
+@media (min-width: 768px) {
+    .FormCard {
+        height: 380px;
+    }
+}

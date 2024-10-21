@@ -3,6 +3,13 @@
     max-height: 100px;
 }
 
+@media (min-width: 768px) {
+    .ProfileImage{
+        max-width: 150px;
+        max-height: 150px;
+    }
+}
+
 @media (min-width: 992px) {
     .ProfileImage {
         max-width: 200px;

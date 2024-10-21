@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axiosDefaults";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 export default function SignOutPage() {
   // Use react-router's useNavigate hook to allow the user to go back
@@ -9,11 +10,13 @@ export default function SignOutPage() {
   // Adapted from the docs:
   // https://reactrouter.com/en/main/start/tutorial#cancel-button
   const navigate = useNavigate();
+  const setCurrentUser = useSetCurrentUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await api.post("/dj-rest-auth/logout/");
+      setCurrentUser(null);
       navigate("/signin");
     } catch (error) {
       console.log(error);

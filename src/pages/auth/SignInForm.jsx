@@ -42,7 +42,7 @@ const SignInForm = () => {
   };
 
   return (
-    <Row>
+    <Row className="mx-md-4">
       <div className="text-center px-3">
         <h1 className={appStyles.Header}>Syncora</h1>
         <h2 className={appStyles.Header}>Let's get organised.</h2>

@@ -2,7 +2,6 @@
   font-family: Nunito, sans-serif;
   background-color: white;
   min-height: 100vh;
-  /* position: absolute; */
 }
 
 .Header {
@@ -12,4 +11,15 @@
 
 .OutletDiv {
   padding-left: 80px;
+}
+
+.Button {
+  background-color: #f5dfbb !important;
+  color: #000010 !important;
+  border-color: #00001014 !important;
+}
+
+.Button:hover {
+  background-color: #fb6083 !important;
+  border-color: transparent !important;
 }

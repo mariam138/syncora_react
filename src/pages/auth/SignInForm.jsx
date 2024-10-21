@@ -4,9 +4,9 @@ import { Alert, Card } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/SignUpForm.module.css";
 import api from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -80,7 +80,7 @@ const SignInForm = () => {
               </Alert>
             ))}
 
-            <Button type="submit" className={styles.SignupButton}>
+            <Button type="submit" className={appStyles.Button}>
               Sign In
             </Button>
             <Card.Text>

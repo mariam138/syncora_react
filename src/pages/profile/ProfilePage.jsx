@@ -54,6 +54,11 @@ function ProfilePage() {
   const handleUpload = () => {
     inputRef.current?.click();
   };
+  const [uploadedFileName, setUploadedFileName] = useState(null);
+  const handleDisplayFileDetails = () => {
+    inputRef.current?.files &&
+      setUploadedFileName(inputRef.current.files[0].name);
+  };
 
   return (
     <>
@@ -86,12 +91,17 @@ function ProfilePage() {
                 </Form.Group> */}
                 <div className="m-3">
                   <label className="mx-3">Choose file: </label>
-                  <input ref={inputRef} className="d-none" type="file" />
+                  <input
+                    ref={inputRef}
+                    className="d-none"
+                    type="file"
+                    onChange={handleDisplayFileDetails}
+                  />
                   <button
                     onClick={handleUpload}
                     className={`${appStyles.Button} btn`}
                   >
-                    Upload
+                    {uploadedFileName ? uploadedFileName : "Upload"}
                   </button>
                 </div>
               </div>

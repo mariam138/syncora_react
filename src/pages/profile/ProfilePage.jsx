@@ -82,18 +82,20 @@ function ProfilePage() {
   // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const file = imageFile.current?.files[0];
-    console.log(file);
+    // const file = imageFile.current?.files[0];
+    // console.log(file);
     const formData = new FormData();
     if (imageFile?.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
+      console.log(imageFile?.current.files[0]);
     } else {
       console.log("no image found");
     }
 
     try {
       const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
-      console.log(data.profile_image);
+      console.log(data)
+      // console.log(data.profile_image);
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.profile_image,
@@ -120,8 +122,8 @@ function ProfilePage() {
               <div className="text-center my-2">
                 {/* Custom upload btn for new photo */}
                 <Form onSubmit={handleSubmit}>
-                  <div className="m-3">
-                    <label className="mx-3">Change profile picture: </label>
+                  {/* <div className="m-3"> */}
+                  {/* <label className="mx-3">Change profile picture: </label>
                     <input
                       ref={imageFile}
                       className="d-none"
@@ -136,6 +138,22 @@ function ProfilePage() {
                       {uploadedFileName ? uploadedFileName : "Upload"}
                     </button>
                   </div>
+                   */}
+                  <Form.Group controlId="formFile" className="mb-3">
+                    <Form.Label>Default file input example</Form.Label>
+                    <Form.Control
+                      type="file"
+                      ref={imageFile}
+                      onChange={(e) => {
+                        if (e.target.files.length) {
+                          setProfileData({
+                            ...profileData,
+                            image: URL.createObjectURL(e.target.files[0]),
+                          });
+                        }
+                      }}
+                    />
+                  </Form.Group>
                   <Button variant="info" type="submit">
                     Save
                   </Button>

@@ -67,17 +67,17 @@ function ProfilePage() {
   // Change the button text to display the uploaded file if successful
   // Code adapted from:
   // https://medium.com/codex/use-a-button-to-upload-files-on-your-react-app-with-bootstrap-ef963cbe8280
-  const imageFile = useRef(null);
+  const imageFile = useRef();
 
   // const inputRef = useRef(null);
-  const handleUpload = () => {
-    imageFile.current?.click();
-  };
-  const [uploadedFileName, setUploadedFileName] = useState(null);
-  const handleDisplayFileDetails = () => {
-    imageFile.current?.files &&
-      setUploadedFileName(imageFile.current.files[0].name);
-  };
+  // const handleUpload = () => {
+  //   imageFile.current?.click();
+  // };
+  // const [uploadedFileName, setUploadedFileName] = useState(null);
+  // const handleDisplayFileDetails = () => {
+  //   imageFile.current?.files &&
+  //     setUploadedFileName(imageFile.current.files[0].name);
+  // };
 
   // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
@@ -85,16 +85,23 @@ function ProfilePage() {
     // const file = imageFile.current?.files[0];
     // console.log(file);
     const formData = new FormData();
-    if (imageFile?.current?.files[0]) {
+    console.log(imageFile)
+    if (imageFile.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
-      console.log(imageFile?.current.files[0]);
+      console.log(imageFile.current?.files[0]);
     } else {
       console.log("no image found");
+      return;
     }
 
     try {
       const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
-      console.log(data)
+      console.log(data);
+      // Update the profileData state with the new profile image URL
+      setProfileData((prevState) => ({
+        ...prevState,
+        profile_image: data.profile_image,
+      }));
       // console.log(data.profile_image);
       setCurrentUser((currentUser) => ({
         ...currentUser,
@@ -146,10 +153,10 @@ function ProfilePage() {
                       ref={imageFile}
                       onChange={(e) => {
                         if (e.target.files.length) {
-                          setProfileData({
-                            ...profileData,
-                            image: URL.createObjectURL(e.target.files[0]),
-                          });
+                          setProfileData((prevState) => ({
+                            ...prevState,
+                            profile_image: URL.createObjectURL(e.target.files[0]),
+                          }));
                         }
                       }}
                     />

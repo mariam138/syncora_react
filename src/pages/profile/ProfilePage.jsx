@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../../contexts/CurrentUserContext";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
@@ -17,6 +20,7 @@ function ProfilePage() {
   });
   const { profile } = profileData;
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -41,7 +45,7 @@ function ProfilePage() {
   }, []);
 
   // Destructure profile data to use variables to construct profile page
-  const { id, username, name, email, profile_image } = profile;
+  const { username, name, email, profile_image } = profile;
 
   // Create separate function to go back a page which is called when back button is clicked
   const navigate = useNavigate();
@@ -70,13 +74,20 @@ function ProfilePage() {
     e.preventDefault();
     console.log("Submit!");
     const new_photo = inputRef.current?.files[0];
-    console.log(new_photo);
-    // try {
-    //   const new_photo = inputRef.current?.files[0];
-    //   await api.put(`/profiles/${currentUser.pk}`, new_photo);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    const formData = new FormData();
+    if (new_photo) {
+      formData.append("image", new_photo);
+    }
+    console.log(formData);
+    try {
+      const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
+      setCurrentUser((currentUser) => ({
+        ...currentUser,
+        profile_image: data.image,
+      }));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

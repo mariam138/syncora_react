@@ -19,7 +19,7 @@ function ProfilePage() {
     name: "",
     username: "",
     email: "",
-    profile_image: ""
+    profile_image: "",
   });
   const { name, username, email, profile_image } = profileData;
   const currentUser = useCurrentUser();
@@ -36,7 +36,10 @@ function ProfilePage() {
       const { data } = await api.get(`/profiles/${currentUser.pk}`);
       const { name, username, email, profile_image } = data;
       setProfileData({
-        name, username, email, profile_image
+        name,
+        username,
+        email,
+        profile_image,
       });
     } catch (error) {
       console.log(error);
@@ -45,8 +48,10 @@ function ProfilePage() {
 
   // Ensure mount only happens once
   useEffect(() => {
-    handleMount();
-  }, []);
+    if (currentUser?.pk) {
+      handleMount();
+    }
+  }, [currentUser]);
 
   // Destructure profile data to use variables to construct profile page
   // const { username, name, email, profile_image } = profile;
@@ -79,18 +84,18 @@ function ProfilePage() {
     // inputRef.current?.click();
     e.preventDefault();
     console.log("Submit!");
-    const new_photo = inputRef.current?.files[0];
+    // const new_photo = inputRef.current?.files[0];
     const formData = new FormData();
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append("profile_image", imageFile?.current?.files[0]);
     }
-    console.log(formData);
+
     try {
       const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
-      console.log(data.image)
+      console.log(data.profile_image);
       setCurrentUser((currentUser) => ({
         ...currentUser,
-        profile_image: data.image,
+        profile_image: data.profile_image,
       }));
     } catch (error) {
       console.log(error);
@@ -123,7 +128,7 @@ function ProfilePage() {
                       onChange={handleDisplayFileDetails}
                     />
                     <button
-                      type="submit"
+                      type="button"
                       className={`${appStyles.Button} btn`}
                       onClick={handleUpload}
                     >

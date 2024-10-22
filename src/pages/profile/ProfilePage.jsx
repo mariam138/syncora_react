@@ -81,10 +81,9 @@ function ProfilePage() {
 
   // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
-    // inputRef.current?.click();
     e.preventDefault();
-    console.log("Submit!");
-    // const new_photo = inputRef.current?.files[0];
+    const file = imageFile.current?.files[0];
+    console.log(file);
     const formData = new FormData();
     if (imageFile?.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
@@ -93,7 +92,7 @@ function ProfilePage() {
     }
 
     try {
-      const { data } = await api.put(`/profiles/${currentUser.pk}`, formData);
+      const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
       console.log(data.profile_image);
       setCurrentUser((currentUser) => ({
         ...currentUser,

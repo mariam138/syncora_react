@@ -49,6 +49,7 @@ function ProfilePage() {
   };
 
   // Create a ref for the input field to trigger upload
+  // Then use the upload button to trigger device files to open
   const inputRef = useRef(null);
   const handleUpload = () => {
     inputRef.current?.click();
@@ -88,7 +89,7 @@ function ProfilePage() {
                   <input ref={inputRef} className="d-none" type="file" />
                   <button
                     onClick={handleUpload}
-                    className="btn btn-outline-primary"
+                    className={`${appStyles.Button} btn`}
                   >
                     Upload
                   </button>

@@ -1,5 +1,5 @@
 @media (min-width: 992px) {
   body {
-    margin-top: 56px;
+    margin-top: 56px !important;
   }
 }

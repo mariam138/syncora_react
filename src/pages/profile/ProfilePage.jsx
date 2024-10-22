@@ -50,6 +50,9 @@ function ProfilePage() {
 
   // Create a ref for the input field to trigger upload
   // Then use the upload button to trigger device files to open
+  // Change the button text to display the uploaded file if successful
+  // Code adapted from:
+  // https://medium.com/codex/use-a-button-to-upload-files-on-your-react-app-with-bootstrap-ef963cbe8280
   const inputRef = useRef(null);
   const handleUpload = () => {
     inputRef.current?.click();
@@ -75,20 +78,8 @@ function ProfilePage() {
                 />
               </div>
               <div className="text-center my-2">
-                {/* <Button
-                  variant="warning"
-                  className={`text-center ${appStyles.Button}`}
-                >
-                  Upload image
-                </Button> */}
-                {/* <FormControl as={Button} type="file" /> */}
-                {/* <Form.Group controlId="formFile" className="mb-3">
-                  <Form.Label>Upload Image</Form.Label>
-                  <Form.Control
-                    type="file"
-                    className={`text-center ${appStyles.Button}`}
-                  />
-                </Form.Group> */}
+
+                {/* Custom upload btn for new photo */}
                 <div className="m-3">
                   <label className="mx-3">Choose file: </label>
                   <input

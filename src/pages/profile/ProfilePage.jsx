@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
+import { Form } from "react-bootstrap";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
@@ -63,16 +64,18 @@ function ProfilePage() {
       setUploadedFileName(inputRef.current.files[0].name);
   };
 
-  const [uploadedPhoto, setUploadedPhoto] = useState(null);
+  // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
+    // inputRef.current?.click();
     e.preventDefault();
-    try {
-      const new_photo = inputRef.current?.files[0];
-      await api.put(`/profiles/${currentUser.pk}`, new_photo);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+    console.log("Submit!");
+    // try {
+    //   const new_photo = inputRef.current?.files[0];
+    //   await api.put(`/profiles/${currentUser.pk}`, new_photo);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
 
   return (
     <>
@@ -89,23 +92,28 @@ function ProfilePage() {
                 />
               </div>
               <div className="text-center my-2">
-
                 {/* Custom upload btn for new photo */}
-                <div className="m-3">
-                  <label className="mx-3">Change profile picture: </label>
-                  <input
-                    ref={inputRef}
-                    className="d-none"
-                    type="file"
-                    onChange={handleDisplayFileDetails}
-                  />
-                  <button
-                    onClick={handleUpload}
-                    className={`${appStyles.Button} btn`}
-                  >
-                    {uploadedFileName ? uploadedFileName : "Upload"}
-                  </button>
-                </div>
+                <Form onSubmit={handleSubmit}>
+                  <div className="m-3">
+                    <label className="mx-3">Change profile picture: </label>
+                    <input
+                      ref={inputRef}
+                      className="d-none"
+                      type="file"
+                      onChange={handleDisplayFileDetails}
+                    />
+                    <button
+                      type="submit"
+                      className={`${appStyles.Button} btn`}
+                      onClick={handleUpload}
+                    >
+                      {uploadedFileName ? uploadedFileName : "Upload"}
+                    </button>
+                  </div>
+                  <Button variant="info" type="submit">
+                    Save
+                  </Button>
+                </Form>
               </div>
 
               <hr />

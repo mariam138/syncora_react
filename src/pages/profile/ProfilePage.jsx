@@ -69,6 +69,8 @@ function ProfilePage() {
     // inputRef.current?.click();
     e.preventDefault();
     console.log("Submit!");
+    const new_photo = inputRef.current?.files[0];
+    console.log(new_photo);
     // try {
     //   const new_photo = inputRef.current?.files[0];
     //   await api.put(`/profiles/${currentUser.pk}`, new_photo);

@@ -46,14 +46,14 @@ function ProfilePage() {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
-
-    // Create a ref for the input field to trigger upload
-    const inputRef = useRef < HTMLInputElement > (null);
-    const handleUpload = () => {
-      inputRef.current?.click();
-    };
-
   };
+
+  // Create a ref for the input field to trigger upload
+  const inputRef = useRef(null);
+  const handleUpload = () => {
+    inputRef.current?.click();
+  };
+
   return (
     <>
       <Row>
@@ -85,8 +85,13 @@ function ProfilePage() {
                 </Form.Group> */}
                 <div className="m-3">
                   <label className="mx-3">Choose file: </label>
-                  <input className="d-none" type="file" />
-                  <button className="btn btn-outline-primary">Upload</button>
+                  <input ref={inputRef} className="d-none" type="file" />
+                  <button
+                    onClick={handleUpload}
+                    className="btn btn-outline-primary"
+                  >
+                    Upload
+                  </button>
                 </div>
               </div>
 

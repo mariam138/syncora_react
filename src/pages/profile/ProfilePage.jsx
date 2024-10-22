@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
+import Col from "react-bootstrap/Col"
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
-import FormControl from "react-bootstrap/FormControl";
-import Form from "react-bootstrap/Form";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({

@@ -16,9 +16,12 @@ import { Form } from "react-bootstrap";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
-    profile: {},
+    name: "",
+    username: "",
+    email: "",
+    profile_image: ""
   });
-  const { profile } = profileData;
+  const { name, username, email, profile_image } = profileData;
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
@@ -31,8 +34,9 @@ function ProfilePage() {
   const handleMount = async () => {
     try {
       const { data } = await api.get(`/profiles/${currentUser.pk}`);
+      const { name, username, email, profile_image } = data;
       setProfileData({
-        profile: data,
+        name, username, email, profile_image
       });
     } catch (error) {
       console.log(error);
@@ -45,7 +49,7 @@ function ProfilePage() {
   }, []);
 
   // Destructure profile data to use variables to construct profile page
-  const { username, name, email, profile_image } = profile;
+  // const { username, name, email, profile_image } = profile;
 
   // Create separate function to go back a page which is called when back button is clicked
   const navigate = useNavigate();
@@ -68,6 +72,8 @@ function ProfilePage() {
       setUploadedFileName(inputRef.current.files[0].name);
   };
 
+  const imageFile = useRef();
+
   // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
     // inputRef.current?.click();
@@ -75,12 +81,13 @@ function ProfilePage() {
     console.log("Submit!");
     const new_photo = inputRef.current?.files[0];
     const formData = new FormData();
-    if (new_photo) {
-      formData.append("image", new_photo);
+    if (imageFile?.current?.files[0]) {
+      formData.append("image", imageFile?.current?.files[0]);
     }
     console.log(formData);
     try {
       const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
+      console.log(data.image)
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.image,

@@ -67,17 +67,17 @@ function ProfilePage() {
   // Change the button text to display the uploaded file if successful
   // Code adapted from:
   // https://medium.com/codex/use-a-button-to-upload-files-on-your-react-app-with-bootstrap-ef963cbe8280
-  const inputRef = useRef(null);
+  const imageFile = useRef(null);
+
+  // const inputRef = useRef(null);
   const handleUpload = () => {
-    inputRef.current?.click();
+    imageFile.current?.click();
   };
   const [uploadedFileName, setUploadedFileName] = useState(null);
   const handleDisplayFileDetails = () => {
-    inputRef.current?.files &&
-      setUploadedFileName(inputRef.current.files[0].name);
+    imageFile.current?.files &&
+      setUploadedFileName(imageFile.current.files[0].name);
   };
-
-  const imageFile = useRef();
 
   // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
@@ -88,10 +88,12 @@ function ProfilePage() {
     const formData = new FormData();
     if (imageFile?.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
+    } else {
+      console.log("no image found");
     }
 
     try {
-      const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
+      const { data } = await api.put(`/profiles/${currentUser.pk}`, formData);
       console.log(data.profile_image);
       setCurrentUser((currentUser) => ({
         ...currentUser,
@@ -122,7 +124,7 @@ function ProfilePage() {
                   <div className="m-3">
                     <label className="mx-3">Change profile picture: </label>
                     <input
-                      ref={inputRef}
+                      ref={imageFile}
                       className="d-none"
                       type="file"
                       onChange={handleDisplayFileDetails}

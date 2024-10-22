@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button"
-import Card from "react-bootstrap/Card"
-import Col from "react-bootstrap/Col"
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
@@ -46,6 +46,13 @@ function ProfilePage() {
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
+
+    // Create a ref for the input field to trigger upload
+    const inputRef = useRef < HTMLInputElement > (null);
+    const handleUpload = () => {
+      inputRef.current?.click();
+    };
+
   };
   return (
     <>
@@ -62,12 +69,12 @@ function ProfilePage() {
                 />
               </div>
               <div className="text-center my-2">
-                <Button
+                {/* <Button
                   variant="warning"
                   className={`text-center ${appStyles.Button}`}
                 >
                   Upload image
-                </Button>
+                </Button> */}
                 {/* <FormControl as={Button} type="file" /> */}
                 {/* <Form.Group controlId="formFile" className="mb-3">
                   <Form.Label>Upload Image</Form.Label>
@@ -76,6 +83,11 @@ function ProfilePage() {
                     className={`text-center ${appStyles.Button}`}
                   />
                 </Form.Group> */}
+                <div className="m-3">
+                  <label className="mx-3">Choose file: </label>
+                  <input className="d-none" type="file" />
+                  <button className="btn btn-outline-primary">Upload</button>
+                </div>
               </div>
 
               <hr />

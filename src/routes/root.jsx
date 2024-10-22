@@ -7,6 +7,7 @@ import TopNavbar from "../components/TopNavbar";
 import { useState, useEffect } from "react";
 import { Col, Navbar } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
+import appStyles from '../App.module.css'
 
 /**
  * This defines the root function, where all remaining roots become

@@ -63,6 +63,17 @@ function ProfilePage() {
       setUploadedFileName(inputRef.current.files[0].name);
   };
 
+  const [uploadedPhoto, setUploadedPhoto] = useState(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const new_photo = inputRef.current?.files[0];
+      await api.put(`/profiles/${currentUser.pk}`, new_photo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Row>
@@ -81,7 +92,7 @@ function ProfilePage() {
 
                 {/* Custom upload btn for new photo */}
                 <div className="m-3">
-                  <label className="mx-3">Choose file: </label>
+                  <label className="mx-3">Change profile picture: </label>
                   <input
                     ref={inputRef}
                     className="d-none"

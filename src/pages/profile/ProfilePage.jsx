@@ -16,15 +16,34 @@ import { Form } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 
 function ProfilePage() {
+  // Sets initial profile data
   const [profileData, setProfileData] = useState({
     name: "",
     username: "",
     email: "",
     profile_image: "",
   });
+  // Destructures profile data into variables to use for display
   const { name, username, email, profile_image } = profileData;
+  // create currentUser and setCurrentUser vars from CurrentUserContext
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  // Create navigate var with react-router's useNavigate hook
+  const navigate = useNavigate();
+  // Create a ref for the input field to trigger upload
+  // Then use the upload button to trigger device files to open
+  // Change the button text to display the uploaded file if successful
+  // Code adapted from:
+  // https://medium.com/codex/use-a-button-to-upload-files-on-your-react-app-with-bootstrap-ef963cbe8280
+  const imageFile = useRef();
+  // Used to display the file name when choosing new profile image
+  const [uploadedFileName, setUploadedFileName] = useState(null);
+  // Sets error when file size is too big for image upload
+  const [fileSizeError, setFileSizeError] = useState(null);
+  // Used to disable the submit button if user uploads an image too large
+  const [disableSubmit, setDisableSumit] = useState(false);
+  // Displays a success alert when user uploads new profile image
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -55,27 +74,24 @@ function ProfilePage() {
   }, [currentUser]);
 
   // Create separate function to go back a page which is called when back button is clicked
-  const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
 
-  // Create a ref for the input field to trigger upload
-  // Then use the upload button to trigger device files to open
-  // Change the button text to display the uploaded file if successful
-  // Code adapted from:
-  // https://medium.com/codex/use-a-button-to-upload-files-on-your-react-app-with-bootstrap-ef963cbe8280
-  const imageFile = useRef();
-
-  // const inputRef = useRef(null);
+  // Handles upload of new image and sets imageFile by click
   const handleUpload = () => {
     imageFile.current?.click();
   };
-  const [uploadedFileName, setUploadedFileName] = useState(null);
-  const [fileSizeError, setFileSizeError] = useState(null);
-  const [disableSubmit, setDisableSumit] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
 
+  /** Resets states initially when user uploads a new file.
+   * Checks to see if any files have been uploaded, and if so
+   * sets the upload button text to the file name.
+   * If the file is too big, an error occurs which is displayed
+   * to the user as an alert. The file name is removed from the
+   * upload button, the current value of the imageFile set to null
+   * and the submit button is disabled to prevent the user
+   * from uploading the file if it is too large.
+   */
   const handleChange = () => {
     setFileSizeError(null);
     setDisableSumit(false);
@@ -91,7 +107,15 @@ function ProfilePage() {
       setDisableSumit(true);
     }
   };
-
+  
+  /**When submitting the new profile picture, new form data is created.
+   * If there is a file, append the file to the profile_image form data.
+   * If no image is found, log it to the console. In a try-catch block,
+   * the data is sent to the api endpoint with a put request. The profile
+   * data is then set with the new profile image as well as the current user.
+   * The upload button text is reverted and the user is alerted their upload
+   * was successful. Logs any errors to the console in the catch block.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -125,11 +149,13 @@ function ProfilePage() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           <h1 className={appStyles.Header}>Your Profile</h1>
+          {/* Alert if profile picture upload was successful */}
           {submitSuccess && (
             <Alert variant="success" dismissible className="my-2">
               Your profile picture has been changed!
             </Alert>
           )}
+          {/* Display profile */}
           <Card className="my-3">
             <Card.Body>
               <div className="text-center my-2">
@@ -157,6 +183,7 @@ function ProfilePage() {
                     >
                       {uploadedFileName ? uploadedFileName : "Upload"}
                     </button>
+                    {/* Display error if image is too large */}
                     {fileSizeError && (
                       <Alert variant="warning" className="my-2" dismissible>
                         {fileSizeError}

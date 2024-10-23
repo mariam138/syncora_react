@@ -47,6 +47,8 @@ function ProfilePage() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   // Allows modal to be displayed
   const [showModal, setShowModal] = useState(false);
+  // Controls disabled state of cancel button
+  const [disableCancel, setDisableCancel] = useState(true);
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -216,6 +218,7 @@ function ProfilePage() {
                     <Button
                       variant="outline-secondary"
                       className="mx-2"
+                      disabled={disableCancel}
                     >
                       Cancel
                     </Button>

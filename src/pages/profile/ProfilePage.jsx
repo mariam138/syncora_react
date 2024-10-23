@@ -45,6 +45,8 @@ function ProfilePage() {
   const [disableSubmit, setDisableSumit] = useState(false);
   // Displays a success alert when user uploads new profile image
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  // Allows modal to be displayed
+  const [showModal, setShowModal] = useState(false);
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -209,7 +211,7 @@ function ProfilePage() {
             </Card.Body>
           </Card>
           <div className="text-center">
-            <Button variant="danger">Delete account</Button>
+            <Button variant="danger" onClick={() => setShowModal(true)}>Delete account</Button>
           </div>
           <div className="text-center mt-4">
             <Button variant="outline-secondary" onClick={goBack}>
@@ -218,7 +220,7 @@ function ProfilePage() {
           </div>
         </Col>
       </Row>
-      <DeleteModal show/>
+      <DeleteModal show={showModal}/>
     </>
   );
 }

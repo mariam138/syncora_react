@@ -147,6 +147,17 @@ function ProfilePage() {
     }
   };
 
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      await api.delete(`/profiles/${currentUser.pk}`);
+      setCurrentUser(null);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Row>

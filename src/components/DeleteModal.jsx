@@ -2,7 +2,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import React from "react";
 
-const DeleteModal = ({ show, handleClose, feature, modalContent, handleSubmit }) => {
+const DeleteModal = ({ show, handleClose, feature, modalContent, handleDelete }) => {
   return (
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
@@ -16,7 +16,7 @@ const DeleteModal = ({ show, handleClose, feature, modalContent, handleSubmit })
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="danger" type="submit" onSubmit={handleSubmit}>
+        <Button variant="danger" type="submit" onSubmit={handleDelete}>
           Yes, delete
         </Button>
       </Modal.Footer>

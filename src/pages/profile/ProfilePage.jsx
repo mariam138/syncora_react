@@ -110,7 +110,7 @@ function ProfilePage() {
       setDisableSumit(true);
     }
   };
-  
+
   /**When submitting the new profile picture, new form data is created.
    * If there is a file, append the file to the profile_image form data.
    * If no image is found, log it to the console. In a try-catch block,
@@ -211,7 +211,9 @@ function ProfilePage() {
             </Card.Body>
           </Card>
           <div className="text-center">
-            <Button variant="danger" onClick={() => setShowModal(true)}>Delete account</Button>
+            <Button variant="danger" onClick={() => setShowModal(true)}>
+              Delete account
+            </Button>
           </div>
           <div className="text-center mt-4">
             <Button variant="outline-secondary" onClick={goBack}>
@@ -220,10 +222,12 @@ function ProfilePage() {
           </div>
         </Col>
       </Row>
-      <DeleteModal show={showModal}
+      <DeleteModal
+        show={showModal}
         handleClose={() => setShowModal(false)}
-        feature='account'
-        modalContent="Are you sure you want to delete your account"/>
+        feature="account"
+        modalContent="Are you sure you want to delete your account"
+      />
     </>
   );
 }

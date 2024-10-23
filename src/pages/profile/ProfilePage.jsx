@@ -220,7 +220,8 @@ function ProfilePage() {
           </div>
         </Col>
       </Row>
-      <DeleteModal show={showModal}/>
+      <DeleteModal show={showModal}
+      handleClose={()=> setShowModal(false)}/>
     </>
   );
 }

@@ -53,9 +53,6 @@ function ProfilePage() {
     }
   }, [currentUser]);
 
-  // Destructure profile data to use variables to construct profile page
-  // const { username, name, email, profile_image } = profile;
-
   // Create separate function to go back a page which is called when back button is clicked
   const navigate = useNavigate();
   const goBack = () => {
@@ -70,22 +67,19 @@ function ProfilePage() {
   const imageFile = useRef();
 
   // const inputRef = useRef(null);
-  // const handleUpload = () => {
-  //   imageFile.current?.click();
-  // };
-  // const [uploadedFileName, setUploadedFileName] = useState(null);
-  // const handleDisplayFileDetails = () => {
-  //   imageFile.current?.files &&
-  //     setUploadedFileName(imageFile.current.files[0].name);
-  // };
+  const handleUpload = () => {
+    imageFile.current?.click();
+  };
+  const [uploadedFileName, setUploadedFileName] = useState(null);
+  const handleDisplayFileDetails = () => {
+    imageFile.current?.files &&
+      setUploadedFileName(imageFile.current.files[0].name);
+  };
 
-  // const [uploadedPhoto, setUploadedPhoto] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const file = imageFile.current?.files[0];
-    // console.log(file);
     const formData = new FormData();
-    console.log(imageFile)
+    console.log(imageFile);
     if (imageFile.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
       console.log(imageFile.current?.files[0]);
@@ -129,8 +123,8 @@ function ProfilePage() {
               <div className="text-center my-2">
                 {/* Custom upload btn for new photo */}
                 <Form onSubmit={handleSubmit}>
-                  {/* <div className="m-3"> */}
-                  {/* <label className="mx-3">Change profile picture: </label>
+                  <div className="m-3">
+                    <label className="mx-3">Change profile picture: </label>
                     <input
                       ref={imageFile}
                       className="d-none"
@@ -145,22 +139,6 @@ function ProfilePage() {
                       {uploadedFileName ? uploadedFileName : "Upload"}
                     </button>
                   </div>
-                   */}
-                  <Form.Group controlId="formFile" className="mb-3">
-                    <Form.Label>Default file input example</Form.Label>
-                    <Form.Control
-                      type="file"
-                      ref={imageFile}
-                      onChange={(e) => {
-                        if (e.target.files.length) {
-                          setProfileData((prevState) => ({
-                            ...prevState,
-                            profile_image: URL.createObjectURL(e.target.files[0]),
-                          }));
-                        }
-                      }}
-                    />
-                  </Form.Group>
                   <Button variant="info" type="submit">
                     Save
                   </Button>

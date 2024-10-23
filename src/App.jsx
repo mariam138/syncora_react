@@ -1,11 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import styles from "./App.module.css";
 import Root from "./routes/root";
 
 function App() {
   return (
     <>
-      <div className={styles.App}>
+      <div>
         <Routes>
           <Route exact path="/" element={<Root />} />
         </Routes>

@@ -30,7 +30,7 @@ const root = () => {
     return () => window.removeEventListener("resize", updateTopNavbar);
   }, []);
   return (
-    <>
+    <div className={appStyles.App}>
       <Stack direction="horizontal">
         {/* Only displays top navbar if a user is authenticated
         and the screensize is larger than 992px */}
@@ -52,7 +52,7 @@ const root = () => {
               <Outlet />
         </Container>
       </Stack>
-    </>
+    </div>
   );
 };
 

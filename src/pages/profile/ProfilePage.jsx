@@ -14,6 +14,7 @@ import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import { Form } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
+import DeleteModal from "../../components/DeleteModal";
 
 function ProfilePage() {
   // Sets initial profile data
@@ -217,6 +218,7 @@ function ProfilePage() {
           </div>
         </Col>
       </Row>
+      <DeleteModal show/>
     </>
   );
 }

@@ -3,6 +3,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import appStyles from '../../App.module.css'
 
 export default function SignOutPage() {
   // Use react-router's useNavigate hook to allow the user to go back
@@ -28,7 +29,7 @@ export default function SignOutPage() {
       <Container fluid="sm">
         <Row>
           <Col className="text-center">
-            <h1>Are you sure you want to sign out?</h1>
+            <h1 className={appStyles.Header}>Are you sure you want to sign out?</h1>
           </Col>
         </Row>
         <Row>

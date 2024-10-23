@@ -107,7 +107,7 @@ function ProfilePage() {
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          <h1>Your Profile</h1>
+          <h1 className={appStyles.Header}>Your Profile</h1>
           <Card className="my-3">
             <Card.Body>
               <div className="text-center my-2">

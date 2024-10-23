@@ -238,6 +238,7 @@ function ProfilePage() {
         handleClose={() => setShowModal(false)}
         feature="account"
         modalContent="Are you sure you want to delete your account"
+        handleDelete={handleDelete}
       />
     </>
   );

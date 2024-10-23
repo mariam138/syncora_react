@@ -16,7 +16,7 @@ const DeleteModal = ({ show, handleClose, feature, modalContent, handleDelete })
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="danger" type="submit" onSubmit={handleDelete}>
+        <Button variant="danger" type="submit" onClick={handleDelete}>
           Yes, delete
         </Button>
       </Modal.Footer>

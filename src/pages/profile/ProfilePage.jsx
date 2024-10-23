@@ -79,10 +79,8 @@ function ProfilePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    console.log(imageFile);
     if (imageFile.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
-      console.log(imageFile.current?.files[0]);
     } else {
       console.log("no image found");
       return;
@@ -90,17 +88,16 @@ function ProfilePage() {
 
     try {
       const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
-      console.log(data);
       // Update the profileData state with the new profile image URL
       setProfileData((prevState) => ({
         ...prevState,
         profile_image: data.profile_image,
       }));
-      // console.log(data.profile_image);
       setCurrentUser((currentUser) => ({
         ...currentUser,
         profile_image: data.profile_image,
       }));
+      setUploadedFileName(null)
     } catch (error) {
       console.log(error);
     }

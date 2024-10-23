@@ -101,6 +101,7 @@ function ProfilePage() {
     setFileSizeError(null);
     setDisableSumit(false);
     setSubmitSuccess(false);
+    setDisableCancel(false);
     imageFile.current?.files &&
       setUploadedFileName(imageFile.current.files[0].name);
     if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
@@ -158,6 +159,12 @@ function ProfilePage() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleCancel = () => {
+    setDisableCancel(true);
+    setUploadedFileName(null);
+    imageFile.current.value = null;
   };
 
   return (
@@ -219,6 +226,7 @@ function ProfilePage() {
                       variant="outline-secondary"
                       className="mx-2"
                       disabled={disableCancel}
+                      onClick={handleCancel}
                     >
                       Cancel
                     </Button>

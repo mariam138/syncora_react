@@ -74,10 +74,12 @@ function ProfilePage() {
   const [uploadedFileName, setUploadedFileName] = useState(null);
   const [fileSizeError, setFileSizeError] = useState(null);
   const [disableSubmit, setDisableSumit] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const handleChange = () => {
     setFileSizeError(null);
     setDisableSumit(false);
+    setSubmitSuccess(false);
     imageFile.current?.files &&
       setUploadedFileName(imageFile.current.files[0].name);
     if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
@@ -112,6 +114,7 @@ function ProfilePage() {
         profile_image: data.profile_image,
       }));
       setUploadedFileName(null);
+      setSubmitSuccess(true);
     } catch (error) {
       console.log(error);
     }
@@ -122,6 +125,11 @@ function ProfilePage() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           <h1 className={appStyles.Header}>Your Profile</h1>
+          {submitSuccess && (
+            <Alert variant="success" dismissible className="my-2">
+              Your profile picture has been changed!
+            </Alert>
+          )}
           <Card className="my-3">
             <Card.Body>
               <div className="text-center my-2">

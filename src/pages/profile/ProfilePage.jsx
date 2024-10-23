@@ -73,8 +73,11 @@ function ProfilePage() {
   };
   const [uploadedFileName, setUploadedFileName] = useState(null);
   const [fileSizeError, setFileSizeError] = useState(null);
+  const [disableSubmit, setDisableSumit] = useState(false);
+
   const handleChange = () => {
     setFileSizeError(null);
+    setDisableSumit(false);
     imageFile.current?.files &&
       setUploadedFileName(imageFile.current.files[0].name);
     if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
@@ -82,6 +85,8 @@ function ProfilePage() {
         "Image size is larger than 2MB. Please choose a smaller image.",
       );
       setUploadedFileName(null);
+      imageFile.current.value = null;
+      setDisableSumit(true);
     }
   };
 
@@ -150,7 +155,7 @@ function ProfilePage() {
                       </Alert>
                     )}
                   </div>
-                  <Button variant="info" type="submit">
+                  <Button variant="info" type="submit" disabled={disableSubmit}>
                     Save
                   </Button>
                 </Form>

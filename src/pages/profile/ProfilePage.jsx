@@ -71,9 +71,13 @@ function ProfilePage() {
     imageFile.current?.click();
   };
   const [uploadedFileName, setUploadedFileName] = useState(null);
-  const handleDisplayFileDetails = () => {
+  const handleChange = () => {
     imageFile.current?.files &&
       setUploadedFileName(imageFile.current.files[0].name);
+    if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
+      console.log("image too large");
+      return false;
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -126,7 +130,7 @@ function ProfilePage() {
                       ref={imageFile}
                       className="d-none"
                       type="file"
-                      onChange={handleDisplayFileDetails}
+                      onChange={handleChange}
                     />
                     <button
                       type="button"

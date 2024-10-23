@@ -221,7 +221,9 @@ function ProfilePage() {
         </Col>
       </Row>
       <DeleteModal show={showModal}
-      handleClose={()=> setShowModal(false)}/>
+        handleClose={() => setShowModal(false)}
+        feature='account'
+        modalContent="Are you sure you want to delete your account"/>
     </>
   );
 }

@@ -49,6 +49,7 @@ function ProfilePage() {
   const [showModal, setShowModal] = useState(false);
   // Controls disabled state of cancel button
   const [disableCancel, setDisableCancel] = useState(true);
+  const [cancelUpload, setCancelUpload] = useState(false);
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -165,6 +166,7 @@ function ProfilePage() {
     setDisableCancel(true);
     setUploadedFileName(null);
     imageFile.current.value = null;
+    setCancelUpload(true);
   };
 
   return (
@@ -176,6 +178,12 @@ function ProfilePage() {
           {submitSuccess && (
             <Alert variant="success" dismissible className="my-2">
               Your profile picture has been changed!
+            </Alert>
+          )}
+          {/* Alert if user decides to cancel uploading a profile image */}
+          {cancelUpload && (
+            <Alert variant="info" dismissible className="my-2">
+              Your changes have not been saved.
             </Alert>
           )}
           {/* Display profile */}

@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import { Form } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 
 function ProfilePage() {
   const [profileData, setProfileData] = useState({
@@ -71,12 +72,16 @@ function ProfilePage() {
     imageFile.current?.click();
   };
   const [uploadedFileName, setUploadedFileName] = useState(null);
+  const [fileSizeError, setFileSizeError] = useState(null);
   const handleChange = () => {
+    setFileSizeError(null);
     imageFile.current?.files &&
       setUploadedFileName(imageFile.current.files[0].name);
     if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
-      console.log("image too large");
-      return false;
+      setFileSizeError(
+        "Image size is larger than 2MB. Please choose a smaller image.",
+      );
+      setUploadedFileName(null);
     }
   };
 
@@ -101,7 +106,7 @@ function ProfilePage() {
         ...currentUser,
         profile_image: data.profile_image,
       }));
-      setUploadedFileName(null)
+      setUploadedFileName(null);
     } catch (error) {
       console.log(error);
     }
@@ -139,6 +144,11 @@ function ProfilePage() {
                     >
                       {uploadedFileName ? uploadedFileName : "Upload"}
                     </button>
+                    {fileSizeError && (
+                      <Alert variant="warning" className="my-2" dismissible>
+                        {fileSizeError}
+                      </Alert>
+                    )}
                   </div>
                   <Button variant="info" type="submit">
                     Save

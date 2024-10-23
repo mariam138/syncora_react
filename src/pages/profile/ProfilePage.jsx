@@ -204,9 +204,22 @@ function ProfilePage() {
                       </Alert>
                     )}
                   </div>
-                  <Button variant="info" type="submit" disabled={disableSubmit}>
-                    Save
-                  </Button>
+                  <div className="text-center">
+                    <Button
+                      variant="info"
+                      type="submit"
+                      disabled={disableSubmit}
+                      className="mx-2"
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      variant="outline-secondary"
+                      className="mx-2"
+                    >
+                      Cancel
+                    </Button>
+                  </div>
                 </Form>
               </div>
 

@@ -174,6 +174,33 @@ function ProfilePage() {
     setCancelUpload(true);
   };
 
+  // Set cancelUpload and submitSuccess back to false after time delay
+  // To ensure alerts can continue to appear if user saves/cancels
+  // a file upload several times on the page
+  useEffect(() => {
+    // Timeout for cancel upload
+    let cancelTimeout;
+    if (cancelUpload) {
+      cancelTimeout = setTimeout(() => {
+        setCancelUpload(false);
+      }, 3000)
+    }
+
+    // Time out for successful submit
+    let submitTimeout;
+    if (submitSuccess) {
+      submitTimeout = setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 3000)
+    }
+
+    // Clean up timeouts
+    return () => {
+      clearTimeout(cancelTimeout);
+      clearTimeout(submitTimeout);
+    };
+  }, [cancelUpload, submitSuccess])
+
   return (
     <>
       <Row>

@@ -22,7 +22,7 @@ export const CurrentUserProvider = ({ children }) => {
 
   const handleMount = async () => {
     try {
-      const { data } = await api.get("/dj-rest-auth/user/");
+      const { data } = await apiResp.get("/dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (error) {
       console.log(error);

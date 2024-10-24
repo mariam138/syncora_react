@@ -10,10 +10,17 @@ import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
 import SignOutPage from "./pages/auth/SignOutPage.jsx";
 import ProfilePage from "./pages/profile/ProfilePage.jsx";
 
+// Wrap Root with CurrentUserProvider to ensure context is available to all components
+const WrappedRoot = () => (
+  <CurrentUserProvider>
+    <Root />
+  </CurrentUserProvider>
+);
+
 const router = createBrowserRouter([
   {
     path: "/*",
-    element: <Root />,
+    element: <WrappedRoot />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -42,8 +49,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CurrentUserProvider>
       <RouterProvider router={router} />
-    </CurrentUserProvider>
   </StrictMode>,
 );

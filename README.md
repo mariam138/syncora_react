@@ -133,6 +133,12 @@ Using the **Spinner** component from _React Boostrap_, I created a reusable load
 
 #### Error Page
 
+#### Delete Modal
+
+During development, I realised I would be using a modal throughout the website to ask the user to confirm if they wanted to delete their account, task, event or note. So I decided to create a reusable modal component which could then be used on different pages. I created props which when passed down, could be used to change the modal title, the content, the `handleDelete` function, and it's show and closed states. This helped to save time manually re-writing a new modal on each page where needed.
+
+![Delete modal example](readme_assets/delete-modal-example.png)
+
 ### Sign Up Form
 
 The sign up form allows users to access the full functionality of the website. The user is asked to enter a username, an e-mail, and a password which is confirmed again. If any fields are blank, or if a username has already been taken, this is alerted to the user. E-mail is an optional field as set by the back-end library **dj-rest-auth**, so an alert does not show up here. Underneath the form is the option to sign in if a user already has an account. This redirects the user to the sign in form instead.

@@ -240,6 +240,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 - Code which creates an instance of axios to allow use of a base URL with components was adapted from the [axios documentation](https://axios-http.com/docs/config_defaults)
 - Code to create a custom context provider for the current user is adapted from [Code Institute's](https://github.com/Code-Institute-Solutions/moments/blob/master/src/contexts/CurrentUserContext.js) Moments walkthrough project
 - Code to allow the profile upload button to open the user's device files is adapted from [this](https://medium.com/codex/use-a-button-to-upload-files-on-your-react-app-with-bootstrap-ef963cbe8280) post on medium by _Prince Shrestha_
+- Code to create API interceptors for requests is adapted from Code Institute's Moments walkthrough [code](https://github.com/mr-fibonacci/moments/blob/a981c39da1671a70023a3d6f3cf1410164e84e06/src/contexts/CurrentUserContext.js)
 
 ### Media
 

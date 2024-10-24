@@ -10,7 +10,12 @@ import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
 import SignOutPage from "./pages/auth/SignOutPage.jsx";
 import ProfilePage from "./pages/profile/ProfilePage.jsx";
 
-// Wrap Root with CurrentUserProvider to ensure context is available to all components
+/** Wraps the Root element with the CurrentUserProvider
+ * ensuring context is available to all components in the app.
+ * This also allows the useNavigate hook to be available to use
+ * in the CurrentUserContext. The WrappedRoot element is then set
+ * as the main element for the /* path.
+ */
 const WrappedRoot = () => (
   <CurrentUserProvider>
     <Root />
@@ -49,6 +54,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </StrictMode>,
 );

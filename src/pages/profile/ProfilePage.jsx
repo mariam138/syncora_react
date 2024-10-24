@@ -71,6 +71,7 @@ function ProfilePage() {
         email,
         profile_image,
       });
+      setIsLoaded(true);
     } catch (error) {
       console.log(error);
     }

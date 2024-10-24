@@ -25,7 +25,7 @@ function TopNavbar() {
               New Note <i class="fa-solid fa-notes-medical"></i>
             </NavLink>
             {/* Welcome text to user when logged in */}
-            <Navbar.Text>Welcome, {currentUser.username}</Navbar.Text>
+            <Navbar.Text className="px-2">Welcome, {currentUser.username}</Navbar.Text>
           </Nav>
         </Container>
       </Navbar>

@@ -9,7 +9,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import Form from "react-bootstrap/Form";
@@ -18,6 +18,7 @@ import DeleteModal from "../../components/DeleteModal";
 import LoadingSpinner from "../../components/LoadingSpinner.jsx";
 
 function ProfilePage() {
+  const { pk } = useParams();
   // Sets initial profile data
   const [profileData, setProfileData] = useState({
     id: null,
@@ -58,8 +59,10 @@ function ProfilePage() {
   const [isLoaded, setIsLoaded] = useState(false);
   // Checks to see if current user matches the profile id
   // Sets to either true or false
-  const is_owner = currentUser?.pk === id
-
+  const is_owner = currentUser?.pk === profileData.id
+  console.log('id:', id)
+  console.log('Current user id:',currentUser?.pk)
+  console.log(is_owner)
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
    * This is done on component mount, so is called
@@ -68,7 +71,7 @@ function ProfilePage() {
    */
   const handleMount = async () => {
     try {
-      const { data } = await api.get(`/profiles/${currentUser.pk}`);
+      const { data } = await api.get(`/profiles/${pk}`);
       const { id, name, username, email, profile_image } = data;
       setProfileData({
         id,
@@ -85,10 +88,11 @@ function ProfilePage() {
 
   // Ensure mount only happens once
   useEffect(() => {
-    if (currentUser?.pk) {
-      handleMount();
-    }
-  }, [currentUser]);
+    // if (currentUser?.pk) {
+    //   handleMount();
+    // }
+    handleMount();
+  }, [pk]);
 
   // Create separate function to go back a page which is called when back button is clicked
   const goBack = () => {
@@ -286,7 +290,7 @@ function ProfilePage() {
 
               <hr />
               <Card.Title>Name</Card.Title>
-              <Card.Text>{name ? { name } : "No name found"}</Card.Text>
+              <Card.Text>{name ?  name  : "No name found"}</Card.Text>
               <hr />
               <Card.Title>Username</Card.Title>
               <Card.Text>{username}</Card.Text>

@@ -15,6 +15,7 @@ import appStyles from "../../App.module.css";
 import { Form } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import DeleteModal from "../../components/DeleteModal";
+import LoadingSpinner from '../../components/LoadingSpinner.jsx'
 
 function ProfilePage() {
   // Sets initial profile data
@@ -49,7 +50,10 @@ function ProfilePage() {
   const [showModal, setShowModal] = useState(false);
   // Controls disabled state of cancel button
   const [disableCancel, setDisableCancel] = useState(true);
+  // Allows alert to be displayed when user cancels image upload
   const [cancelUpload, setCancelUpload] = useState(false);
+  // Sets loaded state
+  const [isLoaded, setIsLoaded] = useState(false);
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -190,11 +194,11 @@ function ProfilePage() {
           <Card className="my-3">
             <Card.Body>
               <div className="text-center my-2">
-                <Image
+                {isLoaded ? (<Image
                   src={profile_image}
                   roundedCircle
                   className={styles.ProfileImage}
-                />
+                />) : (<LoadingSpinner />)}
               </div>
               <div className="text-center my-2">
                 {/* Custom upload btn for new photo */}

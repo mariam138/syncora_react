@@ -169,13 +169,17 @@ function ProfilePage() {
   };
 
   const handleDelete = async (e) => {
-    e.preventDefault();
-    try {
-      await api.delete(`/profiles/${currentUser.pk}`);
-      setCurrentUser(null);
+    if (is_owner) {
+      e.preventDefault();
+      try {
+        await api.delete(`/profiles/${currentUser.pk}`);
+        setCurrentUser(null);
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
       navigate("/");
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -245,49 +249,53 @@ function ProfilePage() {
                 )}
               </div>
               <div className="text-center my-2">
-                {/* Custom upload btn for new photo */}
-                <Form onSubmit={handleSubmit}>
-                  <div className="m-3">
-                    <label className="mx-3">Change profile picture: </label>
-                    <input
-                      ref={imageFile}
-                      className="d-none"
-                      type="file"
-                      onChange={handleChange}
-                    />
-                    <button
-                      type="button"
-                      className={`${appStyles.Button} btn`}
-                      onClick={handleUpload}
-                    >
-                      {uploadedFileName ? uploadedFileName : "Upload"}
-                    </button>
-                    {/* Display error if image is too large */}
-                    {fileSizeError && (
-                      <Alert variant="warning" className="my-2" dismissible>
-                        {fileSizeError}
-                      </Alert>
-                    )}
-                  </div>
-                  <div className="text-center">
-                    <Button
-                      variant="info"
-                      type="submit"
-                      disabled={disableSubmit}
-                      className="mx-2"
-                    >
-                      Save
-                    </Button>
-                    <Button
-                      variant="outline-secondary"
-                      className="mx-2"
-                      disabled={disableCancel}
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </Form>
+                {is_owner && (
+                  <>
+                    <Form onSubmit={handleSubmit}>
+                      {/* Custom upload btn for new photo */}
+                      <div className="m-3">
+                        <label className="mx-3">Change profile picture: </label>
+                        <input
+                          ref={imageFile}
+                          className="d-none"
+                          type="file"
+                          onChange={handleChange}
+                        />
+                        <button
+                          type="button"
+                          className={`${appStyles.Button} btn`}
+                          onClick={handleUpload}
+                        >
+                          {uploadedFileName ? uploadedFileName : "Upload"}
+                        </button>
+                        {/* Display error if image is too large */}
+                        {fileSizeError && (
+                          <Alert variant="warning" className="my-2" dismissible>
+                            {fileSizeError}
+                          </Alert>
+                        )}
+                      </div>
+                      <div className="text-center">
+                        <Button
+                          variant="info"
+                          type="submit"
+                          disabled={disableSubmit}
+                          className="mx-2"
+                        >
+                          Save
+                        </Button>
+                        <Button
+                          variant="outline-secondary"
+                          className="mx-2"
+                          disabled={disableCancel}
+                          onClick={handleCancel}
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    </Form>
+                  </>
+                )}
               </div>
 
               <hr />

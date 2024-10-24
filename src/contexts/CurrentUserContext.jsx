@@ -35,7 +35,8 @@ export const CurrentUserProvider = ({ children }) => {
     handleMount();
   }, []);
 
-  // Set requests before children are mounted
+  // Sets up interceptors only once rather than on each component re-render
+  // Will only change the memoized value when navigate changes
   useMemo(() => {
     // When sending a request to the api, refresh the user token
     // If the token has expired, if the user was previously
@@ -62,6 +63,11 @@ export const CurrentUserProvider = ({ children }) => {
       },
     );
 
+    // Handles expired tokens in the response when API rejects a request
+    // If 401 error arises, the token has expired so attempts to be refreshed
+    // If refresh fails, check if the user was previously signed in
+    // and redirect them back to the sign in page. Sets the current user
+    // to null.
     apiResp.interceptors.response.use(
       (response) => response,
       async (error) => {

@@ -60,7 +60,7 @@ function ProfilePage() {
   const [isLoaded, setIsLoaded] = useState(false);
   // Checks to see if current user matches the profile id
   // Sets to either true or false
-  const is_owner = currentUser?.pk === profileData.id
+  const is_owner = currentUser?.pk === profileData.id;
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
@@ -135,29 +135,36 @@ function ProfilePage() {
    * was successful. Logs any errors to the console in the catch block.
    */
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    if (imageFile.current?.files[0]) {
-      formData.append("profile_image", imageFile?.current?.files[0]);
-    } else {
-      return;
-    }
+    if (is_owner) {
+      e.preventDefault();
+      const formData = new FormData();
+      if (imageFile.current?.files[0]) {
+        formData.append("profile_image", imageFile?.current?.files[0]);
+      } else {
+        return;
+      }
 
-    try {
-      const { data } = await api.put(`/profiles/${currentUser.pk}/`, formData);
-      // Update the profileData state with the new profile image URL
-      setProfileData((prevState) => ({
-        ...prevState,
-        profile_image: data.profile_image,
-      }));
-      setCurrentUser((currentUser) => ({
-        ...currentUser,
-        profile_image: data.profile_image,
-      }));
-      setUploadedFileName(null);
-      setSubmitSuccess(true);
-    } catch (error) {
-      console.log(error);
+      try {
+        const { data } = await api.put(
+          `/profiles/${currentUser.pk}/`,
+          formData,
+        );
+        // Update the profileData state with the new profile image URL
+        setProfileData((prevState) => ({
+          ...prevState,
+          profile_image: data.profile_image,
+        }));
+        setCurrentUser((currentUser) => ({
+          ...currentUser,
+          profile_image: data.profile_image,
+        }));
+        setUploadedFileName(null);
+        setSubmitSuccess(true);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigate("/");
     }
   };
 
@@ -285,7 +292,7 @@ function ProfilePage() {
 
               <hr />
               <Card.Title>Name</Card.Title>
-              <Card.Text>{name ?  name  : "No name found"}</Card.Text>
+              <Card.Text>{name ? name : "No name found"}</Card.Text>
               <hr />
               <Card.Title>Username</Card.Title>
               <Card.Text>{username}</Card.Text>

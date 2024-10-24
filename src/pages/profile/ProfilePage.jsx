@@ -56,6 +56,9 @@ function ProfilePage() {
   const [cancelUpload, setCancelUpload] = useState(false);
   // Sets loaded state
   const [isLoaded, setIsLoaded] = useState(false);
+  // Checks to see if current user matches the profile id
+  // Sets to either true or false
+  const is_owner = currentUser?.pk === id
 
   /** Get current user's profile by their primary
    * key and set the data as the profile state.

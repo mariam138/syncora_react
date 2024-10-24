@@ -20,13 +20,15 @@ import LoadingSpinner from "../../components/LoadingSpinner.jsx";
 function ProfilePage() {
   // Sets initial profile data
   const [profileData, setProfileData] = useState({
+    id: null,
     name: "",
     username: "",
     email: "",
     profile_image: "",
   });
   // Destructures profile data into variables to use for display
-  const { name, username, email, profile_image } = profileData;
+  const { id, name, username, email, profile_image } = profileData;
+
   // create currentUser and setCurrentUser vars from CurrentUserContext
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
@@ -64,8 +66,9 @@ function ProfilePage() {
   const handleMount = async () => {
     try {
       const { data } = await api.get(`/profiles/${currentUser.pk}`);
-      const { name, username, email, profile_image } = data;
+      const { id, name, username, email, profile_image } = data;
       setProfileData({
+        id,
         name,
         username,
         email,

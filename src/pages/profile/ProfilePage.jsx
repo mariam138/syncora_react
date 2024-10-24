@@ -183,7 +183,7 @@ function ProfilePage() {
     if (cancelUpload) {
       cancelTimeout = setTimeout(() => {
         setCancelUpload(false);
-      }, 3000)
+      }, 3000);
     }
 
     // Time out for successful submit
@@ -191,7 +191,7 @@ function ProfilePage() {
     if (submitSuccess) {
       submitTimeout = setTimeout(() => {
         setSubmitSuccess(false);
-      }, 3000)
+      }, 3000);
     }
 
     // Clean up timeouts
@@ -199,7 +199,7 @@ function ProfilePage() {
       clearTimeout(cancelTimeout);
       clearTimeout(submitTimeout);
     };
-  }, [cancelUpload, submitSuccess])
+  }, [cancelUpload, submitSuccess]);
 
   return (
     <>

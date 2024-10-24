@@ -48,7 +48,7 @@ const root = () => {
           </Navbar>
         )}
 
-        <Container>
+        <Container className={appStyles.Container}>
               <Outlet />
         </Container>
       </Stack>

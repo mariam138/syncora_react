@@ -12,10 +12,10 @@ import Col from "react-bootstrap/Col";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
-import { Form } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import DeleteModal from "../../components/DeleteModal";
-import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import LoadingSpinner from "../../components/LoadingSpinner.jsx";
 
 function ProfilePage() {
   // Sets initial profile data
@@ -195,11 +195,15 @@ function ProfilePage() {
           <Card className="my-3">
             <Card.Body>
               <div className="text-center my-2">
-                {isLoaded ? (<Image
-                  src={profile_image}
-                  roundedCircle
-                  className={styles.ProfileImage}
-                />) : (<LoadingSpinner />)}
+                {isLoaded ? (
+                  <Image
+                    src={profile_image}
+                    roundedCircle
+                    className={styles.ProfileImage}
+                  />
+                ) : (
+                  <LoadingSpinner />
+                )}
               </div>
               <div className="text-center my-2">
                 {/* Custom upload btn for new photo */}

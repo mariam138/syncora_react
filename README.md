@@ -157,6 +157,14 @@ When a user clicks the sign out link in the sidebar, they will be redirected to 
 
 ![Sign out page](readme_assets/sign-out-page.png)
 
+### Profile Page
+
+A user is able to view their own profile. Their profile picture, name, username and e-mail will be displayed. On initial registration, a defaul avatar will be provided. This can be changed on the profile page by uploading a new one. Images over 2MB won't be allowed. The user is also able to delete their own account. A modal will pop up asking the user to confirm their action.
+
+![Profile Page](readme_assets/profile-page.png)
+
+For future features where users can be linked on tasks and events together, I have included functionality which prevents users from changing other profile's pictures or deleting their accounts. When viewing another user's profile page, the upload and delete account buttons will not be visible.
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

@@ -244,6 +244,8 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 
 ### Media
 
+- Post it note picture used as the hero image for sign in and sign up pages is from [pixabay.com](https://pixabay.com/illustrations/lists-to-do-paper-checkbox-tasks-6131213/)
+
 ### Other
 
 - The instructions to prepare the repository for deployment were adapted from [this](https://blog.md.engineer/vite-heroku-clkmnkq8h000709l7hxqe689p) post by Ndagi Stanley

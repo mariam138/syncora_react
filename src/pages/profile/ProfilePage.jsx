@@ -3,7 +3,7 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-import api from "../../api/axiosDefaults";
+import api, { apiReq, apiResp } from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
@@ -70,7 +70,7 @@ function ProfilePage() {
    */
   const handleMount = async () => {
     try {
-      const { data } = await api.get(`/profiles/${pk}`);
+      const { data } = await apiResp.get(`/profiles/${pk}`);
       const { id, name, username, email, profile_image } = data;
       setProfileData({
         id,
@@ -145,7 +145,7 @@ function ProfilePage() {
       }
 
       try {
-        const { data } = await api.put(
+        const { data } = await apiReq.put(
           `/profiles/${currentUser.pk}/`,
           formData,
         );
@@ -172,7 +172,7 @@ function ProfilePage() {
     if (is_owner) {
       e.preventDefault();
       try {
-        await api.delete(`/profiles/${currentUser.pk}`);
+        await apiReq.delete(`/profiles/${currentUser.pk}`);
         setCurrentUser(null);
         navigate("/");
       } catch (error) {

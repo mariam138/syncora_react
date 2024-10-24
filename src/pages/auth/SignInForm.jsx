@@ -4,7 +4,7 @@ import { Alert, Card, Col, Row } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
-import api from "../../api/axiosDefaults";
+import api, { apiReq } from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import Image from "react-bootstrap/Image";
 import styles from '../../styles/SignInForm.module.css'

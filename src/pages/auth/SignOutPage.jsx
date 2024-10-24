@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import api from "../../api/axiosDefaults";
+import api, { apiReq } from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import appStyles from '../../App.module.css'
 

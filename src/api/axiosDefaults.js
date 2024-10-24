@@ -12,6 +12,7 @@ const api = axios.create({
 });
 
 export default api;
+
 // Create request and response interceptors for the api
 export const apiReq = api.create();
 export const apiResp = api.create();

@@ -18,6 +18,7 @@ import DeleteModal from "../../components/DeleteModal";
 import LoadingSpinner from "../../components/LoadingSpinner.jsx";
 
 function ProfilePage() {
+  // Gets the pk from the url
   const { pk } = useParams();
   // Sets initial profile data
   const [profileData, setProfileData] = useState({
@@ -60,9 +61,7 @@ function ProfilePage() {
   // Checks to see if current user matches the profile id
   // Sets to either true or false
   const is_owner = currentUser?.pk === profileData.id
-  console.log('id:', id)
-  console.log('Current user id:',currentUser?.pk)
-  console.log(is_owner)
+
   /** Get current user's profile by their primary
    * key and set the data as the profile state.
    * This is done on component mount, so is called
@@ -86,11 +85,8 @@ function ProfilePage() {
     }
   };
 
-  // Ensure mount only happens once
+  // Ensure mount only happens if pk value has changed
   useEffect(() => {
-    // if (currentUser?.pk) {
-    //   handleMount();
-    // }
     handleMount();
   }, [pk]);
 
@@ -144,7 +140,6 @@ function ProfilePage() {
     if (imageFile.current?.files[0]) {
       formData.append("profile_image", imageFile?.current?.files[0]);
     } else {
-      console.log("no image found");
       return;
     }
 

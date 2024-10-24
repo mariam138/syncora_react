@@ -37,6 +37,7 @@ export const CurrentUserProvider = ({ children }) => {
 
   // Sets up interceptors only once rather than on each component re-render
   // Will only change the memoized value when navigate changes
+  // Code adapted from https://github.com/mr-fibonacci/moments/blob/a981c39da1671a70023a3d6f3cf1410164e84e06/src/contexts/CurrentUserContext.js
   useMemo(() => {
     // When sending a request to the api, refresh the user token
     // If the token has expired, if the user was previously

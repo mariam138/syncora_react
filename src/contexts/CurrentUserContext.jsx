@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import api, { apiResp } from "../api/axiosDefaults";
+import api, { apiReq, apiResp } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
 
 // Creates custom context object for the current user to be passed down the component tree
@@ -37,6 +37,31 @@ export const CurrentUserProvider = ({ children }) => {
 
   // Set requests before children are mounted
   useMemo(() => {
+    // When sending a request to the api, refresh the user token
+    // If the token has expired, if the user was previously
+    // logged in, redirect them back to the sign in page
+    // and set current user to null
+    apiReq.interceptors.request.use(
+      async (config) => {
+        try {
+          await api.post("/dj-rest-auth/token/refresh/");
+        } catch (error) {
+          setCurrentUser((prevCurrentUser) => {
+            if (prevCurrentUser) {
+              navigate("/signin");
+            }
+            return null;
+          });
+          return config;
+        }
+        return config;
+      },
+      // Reject the error if one is returned
+      (error) => {
+        return Promise.reject(error);
+      },
+    );
+
     apiResp.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -56,7 +81,7 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(error);
       },
     );
-  });
+  }, [navigate]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

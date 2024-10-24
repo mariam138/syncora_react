@@ -309,11 +309,14 @@ function ProfilePage() {
               <Card.Text>{email}</Card.Text>
             </Card.Body>
           </Card>
-          <div className="text-center">
-            <Button variant="danger" onClick={() => setShowModal(true)}>
-              Delete account
-            </Button>
-          </div>
+          {is_owner && (
+            <div className="text-center">
+              <Button variant="danger" onClick={() => setShowModal(true)}>
+                Delete account
+              </Button>
+            </div>
+          )}
+
           <div className="text-center mt-4">
             <Button variant="outline-secondary" onClick={goBack}>
               Back

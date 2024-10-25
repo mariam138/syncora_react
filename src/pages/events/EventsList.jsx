@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apiResp } from "../../api/axiosDefaults";
 
 function EventsList() {
@@ -16,6 +16,10 @@ function EventsList() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    handleMount();
+  }, [])
 
   return <div>EventsList</div>;
 }

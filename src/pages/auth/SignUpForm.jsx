@@ -13,10 +13,11 @@ const SignUpForm = () => {
     email: "",
     password1: "",
     password2: "",
+    first_name: '',
   });
 
   // Destructure to avoid using dot notation
-  const { username, email, password1, password2 } = signUpData;
+  const { username, email, password1, password2, first_name } = signUpData;
   const navigate = useNavigate();
   // Set any errors initially to an empty object
   const [error, setError] = useState({});
@@ -59,7 +60,7 @@ const SignUpForm = () => {
               Sign up below to start using Syncora
             </Card.Title>
             <Form onSubmit={handleSubmit}>
-              {/* <Form.Group className="mb-3" controlId="formFirstName">
+              <Form.Group className="mb-3" controlId="formFirstName">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
@@ -73,7 +74,7 @@ const SignUpForm = () => {
               <Alert variant="warning" key={i}>
                 {message}
               </Alert>
-            ))} */}
+            ))}
 
               <Form.Group className="mb-3" controlId="formUsername">
                 <Form.Label>Username</Form.Label>

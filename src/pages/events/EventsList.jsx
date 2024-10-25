@@ -36,7 +36,7 @@ function EventsList() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           <h1 className={appStyles.Header}>Events</h1>
-          <Accordion>
+          <Accordion alwaysOpen>
             {isLoaded ? (
               eventsList.results.map((event) => (
                 <Accordion.Item eventKey={`${event.id}`} key={event.id}>
@@ -57,7 +57,7 @@ function EventsList() {
               <LoadingSpinner />
             )}
           </Accordion>
-          <Link to='new'>New Event</Link>
+          <Link to="new">New Event</Link>
         </Col>
       </Row>
     </>

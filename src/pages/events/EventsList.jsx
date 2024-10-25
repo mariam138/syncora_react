@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiResp } from "../../api/axiosDefaults";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function EventsList() {
   // Set events list to an empty results array
@@ -11,7 +12,7 @@ function EventsList() {
     try {
       const { data } = await apiResp.get("/events");
       setEventsList(data);
-      console.log(data);
+      console.log(eventsList.results);
       setIsLoaded(true);
     } catch (error) {
       console.log(error);
@@ -20,9 +21,18 @@ function EventsList() {
 
   useEffect(() => {
     handleMount();
-  }, [])
+  }, []);
 
-  return <div>EventsList</div>;
+  return (
+    <div>
+      <h1>Events</h1>
+      {isLoaded ? (
+        eventsList.results.map((event) => <p key={event.id}>{event.name}</p>)
+      ) : (
+        <LoadingSpinner />
+      )}
+    </div>
+  );
 }
 
 export default EventsList;

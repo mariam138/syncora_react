@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { apiResp } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import appStyles from "../../App.module.css";
@@ -19,6 +19,7 @@ function EventsList() {
   const [isLoaded, setIsLoaded] = useState(false);
   const currentUser = useCurrentUser();
   const [showModal, setShowModal] = useState(false);
+  const [eventId, setEventId] = useState(null);
 
   // Check current user against event owner
   const eventOwner = eventsList.results[0]?.owner;
@@ -57,7 +58,10 @@ function EventsList() {
                       <Button variant="outline-secondary">Edit</Button>
                       <Button
                         variant="danger"
-                        onClick={() => setShowModal(true)}
+                        onClick={() => {
+                          setShowModal(true);
+                          setEventId(event.id);
+                        }}
                       >
                         Delete
                       </Button>
@@ -79,7 +83,7 @@ function EventsList() {
         handleClose={() => setShowModal(false)}
         feature="event"
         modalContent="Are you sure you want to delete this event"
-        // handleDelete={handleDelete}
+        handleDelete={() => console.log("hi")}
       />
     </>
   );

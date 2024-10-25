@@ -9,7 +9,8 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link } from "react-router-dom";
-import styles from '../../styles/EventsList.module.css'
+import styles from "../../styles/EventsList.module.css";
+import DeleteModal from "../../components/DeleteModal";
 
 function EventsList() {
   // Set events list to an empty results array
@@ -17,6 +18,7 @@ function EventsList() {
   // Initially set loaded state to false
   const [isLoaded, setIsLoaded] = useState(false);
   const currentUser = useCurrentUser();
+  const [showModal, setShowModal] = useState(false);
 
   const handleMount = async () => {
     try {
@@ -63,6 +65,13 @@ function EventsList() {
           </Link>
         </Col>
       </Row>
+      <DeleteModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        feature="event"
+        modalContent="Are you sure you want to delete this event"
+        // handleDelete={handleDelete}
+      />
     </>
   );
 }

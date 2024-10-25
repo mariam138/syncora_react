@@ -9,6 +9,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link } from "react-router-dom";
+import styles from '../../styles/EventsList.module.css'
 
 function EventsList() {
   // Set events list to an empty results array
@@ -57,7 +58,7 @@ function EventsList() {
               <LoadingSpinner />
             )}
           </Accordion>
-          <Link to="new">
+          <Link to="new" className={styles.Link}>
             New Event <i class="fa-solid fa-plus"></i>
           </Link>
         </Col>

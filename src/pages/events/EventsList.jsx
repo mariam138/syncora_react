@@ -6,6 +6,8 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function EventsList() {
   // Set events list to an empty results array
@@ -42,7 +44,12 @@ function EventsList() {
                     <br />
                     {event.date} {event.start_time} {event.location}
                   </Accordion.Header>
-                  <Accordion.Body>Some event text</Accordion.Body>
+                  <Accordion.Body>
+                    <ButtonGroup aria-label="Edit and delete event buttons">
+                      <Button variant="outline-secondary">Edit</Button>
+                      <Button variant="danger">Delete</Button>
+                    </ButtonGroup>
+                  </Accordion.Body>
                 </Accordion.Item>
               ))
             ) : (

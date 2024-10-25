@@ -39,7 +39,7 @@ const SignUpForm = () => {
     try {
       await api.post("/dj-rest-auth/registration/", signUpData);
       // When sign up data is submitted, navigate user to index
-      navigate("/");
+      navigate("/signin");
     } catch (error) {
       console.log(error);
       // Set any errors if applicable to the error repsonse data

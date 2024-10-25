@@ -48,7 +48,7 @@ const root = () => {
           </Navbar>
         )}
 
-        <Container className={`${appStyles.Container} mt-5 mb-auto`}>
+        <Container className={`${appStyles.Container} mb-auto`}>
               <Outlet />
         </Container>
       </Stack>

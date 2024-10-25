@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { Link } from "react-router-dom";
 
 function EventsList() {
   // Set events list to an empty results array
@@ -56,6 +57,7 @@ function EventsList() {
               <LoadingSpinner />
             )}
           </Accordion>
+          <Link to='new'>New Event</Link>
         </Col>
       </Row>
     </>

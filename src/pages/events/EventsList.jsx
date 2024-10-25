@@ -20,6 +20,10 @@ function EventsList() {
   const currentUser = useCurrentUser();
   const [showModal, setShowModal] = useState(false);
 
+  // Check current user against event owner
+  const eventOwner = eventsList.results[0]?.owner;
+  const is_owner = currentUser?.username === eventOwner;
+
   const handleMount = async () => {
     try {
       const { data } = await apiResp.get("/events");
@@ -51,7 +55,12 @@ function EventsList() {
                   <Accordion.Body>
                     <ButtonGroup aria-label="Edit and delete event buttons">
                       <Button variant="outline-secondary">Edit</Button>
-                      <Button variant="danger">Delete</Button>
+                      <Button
+                        variant="danger"
+                        onClick={() => setShowModal(true)}
+                      >
+                        Delete
+                      </Button>
                     </ButtonGroup>
                   </Accordion.Body>
                 </Accordion.Item>

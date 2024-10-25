@@ -29,7 +29,7 @@ function ProfilePage() {
     profile_image: "",
   });
   // Destructures profile data into variables to use for display
-  const { id, name, username, email, profile_image } = profileData;
+  const { name, username, email, profile_image } = profileData;
 
   // create currentUser and setCurrentUser vars from CurrentUserContext
   const currentUser = useCurrentUser();

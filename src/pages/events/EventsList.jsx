@@ -12,6 +12,7 @@ function EventsList() {
       const { data } = await apiResp.get("/events");
       setEventsList(data);
       console.log(data);
+      setIsLoaded(true);
     } catch (error) {
       console.log(error);
     }

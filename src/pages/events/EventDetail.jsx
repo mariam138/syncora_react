@@ -5,10 +5,14 @@ import { apiResp } from '../../api/axiosDefaults';
 function EventDetail() {
     const id = useParams();
     const [hasLoaded, setHasLoaded] = useState(false);
+    const [eventDetail, setEventDetail] = useState({})
 
     const handleMount = async () => {
         try {
-            const {data} = await apiResp.get(`/events/${id}`)
+            const { data } = await apiResp.get(`/events/${id}/`)
+            setEventDetail(data);
+            console.log(data)
+            setHasLoaded(true);
         } catch (error) {
             console.log(error)
         }

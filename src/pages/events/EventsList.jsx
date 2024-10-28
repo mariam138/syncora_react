@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
 
@@ -25,10 +25,14 @@ function EventsList() {
   const eventOwner = eventsList.results[0]?.owner;
   const is_owner = currentUser?.username === eventOwner;
 
+  const navigate = useNavigate();
+
   const handleMount = async () => {
     try {
       const { data } = await apiResp.get("/events");
       setEventsList(data);
+      // const id = data.id;
+      // console.log(data);
       setIsLoaded(true);
     } catch (error) {
       console.log(error);
@@ -38,6 +42,10 @@ function EventsList() {
   useEffect(() => {
     handleMount();
   }, [currentUser]);
+
+  const viewEvent = (eventId) => {
+    navigate(`/events/${eventId}`);
+  };
 
   return (
     <>
@@ -55,7 +63,14 @@ function EventsList() {
                   </Accordion.Header>
                   <Accordion.Body>
                     <ButtonGroup aria-label="View event and delete event buttons">
-                      <Button variant="outline-secondary">View event</Button>
+                      <Button
+                        variant="outline-secondary"
+                        onClick={() => {
+                          viewEvent(event.id);
+                        }}
+                      >
+                        View event
+                      </Button>
                       <Button
                         variant="danger"
                         onClick={() => {

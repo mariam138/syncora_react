@@ -104,7 +104,7 @@ function EventDetail() {
           )}
 
           <div className="text-center mt-4">
-            <Button variant="outline-secondary" onClick={goBack}>
+            <Button className={`btn ${appStyles.Button}`} onClick={goBack}>
               Back
             </Button>
           </div>

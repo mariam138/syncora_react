@@ -5,17 +5,21 @@ import { apiResp } from "../../api/axiosDefaults";
 function EventDetail() {
   const { pk } = useParams();
   const [hasLoaded, setHasLoaded] = useState(false);
-    const [eventDetail, setEventDetail] = useState({
-        id: null,
-        owner: '',
-        name: '',
-        date: '',
-        start_time: '',
-        end_time: '',
-        category: '',
-        location: '',
-        notes: ''
+  const [eventDetail, setEventDetail] = useState({
+    id: null,
+    owner: "",
+    name: "",
+    date: "",
+    start_time: "",
+    end_time: "",
+    category: "",
+    location: "",
+    notes: "",
   });
+
+  // Destructure data into variables to use for display
+  const { owner, name, date, start_time, end_time, category, location, notes } =
+    eventDetail;
 
   const handleMount = async () => {
     try {

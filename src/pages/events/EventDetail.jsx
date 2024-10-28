@@ -24,7 +24,28 @@ function EventDetail() {
   const handleMount = async () => {
     try {
       const { data } = await apiResp.get(`/events/${pk}/`);
-      setEventDetail(data);
+      const {
+        id,
+        owner,
+        name,
+        date,
+        start_time,
+        end_time,
+        category,
+        location,
+        notes,
+      } = data;
+      setEventDetail({
+        id,
+        owner,
+        name,
+        date,
+        start_time,
+        end_time,
+        category,
+        location,
+        notes,
+      });
       setHasLoaded(true);
     } catch (error) {
       console.log(error);

@@ -7,7 +7,7 @@ import TopNavbar from "../components/TopNavbar";
 import { useState, useEffect } from "react";
 import { Col, Navbar } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
-import appStyles from '../App.module.css'
+import appStyles from "../App.module.css";
 
 /**
  * This defines the root function, where all remaining roots become
@@ -48,8 +48,10 @@ const root = () => {
           </Navbar>
         )}
 
-        <Container className={`${appStyles.Container} mb-auto`}>
-              <Outlet />
+        <Container
+          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto`}
+        >
+          <Outlet />
         </Container>
       </Stack>
     </div>

@@ -11,6 +11,7 @@ import SignOutPage from "./pages/auth/SignOutPage.jsx";
 import ProfilePage from "./pages/profile/ProfilePage.jsx";
 import EventsList from "./pages/events/EventsList.jsx";
 import EventDetail from "./pages/events/EventDetail.jsx";
+import EventForm from "./pages/events/EventForm.jsx";
 
 /** Wraps the Root element with the CurrentUserProvider
  * ensuring context is available to all components in the app.
@@ -47,17 +48,21 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "profiles/:pk",
+        path: "profiles/:pk/",
         element: <ProfilePage />,
       },
       {
-        path: "events",
+        path: "events/",
         element: <EventsList />
       },
       {
-        path: "events/:pk",
+        path: "events/:pk/",
         element: <EventDetail />
       },
+      {
+        path: "events/new/",
+        element: <EventForm />
+      }
     ],
   },
 ]);

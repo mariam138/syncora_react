@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apiResp } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import appStyles from "../../App.module.css";
@@ -31,8 +31,6 @@ function EventsList() {
     try {
       const { data } = await apiResp.get("/events");
       setEventsList(data);
-      // const id = data.id;
-      // console.log(data);
       setIsLoaded(true);
     } catch (error) {
       console.log(error);

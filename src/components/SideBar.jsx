@@ -27,7 +27,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       {screenSize && (
         <>
           {/* Quick create links for mobile */}
-          <NavLink exact to="/events/new" activeClassName="activeClicked">
+          <NavLink exact to="/events/new/" activeClassName="activeClicked">
             <CDBSidebarMenuItem
               icon="calendar-plus"
               iconSize="lg"
@@ -68,7 +68,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Events page link */}
-      <NavLink exact to="/events" activeClassName="activeClicked">
+      <NavLink exact to="/events/" activeClassName="activeClicked">
         <CDBSidebarMenuItem
           icon="calendar-day"
           iconSize="lg"

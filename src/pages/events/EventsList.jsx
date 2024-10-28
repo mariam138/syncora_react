@@ -88,7 +88,7 @@ function EventsList() {
               <LoadingSpinner />
             )}
           </Accordion>
-          <Link to="new" className={styles.Link}>
+          <Link to="new/" className={styles.Link}>
             New Event <i class="fa-solid fa-plus"></i>
           </Link>
         </Col>

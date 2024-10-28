@@ -18,13 +18,13 @@ function EventDetail() {
     date: "",
     start_time: "",
     end_time: "",
-    category: "",
+    category_display: "",
     location: "",
     notes: "",
   });
 
   // Destructure data into variables to use for display
-  const { owner, name, date, start_time, end_time, category, location, notes } =
+  const { owner, name, date, start_time, end_time, category_display, location, notes } =
     eventDetail;
 
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ function EventDetail() {
         date,
         start_time,
         end_time,
-        category,
+        category_display,
         location,
         notes,
       } = data;
@@ -50,7 +50,7 @@ function EventDetail() {
         date,
         start_time,
         end_time,
-        category,
+        category_display,
         location,
         notes,
       });
@@ -90,7 +90,7 @@ function EventDetail() {
                   <Card.Text>{location}</Card.Text>
                   <hr />
                   <Card.Title>Category</Card.Title>
-                  <Card.Text>{category}</Card.Text>
+                  <Card.Text>{category_display}</Card.Text>
                   <hr />
                   <Card.Title>Notes</Card.Title>
                   <Card.Text>{notes ? notes : "No notes"}</Card.Text>

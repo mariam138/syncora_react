@@ -22,7 +22,6 @@ function EventForm() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>Date</Form.Label>
-                  {/* <Form.Control type="text" placeholder="Event name" /> */}
                   <CDBInput type="date" placeholder="Date" />
                 </Form.Group>
               </Form>

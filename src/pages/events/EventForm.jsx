@@ -11,9 +11,13 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 
 function EventForm() {
-  const [value, setValue] = useState("12:00");
-  const handleChange = (newTime) => {
-    setValue(newTime);
+  const [startTime, setStartTime] = useState("12:00");
+  const [endTime, setEndTime] = useState("13:00");
+  const changeStartTime = (newTime) => {
+    setStartTime(newTime);
+  };
+  const changeEndTime = (newTime) => {
+    setEndTime(newTime);
   };
 
   return (
@@ -33,12 +37,21 @@ function EventForm() {
                   <CDBInput type="date" placeholder="Date" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formStartTime">
-                  <Form.Label>Start Time</Form.Label>
+                  <Form.Label className="me-2">Start Time</Form.Label>
                   <TimePicker
-                    onChange={handleChange}
-                    value={value}
+                    onChange={changeStartTime}
+                    value={startTime}
                     required
-                    clearAriaLabel='Clear time'
+                    clearAriaLabel="Clear time"
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formEndTime">
+                  <Form.Label className="me-2">End Time</Form.Label>
+                  <TimePicker
+                    onChange={endTime}
+                    value={endTime}
+                    required
+                    clearAriaLabel="Clear time"
                   />
                 </Form.Group>
               </Form>

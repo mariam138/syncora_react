@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { CDBInput } from "cdbreact";
 import appStyles from "../../App.module.css";
 
 function EventForm() {
@@ -21,7 +22,8 @@ function EventForm() {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>Date</Form.Label>
-                  <Form.Control type="text" placeholder="Event name" />
+                  {/* <Form.Control type="text" placeholder="Event name" /> */}
+                  <CDBInput type="date" placeholder="Date" />
                 </Form.Group>
               </Form>
             </Card.Body>

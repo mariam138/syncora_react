@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import appStyles from "../../App.module.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -71,23 +72,30 @@ function EventDetail() {
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          <h1 className={appStyles.Header}>{name}</h1>
-          <Card className="my-3">
-            <Card.Body>
-              <Card.Title>Date</Card.Title>
-              <Card.Text>{date}</Card.Text>
-              <Card.Title>Start Time</Card.Title>
-              <Card.Text>{start_time}</Card.Text>
-              <Card.Title>End Time</Card.Title>
-              <Card.Text>{end_time}</Card.Text>
-              <Card.Title>Location</Card.Title>
-              <Card.Text>{location}</Card.Text>
-              <Card.Title>Category</Card.Title>
-              <Card.Text>{category}</Card.Text>
-              <Card.Title>Notes</Card.Title>
-              <Card.Text>{notes ? notes : "No notes"}</Card.Text>
-            </Card.Body>
-          </Card>
+          {hasLoaded ? (
+            <>
+              <h1 className={appStyles.Header}>{name}</h1>
+              <Card className="my-3">
+                <Card.Body>
+                  <Card.Title>Date</Card.Title>
+                  <Card.Text>{date}</Card.Text>
+                  <Card.Title>Start Time</Card.Title>
+                  <Card.Text>{start_time}</Card.Text>
+                  <Card.Title>End Time</Card.Title>
+                  <Card.Text>{end_time}</Card.Text>
+                  <Card.Title>Location</Card.Title>
+                  <Card.Text>{location}</Card.Text>
+                  <Card.Title>Category</Card.Title>
+                  <Card.Text>{category}</Card.Text>
+                  <Card.Title>Notes</Card.Title>
+                  <Card.Text>{notes ? notes : "No notes"}</Card.Text>
+                </Card.Body>
+              </Card>{" "}
+            </>
+          ) : (
+            <LoadingSpinner />
+          )}
+
           <div className="text-center mt-4">
             <Button variant="outline-secondary" onClick={goBack}>
               Back

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { apiResp } from "../../api/axiosDefaults";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import appStyles from "../../App.module.css";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -24,6 +25,8 @@ function EventDetail() {
   // Destructure data into variables to use for display
   const { owner, name, date, start_time, end_time, category, location, notes } =
     eventDetail;
+
+  const navigate = useNavigate();
 
   const handleMount = async () => {
     try {
@@ -60,6 +63,10 @@ function EventDetail() {
     handleMount();
   }, [pk]);
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <Row>
@@ -81,6 +88,11 @@ function EventDetail() {
               <Card.Text>{notes ? notes : "No notes"}</Card.Text>
             </Card.Body>
           </Card>
+          <div className="text-center mt-4">
+            <Button variant="outline-secondary" onClick={goBack}>
+              Back
+            </Button>
+          </div>
         </Col>
       </Row>
     </>

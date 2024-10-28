@@ -52,36 +52,38 @@ function EventsList() {
           <h1 className={appStyles.Header}>Events</h1>
           <Accordion alwaysOpen className="mb-3">
             {isLoaded ? (
-              eventsList.results.map((event) => (
-                <Accordion.Item eventKey={`${event.id}`} key={event.id}>
-                  <Accordion.Header>
-                    {event.name}
-                    <br />
-                    {event.date} {event.start_time} {event.location}
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <ButtonGroup aria-label="View event and delete event buttons">
-                      <Button
-                        variant="outline-secondary"
-                        onClick={() => {
-                          viewEvent(event.id);
-                        }}
-                      >
-                        View event
-                      </Button>
-                      <Button
-                        variant="danger"
-                        onClick={() => {
-                          setShowModal(true);
-                          setEventId(event.id);
-                        }}
-                      >
-                        Delete
-                      </Button>
-                    </ButtonGroup>
-                  </Accordion.Body>
-                </Accordion.Item>
-              ))
+              eventsList.results.length > 0 ? (
+                eventsList.results.map((event) => (
+                  <Accordion.Item eventKey={`${event.id}`} key={event.id}>
+                    <Accordion.Header>
+                      {event.name}
+                      <br />
+                      {event.date} {event.start_time} {event.location}
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <ButtonGroup aria-label="View event and delete event buttons">
+                        <Button
+                          variant="outline-secondary"
+                          onClick={() => viewEvent(event.id)}
+                        >
+                          View event
+                        </Button>
+                        <Button
+                          variant="danger"
+                          onClick={() => {
+                            setShowModal(true);
+                            setEventId(event.id);
+                          }}
+                        >
+                          Delete
+                        </Button>
+                      </ButtonGroup>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                ))
+              ) : (
+                <p className="fs-5">No upcoming events</p>
+              )
             ) : (
               <LoadingSpinner />
             )}

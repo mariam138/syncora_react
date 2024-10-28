@@ -199,6 +199,7 @@ For future features where users can be linked on tasks and events together, I ha
 - **CDBReact** - This framework was installed to be able to use it's responsive sidebar component, made mobile-first and compatible with React and Boostrap.
 - **Axios** - The Axios framework is used to easily send and get requests from the REST API backend created for Syncora
 - **Mock Service Worker** - This was used to help mock an API when performing automated tests throughout the creation of Syncora. Setting up of MSW for testing was done following the [documentation](https://mswjs.io/docs/getting-started). MSW was only downloaded as a development dependency.
+- **React Datepicker 7.5.0** - This library was downloaded to be able to allow users to choose a date for their tasks and events using a datepicker widget, which is not provided by React Bootstrap
 
 ## Testing
 

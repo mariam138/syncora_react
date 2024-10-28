@@ -7,6 +7,7 @@ import appStyles from "../../App.module.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import styles from "../../styles/DetailPageButtons.module.css";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -126,8 +127,14 @@ function EventDetail() {
           )}
 
           <div className="text-center mt-4">
-            <Button className={`btn ${appStyles.Button}`} onClick={goBack}>
-              Back
+            <Button
+              className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
+              onClick={goBack}
+            >
+              <i class="fa-solid fa-arrow-left"></i> Back
+            </Button>
+            <Button variant="info" className={`mx-2 ${styles.BtnText}`}>
+              Edit <i class="fa-solid fa-pencil"></i>
             </Button>
           </div>
         </Col>

@@ -70,7 +70,7 @@ function ProfilePage() {
    */
   const handleMount = async () => {
     try {
-      const { data } = await apiResp.get(`/profiles/${pk}`);
+      const { data } = await apiResp.get(`/profiles/${pk}/`);
       const { id, name, username, email, profile_image } = data;
       setProfileData({
         id,

@@ -54,13 +54,28 @@ function EventForm() {
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
-                <Form.Label>Category</Form.Label>
-                <Form.Select aria-label="Choose a category">
-                  <option>Choose a category</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
+                <Form.Group className="mb-3" controlId="formCategory">
+                  <Form.Label>Category</Form.Label>
+                  <Form.Select aria-label="Choose a category">
+                    <option>Choose a category</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formLocation">
+                  <Form.Label>Location</Form.Label>
+                  <Form.Control type="text" placeholder="Enter location" />
+                </Form.Group>
+
+                <Form.Group
+                  className="mb-3"
+                  controlId="formNotes"
+                >
+                  <Form.Label>Notes</Form.Label>
+                  <Form.Control as="textarea" rows={3} placeholder="Any notes?"/>
+                </Form.Group>
               </Form>
             </Card.Body>
           </Card>

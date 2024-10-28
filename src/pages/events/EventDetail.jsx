@@ -54,7 +54,7 @@ function EventDetail() {
         location,
         notes,
       });
-        setHasLoaded(true);
+      setHasLoaded(true);
     } catch (error) {
       console.log(error);
     }
@@ -79,14 +79,19 @@ function EventDetail() {
                 <Card.Body>
                   <Card.Title>Date</Card.Title>
                   <Card.Text>{date}</Card.Text>
+                  <hr />
                   <Card.Title>Start Time</Card.Title>
                   <Card.Text>{start_time}</Card.Text>
+                  <hr />
                   <Card.Title>End Time</Card.Title>
                   <Card.Text>{end_time}</Card.Text>
+                  <hr />
                   <Card.Title>Location</Card.Title>
                   <Card.Text>{location}</Card.Text>
+                  <hr />
                   <Card.Title>Category</Card.Title>
                   <Card.Text>{category}</Card.Text>
+                  <hr />
                   <Card.Title>Notes</Card.Title>
                   <Card.Text>{notes ? notes : "No notes"}</Card.Text>
                 </Card.Body>

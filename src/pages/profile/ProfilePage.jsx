@@ -300,13 +300,13 @@ function ProfilePage() {
 
               <hr />
               <Card.Title>Name</Card.Title>
-              <Card.Text>{name ? name : "No name found"}</Card.Text>
+              <Card.Text>{name}</Card.Text>
               <hr />
               <Card.Title>Username</Card.Title>
               <Card.Text>{username}</Card.Text>
               <hr />
               <Card.Title>Email</Card.Title>
-              <Card.Text>{email}</Card.Text>
+              <Card.Text>{email ? email : "No email found"}</Card.Text>
             </Card.Body>
           </Card>
           {is_owner && (

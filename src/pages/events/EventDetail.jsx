@@ -54,7 +54,7 @@ function EventDetail() {
         location,
         notes,
       });
-      setHasLoaded(true);
+        setHasLoaded(true);
     } catch (error) {
       console.log(error);
     }
@@ -93,7 +93,9 @@ function EventDetail() {
               </Card>{" "}
             </>
           ) : (
-            <LoadingSpinner />
+            <div className="text-center">
+              <LoadingSpinner />
+            </div>
           )}
 
           <div className="text-center mt-4">

@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiResp } from "../../api/axiosDefaults";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import appStyles from "../../App.module.css";
+import Card from "react-bootstrap/Card";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -56,7 +60,31 @@ function EventDetail() {
     handleMount();
   }, [pk]);
 
-  return <div>EventDetail</div>;
+  return (
+    <>
+      <Row>
+        <Col sm={{ span: 6, offset: 3 }}>
+          <h1 className={appStyles.Header}>{name}</h1>
+          <Card className="my-3">
+            <Card.Body>
+              <Card.Title>Date</Card.Title>
+              <Card.Text>{date}</Card.Text>
+              <Card.Title>Start Time</Card.Title>
+              <Card.Text>{start_time}</Card.Text>
+              <Card.Title>End Time</Card.Title>
+              <Card.Text>{end_time}</Card.Text>
+              <Card.Title>Location</Card.Title>
+              <Card.Text>{location}</Card.Text>
+              <Card.Title>Category</Card.Title>
+              <Card.Text>{category}</Card.Text>
+              <Card.Title>Notes</Card.Title>
+              <Card.Text>{notes ? notes : "No notes"}</Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </>
+  );
 }
 
 export default EventDetail;

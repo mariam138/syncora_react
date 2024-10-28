@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -18,6 +18,10 @@ function EventForm() {
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Name</Form.Label>
                   <Form.Control type="email" placeholder="Event name" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formDate">
+                  <Form.Label>Date</Form.Label>
+                  <Form.Control type="text" placeholder="Event name" />
                 </Form.Group>
               </Form>
             </Card.Body>

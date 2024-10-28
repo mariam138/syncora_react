@@ -85,22 +85,34 @@ function EventDetail() {
               <h1 className={appStyles.Header}>{name}</h1>
               <Card className="my-3">
                 <Card.Body>
-                  <Card.Title>Date</Card.Title>
+                  <Card.Title>
+                    Date <i class="fa-regular fa-calendar"></i>
+                  </Card.Title>
                   <Card.Text>{date}</Card.Text>
                   <hr />
-                  <Card.Title>Start Time</Card.Title>
+                  <Card.Title>
+                    Start Time <i class="fa-solid fa-hourglass-start"></i>
+                  </Card.Title>
                   <Card.Text>{start_time}</Card.Text>
                   <hr />
-                  <Card.Title>End Time</Card.Title>
+                  <Card.Title>
+                    End Time <i class="fa-solid fa-hourglass-end"></i>
+                  </Card.Title>
                   <Card.Text>{end_time}</Card.Text>
                   <hr />
-                  <Card.Title>Location</Card.Title>
+                  <Card.Title>
+                    Location <i class="fa-solid fa-location-dot"></i>
+                  </Card.Title>
                   <Card.Text>{location}</Card.Text>
                   <hr />
-                  <Card.Title>Category</Card.Title>
+                  <Card.Title>
+                    Category <i class="fa-solid fa-icons"></i>
+                  </Card.Title>
                   <Card.Text>{category_display}</Card.Text>
                   <hr />
-                  <Card.Title>Notes</Card.Title>
+                  <Card.Title>
+                    Notes <i class="fa-regular fa-message"></i>
+                  </Card.Title>
                   <Card.Text className={`${!notes && "text-body-secondary"}`}>
                     {notes ? notes : "No notes"}
                   </Card.Text>

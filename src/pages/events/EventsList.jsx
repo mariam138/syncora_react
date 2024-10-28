@@ -54,8 +54,8 @@ function EventsList() {
                     {event.date} {event.start_time} {event.location}
                   </Accordion.Header>
                   <Accordion.Body>
-                    <ButtonGroup aria-label="Edit and delete event buttons">
-                      <Button variant="outline-secondary">Edit</Button>
+                    <ButtonGroup aria-label="View event and delete event buttons">
+                      <Button variant="outline-secondary">View event</Button>
                       <Button
                         variant="danger"
                         onClick={() => {

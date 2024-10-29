@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { apiResp } from "../../api/axiosDefaults";
+import { apiReq, apiResp } from "../../api/axiosDefaults";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import appStyles from "../../App.module.css";
@@ -9,11 +9,14 @@ import Button from "react-bootstrap/Button";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { toast, Bounce } from "react-toastify";
 
 function EventDetail() {
   const { pk } = useParams();
+  const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
   const [eventDetail, setEventDetail] = useState({
     id: null,
     owner: "",
@@ -38,6 +41,8 @@ function EventDetail() {
     notes,
   } = eventDetail;
 
+  const is_owner = currentUser?.username === owner;
+  console.log(is_owner);
   const navigate = useNavigate();
 
   const handleMount = async () => {
@@ -77,6 +82,30 @@ function EventDetail() {
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const handleDelete = async (e) => {
+    if (is_owner) {
+      try {
+        await apiReq.delete(`/events/${pk}/`);
+        navigate("/events/");
+        toast.success("Event deleted", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -132,9 +161,13 @@ function EventDetail() {
             <Button variant="info" className={`mx-2 ${styles.BtnText}`}>
               Edit <i class="fa-solid fa-pencil"></i>
             </Button>
-            <Button variant="danger" className={`mx-2 ${styles.BtnText}`} onClick={() => {
-              setShowModal(true);
-            }}>
+            <Button
+              variant="danger"
+              className={`mx-2 ${styles.BtnText}`}
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
               Delete <i class="fa-solid fa-trash"></i>
             </Button>
           </div>

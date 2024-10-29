@@ -72,17 +72,24 @@ function EventForm() {
         transition: Bounce,
       });
     } catch (error) {
-      toast.warn("There was a problem creating your event. Please try again.", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: false,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      // Only display the toast if the error is due to something
+      // Other than a 400 code ie a client error
+      if (error.response.status !== 400) {
+        toast.warn(
+          "There was a problem creating your event. Please try again.",
+          {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          },
+        );
+      }
       console.log(error);
       setError(error.response?.data);
     }

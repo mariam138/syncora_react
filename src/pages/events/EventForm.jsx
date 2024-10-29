@@ -16,6 +16,7 @@ function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
   const [endTime, setEndTime] = useState("13:00");
   const [eventData, setEventData] = useState({
+    // pk: null,
     name: "",
     date: "",
     start_time: "",
@@ -25,8 +26,7 @@ function EventForm() {
     notes: "",
   });
 
-  const { name, date, start_time, end_time, category, location, notes } =
-    eventData;
+  const { pk, name, date, category, location, notes } = eventData;
   const navigate = useNavigate();
   const changeStartTime = (newTime) => {
     setStartTime(newTime);
@@ -48,6 +48,7 @@ function EventForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const eventData = new FormData();
+    eventData.append("pk", pk);
     eventData.append("name", name);
     eventData.append("date", date);
     eventData.append("category", category);
@@ -57,7 +58,7 @@ function EventForm() {
     eventData.append("notes", notes);
     try {
       await apiReq.post("/events/new/", eventData);
-      console.log("success!");
+      navigate(`/events/`);
     } catch (error) {
       console.log(error);
     }

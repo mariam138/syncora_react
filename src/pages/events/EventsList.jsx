@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiResp } from "../../api/axiosDefaults";
+import { apiReq, apiResp } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -42,7 +42,20 @@ function EventsList() {
   }, [currentUser]);
 
   const viewEvent = (eventId) => {
-    navigate(`/events/${eventId}`);
+    navigate(`/events/${eventId}/`);
+  };
+
+  const handleDelete = async (e) => {
+    if (is_owner) {
+      e.preventDefault();
+      try {
+        await apiReq.delete(`/events/${eventId}/`);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      navigate("/");
+    }
   };
 
   return (

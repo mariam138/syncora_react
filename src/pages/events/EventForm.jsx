@@ -70,6 +70,17 @@ function EventForm() {
         transition: Bounce,
       });
     } catch (error) {
+      toast.warn("There was a problem creating your event. Please try again.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       console.log(error);
     }
   };

@@ -5,9 +5,10 @@ import { Outlet } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import TopNavbar from "../components/TopNavbar";
 import { useState, useEffect } from "react";
-import { Col, Navbar } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
+import Navbar from "react-bootstrap/Navbar";
 import appStyles from "../App.module.css";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
 
 /**
  * This defines the root function, where all remaining roots become
@@ -47,6 +48,7 @@ const root = () => {
             </Container>
           </Navbar>
         )}
+        <ToastContainer />
 
         <Container
           className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto`}

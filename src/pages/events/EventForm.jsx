@@ -25,7 +25,7 @@ function EventForm() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           <h1 className={appStyles.Header}>New Event</h1>
-          <Card>
+          <Card className="mb-3">
             <Card.Body>
               <Form>
                 <Form.Group className="mb-3" controlId="formName">
@@ -80,9 +80,19 @@ function EventForm() {
                     placeholder="Any notes?"
                   />
                 </Form.Group>
+                <div className="text-center">
+                  <Button className={`${appStyles.Button} btn`}>
+                    Create <i class="fa-solid fa-plus"></i>
+                  </Button>
+                </div>
               </Form>
             </Card.Body>
           </Card>
+          <div className="text-center mb-3">
+            <Button variant="outline-secondary">
+              <i class="fa-solid fa-arrow-left"></i> Back
+            </Button>
+          </div>
         </Col>
       </Row>
     </>

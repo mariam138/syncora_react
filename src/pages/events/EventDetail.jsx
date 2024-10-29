@@ -8,10 +8,12 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/DetailPageButtons.module.css";
+import DeleteModal from "../../components/DeleteModal";
 
 function EventDetail() {
   const { pk } = useParams();
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [showModal, setShowModal] = useState(false)
   const [eventDetail, setEventDetail] = useState({
     id: null,
     owner: "",
@@ -130,7 +132,9 @@ function EventDetail() {
             <Button variant="info" className={`mx-2 ${styles.BtnText}`}>
               Edit <i class="fa-solid fa-pencil"></i>
             </Button>
-            <Button variant="danger" className={`mx-2 ${styles.BtnText}`}>
+            <Button variant="danger" className={`mx-2 ${styles.BtnText}`} onClick={() => {
+              setShowModal(true);
+            }}>
               Delete <i class="fa-solid fa-trash"></i>
             </Button>
           </div>
@@ -145,6 +149,13 @@ function EventDetail() {
           </div>
         </Col>
       </Row>
+      <DeleteModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        feature="event"
+        modalContent="Are you sure you want to delete this event"
+        // handleDelete={handleDelete}
+      />
     </>
   );
 }

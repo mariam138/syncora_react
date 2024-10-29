@@ -111,7 +111,7 @@ function EventsList() {
         handleClose={() => setShowModal(false)}
         feature="event"
         modalContent="Are you sure you want to delete this event"
-        handleDelete={() => console.log("hi")}
+        handleDelete={handleDelete}
       />
     </>
   );

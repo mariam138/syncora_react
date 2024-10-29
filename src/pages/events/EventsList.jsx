@@ -51,6 +51,7 @@ function EventsList() {
       try {
         await apiReq.delete(`/events/${eventId}/`);
         setShowModal(false);
+        // Updates the events list by filtering through the results to remove the deleted event from the list
         setEventsList((prevEventsList) => ({
           ...prevEventsList,
           results: prevEventsList.results.filter(

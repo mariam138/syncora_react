@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import { CDBInput } from "cdbreact";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
@@ -16,6 +17,7 @@ import { toast, Bounce } from "react-toastify";
 function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
   const [endTime, setEndTime] = useState("13:00");
+  const [error, setError] = useState({});
   const [eventData, setEventData] = useState({
     name: "",
     date: "",
@@ -82,6 +84,7 @@ function EventForm() {
         transition: Bounce,
       });
       console.log(error);
+      setError(error.response?.data);
     }
   };
 
@@ -103,6 +106,11 @@ function EventForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {error.name?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>Date</Form.Label>
                   <CDBInput
@@ -113,6 +121,11 @@ function EventForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {error.date?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formStartTime">
                   <Form.Label className="me-2">Start Time</Form.Label>
                   <TimePicker
@@ -123,6 +136,7 @@ function EventForm() {
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formEndTime">
                   <Form.Label className="me-2">End Time</Form.Label>
                   <TimePicker
@@ -150,7 +164,11 @@ function EventForm() {
                     <option value="TRAVEL">Travel</option>
                   </Form.Select>
                 </Form.Group>
-
+                {error.category?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>Location</Form.Label>
                   <Form.Control
@@ -161,7 +179,11 @@ function EventForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
-
+                {error.location?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formNotes">
                   <Form.Label>Notes</Form.Label>
                   <Form.Control

@@ -14,6 +14,18 @@ import { useNavigate } from "react-router-dom";
 function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
   const [endTime, setEndTime] = useState("13:00");
+  const [eventData, setEventData] = useState({
+    name: "",
+    date: "",
+    start_time: "",
+    end_time: "",
+    category: "",
+    location: "",
+    notes: "",
+  });
+
+  const { name, date, start_time, end_time, category, location, notes } =
+    eventData;
   const navigate = useNavigate();
   const changeStartTime = (newTime) => {
     setStartTime(newTime);
@@ -23,7 +35,14 @@ function EventForm() {
   };
   const goBack = () => {
     navigate(-1);
-  }
+  };
+
+  const handleChange = (e) => {
+    setEventData({
+      ...eventData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <>

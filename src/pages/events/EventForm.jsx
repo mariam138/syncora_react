@@ -9,16 +9,21 @@ import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
+import { useNavigate } from "react-router-dom";
 
 function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
   const [endTime, setEndTime] = useState("13:00");
+  const navigate = useNavigate();
   const changeStartTime = (newTime) => {
     setStartTime(newTime);
   };
   const changeEndTime = (newTime) => {
     setEndTime(newTime);
   };
+  const goBack = () => {
+    navigate(-1);
+  }
 
   return (
     <>
@@ -89,7 +94,7 @@ function EventForm() {
             </Card.Body>
           </Card>
           <div className="text-center mb-3">
-            <Button variant="outline-secondary">
+            <Button variant="outline-secondary" onClick={goBack}>
               <i class="fa-solid fa-arrow-left"></i> Back
             </Button>
           </div>

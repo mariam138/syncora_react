@@ -29,7 +29,7 @@ function EventsList() {
 
   const handleMount = async () => {
     try {
-      const { data } = await apiResp.get("/events");
+      const { data } = await apiResp.get("/events/");
       setEventsList(data);
       setIsLoaded(true);
     } catch (error) {
@@ -50,6 +50,13 @@ function EventsList() {
       e.preventDefault();
       try {
         await apiReq.delete(`/events/${eventId}/`);
+        setShowModal(false);
+        setEventsList((prevEventsList) => ({
+          ...prevEventsList,
+          results: prevEventsList.results.filter(
+            (event) => event.id !== eventId,
+          ),
+        }));
       } catch (error) {
         console.log(error);
       }

@@ -16,7 +16,6 @@ function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
   const [endTime, setEndTime] = useState("13:00");
   const [eventData, setEventData] = useState({
-    // pk: null,
     name: "",
     date: "",
     start_time: "",
@@ -26,7 +25,7 @@ function EventForm() {
     notes: "",
   });
 
-  const { pk, name, date, category, location, notes } = eventData;
+  const { name, date, category, location, notes } = eventData;
   const navigate = useNavigate();
   const changeStartTime = (newTime) => {
     setStartTime(newTime);

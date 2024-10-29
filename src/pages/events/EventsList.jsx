@@ -58,7 +58,7 @@ function EventsList() {
                     <Accordion.Header>
                       {event.name}
                       <br />
-                      {event.date} {event.start_time} {event.location}
+                      {event.date} | {event.start_time} | {event.location}
                     </Accordion.Header>
                     <Accordion.Body>
                       <ButtonGroup aria-label="View event and delete event buttons">

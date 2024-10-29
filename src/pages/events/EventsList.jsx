@@ -13,7 +13,11 @@ import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { toast, Bounce } from "react-toastify";
 
-function EventsList({showHeader = true, showCreateLink = true, showDeleteButton = true}) {
+function EventsList({
+  showHeader = true,
+  showCreateLink = true,
+  showDeleteButton = true,
+}) {
   // Set events list to an empty results array
   const [eventsList, setEventsList] = useState({ results: [] });
   // Initially set loaded state to false
@@ -101,16 +105,18 @@ function EventsList({showHeader = true, showCreateLink = true, showDeleteButton 
                         >
                           View event
                         </Button>
-                        
-                        {showDeleteButton && <Button
-                          variant="danger"
-                          onClick={() => {
-                            setShowModal(true);
-                            setEventId(event.id);
-                          }}
-                        >
-                          Delete
-                        </Button>}
+
+                        {showDeleteButton && (
+                          <Button
+                            variant="danger"
+                            onClick={() => {
+                              setShowModal(true);
+                              setEventId(event.id);
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        )}
                       </ButtonGroup>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -122,9 +128,11 @@ function EventsList({showHeader = true, showCreateLink = true, showDeleteButton 
               <LoadingSpinner />
             )}
           </Accordion>
-          {showCreateLink && <Link to="new/" className={styles.Link}>
-            New Event <i class="fa-solid fa-plus"></i>
-          </Link>}
+          {showCreateLink && (
+            <Link to="new/" className={styles.Link}>
+              New Event <i class="fa-solid fa-plus"></i>
+            </Link>
+          )}
         </Col>
       </Row>
       <DeleteModal

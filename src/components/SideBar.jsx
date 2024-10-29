@@ -36,7 +36,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
               New Event
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/tasks/new" activeClassName="activeClicked">
+          <NavLink exact to="/tasks/new/" activeClassName="activeClicked">
             <CDBSidebarMenuItem
               icon="file-circle-plus"
               iconSize="lg"
@@ -45,7 +45,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
               New Task
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/notes/new" activeClassName="activeClicked">
+          <NavLink exact to="/notes/new/" activeClassName="activeClicked">
             <CDBSidebarMenuItem
               icon="square-plus"
               iconSize="lg"

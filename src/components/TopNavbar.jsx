@@ -15,13 +15,13 @@ function TopNavbar() {
       <Navbar fixed="top" className={styles.Navbar}>
         <Container fluid>
           <Nav className="ms-auto d-flex align-items-center">
-            <NavLink to="/events/new" className={styles.NavbarLinks}>
+            <NavLink to="/events/new/" className={styles.NavbarLinks}>
               New Event <i class="fa-regular fa-calendar-plus"></i>
             </NavLink>
-            <NavLink to="/tasks/new" className={styles.NavbarLinks}>
+            <NavLink to="/tasks/new/" className={styles.NavbarLinks}>
               New Task <i class="fa-solid fa-file-circle-plus"></i>
             </NavLink>
-            <NavLink to="/notes/new" className={styles.NavbarLinks}>
+            <NavLink to="/notes/new/" className={styles.NavbarLinks}>
               New Note <i class="fa-solid fa-notes-medical"></i>
             </NavLink>
             {/* Welcome text to user when logged in */}

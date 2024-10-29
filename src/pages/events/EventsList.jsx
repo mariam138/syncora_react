@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { apiReq, apiResp } from "../../api/axiosDefaults";
+import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -34,7 +34,7 @@ function EventsList({
 
   const handleMount = async () => {
     try {
-      const { data } = await apiResp.get("/events/");
+      const { data } = await apiReq.get("/events/");
       setEventsList(data);
       setIsLoaded(true);
     } catch (error) {

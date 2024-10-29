@@ -47,9 +47,14 @@ function EventForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("start_time", startTime);
-    formData.append("end_time", endTime);
+    const eventData = new FormData();
+    eventData.append("name", name);
+    eventData.append("date", date);
+    eventData.append("category", category);
+    eventData.append("location", location);
+    eventData.append("start_time", startTime);
+    eventData.append("end_time", endTime);
+    eventData.append("notes", notes);
     try {
       await apiReq.post("/events/new/", eventData);
       console.log("success!");
@@ -99,7 +104,7 @@ function EventForm() {
                 <Form.Group className="mb-3" controlId="formEndTime">
                   <Form.Label className="me-2">End Time</Form.Label>
                   <TimePicker
-                    onChange={endTime}
+                    onChange={changeEndTime}
                     value={endTime}
                     name="end_time"
                     required

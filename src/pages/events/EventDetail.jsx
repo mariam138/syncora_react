@@ -42,7 +42,6 @@ function EventDetail() {
   } = eventDetail;
 
   const is_owner = currentUser?.username === owner;
-  console.log(is_owner);
   const navigate = useNavigate();
 
   const handleMount = async () => {
@@ -187,7 +186,7 @@ function EventDetail() {
         handleClose={() => setShowModal(false)}
         feature="event"
         modalContent="Are you sure you want to delete this event"
-        // handleDelete={handleDelete}
+        handleDelete={handleDelete}
       />
     </>
   );

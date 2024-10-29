@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
-import TopNavbar from "../components/TopNavbar";
-import { Outlet } from "react-router-dom";
+import React from "react";
+import EventsList from "./events/EventsList";
+import appStyles from "../App.module.css";
 
-const Dashboard = () => {
-
+function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+      <h1 className={appStyles.Header}>Dashboard</h1>
+      <EventsList />
+    </>
   );
-};
+}
 
 export default Dashboard;

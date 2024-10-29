@@ -10,6 +10,7 @@ import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
+import { apiReq } from "../../api/axiosDefaults";
 
 function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
@@ -44,6 +45,16 @@ function EventForm() {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await apiReq.post("/events/new/", eventData);
+      console.log("success!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Row>
@@ -51,7 +62,7 @@ function EventForm() {
           <h1 className={appStyles.Header}>New Event</h1>
           <Card className="mb-3">
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
@@ -133,7 +144,7 @@ function EventForm() {
                   />
                 </Form.Group>
                 <div className="text-center">
-                  <Button className={`${appStyles.Button} btn`}>
+                  <Button className={`${appStyles.Button} btn`} type="submit">
                     Create <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>

@@ -13,10 +13,27 @@ import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function EventForm() {
-  const [startTime, setStartTime] = useState("12:00");
-  const [endTime, setEndTime] = useState("13:00");
+  // Create function to add hours to current time
+  // Adapted from https://javascript.plainenglish.io/javascript-add-hours-to-date-6e3a39bb9345
+  const addHours = (date, hours) => {
+    const dateCopy = new Date(date.getTime());
+    const hoursToAdd = hours * 60 * 60 * 1000;
+    dateCopy.setTime(date.getTime() + hoursToAdd);
+    return dateCopy;
+  };
+  let now = new Date();
+  let plusOneHour = addHours(now, 1);
+  let currentTime = now.toLocaleTimeString({
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  // Set the start time to user's current time
+  // Set the end time to the current time + 1 hour
+  const [startTime, setStartTime] = useState(currentTime);
+  const [endTime, setEndTime] = useState(plusOneHour);
   const [error, setError] = useState({});
   const [eventData, setEventData] = useState({
     name: "",
@@ -30,6 +47,7 @@ function EventForm() {
 
   const { name, date, category, location, notes } = eventData;
   const navigate = useNavigate();
+  const currentUser = useCurrentUser();
   const changeStartTime = (newTime) => {
     setStartTime(newTime);
   };

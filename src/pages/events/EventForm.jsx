@@ -47,6 +47,9 @@ function EventForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("start_time", startTime);
+    formData.append("end_time", endTime);
     try {
       await apiReq.post("/events/new/", eventData);
       console.log("success!");

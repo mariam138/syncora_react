@@ -13,7 +13,7 @@ import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { toast, Bounce } from "react-toastify";
 
-function EventsList() {
+function EventsList({showHeader = true, showCreateLink = true, showDeleteButton = true}) {
   // Set events list to an empty results array
   const [eventsList, setEventsList] = useState({ results: [] });
   // Initially set loaded state to false
@@ -82,7 +82,7 @@ function EventsList() {
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          <h1 className={appStyles.Header}>Events</h1>
+          {showHeader && <h1 className={appStyles.Header}>Events</h1>}
           <Accordion alwaysOpen className="mb-3">
             {isLoaded ? (
               eventsList.results.length > 0 ? (
@@ -101,7 +101,8 @@ function EventsList() {
                         >
                           View event
                         </Button>
-                        <Button
+                        
+                        {showDeleteButton && <Button
                           variant="danger"
                           onClick={() => {
                             setShowModal(true);
@@ -109,7 +110,7 @@ function EventsList() {
                           }}
                         >
                           Delete
-                        </Button>
+                        </Button>}
                       </ButtonGroup>
                     </Accordion.Body>
                   </Accordion.Item>
@@ -121,9 +122,9 @@ function EventsList() {
               <LoadingSpinner />
             )}
           </Accordion>
-          <Link to="new/" className={styles.Link}>
+          {showCreateLink && <Link to="new/" className={styles.Link}>
             New Event <i class="fa-solid fa-plus"></i>
-          </Link>
+          </Link>}
         </Col>
       </Row>
       <DeleteModal

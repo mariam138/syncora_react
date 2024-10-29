@@ -200,6 +200,7 @@ For future features where users can be linked on tasks and events together, I ha
 - **Axios** - The Axios framework is used to easily send and get requests from the REST API backend created for Syncora
 - **Mock Service Worker** - This was used to help mock an API when performing automated tests throughout the creation of Syncora. Setting up of MSW for testing was done following the [documentation](https://mswjs.io/docs/getting-started). MSW was only downloaded as a development dependency.
 - **react-time-picker 7.0.0** - This library was downloaded to be able to allow users to choose a time for their tasks and events using a time picker widget.
+- **react-toastify** - The *react-toastify* library allows simple toast notifications to appear on the screen. This is used as indicators to the user if something was successful or to provide information.
 
 ## Testing
 

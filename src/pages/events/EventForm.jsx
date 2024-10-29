@@ -11,6 +11,7 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
+import { toast, Bounce } from "react-toastify";
 
 function EventForm() {
   const [startTime, setStartTime] = useState("12:00");
@@ -47,7 +48,6 @@ function EventForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const eventData = new FormData();
-    eventData.append("pk", pk);
     eventData.append("name", name);
     eventData.append("date", date);
     eventData.append("category", category);
@@ -58,6 +58,17 @@ function EventForm() {
     try {
       await apiReq.post("/events/new/", eventData);
       navigate(`/events/`);
+      toast.success("Event created", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } catch (error) {
       console.log(error);
     }

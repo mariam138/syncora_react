@@ -54,16 +54,29 @@ function EventForm() {
               <Form>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Name</Form.Label>
-                  <Form.Control type="email" placeholder="Event name" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Event name"
+                    name="name"
+                    value={name}
+                    onChange={handleChange}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>Date</Form.Label>
-                  <CDBInput type="date" placeholder="Date" />
+                  <CDBInput
+                    type="date"
+                    placeholder="Date"
+                    name="date"
+                    value={date}
+                    onChange={handleChange}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formStartTime">
                   <Form.Label className="me-2">Start Time</Form.Label>
                   <TimePicker
                     onChange={changeStartTime}
+                    name="start_time"
                     value={startTime}
                     required
                     clearAriaLabel="Clear time"
@@ -74,13 +87,19 @@ function EventForm() {
                   <TimePicker
                     onChange={endTime}
                     value={endTime}
+                    name="end_time"
                     required
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formCategory">
                   <Form.Label>Category</Form.Label>
-                  <Form.Select aria-label="Choose a category">
+                  <Form.Select
+                    aria-label="Choose a category"
+                    name="category"
+                    value={category}
+                    onChange={handleChange}
+                  >
                     <option>Choose a category</option>
                     <option value="WORK">Work</option>
                     <option value="SOC">Social</option>
@@ -93,7 +112,13 @@ function EventForm() {
 
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>Location</Form.Label>
-                  <Form.Control type="text" placeholder="Enter location" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter location"
+                    name="location"
+                    value={location}
+                    onChange={handleChange}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formNotes">
@@ -102,6 +127,9 @@ function EventForm() {
                     as="textarea"
                     rows={3}
                     placeholder="Any notes?"
+                    name="notes"
+                    value={notes}
+                    onChange={handleChange}
                   />
                 </Form.Group>
                 <div className="text-center">

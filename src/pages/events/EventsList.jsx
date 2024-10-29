@@ -11,6 +11,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
+import { toast, Bounce } from "react-toastify";
 
 function EventsList() {
   // Set events list to an empty results array
@@ -49,8 +50,8 @@ function EventsList() {
     if (is_owner) {
       e.preventDefault();
       try {
-        await apiReq.delete(`/events/${eventId}/`);
         setShowModal(false);
+        await apiReq.delete(`/events/${eventId}/`);
         // Updates the events list by filtering through the results to remove the deleted event from the list
         setEventsList((prevEventsList) => ({
           ...prevEventsList,
@@ -58,6 +59,17 @@ function EventsList() {
             (event) => event.id !== eventId,
           ),
         }));
+        toast.success("Event deleted", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       } catch (error) {
         console.log(error);
       }

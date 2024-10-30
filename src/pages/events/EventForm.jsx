@@ -15,15 +15,7 @@ import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function EventForm({
-  eventName,
-  eventDate,
-  eventStartTime,
-  eventEndTime,
-  eventCategory,
-  eventLocation,
-  eventNotes,
-}) {
+function EventForm({ eventDetail }) {
   // Create function to add hours to current time
   // Adapted from https://javascript.plainenglish.io/javascript-add-hours-to-date-6e3a39bb9345
   const addHours = (date, hours) => {
@@ -44,13 +36,13 @@ function EventForm({
   const [endTime, setEndTime] = useState(plusOneHour);
   const [error, setError] = useState({});
   const [eventData, setEventData] = useState({
-    name: "",
-    date: "",
-    start_time: "",
-    end_time: "",
-    category: "",
-    location: "",
-    notes: "",
+    name: eventData?.name || "",
+    date: eventData?.date || "",
+    start_time: eventData?.startTime || "",
+    end_time: eventData?.endTime || "",
+    category: eventData?.category || "",
+    location: eventData?.location || "",
+    notes: eventData?.notes || "",
   });
 
   const { name, date, category, location, notes } = eventData;
@@ -137,6 +129,7 @@ function EventForm({
                     name="name"
                     value={name}
                     onChange={handleChange}
+                    eventName
                   />
                 </Form.Group>
                 {error.name?.map((message, i) => (

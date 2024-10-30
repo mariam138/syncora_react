@@ -114,7 +114,7 @@ function EventDetail() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           {isEditing ? (
-            <EventForm />
+            <EventForm eventName={name}/>
           ) : hasLoaded ? (
             <>
               <h1 className={appStyles.Header}>{name}</h1>

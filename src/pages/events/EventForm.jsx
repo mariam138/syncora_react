@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -12,7 +12,6 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
-import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { SuccessToast, WarningToast } from "../../functions/Toasts";
 
@@ -68,27 +67,31 @@ function EventForm({ eventDetail, isEditing }) {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("date", date);
-    formData.append("category", category);
-    formData.append("location", location);
-    formData.append("start_time", startTime);
-    formData.append("end_time", endTime);
-    formData.append("notes", notes);
-    try {
-      await apiReq.post("/events/new/", formData);
-      navigate(`/events/`);
-      SuccessToast("Event created");
-    } catch (error) {
-      // Only display the toast if the error is due to something
-      // Other than a 400 code ie a client error
-      if (error.response.status !== 400) {
-        WarningToast("Event could not be created. Please try again.");
+    if (currentUser) {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("date", date);
+      formData.append("category", category);
+      formData.append("location", location);
+      formData.append("start_time", startTime);
+      formData.append("end_time", endTime);
+      formData.append("notes", notes);
+      try {
+        await apiReq.post("/events/new/", formData);
+        navigate(`/events/`);
+        SuccessToast("Event created");
+      } catch (error) {
+        // Only display the toast if the error is due to something
+        // Other than a 400 code ie a client error
+        if (error.response.status !== 400) {
+          WarningToast("Event could not be created. Please try again.");
+        }
+        console.log(error);
+        setError(error.response?.data);
       }
-      console.log(error);
-      setError(error.response?.data);
+    } else {
+      navigate("/signin");
     }
   };
 

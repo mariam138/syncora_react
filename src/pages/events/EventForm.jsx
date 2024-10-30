@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -15,7 +15,9 @@ import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function EventForm({ eventDetail }) {
+function EventForm({ eventDetail, isEditing }) {
+  const navigate = useNavigate();
+  const currentUser = useCurrentUser();
   // Create function to add hours to current time
   // Adapted from https://javascript.plainenglish.io/javascript-add-hours-to-date-6e3a39bb9345
   const addHours = (date, hours) => {
@@ -32,22 +34,42 @@ function EventForm({ eventDetail }) {
   });
   // Set the start time to user's current time
   // Set the end time to the current time + 1 hour
-  const [startTime, setStartTime] = useState(currentTime);
-  const [endTime, setEndTime] = useState(plusOneHour);
+  const [startTime, setStartTime] = useState(
+    eventDetail?.startTime || currentTime,
+  );
+  const [endTime, setEndTime] = useState(eventDetail?.endTime || plusOneHour);
   const [error, setError] = useState({});
   const [eventData, setEventData] = useState({
-    name: eventData?.name || "",
-    date: eventData?.date || "",
-    start_time: eventData?.startTime || "",
-    end_time: eventData?.endTime || "",
-    category: eventData?.category || "",
-    location: eventData?.location || "",
-    notes: eventData?.notes || "",
+    name: "",
+    date: "",
+    start_time: "",
+    end_time: "",
+    category: "",
+    location: "",
+    notes: "",
   });
 
+  const handleMount = () => {
+    {
+      isEditing &&
+        setEventData({
+          name: eventDetail?.name,
+          date: eventDetail?.date,
+          start_time: eventDetail?.start_time,
+          end_time: eventDetail?.end_time,
+          category: eventDetail?.category,
+          location: eventDetail?.location,
+          notes: eventDetail?.notes,
+        });
+    }
+  };
+
+  useEffect(() => {
+    handleMount();
+  }, [isEditing]);
+
   const { name, date, category, location, notes } = eventData;
-  const navigate = useNavigate();
-  const currentUser = useCurrentUser();
+
   const changeStartTime = (newTime) => {
     setStartTime(newTime);
   };
@@ -67,16 +89,16 @@ function EventForm({ eventDetail }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const eventData = new FormData();
-    eventData.append("name", name);
-    eventData.append("date", date);
-    eventData.append("category", category);
-    eventData.append("location", location);
-    eventData.append("start_time", startTime);
-    eventData.append("end_time", endTime);
-    eventData.append("notes", notes);
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("date", date);
+    formData.append("category", category);
+    formData.append("location", location);
+    formData.append("start_time", startTime);
+    formData.append("end_time", endTime);
+    formData.append("notes", notes);
     try {
-      await apiReq.post("/events/new/", eventData);
+      await apiReq.post("/events/new/", formData);
       navigate(`/events/`);
       toast.success("Event created", {
         position: "top-center",

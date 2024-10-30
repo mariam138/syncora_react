@@ -56,6 +56,7 @@ function EventDetail() {
         date,
         start_time,
         end_time,
+        category,
         category_display,
         location,
         notes,
@@ -67,6 +68,7 @@ function EventDetail() {
         date,
         start_time,
         end_time,
+        category,
         category_display,
         location,
         notes,
@@ -114,7 +116,7 @@ function EventDetail() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           {isEditing ? (
-            <EventForm eventName={name}/>
+            <EventForm eventDetail={eventDetail} isEditing={isEditing} />
           ) : hasLoaded ? (
             <>
               <h1 className={appStyles.Header}>{name}</h1>

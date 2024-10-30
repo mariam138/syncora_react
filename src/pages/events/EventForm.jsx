@@ -13,7 +13,7 @@ import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { SuccessToast, WarningToast } from "../../functions/Toasts";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function EventForm({ eventDetail, isEditing }) {
   const navigate = useNavigate();

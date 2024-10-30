@@ -82,7 +82,11 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
                     onChange={handleChange}
                   />
                 </Form.Group>
-
+                {error.date?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formStartTime">
                   <Form.Label className="me-2">Start Time</Form.Label>
                   <TimePicker
@@ -120,15 +124,19 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
                     value={category || ""}
                     onChange={handleChange}
                   >
-                    <option>Choose a category</option>
+                    <option value="">Choose a category</option>
                     <option value="WORK">Work</option>
                     <option value="SOC">Social</option>
                     <option value="FAM">Family</option>
                     <option value="APP">Appointment</option>
                     <option value="EDU">Education</option>
-                    <option value="TRAVEL">Travel</option>
                   </Form.Select>
                 </Form.Group>
+                {!category && error.category?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>Location</Form.Label>

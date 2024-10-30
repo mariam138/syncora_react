@@ -51,7 +51,7 @@ function EventEdit({ eventDetail, isEditing }) {
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          <h1 className={appStyles.Header}>New Event</h1>
+          <h1 className={appStyles.Header}>Edit Event</h1>
           <Card className="mb-3">
             <Card.Body>
               <Form>
@@ -157,7 +157,7 @@ function EventEdit({ eventDetail, isEditing }) {
                 </Form.Group>
                 <div className="text-center">
                   <Button className={`${appStyles.Button} btn`} type="submit">
-                    Create <i class="fa-solid fa-plus"></i>
+                    Save changes <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>

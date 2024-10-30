@@ -13,6 +13,7 @@ import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/Toasts";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function EventEdit({
   setEventDetail,
@@ -21,41 +22,46 @@ function EventEdit({
   handleChange,
   originalEventDetail,
 }) {
-  const { name, date, start_time, end_time, category, location, notes } =
+  const { owner, name, date, start_time, end_time, category, location, notes } =
     eventDetail;
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const { pk } = useParams();
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner;
 
   const goBack = () => {
     setEventDetail(originalEventDetail);
     setIsEditing(false);
     navigate(`/events/${pk}/`);
-
     WarningToast("Your changes were not saved.");
   };
 
   const handleEdit = async (e) => {
-    e.preventDefault();
-    setError({});
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("date", date);
-    formData.append("category", category);
-    formData.append("location", location);
-    formData.append("start_time", start_time);
-    formData.append("end_time", end_time);
-    formData.append("notes", notes);
-    try {
-      await apiReq.put(`/events/${pk}/`, formData);
-      setIsEditing(false);
-      navigate(`/events/${pk}/`);
-      SuccessToast("Event has been edited");
-    } catch (error) {
-      if (error.response.status !== 400) {
-        WarningToast("Event could not be edited. Please try again.");
+    if (is_owner) {
+      e.preventDefault();
+      setError({});
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("date", date);
+      formData.append("category", category);
+      formData.append("location", location);
+      formData.append("start_time", start_time);
+      formData.append("end_time", end_time);
+      formData.append("notes", notes);
+      try {
+        await apiReq.put(`/events/${pk}/`, formData);
+        setIsEditing(false);
+        navigate(`/events/${pk}/`);
+        SuccessToast("Event has been edited");
+      } catch (error) {
+        if (error.response.status !== 400) {
+          WarningToast("Event could not be edited. Please try again.");
+        }
+        setError(error.response?.data);
       }
-      setError(error.response?.data);
+    } else {
+      navigate("/signin");
     }
   };
   return (

@@ -15,7 +15,7 @@ import { apiReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
-function EventForm({ eventDetail, isEditing }) {
+function EventForm() {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   // Create function to add hours to current time

@@ -11,7 +11,7 @@ import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EventEdit from "./EventEdit";
-import { SuccessToast } from "../../functions/Toasts";
+import { SuccessToast } from "../../functions/toasts";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -90,7 +90,7 @@ function EventDetail() {
     navigate(-1);
   };
 
-  const handleDelete = async (e) => {
+  const handleDelete = async () => {
     if (is_owner) {
       try {
         await apiReq.delete(`/events/${pk}/`);

@@ -11,7 +11,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
-import { SuccessToast } from "../../functions/Toasts";
+import { SuccessToast } from "../../functions/toasts";
 
 function EventsList({
   showHeader = true,

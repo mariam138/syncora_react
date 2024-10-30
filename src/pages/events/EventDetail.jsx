@@ -11,12 +11,14 @@ import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast, Bounce } from "react-toastify";
+import EventForm from "./EventForm";
 
 function EventDetail() {
   const { pk } = useParams();
   const currentUser = useCurrentUser();
   const [hasLoaded, setHasLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [eventDetail, setEventDetail] = useState({
     id: null,
     owner: "",
@@ -111,44 +113,46 @@ function EventDetail() {
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          {hasLoaded ? (
+          {isEditing ? (
+            <EventForm />
+          ) : hasLoaded ? (
             <>
               <h1 className={appStyles.Header}>{name}</h1>
               <Card className="my-3">
                 <Card.Body>
                   <Card.Title>
-                    Date <i class="fa-regular fa-calendar"></i>
+                    Date <i className="fa-regular fa-calendar"></i>
                   </Card.Title>
                   <Card.Text>{date}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Start Time <i class="fa-solid fa-hourglass-start"></i>
+                    Start Time <i className="fa-solid fa-hourglass-start"></i>
                   </Card.Title>
                   <Card.Text>{start_time}</Card.Text>
                   <hr />
                   <Card.Title>
-                    End Time <i class="fa-solid fa-hourglass-end"></i>
+                    End Time <i className="fa-solid fa-hourglass-end"></i>
                   </Card.Title>
                   <Card.Text>{end_time}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Location <i class="fa-solid fa-location-dot"></i>
+                    Location <i className="fa-solid fa-location-dot"></i>
                   </Card.Title>
                   <Card.Text>{location}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Category <i class="fa-solid fa-icons"></i>
+                    Category <i className="fa-solid fa-icons"></i>
                   </Card.Title>
                   <Card.Text>{category_display}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Notes <i class="fa-regular fa-message"></i>
+                    Notes <i className="fa-regular fa-message"></i>
                   </Card.Title>
                   <Card.Text className={`${!notes && "text-body-secondary"}`}>
-                    {notes ? notes : "No notes"}
+                    {notes || "No notes"}
                   </Card.Text>
                 </Card.Body>
-              </Card>{" "}
+              </Card>
             </>
           ) : (
             <div className="text-center">
@@ -157,7 +161,13 @@ function EventDetail() {
           )}
 
           <div className="text-center mt-4">
-            <Button variant="info" className={`mx-2 ${styles.BtnText}`}>
+            <Button
+              variant="info"
+              className={`mx-2 ${styles.BtnText}`}
+              onClick={() => {
+                setIsEditing(true);
+              }}
+            >
               Edit <i class="fa-solid fa-pencil"></i>
             </Button>
             <Button

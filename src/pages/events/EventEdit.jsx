@@ -13,36 +13,9 @@ import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 
 function EventEdit({ eventDetail, isEditing, handleChange }) {
-  const [eventData, setEventData] = useState({});
-  const [error, setError] = useState({});
   const { name, date, start_time, end_time, category, location, notes } =
     eventDetail;
   const navigate = useNavigate();
-  const handleMount = () => {
-    {
-      isEditing &&
-        setEventData({
-          name: eventDetail?.name,
-          date: eventDetail?.date,
-          start_time: eventDetail?.start_time,
-          end_time: eventDetail?.end_time,
-          category: eventDetail?.category,
-          location: eventDetail?.location,
-          notes: eventDetail?.notes,
-        });
-    }
-  };
-
-  useEffect(() => {
-    handleMount();
-  }, [isEditing]);
-
-//   const handleChange = (e) => {
-//     setEventData({
-//       ...eventData,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
 
   const goBack = () => {
     navigate(-1);
@@ -61,37 +34,32 @@ function EventEdit({ eventDetail, isEditing, handleChange }) {
                     type="text"
                     placeholder="Event name"
                     name="name"
-                    value={name}
+                    value={name || ""}
                     onChange={handleChange}
                     eventName
                   />
                 </Form.Group>
-                {error.name?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>Date</Form.Label>
                   <CDBInput
                     type="date"
                     placeholder="Date"
                     name="date"
-                    value={date}
+                    value={date || ""}
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {error.date?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+
                 <Form.Group className="mb-3" controlId="formStartTime">
                   <Form.Label className="me-2">Start Time</Form.Label>
                   <TimePicker
-                    // onChange={changeStartTime}
+                    onChange={(time) => {
+                      handleChange({
+                        target: { name: "start_time", value: time },
+                      });
+                    }}
                     name="start_time"
-                    value={start_time}
+                    value={start_time || ""}
                     required
                     clearAriaLabel="Clear time"
                   />
@@ -100,8 +68,12 @@ function EventEdit({ eventDetail, isEditing, handleChange }) {
                 <Form.Group className="mb-3" controlId="formEndTime">
                   <Form.Label className="me-2">End Time</Form.Label>
                   <TimePicker
-                    // onChange={changeEndTime}
-                    value={end_time}
+                    onChange={(time) => {
+                      handleChange({
+                        target: { name: "end_time", value: time },
+                      });
+                    }}
+                    value={end_time || ""}
                     name="end_time"
                     required
                     clearAriaLabel="Clear time"
@@ -112,7 +84,7 @@ function EventEdit({ eventDetail, isEditing, handleChange }) {
                   <Form.Select
                     aria-label="Choose a category"
                     name="category"
-                    value={category}
+                    value={category || ""}
                     onChange={handleChange}
                   >
                     <option>Choose a category</option>
@@ -124,26 +96,18 @@ function EventEdit({ eventDetail, isEditing, handleChange }) {
                     <option value="TRAVEL">Travel</option>
                   </Form.Select>
                 </Form.Group>
-                {error.category?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>Location</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Enter location"
                     name="location"
-                    value={location}
+                    value={location || ""}
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {error.location?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+
                 <Form.Group className="mb-3" controlId="formNotes">
                   <Form.Label>Notes</Form.Label>
                   <Form.Control
@@ -151,7 +115,7 @@ function EventEdit({ eventDetail, isEditing, handleChange }) {
                     rows={3}
                     placeholder={!notes && "No notes"}
                     name="notes"
-                    value={notes}
+                    value={notes || ""}
                     onChange={handleChange}
                   />
                 </Form.Group>

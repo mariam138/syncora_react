@@ -83,7 +83,9 @@ function EventEdit({
                   </Alert>
                 ))}
                 <Form.Group className="mb-3" controlId="formDate">
-                  <Form.Label>Date</Form.Label>
+                  <Form.Label>
+                    Date <i className="fa-regular fa-calendar"></i>
+                  </Form.Label>
                   <CDBInput
                     type="date"
                     placeholder="Date"
@@ -98,7 +100,9 @@ function EventEdit({
                   </Alert>
                 ))}
                 <Form.Group className="mb-3" controlId="formStartTime">
-                  <Form.Label className="me-2">Start Time</Form.Label>
+                  <Form.Label className="me-2">
+                    Start Time <i className="fa-solid fa-hourglass-start"></i>
+                  </Form.Label>
                   <TimePicker
                     onChange={(time) => {
                       handleChange({
@@ -113,7 +117,9 @@ function EventEdit({
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formEndTime">
-                  <Form.Label className="me-2">End Time</Form.Label>
+                  <Form.Label className="me-2">
+                    End Time <i className="fa-solid fa-hourglass-end"></i>
+                  </Form.Label>
                   <TimePicker
                     onChange={(time) => {
                       handleChange({
@@ -126,8 +132,28 @@ function EventEdit({
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formLocation">
+                  <Form.Label>
+                    Location <i className="fa-solid fa-location-dot"></i>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter location"
+                    name="location"
+                    value={location || ""}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                {error.location?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formCategory">
-                  <Form.Label>Category</Form.Label>
+                  <Form.Label>
+                    Category <i className="fa-solid fa-icons"></i>
+                  </Form.Label>
                   <Form.Select
                     aria-label="Choose a category"
                     name="category"
@@ -149,24 +175,10 @@ function EventEdit({
                     </Alert>
                   ))}
 
-                <Form.Group className="mb-3" controlId="formLocation">
-                  <Form.Label>Location</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter location"
-                    name="location"
-                    value={location || ""}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {error.location?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
-
                 <Form.Group className="mb-3" controlId="formNotes">
-                  <Form.Label>Notes</Form.Label>
+                  <Form.Label>
+                    Notes <i className="fa-solid fa-message"></i>
+                  </Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
@@ -186,7 +198,7 @@ function EventEdit({
           </Card>
           <div className="text-center mb-3">
             <Button variant="outline-secondary" onClick={goBack}>
-              <i class="fa-solid fa-arrow-left"></i> Cancel
+              Cancel <i class="fa-solid fa-xmark"></i>
             </Button>
           </div>
         </Col>

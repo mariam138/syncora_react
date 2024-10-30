@@ -154,7 +154,7 @@ function EventDetail() {
                   <Card.Text>{category_display}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Notes <i className="fa-regular fa-message"></i>
+                    Notes <i className="fa-solid fa-message"></i>
                   </Card.Title>
                   <Card.Text className={`${!notes && "text-body-secondary"}`}>
                     {notes || "No notes"}

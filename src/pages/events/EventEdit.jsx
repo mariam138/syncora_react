@@ -42,10 +42,10 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
       navigate(`/events/${pk}/`);
       SuccessToast("Event has been edited");
     } catch (error) {
-      //   console.log(error.response);
-      WarningToast("Event could not be edited. Please try again.");
+      if (error.response.status !== 400) {
+        WarningToast("Event could not be edited. Please try again.");
+      }
       setError(error.response?.data);
-      console.log(error.response?.data.name);
     }
   };
   return (

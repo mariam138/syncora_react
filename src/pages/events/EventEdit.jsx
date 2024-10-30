@@ -124,7 +124,7 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
                     value={category || ""}
                     onChange={handleChange}
                   >
-                    <option value="">Choose a category</option>
+                    <option>Choose a category</option>
                     <option value="WORK">Work</option>
                     <option value="SOC">Social</option>
                     <option value="FAM">Family</option>
@@ -132,11 +132,12 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
                     <option value="EDU">Education</option>
                   </Form.Select>
                 </Form.Group>
-                {!category && error.category?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {!category &&
+                  error.category?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>Location</Form.Label>
@@ -148,6 +149,11 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {error.location?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formNotes">
                   <Form.Label>Notes</Form.Label>

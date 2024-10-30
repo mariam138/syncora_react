@@ -152,6 +152,21 @@ function EventForm({ eventDetail, isEditing }) {
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="formLocation">
+                  <Form.Label>Location</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter location"
+                    name="location"
+                    value={location}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                {error.location?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formCategory">
                   <Form.Label>Category</Form.Label>
                   <Form.Select
@@ -174,21 +189,7 @@ function EventForm({ eventDetail, isEditing }) {
                     {message}
                   </Alert>
                 ))}
-                <Form.Group className="mb-3" controlId="formLocation">
-                  <Form.Label>Location</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter location"
-                    name="location"
-                    value={location}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-                {error.location?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+
                 <Form.Group className="mb-3" controlId="formNotes">
                   <Form.Label>Notes</Form.Label>
                   <Form.Control

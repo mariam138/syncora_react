@@ -112,6 +112,13 @@ function EventDetail() {
     }
   };
 
+  const handleChange = (e) => {
+    setEventData({
+      ...eventData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <Row>

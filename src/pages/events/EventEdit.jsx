@@ -14,7 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/Toasts";
 
-function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
+function EventEdit({ setEventDetail ,eventDetail, isEditing, setIsEditing, handleChange }) {
   const { name, date, start_time, end_time, category, location, notes } =
     eventDetail;
   const [error, setError] = useState({});

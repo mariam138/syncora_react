@@ -117,6 +117,7 @@ function EventDetail() {
         <Col sm={{ span: 6, offset: 3 }}>
           {isEditing ? (
             <EventEdit
+              setEventDetail={setEventDetail}
               eventDetail={eventDetail}
               isEditing={isEditing}
               setIsEditing={setIsEditing}

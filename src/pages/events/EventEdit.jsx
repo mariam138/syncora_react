@@ -11,6 +11,7 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
+import SuccessToast from "../../components/Toasts";
 
 function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
   const { name, date, start_time, end_time, category, location, notes } =
@@ -36,6 +37,7 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
       await apiReq.put(`/events/${pk}/`, formData);
       setIsEditing(false);
       navigate(`/events/${pk}/`);
+      SuccessToast("Event has been edited");
     } catch (error) {
       console.log(error);
     }

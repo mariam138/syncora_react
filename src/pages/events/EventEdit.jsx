@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import { CDBInput } from "cdbreact";
 import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
@@ -11,11 +12,12 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
-import SuccessToast from "../../functions/Toasts";
+import { SuccessToast, WarningToast } from "../../functions/Toasts";
 
 function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
   const { name, date, start_time, end_time, category, location, notes } =
     eventDetail;
+  const [error, setError] = useState({});
   const navigate = useNavigate();
   const { pk } = useParams();
 
@@ -25,6 +27,7 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
 
   const handleEdit = async (e) => {
     e.preventDefault();
+    setError({});
     const formData = new FormData();
     formData.append("name", name);
     formData.append("date", date);
@@ -39,7 +42,10 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
       navigate(`/events/${pk}/`);
       SuccessToast("Event has been edited");
     } catch (error) {
-      console.log(error);
+      //   console.log(error.response);
+      WarningToast("Event could not be edited. Please try again.");
+      setError(error.response?.data);
+      console.log(error.response?.data.name);
     }
   };
   return (
@@ -61,6 +67,11 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
                     eventName
                   />
                 </Form.Group>
+                {error.name?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>Date</Form.Label>
                   <CDBInput

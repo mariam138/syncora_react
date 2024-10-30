@@ -11,7 +11,7 @@ import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EventEdit from "./EventEdit";
-import SuccessToast from "../../functions/Toasts";
+import { SuccessToast } from "../../functions/Toasts";
 
 function EventDetail() {
   const { pk } = useParams();

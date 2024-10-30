@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { toast, Bounce } from "react-toastify";
-import SuccessToast from "../../components/Toasts";
+import SuccessToast from "../../functions/Toasts";
 
 function EventsList({
   showHeader = true,

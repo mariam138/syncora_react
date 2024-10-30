@@ -11,7 +11,7 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
-import SuccessToast from "../../components/Toasts";
+import SuccessToast from "../../functions/Toasts";
 
 function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
   const { name, date, start_time, end_time, category, location, notes } =

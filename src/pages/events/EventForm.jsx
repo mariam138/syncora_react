@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import SuccessToast from "../../components/Toasts";
+import SuccessToast from "../../functions/Toasts";
 
 function EventForm({ eventDetail, isEditing }) {
   const navigate = useNavigate();

@@ -10,10 +10,8 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { toast, Bounce } from "react-toastify";
-import EventForm from "./EventForm";
 import EventEdit from "./EventEdit";
-import SuccessToast from "../../components/Toasts";
+import SuccessToast from "../../functions/Toasts";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -94,7 +92,7 @@ function EventDetail() {
       try {
         await apiReq.delete(`/events/${pk}/`);
         navigate("/events/");
-        SuccessToast("Event deleted")
+        SuccessToast("Event deleted");
       } catch (error) {
         console.log(error);
       }

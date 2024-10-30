@@ -14,7 +14,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/Toasts";
 
-function EventEdit({ setEventDetail ,eventDetail, isEditing, setIsEditing, handleChange }) {
+function EventEdit({
+  setEventDetail,
+  eventDetail,
+  setIsEditing,
+  handleChange,
+  originalEventDetail,
+}) {
   const { name, date, start_time, end_time, category, location, notes } =
     eventDetail;
   const [error, setError] = useState({});
@@ -22,8 +28,10 @@ function EventEdit({ setEventDetail ,eventDetail, isEditing, setIsEditing, handl
   const { pk } = useParams();
 
   const goBack = () => {
-    navigate(`/events/${pk}/`);
+    setEventDetail(originalEventDetail);
     setIsEditing(false);
+    navigate(`/events/${pk}/`);
+
     WarningToast("Your changes were not saved.");
   };
 

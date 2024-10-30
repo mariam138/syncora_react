@@ -119,9 +119,9 @@ function EventDetail() {
             <EventEdit
               setEventDetail={setEventDetail}
               eventDetail={eventDetail}
-              isEditing={isEditing}
               setIsEditing={setIsEditing}
               handleChange={handleChange}
+              originalEventDetail={originalEventDetail}
             />
           ) : hasLoaded ? (
             <>

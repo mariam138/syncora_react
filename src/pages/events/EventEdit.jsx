@@ -9,15 +9,27 @@ import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { apiReq } from "../../api/axiosDefaults";
 
-function EventEdit({ eventDetail, isEditing, handleChange }) {
+function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
   const { name, date, start_time, end_time, category, location, notes } =
     eventDetail;
   const navigate = useNavigate();
+  const { pk } = useParams();
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const handleEdit = async (e) => {
+    try {
+      await apiReq.put(`/events/${pk}/`, eventDetail);
+      setIsEditing(false);
+      navigate(`/events/${pk}/`);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -26,7 +38,7 @@ function EventEdit({ eventDetail, isEditing, handleChange }) {
           <h1 className={appStyles.Header}>Edit Event</h1>
           <Card className="mb-3">
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleEdit}>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Name</Form.Label>
                   <Form.Control

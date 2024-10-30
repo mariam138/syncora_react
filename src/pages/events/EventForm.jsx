@@ -34,10 +34,8 @@ function EventForm({ eventDetail, isEditing }) {
   });
   // Set the start time to user's current time
   // Set the end time to the current time + 1 hour
-  const [startTime, setStartTime] = useState(
-    eventDetail?.startTime || currentTime,
-  );
-  const [endTime, setEndTime] = useState(eventDetail?.endTime || plusOneHour);
+  const [startTime, setStartTime] = useState(currentTime);
+  const [endTime, setEndTime] = useState(plusOneHour);
   const [error, setError] = useState({});
   const [eventData, setEventData] = useState({
     name: "",
@@ -48,7 +46,6 @@ function EventForm({ eventDetail, isEditing }) {
     location: "",
     notes: "",
   });
-
 
   const { name, date, category, location, notes } = eventData;
 

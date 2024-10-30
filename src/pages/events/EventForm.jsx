@@ -49,24 +49,6 @@ function EventForm({ eventDetail, isEditing }) {
     notes: "",
   });
 
-  const handleMount = () => {
-    {
-      isEditing &&
-        setEventData({
-          name: eventDetail?.name,
-          date: eventDetail?.date,
-          start_time: eventDetail?.start_time,
-          end_time: eventDetail?.end_time,
-          category: eventDetail?.category,
-          location: eventDetail?.location,
-          notes: eventDetail?.notes,
-        });
-    }
-  };
-
-  useEffect(() => {
-    handleMount();
-  }, [isEditing]);
 
   const { name, date, category, location, notes } = eventData;
 

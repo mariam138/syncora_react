@@ -15,7 +15,15 @@ import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
-function EventForm() {
+function EventForm({
+  eventName,
+  eventDate,
+  eventStartTime,
+  eventEndTime,
+  eventCategory,
+  eventLocation,
+  eventNotes,
+}) {
   // Create function to add hours to current time
   // Adapted from https://javascript.plainenglish.io/javascript-add-hours-to-date-6e3a39bb9345
   const addHours = (date, hours) => {

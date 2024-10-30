@@ -12,6 +12,7 @@ import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast, Bounce } from "react-toastify";
 import EventForm from "./EventForm";
+import EventEdit from "./EventEdit";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -116,7 +117,7 @@ function EventDetail() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           {isEditing ? (
-            <EventForm eventDetail={eventDetail} isEditing={isEditing} />
+            <EventEdit eventDetail={eventDetail} isEditing={isEditing} />
           ) : hasLoaded ? (
             <>
               <h1 className={appStyles.Header}>{name}</h1>

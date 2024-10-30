@@ -50,7 +50,7 @@ function EventEdit({ eventDetail, isEditing }) {
   return (
     <>
       <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
+        <Col>
           <h1 className={appStyles.Header}>Edit Event</h1>
           <Card className="mb-3">
             <Card.Body>

@@ -12,7 +12,7 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 
-function EventEdit({ eventDetail, isEditing }) {
+function EventEdit({ eventDetail, isEditing, handleChange }) {
   const [eventData, setEventData] = useState({});
   const [error, setError] = useState({});
   const { name, date, start_time, end_time, category, location, notes } =
@@ -37,12 +37,12 @@ function EventEdit({ eventDetail, isEditing }) {
     handleMount();
   }, [isEditing]);
 
-  const handleChange = (e) => {
-    setEventData({
-      ...eventData,
-      [e.target.name]: e.target.value,
-    });
-  };
+//   const handleChange = (e) => {
+//     setEventData({
+//       ...eventData,
+//       [e.target.name]: e.target.value,
+//     });
+//   };
 
   const goBack = () => {
     navigate(-1);

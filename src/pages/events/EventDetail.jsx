@@ -113,8 +113,8 @@ function EventDetail() {
   };
 
   const handleChange = (e) => {
-    setEventData({
-      ...eventData,
+    setEventDetail({
+      ...eventDetail,
       [e.target.name]: e.target.value,
     });
   };
@@ -124,7 +124,11 @@ function EventDetail() {
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           {isEditing ? (
-            <EventEdit eventDetail={eventDetail} isEditing={isEditing} />
+            <EventEdit
+              eventDetail={eventDetail}
+              isEditing={isEditing}
+              handleChange={handleChange}
+            />
           ) : hasLoaded ? (
             <>
               <h1 className={appStyles.Header}>{name}</h1>

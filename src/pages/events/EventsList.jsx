@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { toast, Bounce } from "react-toastify";
+import SuccessToast from "../../components/Toasts";
 
 function EventsList({
   showHeader = true,
@@ -63,17 +64,8 @@ function EventsList({
             (event) => event.id !== eventId,
           ),
         }));
-        toast.success("Event deleted", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+
+        SuccessToast("Event deleted");
       } catch (error) {
         console.log(error);
       }

@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import SuccessToast from "../../components/Toasts";
 
 function EventForm({ eventDetail, isEditing }) {
   const navigate = useNavigate();
@@ -79,17 +80,7 @@ function EventForm({ eventDetail, isEditing }) {
     try {
       await apiReq.post("/events/new/", formData);
       navigate(`/events/`);
-      toast.success("Event created", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      SuccessToast("Event created");
     } catch (error) {
       // Only display the toast if the error is due to something
       // Other than a 400 code ie a client error

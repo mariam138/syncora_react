@@ -13,6 +13,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { toast, Bounce } from "react-toastify";
 import EventForm from "./EventForm";
 import EventEdit from "./EventEdit";
+import SuccessToast from "../../components/Toasts";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -93,17 +94,7 @@ function EventDetail() {
       try {
         await apiReq.delete(`/events/${pk}/`);
         navigate("/events/");
-        toast.success("Event deleted", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        SuccessToast("Event deleted")
       } catch (error) {
         console.log(error);
       }

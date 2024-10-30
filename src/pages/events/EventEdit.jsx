@@ -22,7 +22,9 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
   const { pk } = useParams();
 
   const goBack = () => {
-    navigate(-1);
+    navigate(`/events/${pk}/`);
+    setIsEditing(false);
+    WarningToast("Your changes were not saved.");
   };
 
   const handleEdit = async (e) => {
@@ -176,7 +178,7 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
           </Card>
           <div className="text-center mb-3">
             <Button variant="outline-secondary" onClick={goBack}>
-              <i class="fa-solid fa-arrow-left"></i> Back
+              <i class="fa-solid fa-arrow-left"></i> Cancel
             </Button>
           </div>
         </Col>

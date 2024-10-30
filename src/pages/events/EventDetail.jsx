@@ -31,6 +31,8 @@ function EventDetail() {
     notes: "",
   });
 
+  const [originalEventDetail, setOriginalEventDetail] = useState(null);
+
   // Destructure data into variables to use for display
   const {
     owner,
@@ -73,6 +75,7 @@ function EventDetail() {
         location,
         notes,
       });
+      setOriginalEventDetail(data);
       setHasLoaded(true);
     } catch (error) {
       console.log(error);

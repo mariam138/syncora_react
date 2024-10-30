@@ -67,7 +67,9 @@ function EventEdit({
             <Card.Body>
               <Form onSubmit={handleEdit}>
                 <Form.Group className="mb-3" controlId="formName">
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label>
+                    Name <i class="fa-solid fa-tag"></i>
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Event name"
@@ -82,6 +84,7 @@ function EventEdit({
                     {message}
                   </Alert>
                 ))}
+
                 <Form.Group className="mb-3" controlId="formDate">
                   <Form.Label>
                     Date <i className="fa-regular fa-calendar"></i>
@@ -99,6 +102,7 @@ function EventEdit({
                     {message}
                   </Alert>
                 ))}
+
                 <Form.Group className="mb-3" controlId="formStartTime">
                   <Form.Label className="me-2">
                     Start Time <i className="fa-solid fa-hourglass-start"></i>
@@ -150,6 +154,7 @@ function EventEdit({
                     {message}
                   </Alert>
                 ))}
+
                 <Form.Group className="mb-3" controlId="formCategory">
                   <Form.Label>
                     Category <i className="fa-solid fa-icons"></i>

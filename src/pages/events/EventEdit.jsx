@@ -23,8 +23,17 @@ function EventEdit({ eventDetail, isEditing, setIsEditing, handleChange }) {
   };
 
   const handleEdit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("date", date);
+    formData.append("category", category);
+    formData.append("location", location);
+    formData.append("start_time", start_time);
+    formData.append("end_time", end_time);
+    formData.append("notes", notes);
     try {
-      await apiReq.put(`/events/${pk}/`, eventDetail);
+      await apiReq.put(`/events/${pk}/`, formData);
       setIsEditing(false);
       navigate(`/events/${pk}/`);
     } catch (error) {

@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import { toast, Bounce } from "react-toastify";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import SuccessToast from "../../functions/Toasts";
+import { SuccessToast, WarningToast } from "../../functions/Toasts";
 
 function EventForm({ eventDetail, isEditing }) {
   const navigate = useNavigate();
@@ -85,20 +85,7 @@ function EventForm({ eventDetail, isEditing }) {
       // Only display the toast if the error is due to something
       // Other than a 400 code ie a client error
       if (error.response.status !== 400) {
-        toast.warn(
-          "There was a problem creating your event. Please try again.",
-          {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          },
-        );
+        WarningToast("Event could not be created. Please try again.");
       }
       console.log(error);
       setError(error.response?.data);

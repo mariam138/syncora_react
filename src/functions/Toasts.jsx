@@ -1,6 +1,6 @@
 import { toast, Bounce } from "react-toastify";
 
-const SuccessToast = (message) => {
+export const SuccessToast = (message) => {
   toast.success(message, {
     position: "top-center",
     autoClose: 3000,
@@ -13,8 +13,6 @@ const SuccessToast = (message) => {
     transition: Bounce,
   });
 };
-
-export default SuccessToast;
 
 export const WarningToast = (message) => {
   toast.warn(message, {

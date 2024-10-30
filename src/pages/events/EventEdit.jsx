@@ -149,7 +149,7 @@ function EventEdit({ eventDetail, isEditing }) {
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    placeholder="Any notes?"
+                    placeholder={!notes && "No notes"}
                     name="notes"
                     value={notes}
                     onChange={handleChange}

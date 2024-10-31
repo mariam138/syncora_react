@@ -35,6 +35,7 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log(api)
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {

@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
+import { SuccessToast } from "../../functions/toasts";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -13,7 +14,7 @@ const SignUpForm = () => {
     email: "",
     password1: "",
     password2: "",
-    first_name: '',
+    first_name: "",
   });
 
   // Destructure to avoid using dot notation
@@ -38,8 +39,9 @@ const SignUpForm = () => {
     e.preventDefault();
     try {
       await api.post("/dj-rest-auth/registration/", signUpData);
-      // When sign up data is submitted, navigate user to index
+      // When sign up data is submitted, navigate user to sign in page
       navigate("/signin");
+      SuccessToast("Sign up successful!");
     } catch (error) {
       console.log(error);
       // Set any errors if applicable to the error repsonse data
@@ -61,20 +63,20 @@ const SignUpForm = () => {
             </Card.Title>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formFirstName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your first name"
-                name="first_name"
-                value={first_name}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {error.first_name?.map((message, i) => (
-              <Alert variant="warning" key={i}>
-                {message}
-              </Alert>
-            ))}
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your first name"
+                  name="first_name"
+                  value={first_name}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              {error.first_name?.map((message, i) => (
+                <Alert variant="warning" key={i}>
+                  {message}
+                </Alert>
+              ))}
 
               <Form.Group className="mb-3" controlId="formUsername">
                 <Form.Label>Username</Form.Label>

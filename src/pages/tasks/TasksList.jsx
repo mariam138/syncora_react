@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
+import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 function TasksList() {
@@ -70,6 +71,11 @@ function TasksList() {
                                 {task.title}
                                 <br />
                                 Due: {task.due_date}
+                                <Form>
+                                  <Form.Check reverse label="Completed" onChange={() => {
+                                    console.log('Changed!')
+                                  }}/>
+                                </Form>
                               </ListGroup.Item>
                             ))
                         ) : (

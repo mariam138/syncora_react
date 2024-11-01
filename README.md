@@ -139,6 +139,10 @@ During development, I realised I would be using a modal throughout the website t
 
 ![Delete modal example](readme_assets/delete-modal-example.png)
 
+##### Reusable Toast Notifications
+
+I downloaded **react-toastify** to quickly create a toast notification to use rather than the standard bootstrap alerts, which take more space on the screen. The **react-toastify** library also allows the notifications to appear on screens which are navigated to after an action has occurred. For example, when a user signs up and are then redirected to the sign in page, a toast notification will appear telling them that registration was successful. This library made it easier to alert user's of events throughout the app seamlessly.
+
 ### Sign Up Form
 
 The sign up form allows users to access the full functionality of the website. The user is asked to enter a username, an e-mail, and a password which is confirmed again. If any fields are blank, or if a username has already been taken, this is alerted to the user. E-mail is an optional field as set by the back-end library **dj-rest-auth**, so an alert does not show up here. Underneath the form is the option to sign in if a user already has an account. This redirects the user to the sign in form instead.

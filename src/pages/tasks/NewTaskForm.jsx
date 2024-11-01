@@ -76,12 +76,9 @@ function NewTaskForm() {
                     value={priority}
                   >
                     <option>Priority level</option>
-                    <option value="WORK">Work</option>
-                    <option value="SOC">Social</option>
-                    <option value="FAM">Family</option>
-                    <option value="APP">Appointment</option>
-                    <option value="EDU">Education</option>
-                    <option value="TRAVEL">Travel</option>
+                    <option value="L">Low</option>
+                    <option value="M">Medium</option>
+                    <option value="H">High</option>
                   </Form.Select>
                 </Form.Group>
                 {error.priority?.map((message, i) => (
@@ -103,9 +100,11 @@ function NewTaskForm() {
                     <option value="WORK">Work</option>
                     <option value="SOC">Social</option>
                     <option value="FAM">Family</option>
-                    <option value="APP">Appointment</option>
-                    <option value="EDU">Education</option>
-                    <option value="TRAVEL">Travel</option>
+                    <option value="HOME">Home</option>
+                    <option value="EDU">Learning</option>
+                    <option value="FIN">Finance</option>
+                    <option value="HEALTH">Health</option>
+                    <option value="PER">Personal</option>
                   </Form.Select>
                 </Form.Group>
                 {error.category?.map((message, i) => (

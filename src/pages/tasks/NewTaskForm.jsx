@@ -18,6 +18,7 @@ function NewTaskForm() {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   const [error, setError] = useState({});
+  const [dueDate, setDueDate] = useState(new Date());
   const [taskData, setTaskData] = useState({
     title: "",
     due_date: "",
@@ -57,7 +58,12 @@ function NewTaskForm() {
                   <Form.Label>
                     Due date <i class="fa-solid fa-tag"></i>
                   </Form.Label>
-                  <DateTimePicker name="due_date" value={due_date} required />
+                  <DateTimePicker
+                    name="due_date"
+                    value={dueDate}
+                    required
+                    onChange={setDueDate}
+                  />
                 </Form.Group>
                 {error.due_date?.map((message, i) => (
                   <Alert variant="warning" key={i}>

@@ -111,6 +111,19 @@ function EventDetail() {
     });
   };
 
+  // Function to display the date in a more readable format
+  const formatDate = (dateStr) => {
+    const dateObj = new Date(dateStr);
+
+    const day = dateObj.getDate();
+    const month = dateObj.toLocaleString("en-GB", { month: "short" });
+    const year = dateObj.getFullYear();
+
+    return `${day} ${month} ${year}`;
+  };
+
+  const dateRep = formatDate(date);
+
   return (
     <>
       <Row>
@@ -131,7 +144,7 @@ function EventDetail() {
                   <Card.Title>
                     Date <i className="fa-regular fa-calendar"></i>
                   </Card.Title>
-                  <Card.Text>{date}</Card.Text>
+                  <Card.Text>{dateRep}</Card.Text>
                   <hr />
                   <Card.Title>
                     Start Time <i className="fa-solid fa-hourglass-start"></i>

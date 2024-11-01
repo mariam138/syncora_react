@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
-import TabContainer from "react-bootstrap/TabContainer";
-import { Tab } from "react-bootstrap";
+import Tab from "react-bootstrap/Tab";
+import ListGroup from "react-bootstrap/ListGroup";
 
 function TasksList() {
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
+  const [key, setKey] = useState("uncompleted");
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
 
@@ -32,15 +33,20 @@ function TasksList() {
 
   return (
     <>
-      <Tab.Container id="tasks-tabs" defaultActiveKey="uncompleted">
+      <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
         <Row>
           <Col sm={{ span: 6, offset: 3 }}>
             <h1 className={appStyles.Header}>Tasks</h1>
             <Card>
               <Card.Header>
-                <Nav variant="tabs">
+                <Nav
+                  variant="tabs"
+                  onSelect={(k) => {
+                    setKey(k);
+                  }}
+                >
                   <Nav.Item>
-                    <Nav.Link eventKey="uncompleted">Uncompleted</Nav.Link>
+                    <Nav.Link eventKey="uncompleted">To Do</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey="completed">Completed</Nav.Link>
@@ -49,7 +55,12 @@ function TasksList() {
               </Card.Header>
               <Card.Body>
                 <Tab.Content>
-                  <Tab.Pane eventKey="uncompleted">Uncomplete</Tab.Pane>
+                  <Tab.Pane eventKey="uncompleted">
+                    <ListGroup variant="flush">
+                      <ListGroup.Item>Hi</ListGroup.Item>
+                      <ListGroup.Item>Hi</ListGroup.Item>
+                    </ListGroup>
+                  </Tab.Pane>
                   <Tab.Pane eventKey="completed">Complete</Tab.Pane>
                 </Tab.Content>
               </Card.Body>

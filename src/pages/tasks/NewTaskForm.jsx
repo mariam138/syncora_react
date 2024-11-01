@@ -29,8 +29,16 @@ function NewTaskForm() {
   });
   const { title, due_date, priority, category, description, completed } =
     taskData;
+
   const goBack = () => {
     navigate(-1);
+  };
+
+  const handleChange = (e) => {
+    setTaskData({
+      ...taskData,
+      [e.target.name]: e.target.value,
+    });
   };
   return (
     <>
@@ -49,6 +57,7 @@ function NewTaskForm() {
                     placeholder="Task title"
                     name="title"
                     value={title}
+                    onChange={handleChange}
                   />
                 </Form.Group>
                 {error.title?.map((message, i) => (
@@ -82,6 +91,7 @@ function NewTaskForm() {
                     aria-label="Choose a priority"
                     name="priority"
                     value={priority}
+                    onChange={handleChange}
                   >
                     <option>Priority level</option>
                     <option value="L">Low</option>
@@ -103,6 +113,7 @@ function NewTaskForm() {
                     aria-label="Choose a category"
                     name="category"
                     value={category}
+                    onChange={handleChange}
                   >
                     <option>Choose a category</option>
                     <option value="WORK">Work</option>
@@ -131,6 +142,7 @@ function NewTaskForm() {
                     placeholder="Any extra information?"
                     name="description"
                     value={description}
+                    onChange={handleChange}
                   />
                 </Form.Group>
                 <div className="text-center">

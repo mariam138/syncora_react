@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function TasksList() {
   const [tasksList, setTasksList] = useState({ results: [] });
@@ -57,8 +58,17 @@ function TasksList() {
                 <Tab.Content>
                   <Tab.Pane eventKey="uncompleted">
                     <ListGroup variant="flush">
-                      <ListGroup.Item>Hi</ListGroup.Item>
-                      <ListGroup.Item>Hi</ListGroup.Item>
+                      {isLoaded ? (
+                        tasksList.results.length > 0 ? (
+                          tasksList.results.map((task) => (
+                            <ListGroup.Item>{task.title}</ListGroup.Item>
+                          ))
+                        ) : (
+                          <p>No Tasks</p>
+                        )
+                      ) : (
+                        <LoadingSpinner />
+                      )}
                     </ListGroup>
                   </Tab.Pane>
                   <Tab.Pane eventKey="completed">Complete</Tab.Pane>

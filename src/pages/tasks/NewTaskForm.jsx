@@ -50,7 +50,7 @@ function NewTaskForm() {
               <Form>
                 <Form.Group className="mb-3" controlId="formTitle">
                   <Form.Label>
-                    Title <i class="fa-solid fa-tag"></i>
+                    Title <i class="fa-solid fa-heading"></i>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -68,7 +68,7 @@ function NewTaskForm() {
 
                 <Form.Group className="mb-3" controlId="formDueDate">
                   <Form.Label>
-                    Due date <i class="fa-solid fa-tag"></i>
+                    Due date <i class="fa-regular fa-calendar-check"></i>
                   </Form.Label>
                   <DateTimePicker
                     name="due_date"
@@ -85,7 +85,7 @@ function NewTaskForm() {
 
                 <Form.Group className="mb-3" controlId="formPriority">
                   <Form.Label>
-                    Priority <i className="fa-solid fa-icons"></i>
+                    Priority <i class="fa-solid fa-triangle-exclamation"></i>
                   </Form.Label>
                   <Form.Select
                     aria-label="Choose a priority"
@@ -134,7 +134,7 @@ function NewTaskForm() {
 
                 <Form.Group className="mb-3" controlId="formDescription">
                   <Form.Label>
-                    Description <i className="fa-solid fa-message"></i>
+                    Description <i class="fa-solid fa-pencil"></i>
                   </Form.Label>
                   <Form.Control
                     as="textarea"

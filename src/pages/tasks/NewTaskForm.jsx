@@ -75,6 +75,7 @@ function NewTaskForm() {
                     value={dueDate}
                     required
                     onChange={setDueDate}
+                    className="ps-3"
                   />
                 </Form.Group>
                 {error.due_date?.map((message, i) => (

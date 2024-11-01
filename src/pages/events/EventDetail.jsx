@@ -12,6 +12,7 @@ import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EventEdit from "./EventEdit";
 import { SuccessToast } from "../../functions/toasts";
+import formatDate from "../../functions/dateFormat";
 
 function EventDetail() {
   const { pk } = useParams();
@@ -109,17 +110,6 @@ function EventDetail() {
       ...eventDetail,
       [e.target.name]: e.target.value,
     });
-  };
-
-  // Function to display the date in a more readable format
-  const formatDate = (dateStr) => {
-    const dateObj = new Date(dateStr);
-
-    const day = dateObj.getDate();
-    const month = dateObj.toLocaleString("en-GB", { month: "short" });
-    const year = dateObj.getFullYear();
-
-    return `${day} ${month} ${year}`;
   };
 
   const dateRep = formatDate(date);

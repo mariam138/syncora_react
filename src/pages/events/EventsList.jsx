@@ -9,7 +9,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../styles/EventsList.module.css";
+import styles from "../../styles/CreateLink.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast } from "../../functions/toasts";
 import formatDate from "../../functions/dateFormat";

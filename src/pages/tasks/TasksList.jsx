@@ -3,7 +3,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
@@ -11,6 +11,7 @@ import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import styles from "../../styles/CreateLink.module.css";
 
 function TasksList() {
   const [tasksList, setTasksList] = useState({ results: [] });
@@ -39,7 +40,7 @@ function TasksList() {
         <Row>
           <Col sm={{ span: 6, offset: 3 }}>
             <h1 className={appStyles.Header}>Tasks</h1>
-            <Card>
+            <Card className="mb-3">
               <Card.Header>
                 <Nav
                   variant="tabs"
@@ -72,9 +73,13 @@ function TasksList() {
                                 <br />
                                 Due: {task.due_date}
                                 <Form>
-                                  <Form.Check reverse label="Completed" onChange={() => {
-                                    console.log('Changed!')
-                                  }}/>
+                                  <Form.Check
+                                    reverse
+                                    label="Completed"
+                                    onChange={() => {
+                                      console.log("Changed!");
+                                    }}
+                                  />
                                 </Form>
                               </ListGroup.Item>
                             ))
@@ -117,6 +122,9 @@ function TasksList() {
                 </Tab.Content>
               </Card.Body>
             </Card>
+            <Link to="new/" className={styles.Link}>
+              New Task <i class="fa-solid fa-plus"></i>
+            </Link>
           </Col>
         </Row>
       </Tab.Container>

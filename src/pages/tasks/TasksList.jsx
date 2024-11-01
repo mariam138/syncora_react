@@ -58,6 +58,8 @@ function TasksList() {
                 <Tab.Content>
                   <Tab.Pane eventKey="uncompleted">
                     <ListGroup variant="flush">
+                      {/* Checks if there are any incomplete tasks before filtering
+                                          incomplete tasks and displaying each one in a list item */}
                       {isLoaded ? (
                         tasksList.results.filter((task) => !task.completed)
                           .length > 0 ? (
@@ -82,6 +84,8 @@ function TasksList() {
                   </Tab.Pane>
                   <Tab.Pane eventKey="completed">
                     <ListGroup variant="flush">
+                      {/* Checks if there are any complete tasks before filtering
+                                          complete tasks and displaying each one in a list item */}
                       {isLoaded ? (
                         tasksList.results.filter((task) => task.completed)
                           .length > 0 ? (

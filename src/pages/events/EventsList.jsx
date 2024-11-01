@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/EventsList.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast } from "../../functions/toasts";
+import formatDate from "../../functions/dateFormat";
 
 function EventsList({
   showHeader = true,
@@ -81,37 +82,40 @@ function EventsList({
           <Accordion alwaysOpen className="mb-3">
             {isLoaded ? (
               eventsList.results.length > 0 ? (
-                eventsList.results.map((event) => (
-                  <Accordion.Item eventKey={`${event.id}`} key={event.id}>
-                    <Accordion.Header>
-                      {event.name}
-                      <br />
-                      {event.date} | {event.start_time} | {event.location}
-                    </Accordion.Header>
-                    <Accordion.Body>
-                      <ButtonGroup aria-label="View event and delete event buttons">
-                        <Button
-                          variant="outline-secondary"
-                          onClick={() => viewEvent(event.id)}
-                        >
-                          View event
-                        </Button>
-
-                        {showDeleteButton && (
+                eventsList.results.map((event) => {
+                  const dateRep = formatDate(event.date);
+                  return (
+                    <Accordion.Item eventKey={`${event.id}`} key={event.id}>
+                      <Accordion.Header>
+                        {event.name}
+                        <br />
+                        {dateRep} | {event.start_time} | {event.location}
+                      </Accordion.Header>
+                      <Accordion.Body>
+                        <ButtonGroup aria-label="View event and delete event buttons">
                           <Button
-                            variant="danger"
-                            onClick={() => {
-                              setShowModal(true);
-                              setEventId(event.id);
-                            }}
+                            variant="outline-secondary"
+                            onClick={() => viewEvent(event.id)}
                           >
-                            Delete
+                            View event
                           </Button>
-                        )}
-                      </ButtonGroup>
-                    </Accordion.Body>
-                  </Accordion.Item>
-                ))
+
+                          {showDeleteButton && (
+                            <Button
+                              variant="danger"
+                              onClick={() => {
+                                setShowModal(true);
+                                setEventId(event.id);
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          )}
+                        </ButtonGroup>
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  );
+                })
               ) : (
                 <p className="fs-5">No upcoming events</p>
               )

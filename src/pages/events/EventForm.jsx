@@ -28,6 +28,11 @@ function EventForm() {
   };
   let now = new Date();
   let plusOneHour = addHours(now, 1);
+  // Ensures the time is in the format that the api is expecting
+  let currTimePlusOne = plusOneHour.toLocaleTimeString({
+    hour: "2-digit",
+    minute: "2-digit",
+  });
   let currentTime = now.toLocaleTimeString({
     hour: "2-digit",
     minute: "2-digit",
@@ -35,7 +40,7 @@ function EventForm() {
   // Set the start time to user's current time
   // Set the end time to the current time + 1 hour
   const [startTime, setStartTime] = useState(currentTime);
-  const [endTime, setEndTime] = useState(plusOneHour);
+  const [endTime, setEndTime] = useState(currTimePlusOne);
   const [error, setError] = useState({});
   const [eventData, setEventData] = useState({
     name: "",

@@ -9,6 +9,10 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import appStyles from "../../App.module.css";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
+import DateTimePicker from "react-datetime-picker";
+import "react-datetime-picker/dist/DateTimePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
 
 function NewTaskForm() {
   const navigate = useNavigate();
@@ -53,12 +57,7 @@ function NewTaskForm() {
                   <Form.Label>
                     Due date <i class="fa-solid fa-tag"></i>
                   </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="When is it due?"
-                    name="due_date"
-                    value={due_date}
-                  />
+                  <DateTimePicker name="due_date" value={due_date} required />
                 </Form.Group>
                 {error.due_date?.map((message, i) => (
                   <Alert variant="warning" key={i}>

@@ -175,6 +175,14 @@ A user is able to view their own profile. Their profile picture, name, username 
 
 For future features where users can be linked on tasks and events together, I have included functionality which prevents users from changing other profile's pictures or deleting their accounts. When viewing another user's profile page, the upload and delete account buttons will not be visible.
 
+### Events
+
+#### Events List
+
+When the user clicks the 'Events' icon in the sidebar, they are redirected to the Events page where they are shown all their events in a list. The basic information is displayed for each event, including the name, date, start time and location for each event. Each event can be clicked to produce a drop down menu which allows the user to either view the event in detail or to delete the event. Underneath the list is the option to create a new event.
+
+#### Event Detail
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

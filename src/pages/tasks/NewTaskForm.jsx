@@ -29,6 +29,9 @@ function NewTaskForm() {
   });
   const { title, due_date, priority, category, description, completed } =
     taskData;
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <>
       <Row>
@@ -139,7 +142,7 @@ function NewTaskForm() {
             </Card.Body>
           </Card>
           <div className="text-center mb-3">
-            <Button variant="outline-secondary">
+            <Button variant="outline-secondary" onClick={goBack}>
               <i class="fa-solid fa-arrow-left"></i> Back
             </Button>
           </div>

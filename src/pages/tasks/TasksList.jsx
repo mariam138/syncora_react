@@ -59,19 +59,51 @@ function TasksList() {
                   <Tab.Pane eventKey="uncompleted">
                     <ListGroup variant="flush">
                       {isLoaded ? (
-                        tasksList.results.length > 0 ? (
-                          tasksList.results.map((task) => (
-                            <ListGroup.Item>{task.title}</ListGroup.Item>
-                          ))
+                        tasksList.results.filter((task) => !task.completed)
+                          .length > 0 ? (
+                          tasksList.results
+                            .filter((task) => !task.completed)
+                            .map((task) => (
+                              <ListGroup.Item key={task.id}>
+                                {task.title}
+                                <br />
+                                Due: {task.due_date}
+                              </ListGroup.Item>
+                            ))
                         ) : (
-                          <p>No Tasks</p>
+                          <p className="fs-5 text-body-secondary">
+                            No tasks due
+                          </p>
                         )
                       ) : (
                         <LoadingSpinner />
                       )}
                     </ListGroup>
                   </Tab.Pane>
-                  <Tab.Pane eventKey="completed">Complete</Tab.Pane>
+                  <Tab.Pane eventKey="completed">
+                    <ListGroup variant="flush">
+                      {isLoaded ? (
+                        tasksList.results.filter((task) => task.completed)
+                          .length > 0 ? (
+                          tasksList.results
+                            .filter((task) => task.completed)
+                            .map((task) => (
+                              <ListGroup.Item key={task.id}>
+                                {task.title}
+                                <br />
+                                Due: {task.due_date}
+                              </ListGroup.Item>
+                            ))
+                        ) : (
+                          <p className="fs-5 text-body-secondary">
+                            You haven't completed any tasks yet!
+                          </p>
+                        )
+                      ) : (
+                        <LoadingSpinner />
+                      )}
+                    </ListGroup>
+                  </Tab.Pane>
                 </Tab.Content>
               </Card.Body>
             </Card>

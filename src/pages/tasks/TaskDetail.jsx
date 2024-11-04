@@ -12,6 +12,7 @@ import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 import TaskForm from "./TaskForm";
+import { formatDueDate } from "../../functions/dateFormat";
 
 function TaskDetail() {
   const { pk } = useParams();
@@ -97,7 +98,7 @@ function TaskDetail() {
           {isEditing ? (
             <TaskForm
               taskTitle={title}
-              detailDueDate={due_date}
+              detailDueDate={new Date(due_date)}
               taskPriority={priority}
               taskCategory={category}
               taskDescription={description}

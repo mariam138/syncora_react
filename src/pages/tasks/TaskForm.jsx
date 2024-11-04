@@ -25,7 +25,7 @@ function TaskForm({
 }) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(detailDueDate || new Date());
   const [error, setError] = useState({});
   // Set initial task data
   // Completed automatically set to false when created which is set up in the back end

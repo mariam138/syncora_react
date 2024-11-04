@@ -51,8 +51,14 @@ function NewTaskForm() {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (currentUser) {
-      e.preventDefault();
+      const now = new Date();
+      const taskDueDate = new Date(dueDate);
+      if (taskDueDate < now) {
+        setError({ due_date: ["Tasks cannot be set in the past."] });
+        return;
+      }
       const formData = new FormData();
       formData.append("title", title);
       formData.append("due_date", dueDate);

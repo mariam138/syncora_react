@@ -217,9 +217,15 @@ function TaskForm({
             </Card.Body>
           </Card>
           <div className="text-center mb-3">
-            <Button variant="outline-secondary" onClick={goBack}>
-              <i class="fa-solid fa-arrow-left"></i> Back
-            </Button>
+            {isEditing ? (
+              <Button variant="outline-secondary" onClick={goBack}>
+                Cancel <i class="fa-solid fa-xmark"></i>
+              </Button>
+            ) : (
+              <Button variant="outline-secondary" onClick={goBack}>
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </Button>
+            )}
           </div>
         </Col>
       </Row>

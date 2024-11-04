@@ -33,13 +33,14 @@ function TaskForm({
   // Set initial task data
   // Completed automatically set to false when created which is set up in the back end
   const [taskData, setTaskData] = useState({
+    owner: "",
     title: "",
     due_date: "",
     priority: "",
     category: "",
     description: "",
   });
-  const { title, priority, category, description } = taskData;
+  const { owner, title, priority, category, description } = taskData;
 
   // Stringify's the due date and ensures it's in the correct format
   // for submission. Used as the onChange function for the due date input
@@ -73,33 +74,38 @@ function TaskForm({
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Only allows logged in users to create tasks
-    if (currentUser) {
-      const now = new Date();
-      const taskDueDate = new Date(dueDate);
-      // Validation to check that the due date is not set in the past
-      // Will prevent submission if validation fails
-      if (taskDueDate < now) {
-        setError({ due_date: ["Tasks cannot be set in the past."] });
-        return;
-      }
-      // Create new form data to send to api end point
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("due_date", dueDate);
-      formData.append("priority", priority);
-      formData.append("category", category);
-      formData.append("description", description);
+    const now = new Date();
+    const taskDueDate = new Date(dueDate);
+    // Validation to check that the due date is not set in the past
+    // Will prevent submission if validation fails
+    if (taskDueDate < now) {
+      setError({ due_date: ["Tasks cannot be set in the past."] });
+      return;
+    }
+    // Create new form data to send to api end point
+    const formData = new FormData();
+    formData.append("title", title || taskTitle);
+    formData.append("due_date", dueDate || detailDueDate);
+    formData.append("priority", priority || taskPriority);
+    formData.append("category", category || taskCategory);
+    formData.append("description", description || taskDescription);
 
-      try {
+    try {
+      if (isEditing && is_owner) {
+        await apiReq.put(`/tasks/${pk}/`, formData);
+        navigate(`/tasks/${pk}/`);
+
+        SuccessToast("Task updated");
+      } else if (currentUser) {
         await apiReq.post("/tasks/new/", formData);
         navigate("/tasks/");
         SuccessToast("Task created");
-      } catch (error) {
-        console.log(error);
-        setError(error.response?.data);
+      } else {
+        navigate("/signin");
       }
-    } else {
-      navigate("/signin");
+    } catch (error) {
+      console.log(error);
+      setError(error.response?.data);
     }
   };
 
@@ -125,11 +131,12 @@ function TaskForm({
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {error.title?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {error &&
+                  error.title?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="mb-3" controlId="formDueDate">
                   <Form.Label className="pe-3">
@@ -142,11 +149,12 @@ function TaskForm({
                     onChange={handleDateChange}
                   />
                 </Form.Group>
-                {error.due_date?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {error &&
+                  error.due_date?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="mb-3" controlId="formPriority">
                   <Form.Label>
@@ -164,11 +172,12 @@ function TaskForm({
                     <option value="H">High</option>
                   </Form.Select>
                 </Form.Group>
-                {error.priority?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {error &&
+                  error.priority?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="mb-3" controlId="formCategory">
                   <Form.Label>
@@ -191,11 +200,12 @@ function TaskForm({
                     <option value="PER">Personal</option>
                   </Form.Select>
                 </Form.Group>
-                {error.category?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {error &&
+                  error.category?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="mb-3" controlId="formDescription">
                   <Form.Label>

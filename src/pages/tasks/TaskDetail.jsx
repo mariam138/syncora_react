@@ -103,6 +103,27 @@ function TaskDetail() {
 
               <div className="text-center mt-4">
                 <Button
+                  variant="info"
+                  className={`mx-2 ${styles.BtnText}`}
+                  onClick={() => {
+                    setIsEditing(true);
+                  }}
+                >
+                  Edit <i class="fa-solid fa-pencil"></i>
+                </Button>
+                <Button
+                  variant="danger"
+                  className={`mx-2 ${styles.BtnText}`}
+                  onClick={() => {
+                    setShowModal(true);
+                  }}
+                >
+                  Delete <i class="fa-solid fa-trash"></i>
+                </Button>
+              </div>
+
+              <div className="text-center mt-4">
+                <Button
                   className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
                   onClick={goBack}
                 >

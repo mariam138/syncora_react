@@ -18,6 +18,7 @@ function TaskDetail() {
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [taskDetail, setTaskDetail] = useState({
     owner: "",
     title: "",
@@ -70,6 +71,7 @@ function TaskDetail() {
   const handleDelete = async () => {
     if (is_owner) {
       try {
+        setIsDeleting(true);
         await apiReq.delete(`/tasks/${pk}/`);
         navigate("/tasks/");
         SuccessToast("Task deleted");
@@ -163,6 +165,7 @@ function TaskDetail() {
         feature="task"
         modalContent="Are you sure you want to delete this task"
         handleDelete={handleDelete}
+        isDeleting={isDeleting}
       />
     </>
   );

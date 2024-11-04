@@ -11,6 +11,7 @@ import { apiReq, apiResp } from "../../api/axiosDefaults";
 import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
+import TaskForm from "./TaskForm";
 
 function TaskDetail() {
   const { pk } = useParams();
@@ -19,6 +20,7 @@ function TaskDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [taskDetail, setTaskDetail] = useState({
     owner: "",
     title: "",
@@ -34,6 +36,7 @@ function TaskDetail() {
     title,
     due_date,
     priority,
+    category,
     category_display,
     description,
     completed,
@@ -49,6 +52,7 @@ function TaskDetail() {
         title,
         due_date,
         priority,
+        category,
         category_display,
         description,
         completed,
@@ -90,7 +94,15 @@ function TaskDetail() {
     <>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          {isLoaded ? (
+          {isEditing ? (
+            <TaskForm
+              taskTitle={title}
+              detailDueDate={due_date}
+              taskPriority={priority}
+              taskCategory={category}
+              taskDescription={description}
+            />
+          ) : isLoaded ? (
             <>
               <h1 className={appStyles.Header}>{title}</h1>
               <Card className="my-3">

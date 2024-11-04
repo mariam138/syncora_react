@@ -15,7 +15,7 @@ import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { apiReq } from "../../api/axiosDefaults";
 
-function NewTaskForm({
+function TaskForm({
   taskTitle,
   detailDueDate,
   taskCategory,
@@ -110,7 +110,7 @@ function NewTaskForm({
                     type="text"
                     placeholder="Task title"
                     name="title"
-                    value={title}
+                    value={title || taskTitle}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -126,7 +126,7 @@ function NewTaskForm({
                   </Form.Label>
                   <DateTimePicker
                     name="due_date"
-                    value={dueDate}
+                    value={dueDate || detailDueDate}
                     required
                     onChange={handleDateChange}
                     className="ps-3"
@@ -145,7 +145,7 @@ function NewTaskForm({
                   <Form.Select
                     aria-label="Choose a priority"
                     name="priority"
-                    value={priority}
+                    value={priority || taskPriority}
                     onChange={handleChange}
                   >
                     <option>Priority level</option>
@@ -167,7 +167,7 @@ function NewTaskForm({
                   <Form.Select
                     aria-label="Choose a category"
                     name="category"
-                    value={category}
+                    value={category || taskCategory}
                     onChange={handleChange}
                   >
                     <option>Choose a category</option>
@@ -196,7 +196,7 @@ function NewTaskForm({
                     rows={3}
                     placeholder="Any extra information?"
                     name="description"
-                    value={description}
+                    value={description || taskDescription}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -219,4 +219,4 @@ function NewTaskForm({
   );
 }
 
-export default NewTaskForm;
+export default TaskForm;

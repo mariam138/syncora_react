@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/CreateLink.module.css";
@@ -39,7 +40,7 @@ function TasksList() {
     <>
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
         <Row>
-          <Col sm={{ span: 6, offset: 3 }}>
+          <Col md={{ span: 6, offset: 3 }}>
             <h1 className={appStyles.Header}>Tasks</h1>
             <Card className="mb-3">
               <Card.Header>
@@ -70,22 +71,36 @@ function TasksList() {
                             .filter((task) => !task.completed)
                             .map((task) => (
                               <ListGroup.Item key={task.id}>
-                                <span className="fs-5">{task.title}</span>
-                                <span
-                                  className={`${
-                                    task.priority === "L"
-                                      ? taskStyles.Low
-                                      : task.priority === "M"
-                                        ? taskStyles.Medium
-                                        : task.priority === "H"
-                                          ? taskStyles.High
-                                          : ""
-                                  } ps-3`}
-                                >
-                                  {task.priority}
-                                </span>
-                                <br />
-                                Due: {task.due_date}
+                                <div className="d-flex align-items-start flex-column flex-sm-row">
+                                  <div className="me-auto">
+                                    <span className="fs-5">{task.title}</span>
+                                    <span
+                                      className={`${
+                                        task.priority === "L"
+                                          ? taskStyles.Low
+                                          : task.priority === "M"
+                                            ? taskStyles.Medium
+                                            : task.priority === "H"
+                                              ? taskStyles.High
+                                              : ""
+                                      } ps-3`}
+                                    >
+                                      {task.priority}
+                                    </span>
+                                    <div className="me-auto">
+                                      {" "}
+                                      Due: {task.due_date}
+                                    </div>
+                                  </div>
+
+                                  <Button
+                                    variant="outline-secondary"
+                                    size="sm"
+                                  >
+                                    View task
+                                  </Button>
+                                </div>
+
                                 <Form>
                                   <Form.Check
                                     reverse

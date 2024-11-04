@@ -15,7 +15,14 @@ import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { apiReq } from "../../api/axiosDefaults";
 
-function NewTaskForm() {
+function NewTaskForm({
+  taskTitle,
+  detailDueDate,
+  taskCategory,
+  taskPriority,
+  taskDescription,
+  taskCompleted,
+}) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   const [dueDate, setDueDate] = useState(new Date());

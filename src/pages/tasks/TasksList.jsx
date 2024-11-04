@@ -12,6 +12,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import { formatDueDate } from "../../functions/dateFormat";
 import styles from "../../styles/CreateLink.module.css";
 import taskStyles from "../../styles/TaskList.module.css";
 
@@ -69,48 +70,55 @@ function TasksList() {
                           .length > 0 ? (
                           tasksList.results
                             .filter((task) => !task.completed)
-                            .map((task) => (
-                              <ListGroup.Item key={task.id}>
-                                <div className="d-flex align-items-start flex-column flex-sm-row">
-                                  <div className="me-auto">
-                                    <span className={taskStyles.Title}>
-                                      {task.title}
-                                    </span>
-                                    <span
-                                      className={`${
-                                        task.priority === "L"
-                                          ? taskStyles.Low
-                                          : task.priority === "M"
-                                            ? taskStyles.Medium
-                                            : task.priority === "H"
-                                              ? taskStyles.High
-                                              : ""
-                                      } ps-3`}
-                                    >
-                                      {task.priority}
-                                    </span>
+                            .map((task) => {
+                              const dueDateRep = formatDueDate(task.due_date);
+
+                              return (
+                                <ListGroup.Item key={task.id}>
+                                  <div className="d-flex align-items-start flex-column flex-sm-row">
                                     <div className="me-auto">
-                                      {" "}
-                                      Due: {task.due_date}
+                                      <span className={taskStyles.Title}>
+                                        {task.title}
+                                      </span>
+                                      <span
+                                        className={`${
+                                          task.priority === "L"
+                                            ? taskStyles.Low
+                                            : task.priority === "M"
+                                              ? taskStyles.Medium
+                                              : task.priority === "H"
+                                                ? taskStyles.High
+                                                : ""
+                                        } ps-3`}
+                                      >
+                                        {task.priority}
+                                      </span>
+                                      <div className="me-auto">
+                                        {" "}
+                                        Due: {dueDateRep}
+                                      </div>
                                     </div>
+
+                                    <Button
+                                      variant="outline-secondary"
+                                      size="sm"
+                                    >
+                                      View task
+                                    </Button>
                                   </div>
 
-                                  <Button variant="outline-secondary" size="sm">
-                                    View task
-                                  </Button>
-                                </div>
-
-                                <Form>
-                                  <Form.Check
-                                    reverse
-                                    label="Completed"
-                                    onChange={() => {
-                                      console.log("Changed!");
-                                    }}
-                                  />
-                                </Form>
-                              </ListGroup.Item>
-                            ))
+                                  <Form>
+                                    <Form.Check
+                                      reverse
+                                      label="Completed"
+                                      onChange={() => {
+                                        console.log("Changed!");
+                                      }}
+                                    />
+                                  </Form>
+                                </ListGroup.Item>
+                              );
+                            })
                         ) : (
                           <p className="fs-5 text-body-secondary">
                             No tasks due

@@ -107,7 +107,9 @@ function TaskForm({
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          <h1 className={appStyles.Header}>New Task</h1>
+          <h1 className={appStyles.Header}>
+            {isEditing ? "Edit Task" : "New Task"}
+          </h1>
           <Card className="mb-3">
             <Card.Body>
               <Form onSubmit={handleSubmit}>

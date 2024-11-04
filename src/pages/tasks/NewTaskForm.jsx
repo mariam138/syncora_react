@@ -18,7 +18,10 @@ import { apiReq } from "../../api/axiosDefaults";
 function NewTaskForm() {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
+  const [dueDate, setDueDate] = useState(new Date());
   const [error, setError] = useState({});
+  // Set initial task data
+  // Completed automatically set to false when created which is set up in the back end
   const [taskData, setTaskData] = useState({
     title: "",
     due_date: "",
@@ -27,8 +30,9 @@ function NewTaskForm() {
     description: "",
   });
   const { title, priority, category, description } = taskData;
-  const [dueDate, setDueDate] = useState(new Date());
 
+  // Stringify's the due date and ensures it's in the correct format
+  // for submission. Used as the onChange function for the due date input
   const handleDateChange = (newDate) => {
     const year = newDate.getFullYear();
     const month = String(newDate.getMonth() + 1).padStart(2, "0");
@@ -52,13 +56,17 @@ function NewTaskForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Only allows logged in users to create tasks
     if (currentUser) {
       const now = new Date();
       const taskDueDate = new Date(dueDate);
+      // Validation to check that the due date is not set in the past
+      // Will prevent submission if validation fails
       if (taskDueDate < now) {
         setError({ due_date: ["Tasks cannot be set in the past."] });
         return;
       }
+      // Create new form data to send to api end point
       const formData = new FormData();
       formData.append("title", title);
       formData.append("due_date", dueDate);

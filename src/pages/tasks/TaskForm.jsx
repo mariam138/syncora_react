@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -23,10 +23,12 @@ function TaskForm({
   taskDescription,
   taskCompleted,
   isEditing,
+  setIsEditing,
 }) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   const [dueDate, setDueDate] = useState(detailDueDate || new Date());
+  const { pk } = useParams();
   const [error, setError] = useState({});
   // Set initial task data
   // Completed automatically set to false when created which is set up in the back end
@@ -53,6 +55,12 @@ function TaskForm({
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const cancelEdit = () => {
+    setIsEditing(false);
+    navigate(`/tasks/${pk}`);
+    WarningToast("Your changes were not saved.");
   };
 
   const handleChange = (e) => {
@@ -218,7 +226,7 @@ function TaskForm({
           </Card>
           <div className="text-center mb-3">
             {isEditing ? (
-              <Button variant="outline-secondary" onClick={goBack}>
+              <Button variant="outline-secondary" onClick={cancelEdit}>
                 Cancel <i class="fa-solid fa-xmark"></i>
               </Button>
             ) : (

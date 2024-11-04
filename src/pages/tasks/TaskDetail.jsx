@@ -93,18 +93,18 @@ function TaskDetail() {
 
   return (
     <>
-      <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-          {isEditing ? (
-            <TaskForm
-              taskTitle={title}
-              detailDueDate={new Date(due_date)}
-              taskPriority={priority}
-              taskCategory={category}
-              taskDescription={description}
-            />
-          ) : isLoaded ? (
-            <>
+      {isEditing ? (
+        <TaskForm
+          taskTitle={title}
+          detailDueDate={new Date(due_date)}
+          taskPriority={priority}
+          taskCategory={category}
+          taskDescription={description}
+        />
+      ) : isLoaded ? (
+        <>
+          <Row>
+            <Col md={{ span: 6, offset: 3 }}>
               <h1 className={appStyles.Header}>{title}</h1>
               <Card className="my-3">
                 <Card.Body>
@@ -139,20 +139,16 @@ function TaskDetail() {
                 <Button
                   variant="info"
                   className={`mx-2 ${styles.BtnText}`}
-                  onClick={() => {
-                    setIsEditing(true);
-                  }}
+                  onClick={() => setIsEditing(true)}
                 >
-                  Edit <i class="fa-solid fa-pencil"></i>
+                  Edit <i className="fa-solid fa-pencil"></i>
                 </Button>
                 <Button
                   variant="danger"
                   className={`mx-2 ${styles.BtnText}`}
-                  onClick={() => {
-                    setShowModal(true);
-                  }}
+                  onClick={() => setShowModal(true)}
                 >
-                  Delete <i class="fa-solid fa-trash"></i>
+                  Delete <i className="fa-solid fa-trash"></i>
                 </Button>
               </div>
 
@@ -161,17 +157,18 @@ function TaskDetail() {
                   className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
                   onClick={goBack}
                 >
-                  <i class="fa-solid fa-arrow-left"></i> Back
+                  <i className="fa-solid fa-arrow-left"></i> Back
                 </Button>
               </div>
-            </>
-          ) : (
-            <div className="text-center">
-              <LoadingSpinner />
-            </div>
-          )}
-        </Col>
-      </Row>
+            </Col>
+          </Row>
+        </>
+      ) : (
+        <div className="text-center">
+          <LoadingSpinner />
+        </div>
+      )}
+
       <DeleteModal
         show={showModal}
         handleClose={() => setShowModal(false)}

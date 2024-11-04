@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import appStyles from "../../App.module.css";
@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import { apiResp } from "../../api/axiosDefaults";
 
 function TaskDetail() {
   const { pk } = useParams();
@@ -35,6 +36,29 @@ function TaskDetail() {
   } = taskDetail;
 
   const is_owner = currentUser?.username === owner;
+
+  const handleMount = async () => {
+    try {
+      const { data } = await apiResp.get(`/tasks/${pk}/`);
+      const {
+        owner,
+        title,
+        due_date,
+        priority,
+        category_display,
+        description,
+        completed,
+      } = data;
+      setTaskDetail(data);
+      setIsLoaded(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleMount();
+  }, [pk]);
 
   return (
     <>

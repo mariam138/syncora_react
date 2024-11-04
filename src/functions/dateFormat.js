@@ -16,7 +16,7 @@ export const formatDueDate = (dateStr) => {
   const month = dateObj.toLocaleString("en-GB", { month: "short" });
   const year = dateObj.getFullYear();
   const hours = dateObj.getHours();
-  const mins = dateObj.getMinutes();
+  const mins = String(dateObj.getMinutes()).padStart(2, "0");
 
   return `${day} ${month} ${year}, ${hours}:${mins}`;
 };

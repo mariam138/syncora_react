@@ -13,6 +13,7 @@ import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
+import { apiReq } from "../../api/axiosDefaults";
 
 function NewTaskForm() {
   const navigate = useNavigate();
@@ -26,8 +27,7 @@ function NewTaskForm() {
     category: "",
     description: "",
   });
-  const { title, priority, category, description } =
-    taskData;
+  const { title, priority, category, description } = taskData;
 
   const goBack = () => {
     navigate(-1);
@@ -48,6 +48,15 @@ function NewTaskForm() {
     formData.append("priority", priority);
     formData.append("category", category);
     formData.append("description", description);
+
+    try {
+      await apiReq.post("/tasks/new/", formData);
+      navigate("/tasks/");
+      SuccessToast("Task created");
+    } catch (error) {
+      console.log(error);
+      setError(error.response?.data);
+    }
   };
 
   return (

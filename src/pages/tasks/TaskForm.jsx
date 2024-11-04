@@ -24,6 +24,7 @@ function TaskForm({
   taskCompleted,
   isEditing,
   setIsEditing,
+  isOwner,
 }) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
@@ -41,6 +42,7 @@ function TaskForm({
     description: "",
   });
   const { owner, title, priority, category, description } = taskData;
+  console.log(isOwner);
 
   // Stringify's the due date and ensures it's in the correct format
   // for submission. Used as the onChange function for the due date input
@@ -91,7 +93,7 @@ function TaskForm({
     formData.append("description", description || taskDescription);
 
     try {
-      if (isEditing && is_owner) {
+      if (isEditing && isOwner) {
         await apiReq.put(`/tasks/${pk}/`, formData);
         navigate(`/tasks/${pk}/`);
 

@@ -101,7 +101,8 @@ function TaskDetail() {
           taskCategory={category}
           taskDescription={description}
           isEditing={isEditing}
-          setIsEditing={setIsEditing}
+                  setIsEditing={setIsEditing}
+                  isOwner={is_owner}
         />
       ) : isLoaded ? (
         <>

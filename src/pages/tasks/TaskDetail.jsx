@@ -9,6 +9,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { apiResp } from "../../api/axiosDefaults";
 import styles from "../../styles/DetailPageButtons.module.css";
+import DeleteModal from "../../components/DeleteModal";
 
 function TaskDetail() {
   const { pk } = useParams();
@@ -138,6 +139,12 @@ function TaskDetail() {
           )}
         </Col>
       </Row>
+      <DeleteModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        feature="task"
+        modalContent="Are you sure you want to delete this task"
+      />
     </>
   );
 }

@@ -22,6 +22,7 @@ function TaskForm({
   taskPriority,
   taskDescription,
   taskCompleted,
+  isEditing,
 }) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
@@ -199,11 +200,19 @@ function TaskForm({
                     onChange={handleChange}
                   />
                 </Form.Group>
-                <div className="text-center">
-                  <Button className={`${appStyles.Button} btn`} type="submit">
-                    Create <i class="fa-solid fa-plus"></i>
-                  </Button>
-                </div>
+                {isEditing ? (
+                  <div className="text-center">
+                    <Button className={`${appStyles.Button} btn`} type="submit">
+                      Save changes <i class="fa-solid fa-plus"></i>
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="text-center">
+                    <Button className={`${appStyles.Button} btn`} type="submit">
+                      Create <i class="fa-solid fa-plus"></i>
+                    </Button>
+                  </div>
+                )}
               </Form>
             </Card.Body>
           </Card>

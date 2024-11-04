@@ -37,6 +37,10 @@ function TasksList() {
     handleMount();
   }, [currentUser]);
 
+  const viewTask = (taskId) => {
+    navigate(`/tasks/${taskId}/`);
+  };
+
   return (
     <>
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
@@ -102,6 +106,7 @@ function TasksList() {
                                     <Button
                                       variant="outline-secondary"
                                       size="sm"
+                                      onClick={() => viewTask(task.id)}
                                     >
                                       View task
                                     </Button>

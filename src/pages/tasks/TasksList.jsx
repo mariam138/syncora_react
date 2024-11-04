@@ -70,7 +70,7 @@ function TasksList() {
                             .filter((task) => !task.completed)
                             .map((task) => (
                               <ListGroup.Item key={task.id}>
-                                <span>{task.title}</span>
+                                <span className="fs-5">{task.title}</span>
                                 <span
                                   className={`${
                                     task.priority === "L"

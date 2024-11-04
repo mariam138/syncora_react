@@ -12,6 +12,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/CreateLink.module.css";
+import taskStyles from "../../styles/TaskPriority.module.css";
 
 function TasksList() {
   const [tasksList, setTasksList] = useState({ results: [] });
@@ -70,7 +71,19 @@ function TasksList() {
                             .map((task) => (
                               <ListGroup.Item key={task.id}>
                                 <span>{task.title}</span>
-                                <span className="ps-3 text-body-secondary">{task.priority}</span>
+                                <span
+                                  className={`${
+                                    task.priority === "L"
+                                      ? taskStyles.Low
+                                      : task.priority === "M"
+                                        ? taskStyles.Medium
+                                        : task.priority === "H"
+                                          ? taskStyles.High
+                                          : ""
+                                  } ps-3`}
+                                >
+                                  {task.priority}
+                                </span>
                                 <br />
                                 Due: {task.due_date}
                                 <Form>

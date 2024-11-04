@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { apiResp } from "../../api/axiosDefaults";
+import styles from "../../styles/DetailPageButtons.module.css";
 
 function TaskDetail() {
   const { pk } = useParams();
@@ -60,6 +61,10 @@ function TaskDetail() {
     handleMount();
   }, [pk]);
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <Row>
@@ -95,6 +100,15 @@ function TaskDetail() {
                   <Card.Text>{completed}</Card.Text>
                 </Card.Body>
               </Card>
+
+              <div className="text-center mt-4">
+                <Button
+                  className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
+                  onClick={goBack}
+                >
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </Button>
+              </div>
             </>
           ) : (
             <div className="text-center">

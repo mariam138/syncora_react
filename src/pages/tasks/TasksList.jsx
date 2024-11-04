@@ -69,7 +69,8 @@ function TasksList() {
                             .filter((task) => !task.completed)
                             .map((task) => (
                               <ListGroup.Item key={task.id}>
-                                {task.title}
+                                <span>{task.title}</span>
+                                <span className="ps-3 text-body-secondary">{task.priority}</span>
                                 <br />
                                 Due: {task.due_date}
                                 <Form>

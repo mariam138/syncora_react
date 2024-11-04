@@ -121,7 +121,7 @@ function TaskForm({
                 ))}
 
                 <Form.Group className="mb-3" controlId="formDueDate">
-                  <Form.Label>
+                  <Form.Label className="pe-3">
                     Due date <i class="fa-regular fa-calendar-check"></i>
                   </Form.Label>
                   <DateTimePicker
@@ -129,7 +129,6 @@ function TaskForm({
                     value={dueDate || detailDueDate}
                     required
                     onChange={handleDateChange}
-                    className="ps-3"
                   />
                 </Form.Group>
                 {error.due_date?.map((message, i) => (

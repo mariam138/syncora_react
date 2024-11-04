@@ -13,7 +13,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/CreateLink.module.css";
-import taskStyles from "../../styles/TaskPriority.module.css";
+import taskStyles from "../../styles/TaskList.module.css";
 
 function TasksList() {
   const [tasksList, setTasksList] = useState({ results: [] });
@@ -73,7 +73,9 @@ function TasksList() {
                               <ListGroup.Item key={task.id}>
                                 <div className="d-flex align-items-start flex-column flex-sm-row">
                                   <div className="me-auto">
-                                    <span className="fs-5">{task.title}</span>
+                                    <span className={taskStyles.Title}>
+                                      {task.title}
+                                    </span>
                                     <span
                                       className={`${
                                         task.priority === "L"
@@ -93,10 +95,7 @@ function TasksList() {
                                     </div>
                                   </div>
 
-                                  <Button
-                                    variant="outline-secondary"
-                                    size="sm"
-                                  >
+                                  <Button variant="outline-secondary" size="sm">
                                     View task
                                   </Button>
                                 </div>

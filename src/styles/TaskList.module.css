@@ -9,3 +9,9 @@
 .High {
   color: #ed0000;
 }
+
+@media (min-width: 992px) {
+  .Title {
+    font-size: 1.25rem;
+  }
+}

@@ -12,7 +12,7 @@ import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EventEdit from "./EventEdit";
 import { SuccessToast } from "../../functions/toasts";
-import formatDate from "../../functions/dateFormat";
+import { formatDate } from "../../functions/dateFormat";
 
 function EventDetail() {
   const { pk } = useParams();

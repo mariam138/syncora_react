@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/CreateLink.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast } from "../../functions/toasts";
-import formatDate from "../../functions/dateFormat";
+import { formatDate } from "../../functions/dateFormat";
 
 function EventsList({
   showHeader = true,

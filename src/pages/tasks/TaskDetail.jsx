@@ -95,9 +95,9 @@ function TaskDetail() {
                   <Card.Text>{description}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Completed <i className="fa-solid fa-icons"></i>
+                    Completed? <i className="fa-solid fa-icons"></i>
                   </Card.Title>
-                  <Card.Text>{completed}</Card.Text>
+                  <Card.Text>{completed ? "Yes" : "No"}</Card.Text>
                 </Card.Body>
               </Card>
 

@@ -99,7 +99,8 @@ function TaskDetail() {
           detailDueDate={new Date(due_date)}
           taskPriority={priority}
           taskCategory={category}
-          taskDescription={description}
+                  taskDescription={description}
+                  isEditing={isEditing}
         />
       ) : isLoaded ? (
         <>

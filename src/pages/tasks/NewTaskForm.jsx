@@ -19,7 +19,6 @@ function NewTaskForm() {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   const [error, setError] = useState({});
-  const [dueDate, setDueDate] = useState(new Date());
   const [taskData, setTaskData] = useState({
     title: "",
     due_date: "",
@@ -28,6 +27,17 @@ function NewTaskForm() {
     description: "",
   });
   const { title, priority, category, description } = taskData;
+  const [dueDate, setDueDate] = useState(new Date());
+
+  const handleDateChange = (newDate) => {
+    const year = newDate.getFullYear();
+    const month = String(newDate.getMonth() + 1).padStart(2, "0");
+    const day = String(newDate.getDate()).padStart(2, "0");
+    const hours = String(newDate.getHours()).padStart(2, "0");
+    const minutes = String(newDate.getMinutes()).padStart(2, "0");
+
+    setDueDate(`${year}-${month}-${day}T${hours}:${minutes}`);
+  };
 
   const goBack = () => {
     navigate(-1);
@@ -66,7 +76,7 @@ function NewTaskForm() {
           <h1 className={appStyles.Header}>New Task</h1>
           <Card className="mb-3">
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formTitle">
                   <Form.Label>
                     Title <i class="fa-solid fa-heading"></i>
@@ -93,7 +103,7 @@ function NewTaskForm() {
                     name="due_date"
                     value={dueDate}
                     required
-                    onChange={setDueDate}
+                    onChange={handleDateChange}
                     className="ps-3"
                   />
                 </Form.Group>

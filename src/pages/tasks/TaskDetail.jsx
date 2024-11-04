@@ -7,9 +7,10 @@ import Button from "react-bootstrap/Button";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { apiResp } from "../../api/axiosDefaults";
+import { apiReq, apiResp } from "../../api/axiosDefaults";
 import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function TaskDetail() {
   const { pk } = useParams();
@@ -64,6 +65,23 @@ function TaskDetail() {
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const handleDelete = async () => {
+    if (is_owner) {
+      try {
+        await apiReq.delete(`/tasks/${pk}/`);
+        navigate("/tasks/");
+        SuccessToast("Task deleted");
+      } catch (error) {
+        console.log(error);
+        WarningToast(
+          "There was a problem deleting your task. Please try again later.",
+        );
+      }
+    } else {
+      navigate("/signin");
+    }
   };
 
   return (
@@ -144,6 +162,7 @@ function TaskDetail() {
         handleClose={() => setShowModal(false)}
         feature="task"
         modalContent="Are you sure you want to delete this task"
+        handleDelete={handleDelete}
       />
     </>
   );

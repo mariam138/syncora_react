@@ -51,21 +51,25 @@ function NewTaskForm() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("due_date", dueDate);
-    formData.append("priority", priority);
-    formData.append("category", category);
-    formData.append("description", description);
+    if (currentUser) {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("due_date", dueDate);
+      formData.append("priority", priority);
+      formData.append("category", category);
+      formData.append("description", description);
 
-    try {
-      await apiReq.post("/tasks/new/", formData);
-      navigate("/tasks/");
-      SuccessToast("Task created");
-    } catch (error) {
-      console.log(error);
-      setError(error.response?.data);
+      try {
+        await apiReq.post("/tasks/new/", formData);
+        navigate("/tasks/");
+        SuccessToast("Task created");
+      } catch (error) {
+        console.log(error);
+        setError(error.response?.data);
+      }
+    } else {
+      navigate("/signin");
     }
   };
 

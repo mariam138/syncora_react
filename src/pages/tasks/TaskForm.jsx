@@ -228,7 +228,7 @@ function TaskForm({
                     rows={3}
                     placeholder="Any extra information?"
                     name="description"
-                    value={description || taskDescription}
+                    value={description ?? taskDescription}
                     onChange={handleChange}
                   />
                 </Form.Group>

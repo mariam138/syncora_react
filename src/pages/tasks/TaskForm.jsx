@@ -21,10 +21,10 @@ function TaskForm({
   taskCategory,
   taskPriority,
   taskDescription,
-  taskCompleted,
   isEditing,
   setIsEditing,
   isOwner,
+  onUpdateTaskDetail
 }) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();

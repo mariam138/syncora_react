@@ -94,6 +94,14 @@ function TaskDetail() {
     }
   };
 
+  const handleTaskUpdate = (updatedTask) => {
+    setTaskDetail((prevTaskDetail) => ({
+      ...prevTaskDetail,
+      ...updatedTask,
+    }));
+    setIsEditing(false);
+  };
+
   return (
     <>
       {isEditing ? (

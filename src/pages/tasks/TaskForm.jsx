@@ -31,7 +31,8 @@ function TaskForm({
   const [dueDate, setDueDate] = useState(detailDueDate || new Date());
   const { pk } = useParams();
   const [error, setError] = useState({});
-  // Set initial task data
+  // Set initial task data based on whether user is creating
+  // a new task or editing one already made
   const [taskData, setTaskData] = useState({
     title: taskTitle || "",
     due_date: detailDueDate || "",
@@ -92,12 +93,12 @@ function TaskForm({
 
     // Create new form data to send to api end point
     const formData = new FormData();
-    formData.append("title", title || taskTitle);
+    formData.append("title", title);
     formData.append("due_date", formattedDueDate);
-    formData.append("priority", priority || taskPriority);
-    formData.append("category", category || taskCategory);
+    formData.append("priority", priority);
+    formData.append("category", category);
     // Prevents saving description as 'undefined' if no description is left
-    formData.append("description", description ?? taskDescription);
+    formData.append("description", description);
 
     try {
       if (isEditing && isOwner) {
@@ -140,7 +141,7 @@ function TaskForm({
                     type="text"
                     placeholder="Task title"
                     name="title"
-                    value={title || taskTitle}
+                    value={title}
                     onChange={handleChange}
                   />
                 </Form.Group>
@@ -157,7 +158,7 @@ function TaskForm({
                   </Form.Label>
                   <DateTimePicker
                     name="due_date"
-                    value={dueDate || detailDueDate}
+                    value={dueDate}
                     required
                     onChange={handleDateChange}
                   />
@@ -176,7 +177,7 @@ function TaskForm({
                   <Form.Select
                     aria-label="Choose a priority"
                     name="priority"
-                    value={priority || taskPriority}
+                    value={priority}
                     onChange={handleChange}
                   >
                     <option>Priority level</option>
@@ -199,7 +200,7 @@ function TaskForm({
                   <Form.Select
                     aria-label="Choose a category"
                     name="category"
-                    value={category || taskCategory}
+                    value={category}
                     onChange={handleChange}
                   >
                     <option>Choose a category</option>

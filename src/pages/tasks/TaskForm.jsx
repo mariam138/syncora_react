@@ -74,10 +74,11 @@ function TaskForm({
   // Allows changing of input fields values by creating a copy
   // of the previous data before updating
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, checked } = e.target;
     setTaskData((prevTaskData) => ({
       ...prevTaskData,
       [name]: value,
+      [name] : checked,
     }));
   };
 
@@ -258,9 +259,10 @@ function TaskForm({
                 {isEditing && (
                   <Form.Check
                     type="checkbox"
-                    id="formCompleted"
+                    id="completed"
                     label="Completed?"
                     className="pb-2"
+                    onChange={handleChange}
                   />
                 )}
                 {/* Conditionally display save/create button based on editing state */}

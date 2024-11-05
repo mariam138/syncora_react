@@ -74,11 +74,17 @@ function TaskForm({
   // Allows changing of input fields values by creating a copy
   // of the previous data before updating
   const handleChange = (e) => {
-    const { name, value, checked } = e.target;
+    const { name, value } = e.target;
     setTaskData((prevTaskData) => ({
       ...prevTaskData,
       [name]: value,
-      [name] : checked,
+    }));
+  };
+
+  const toggleCompleted = (e) => {
+    setTaskData((prevTaskData) => ({
+      ...prevTaskData,
+      completed: e.target.checked,
     }));
   };
 
@@ -262,7 +268,8 @@ function TaskForm({
                     id="completed"
                     label="Completed?"
                     className="pb-2"
-                    onChange={handleChange}
+                    checked={completed}
+                    onChange={toggleCompleted}
                   />
                 )}
                 {/* Conditionally display save/create button based on editing state */}

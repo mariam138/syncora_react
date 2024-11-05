@@ -15,6 +15,7 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import { formatDueDate } from "../../functions/dateFormat";
 import styles from "../../styles/CreateLink.module.css";
 import taskStyles from "../../styles/TaskList.module.css";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function TasksList() {
   const [tasksList, setTasksList] = useState({ results: [] });
@@ -41,8 +42,23 @@ function TasksList() {
     navigate(`/tasks/${taskId}/`);
   };
 
-  const toggleCompleted = (e) => {
-    completed: e.target.checked;
+  const toggleCompleted = async (taskId, completed) => {
+    try {
+      const formData = new FormData();
+      formData.append("completed", completed);
+
+      await apiReq.patch(`/tasks/${taskId}/`, formData);
+      setTasksList((prevTaskList) => ({
+        ...prevTaskList,
+        results: prevTaskList.results.map((task) =>
+          task.id === taskId ? { ...task, completed } : task,
+        ),
+      }));
+      SuccessToast("Task complete!");
+    } catch (error) {
+      console.log(error);
+      WarningToast("There was an error.");
+    }
   };
 
   return (
@@ -116,12 +132,13 @@ function TasksList() {
                                     </Button>
                                   </div>
 
-                                  <Form>
+                                  <Form onSubmit={toggleCompleted(task.id)}>
                                     <Form.Check
                                       reverse
                                       label="Completed"
-                                      // checked={task.completed}
-                                      onChange={toggleCompleted}
+                                      checked={task.completed}
+                                      // onChange={toggleCompleted(task.id)}
+                                      // onToggle={() => task.id }
                                     />
                                   </Form>
                                 </ListGroup.Item>

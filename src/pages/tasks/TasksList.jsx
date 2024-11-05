@@ -17,7 +17,12 @@ import styles from "../../styles/CreateLink.module.css";
 import taskStyles from "../../styles/TaskList.module.css";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
-function TasksList() {
+function TasksList({
+  showHeader = true,
+  showCreateLink = true,
+  showCompletedTab = true,
+  showCheck = true,
+}) {
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
   const [key, setKey] = useState("uncompleted");

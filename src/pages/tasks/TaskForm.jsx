@@ -44,19 +44,7 @@ function TaskForm({
   });
   const { owner, title, priority, category, description } = taskData;
 
-  // Stringify's the due date and ensures it's in the correct format
-  // for submission. Used as the onChange function for the due date input
-  const handleDateChange = (newDate) => {
-    const year = newDate.getFullYear();
-    const month = String(newDate.getMonth() + 1).padStart(2, "0");
-    const day = String(newDate.getDate()).padStart(2, "0");
-    const hours = String(newDate.getHours()).padStart(2, "0");
-    const minutes = String(newDate.getMinutes()).padStart(2, "0");
-
-    setDueDate(`${year}-${month}-${day}T${hours}:${minutes}`);
-  };
-
-  const isoDueDate = (date) => {
+  const formatToIso = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
@@ -64,6 +52,12 @@ function TaskForm({
     const minutes = String(date.getMinutes()).padStart(2, "0");
 
     return `${year}-${month}-${day}T${hours}:${minutes}`;
+  };
+
+  // Stringify's the due date and ensures it's in the correct format
+  // for submission. Used as the onChange function for the due date input
+  const handleDateChange = (newDate) => {
+    setDueDate(formatToIso(newDate));
   };
 
   const goBack = () => {
@@ -97,7 +91,7 @@ function TaskForm({
 
     /* Ensures either new due date or due date passed down from task detail
     is in ISO format when submitting the form. */
-    const formattedDueDate = isoDueDate(taskDueDate)
+    const formattedDueDate = formatToIso(taskDueDate);
 
     // Create new form data to send to api end point
     const formData = new FormData();

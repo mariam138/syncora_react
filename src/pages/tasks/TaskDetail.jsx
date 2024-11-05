@@ -27,6 +27,7 @@ function TaskDetail() {
     title: "",
     due_date: "",
     priority: "",
+    priority_display: "",
     category_display: "",
     description: "",
     completed: "",
@@ -37,6 +38,7 @@ function TaskDetail() {
     title,
     due_date,
     priority,
+    priority_display,
     category,
     category_display,
     description,
@@ -54,6 +56,7 @@ function TaskDetail() {
         due_date,
         priority,
         category,
+        priority_display,
         category_display,
         description,
         completed,
@@ -119,7 +122,7 @@ function TaskDetail() {
                   <Card.Title>
                     Priority <i class="fa-solid fa-triangle-exclamation"></i>
                   </Card.Title>
-                  <Card.Text>{priority}</Card.Text>
+                  <Card.Text>{priority_display}</Card.Text>
                   <hr />
                   <Card.Title>
                     Category <i className="fa-solid fa-icons"></i>

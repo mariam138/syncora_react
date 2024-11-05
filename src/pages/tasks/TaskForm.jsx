@@ -33,6 +33,7 @@ function TaskForm({
   const [error, setError] = useState({});
   // Set initial task data based on whether user is creating
   // a new task or editing one already made
+  // This binds the value to the state
   const [taskData, setTaskData] = useState({
     title: taskTitle || "",
     due_date: detailDueDate || "",
@@ -42,6 +43,8 @@ function TaskForm({
   });
   const { title, priority, category, description } = taskData;
 
+  // Format the date correctly in ISO format as expected by javascript
+  // Before submission of form
   const formatToIso = (date) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -52,8 +55,7 @@ function TaskForm({
     return `${year}-${month}-${day}T${hours}:${minutes}`;
   };
 
-  // Stringify's the due date and ensures it's in the correct format
-  // for submission. Used as the onChange function for the due date input
+  // Use the formatToIso function when setting due date during onChange handler
   const handleDateChange = (newDate) => {
     setDueDate(formatToIso(newDate));
   };
@@ -67,6 +69,8 @@ function TaskForm({
     WarningToast("Your changes were not saved.");
   };
 
+  // Allows changing of input fields values by creating a copy
+  // of the previous data before updating
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTaskData((prevTaskData) => ({
@@ -97,9 +101,18 @@ function TaskForm({
     formData.append("due_date", formattedDueDate);
     formData.append("priority", priority);
     formData.append("category", category);
-    // Prevents saving description as 'undefined' if no description is left
     formData.append("description", description);
 
+    /* if the form is in editing mode and the current user owns the task,
+    send a put request to update the task detail. Use the callback function
+    to then send data to the parent task detail component to display the updated
+    data on the task detail page.
+    If the current user is authenticated and not editing, send a psot request
+    to create a new task. Navigate users back to the tasks list page.
+    Otherwise if the user is not authenticated, redirect them to the sign in page.
+    This prevents unauthorised changes to data.
+    If there is an error when updating/creating a task which is not a 400 
+    client error, display a notification telling user to try again later. */
     try {
       if (isEditing && isOwner) {
         const { data } = await apiReq.put(`/tasks/${pk}/`, formData);
@@ -127,11 +140,15 @@ function TaskForm({
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
+          {/* Conditionally display title based on whether user is editing or not */}
           <h1 className={appStyles.Header}>
             {isEditing ? "Edit Task" : "New Task"}
           </h1>
           <Card className="mb-3">
             <Card.Body>
+              {/* Each form input will display an error message underneath
+              if the data is not valid. With the exception of the description
+              field as it is not required. */}
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formTitle">
                   <Form.Label>
@@ -234,6 +251,7 @@ function TaskForm({
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {/* Conditionally display save/create button based on editing state */}
                 {isEditing ? (
                   <div className="text-center">
                     <Button className={`${appStyles.Button} btn`} type="submit">
@@ -251,6 +269,7 @@ function TaskForm({
             </Card.Body>
           </Card>
           <div className="text-center mb-3">
+            {/* Conditionally display cancel/back button based on editing state */}
             {isEditing ? (
               <Button variant="outline-secondary" onClick={cancelEdit}>
                 Cancel <i class="fa-solid fa-xmark"></i>

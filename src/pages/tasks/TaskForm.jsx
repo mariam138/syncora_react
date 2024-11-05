@@ -56,6 +56,16 @@ function TaskForm({
     setDueDate(`${year}-${month}-${day}T${hours}:${minutes}`);
   };
 
+  const isoDueDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  };
+
   const goBack = () => {
     navigate(-1);
   };
@@ -80,17 +90,19 @@ function TaskForm({
     const taskDueDate = new Date(dueDate || detailDueDate);
     // Validation to check that the due date is not set in the past
     // Will prevent submission if validation fails
-    if (taskDueDate < now) {
+    if (taskDueDate <= now) {
       setError({ due_date: ["Tasks cannot be set in the past."] });
       return;
     }
 
-    // handleDateChange(taskDueDate);
+    /* Ensures either new due date or due date passed down from task detail
+    is in ISO format when submitting the form. */
+    const formattedDueDate = isoDueDate(taskDueDate)
 
     // Create new form data to send to api end point
     const formData = new FormData();
     formData.append("title", title || taskTitle);
-    formData.append("due_date", dueDate || detailDueDate);
+    formData.append("due_date", formattedDueDate);
     formData.append("priority", priority || taskPriority);
     formData.append("category", category || taskCategory);
     formData.append("description", description || taskDescription);
@@ -153,7 +165,7 @@ function TaskForm({
                     name="due_date"
                     value={dueDate || detailDueDate}
                     required
-                    onChange={setDueDate}
+                    onChange={handleDateChange}
                   />
                 </Form.Group>
                 {error &&

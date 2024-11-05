@@ -99,8 +99,8 @@ function TaskDetail() {
           detailDueDate={new Date(due_date)}
           taskPriority={priority}
           taskCategory={category}
-                  taskDescription={description}
-                  taskCompleted={completed}
+          taskDescription={description}
+          taskCompleted={completed}
           isEditing={isEditing}
           setIsEditing={setIsEditing}
           isOwner={is_owner}

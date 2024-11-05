@@ -143,13 +143,56 @@ function TasksList() {
                           .length > 0 ? (
                           tasksList.results
                             .filter((task) => task.completed)
-                            .map((task) => (
-                              <ListGroup.Item key={task.id}>
-                                {task.title}
-                                <br />
-                                Due: {task.due_date}
-                              </ListGroup.Item>
-                            ))
+                            .map((task) => {
+                              const dueDateRep = formatDueDate(task.due_date);
+
+                              return (
+                                <ListGroup.Item key={task.id}>
+                                  <div className="d-flex align-items-start flex-column flex-sm-row text-body-secondary">
+                                    <div className="me-auto">
+                                      <span className={taskStyles.Title}>
+                                        {task.title}
+                                      </span>
+                                      <span
+                                        className={`${
+                                          task.priority_display === "Low"
+                                            ? taskStyles.Low
+                                            : task.priority_display === "Medium"
+                                              ? taskStyles.Medium
+                                              : task.priority_display === "High"
+                                                ? taskStyles.High
+                                                : ""
+                                        } ps-3`}
+                                      >
+                                        {task.priority_display}
+                                      </span>
+                                      <div className="me-auto">
+                                        {" "}
+                                        Due: {dueDateRep}
+                                      </div>
+                                    </div>
+
+                                    <Button
+                                      variant="outline-secondary"
+                                      size="sm"
+                                      onClick={() => viewTask(task.id)}
+                                    >
+                                      View task
+                                    </Button>
+                                  </div>
+
+                                  <Form>
+                                    <Form.Check
+                                      reverse
+                                      label="Completed"
+                                      onChange={() => {
+                                        console.log("Changed!");
+                                      }}
+                                    />
+                                  </Form>
+                                </ListGroup.Item>
+                              );
+                            })
                         ) : (
                           <p className="fs-5 text-body-secondary">
                             You haven't completed any tasks yet!

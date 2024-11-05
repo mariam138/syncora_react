@@ -101,9 +101,9 @@ function TaskForm({
 
     try {
       if (isEditing && isOwner) {
-        await apiReq.put(`/tasks/${pk}/`, formData);
+        const { data } = await apiReq.put(`/tasks/${pk}/`, formData);
         if (onUpdateTaskDetail) {
-          onUpdateTaskDetail(taskData);
+          onUpdateTaskDetail(data);
         }
         SuccessToast("Task updated");
       } else if (currentUser) {

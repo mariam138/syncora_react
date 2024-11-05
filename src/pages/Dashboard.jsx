@@ -22,7 +22,14 @@ function Dashboard() {
         />
         {/* </Col> */}
         {/* <Col> */}
-        <TasksList />
+        <h2 className={appStyles.Header}>Tasks</h2>
+
+        <TasksList
+          showHeader={false}
+          showCreateLink={false}
+          showCompletedTab={false}
+          showCheck={false}
+        />
         {/* </Col> */}
       </Row>
     </>

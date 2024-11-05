@@ -116,6 +116,7 @@ function TasksList() {
                                     <Form.Check
                                       reverse
                                       label="Completed"
+                                      checked={task.completed}
                                       onChange={() => {
                                         console.log("Changed!");
                                       }}
@@ -185,6 +186,7 @@ function TasksList() {
                                     <Form.Check
                                       reverse
                                       label="Completed"
+                                      checked={task.completed}
                                       onChange={() => {
                                         console.log("Changed!");
                                       }}

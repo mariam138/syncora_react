@@ -57,7 +57,7 @@ function TasksList() {
       SuccessToast("Task complete!");
     } catch (error) {
       console.log(error);
-      WarningToast("There was an error.");
+      WarningToast("There was an error. Please try again.");
     }
   };
 
@@ -132,13 +132,17 @@ function TasksList() {
                                     </Button>
                                   </div>
 
-                                  <Form onSubmit={toggleCompleted(task.id)}>
+                                  <Form>
                                     <Form.Check
                                       reverse
                                       label="Completed"
                                       checked={task.completed}
-                                      // onChange={toggleCompleted(task.id)}
-                                      // onToggle={() => task.id }
+                                      onChange={(e) =>
+                                        toggleCompleted(
+                                          task.id,
+                                          e.target.checked,
+                                        )
+                                      }
                                     />
                                   </Form>
                                 </ListGroup.Item>

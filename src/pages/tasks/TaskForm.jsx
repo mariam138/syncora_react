@@ -65,7 +65,6 @@ function TaskForm({
 
   const cancelEdit = () => {
     setIsEditing(false);
-    navigate(`/tasks/${pk}`);
     WarningToast("Your changes were not saved.");
   };
 
@@ -98,7 +97,8 @@ function TaskForm({
     formData.append("due_date", formattedDueDate);
     formData.append("priority", priority || taskPriority);
     formData.append("category", category || taskCategory);
-    formData.append("description", description || taskDescription);
+    // Prevents saving description as 'undefined' if no description is left
+    formData.append("description", description ?? taskDescription);
 
     try {
       if (isEditing && isOwner) {

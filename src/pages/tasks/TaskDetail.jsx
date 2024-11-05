@@ -114,6 +114,7 @@ function TaskDetail() {
           isEditing={isEditing}
           setIsEditing={setIsEditing}
           isOwner={is_owner}
+          onUpdateTaskDetail={handleTaskUpdate}
         />
       ) : isLoaded ? (
         <>

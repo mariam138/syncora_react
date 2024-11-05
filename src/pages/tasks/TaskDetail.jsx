@@ -101,8 +101,8 @@ function TaskDetail() {
           taskCategory={category}
           taskDescription={description}
           isEditing={isEditing}
-                  setIsEditing={setIsEditing}
-                  isOwner={is_owner}
+          setIsEditing={setIsEditing}
+          isOwner={is_owner}
         />
       ) : isLoaded ? (
         <>
@@ -114,7 +114,7 @@ function TaskDetail() {
                   <Card.Title>
                     Due Date <i className="fa-regular fa-calendar"></i>
                   </Card.Title>
-                  <Card.Text>{due_date}</Card.Text>
+                  <Card.Text>{due_date && formatDueDate(due_date)}</Card.Text>
                   <hr />
                   <Card.Title>
                     Priority <i className="fa-solid fa-hourglass-start"></i>

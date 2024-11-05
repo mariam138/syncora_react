@@ -24,7 +24,7 @@ function TaskForm({
   isEditing,
   setIsEditing,
   isOwner,
-  onUpdateTaskDetail
+  onUpdateTaskDetail,
 }) {
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
@@ -102,7 +102,9 @@ function TaskForm({
     try {
       if (isEditing && isOwner) {
         await apiReq.put(`/tasks/${pk}/`, formData);
-        setIsEditing(false);
+        if (onUpdateTaskDetail) {
+          onUpdateTaskDetail(taskData);
+        }
         SuccessToast("Task updated");
       } else if (currentUser) {
         await apiReq.post("/tasks/new/", formData);

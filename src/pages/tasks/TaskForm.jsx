@@ -33,14 +33,13 @@ function TaskForm({
   const [error, setError] = useState({});
   // Set initial task data
   const [taskData, setTaskData] = useState({
-    owner: "",
-    title: "",
-    due_date: "",
-    priority: "",
-    category: "",
-    description: "",
+    title: taskTitle || "",
+    due_date: detailDueDate || "",
+    priority: taskPriority || "",
+    category: taskCategory || "",
+    description: taskDescription || "",
   });
-  const { owner, title, priority, category, description } = taskData;
+  const { title, priority, category, description } = taskData;
 
   const formatToIso = (date) => {
     const year = date.getFullYear();
@@ -68,10 +67,11 @@ function TaskForm({
   };
 
   const handleChange = (e) => {
-    setTaskData({
-      ...taskData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setTaskData((prevTaskData) => ({
+      ...prevTaskData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -229,7 +229,7 @@ function TaskForm({
                     rows={3}
                     placeholder="Any extra information?"
                     name="description"
-                    value={description ?? taskDescription}
+                    value={description}
                     onChange={handleChange}
                   />
                 </Form.Group>

@@ -41,6 +41,10 @@ function TasksList() {
     navigate(`/tasks/${taskId}/`);
   };
 
+  const toggleCompleted = (e) => {
+    completed: e.target.checked;
+  };
+
   return (
     <>
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
@@ -116,10 +120,8 @@ function TasksList() {
                                     <Form.Check
                                       reverse
                                       label="Completed"
-                                      checked={task.completed}
-                                      onChange={() => {
-                                        console.log("Changed!");
-                                      }}
+                                      // checked={task.completed}
+                                      onChange={toggleCompleted}
                                     />
                                   </Form>
                                 </ListGroup.Item>

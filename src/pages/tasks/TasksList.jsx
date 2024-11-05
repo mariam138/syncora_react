@@ -81,23 +81,26 @@ function TasksList({
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <h1 className={appStyles.Header}>Tasks</h1>
+            {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
             <Card className="mb-3">
-              <Card.Header>
-                <Nav
-                  variant="tabs"
-                  onSelect={(k) => {
-                    setKey(k);
-                  }}
-                >
-                  <Nav.Item>
-                    <Nav.Link eventKey="uncompleted">To Do</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="completed">Completed</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Card.Header>
+              {showCompletedTab && (
+                <Card.Header>
+                  <Nav
+                    variant="tabs"
+                    onSelect={(k) => {
+                      setKey(k);
+                    }}
+                  >
+                    <Nav.Item>
+                      <Nav.Link eventKey="uncompleted">To Do</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="completed">Completed</Nav.Link>
+                    </Nav.Item>
+                  </Nav>
+                </Card.Header>
+              )}
+
               <Card.Body>
                 <Tab.Content>
                   <Tab.Pane eventKey="uncompleted">
@@ -146,20 +149,21 @@ function TasksList({
                                       View task
                                     </Button>
                                   </div>
-
-                                  <Form>
-                                    <Form.Check
-                                      reverse
-                                      label="Completed"
-                                      checked={task.completed}
-                                      onChange={(e) =>
-                                        toggleCompleted(
-                                          task.id,
-                                          e.target.checked,
-                                        )
-                                      }
-                                    />
-                                  </Form>
+                                  {showCheck && (
+                                    <Form>
+                                      <Form.Check
+                                        reverse
+                                        label="Completed"
+                                        checked={task.completed}
+                                        onChange={(e) =>
+                                          toggleCompleted(
+                                            task.id,
+                                            e.target.checked,
+                                          )
+                                        }
+                                      />
+                                    </Form>
+                                  )}
                                 </ListGroup.Item>
                               );
                             })
@@ -173,85 +177,91 @@ function TasksList({
                       )}
                     </ListGroup>
                   </Tab.Pane>
-                  <Tab.Pane eventKey="completed">
-                    <ListGroup variant="flush">
-                      {/* Checks if there are any complete tasks before filtering
+                  {showCompletedTab && (
+                    <Tab.Pane eventKey="completed">
+                      <ListGroup variant="flush">
+                        {/* Checks if there are any complete tasks before filtering
                                           complete tasks and displaying each one in a list item */}
-                      {isLoaded ? (
-                        tasksList.results.filter((task) => task.completed)
-                          .length > 0 ? (
-                          tasksList.results
-                            .filter((task) => task.completed)
-                            .map((task) => {
-                              const dueDateRep = formatDueDate(task.due_date);
+                        {isLoaded ? (
+                          tasksList.results.filter((task) => task.completed)
+                            .length > 0 ? (
+                            tasksList.results
+                              .filter((task) => task.completed)
+                              .map((task) => {
+                                const dueDateRep = formatDueDate(task.due_date);
 
-                              return (
-                                <ListGroup.Item key={task.id}>
-                                  <div className="d-flex align-items-start flex-column flex-sm-row text-body-secondary">
-                                    <div className="me-auto">
-                                      <span className={taskStyles.Title}>
-                                        {task.title}
-                                      </span>
-                                      <span
-                                        className={`${
-                                          task.priority_display === "Low"
-                                            ? taskStyles.Low
-                                            : task.priority_display === "Medium"
-                                              ? taskStyles.Medium
-                                              : task.priority_display === "High"
-                                                ? taskStyles.High
-                                                : ""
-                                        } ps-3`}
-                                      >
-                                        {task.priority_display}
-                                      </span>
+                                return (
+                                  <ListGroup.Item key={task.id}>
+                                    <div className="d-flex align-items-start flex-column flex-sm-row text-body-secondary">
                                       <div className="me-auto">
-                                        {" "}
-                                        Due: {dueDateRep}
+                                        <span className={taskStyles.Title}>
+                                          {task.title}
+                                        </span>
+                                        <span
+                                          className={`${
+                                            task.priority_display === "Low"
+                                              ? taskStyles.Low
+                                              : task.priority_display ===
+                                                  "Medium"
+                                                ? taskStyles.Medium
+                                                : task.priority_display ===
+                                                    "High"
+                                                  ? taskStyles.High
+                                                  : ""
+                                          } ps-3`}
+                                        >
+                                          {task.priority_display}
+                                        </span>
+                                        <div className="me-auto">
+                                          {" "}
+                                          Due: {dueDateRep}
+                                        </div>
                                       </div>
+
+                                      <Button
+                                        variant="outline-secondary"
+                                        size="sm"
+                                        onClick={() => viewTask(task.id)}
+                                      >
+                                        View task
+                                      </Button>
                                     </div>
 
-                                    <Button
-                                      variant="outline-secondary"
-                                      size="sm"
-                                      onClick={() => viewTask(task.id)}
-                                    >
-                                      View task
-                                    </Button>
-                                  </div>
-
-                                  <Form>
-                                    <Form.Check
-                                      reverse
-                                      label="Completed"
-                                      checked={task.completed}
-                                      onChange={(e) => {
-                                        toggleCompleted(
-                                          task.id,
-                                          e.target.checked,
-                                        );
-                                      }}
-                                    />
-                                  </Form>
-                                </ListGroup.Item>
-                              );
-                            })
+                                    <Form>
+                                      <Form.Check
+                                        reverse
+                                        label="Completed"
+                                        checked={task.completed}
+                                        onChange={(e) => {
+                                          toggleCompleted(
+                                            task.id,
+                                            e.target.checked,
+                                          );
+                                        }}
+                                      />
+                                    </Form>
+                                  </ListGroup.Item>
+                                );
+                              })
+                          ) : (
+                            <p className="fs-5 text-body-secondary">
+                              You haven't completed any tasks yet!
+                            </p>
+                          )
                         ) : (
-                          <p className="fs-5 text-body-secondary">
-                            You haven't completed any tasks yet!
-                          </p>
-                        )
-                      ) : (
-                        <LoadingSpinner />
-                      )}
-                    </ListGroup>
-                  </Tab.Pane>
+                          <LoadingSpinner />
+                        )}
+                      </ListGroup>
+                    </Tab.Pane>
+                  )}
                 </Tab.Content>
               </Card.Body>
             </Card>
-            <Link to="new/" className={styles.Link}>
-              New Task <i class="fa-solid fa-plus"></i>
-            </Link>
+            {showCreateLink && (
+              <Link to="new/" className={styles.Link}>
+                New Task <i class="fa-solid fa-plus"></i>
+              </Link>
+            )}
           </Col>
         </Row>
       </Tab.Container>

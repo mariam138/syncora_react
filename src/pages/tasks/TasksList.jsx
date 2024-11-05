@@ -42,11 +42,17 @@ function TasksList() {
     navigate(`/tasks/${taskId}/`);
   };
 
+  /* Sends a patch request to the API to only update the completed
+  status of the task. New form data is created to send with the
+  request. The task list is then updated. If the task id matches the id that
+  is passed through as a parameter, then a new object is created for that
+  task with the spread operator, overriding the completed property
+  to the new value. Otherwise the default task object is returned.
+  */
   const toggleCompleted = async (taskId, completed) => {
     try {
       const formData = new FormData();
       formData.append("completed", completed);
-
       await apiReq.patch(`/tasks/${taskId}/`, formData);
       setTasksList((prevTaskList) => ({
         ...prevTaskList,

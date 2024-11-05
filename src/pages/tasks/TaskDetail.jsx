@@ -50,17 +50,6 @@ function TaskDetail() {
   const handleMount = async () => {
     try {
       const { data } = await apiResp.get(`/tasks/${pk}/`);
-      const {
-        owner,
-        title,
-        due_date,
-        priority,
-        category,
-        priority_display,
-        category_display,
-        description,
-        completed,
-      } = data;
       setTaskDetail(data);
       setIsLoaded(true);
     } catch (error) {

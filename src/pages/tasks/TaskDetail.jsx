@@ -129,7 +129,9 @@ function TaskDetail() {
                   <Card.Title>
                     Description <i className="fa-solid fa-location-dot"></i>
                   </Card.Title>
-                  <Card.Text>{description}</Card.Text>
+                  <Card.Text className={`!description && text-body-secondary`}>
+                    {description || "No description available"}
+                  </Card.Text>
                   <hr />
                   <Card.Title>
                     Completed? <i className="fa-solid fa-icons"></i>

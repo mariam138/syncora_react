@@ -95,9 +95,13 @@ function TaskForm({
     const taskDueDate = new Date(dueDate || detailDueDate);
     // Validation to check that the due date is not set in the past
     // Will prevent submission if validation fails
-    if (taskDueDate <= now) {
-      setError({ due_date: ["Tasks cannot be set in the past."] });
-      return;
+    // Only does this check on new tasks so that if someone is completing
+    // a task after the due date, the error doesn't appear
+    if (!isEditing) {
+      if (taskDueDate <= now) {
+        setError({ due_date: ["Tasks cannot be set in the past."] });
+        return;
+      }
     }
 
     /* Ensures either new due date or due date passed down from task detail

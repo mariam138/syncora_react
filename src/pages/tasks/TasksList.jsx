@@ -60,7 +60,11 @@ function TasksList() {
           task.id === taskId ? { ...task, completed } : task,
         ),
       }));
-      SuccessToast("Task complete!");
+
+      // Only display the toast if the task was completed
+      {
+        completed && SuccessToast("Task complete!");
+      }
     } catch (error) {
       console.log(error);
       WarningToast("There was an error. Please try again.");
@@ -216,8 +220,11 @@ function TasksList() {
                                       reverse
                                       label="Completed"
                                       checked={task.completed}
-                                      onChange={() => {
-                                        console.log("Changed!");
+                                      onChange={(e) => {
+                                        toggleCompleted(
+                                          task.id,
+                                          e.target.checked,
+                                        );
                                       }}
                                     />
                                   </Form>

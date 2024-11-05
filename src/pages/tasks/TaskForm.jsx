@@ -32,7 +32,6 @@ function TaskForm({
   const { pk } = useParams();
   const [error, setError] = useState({});
   // Set initial task data
-  // Completed automatically set to false when created which is set up in the back end
   const [taskData, setTaskData] = useState({
     owner: "",
     title: "",

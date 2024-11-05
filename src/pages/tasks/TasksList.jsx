@@ -86,16 +86,16 @@ function TasksList() {
                                       </span>
                                       <span
                                         className={`${
-                                          task.priority === "Low"
+                                          task.priority_display === "Low"
                                             ? taskStyles.Low
-                                            : task.priority === "Medium"
+                                            : task.priority_display === "Medium"
                                               ? taskStyles.Medium
-                                              : task.priority === "High"
+                                              : task.priority_display === "High"
                                                 ? taskStyles.High
                                                 : ""
                                         } ps-3`}
                                       >
-                                        {task.priority}
+                                        {task.priority_display}
                                       </span>
                                       <div className="me-auto">
                                         {" "}

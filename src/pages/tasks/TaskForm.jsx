@@ -21,6 +21,7 @@ function TaskForm({
   taskCategory,
   taskPriority,
   taskDescription,
+  taskCompleted,
   isEditing,
   setIsEditing,
   isOwner,
@@ -40,8 +41,9 @@ function TaskForm({
     priority: taskPriority || "",
     category: taskCategory || "",
     description: taskDescription || "",
+    completed: taskCompleted || false,
   });
-  const { title, priority, category, description } = taskData;
+  const { title, priority, category, description, completed } = taskData;
 
   // Format the date correctly in ISO format as expected by javascript
   // Before submission of form
@@ -102,6 +104,7 @@ function TaskForm({
     formData.append("priority", priority);
     formData.append("category", category);
     formData.append("description", description);
+    formData.append("completed", completed);
 
     /* if the form is in editing mode and the current user owns the task,
     send a put request to update the task detail. Use the callback function
@@ -251,6 +254,15 @@ function TaskForm({
                     onChange={handleChange}
                   />
                 </Form.Group>
+
+                {isEditing && (
+                  <Form.Check
+                    type="checkbox"
+                    id="formCompleted"
+                    label="Completed?"
+                    className="pb-2"
+                  />
+                )}
                 {/* Conditionally display save/create button based on editing state */}
                 {isEditing ? (
                   <div className="text-center">

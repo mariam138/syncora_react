@@ -86,11 +86,11 @@ function TasksList() {
                                       </span>
                                       <span
                                         className={`${
-                                          task.priority === "L"
+                                          task.priority === "Low"
                                             ? taskStyles.Low
-                                            : task.priority === "M"
+                                            : task.priority === "Medium"
                                               ? taskStyles.Medium
-                                              : task.priority === "H"
+                                              : task.priority === "High"
                                                 ? taskStyles.High
                                                 : ""
                                         } ps-3`}

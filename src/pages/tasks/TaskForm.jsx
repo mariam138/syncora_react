@@ -14,6 +14,7 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { apiReq } from "../../api/axiosDefaults";
+import { formatDueDate } from "../../functions/dateFormat";
 
 function TaskForm({
   taskTitle,
@@ -76,13 +77,16 @@ function TaskForm({
     e.preventDefault();
     // Only allows logged in users to create tasks
     const now = new Date();
-    const taskDueDate = new Date(dueDate);
+    const taskDueDate = new Date(dueDate || detailDueDate);
     // Validation to check that the due date is not set in the past
     // Will prevent submission if validation fails
     if (taskDueDate < now) {
       setError({ due_date: ["Tasks cannot be set in the past."] });
       return;
     }
+
+    // handleDateChange(taskDueDate);
+
     // Create new form data to send to api end point
     const formData = new FormData();
     formData.append("title", title || taskTitle);
@@ -149,7 +153,7 @@ function TaskForm({
                     name="due_date"
                     value={dueDate || detailDueDate}
                     required
-                    onChange={handleDateChange}
+                    onChange={setDueDate}
                   />
                 </Form.Group>
                 {error &&

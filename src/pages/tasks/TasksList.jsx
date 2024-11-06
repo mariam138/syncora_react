@@ -77,6 +77,8 @@ function TasksList({
     }
   };
 
+  const now = new Date();
+
   return (
     <>
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
@@ -136,7 +138,11 @@ function TasksList({
                                       >
                                         {task.priority_display}
                                       </span>
-                                      <span className="ms-5 text-danger">Overdue</span>
+                                      {now > task.due_date && (
+                                        <span className="ms-5 ms-md-3 text-danger">
+                                          Overdue
+                                        </span>
+                                      )}
                                       <div className="me-auto">
                                         {" "}
                                         Due: {dueDateRep}

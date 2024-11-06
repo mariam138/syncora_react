@@ -14,6 +14,7 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { apiReq } from "../../api/axiosDefaults";
+import { formatToIso } from "../../functions/dateFormat";
 
 function TaskForm({
   taskTitle,
@@ -44,18 +45,6 @@ function TaskForm({
     completed: taskCompleted || false,
   });
   const { title, priority, category, description, completed } = taskData;
-
-  // Format the date correctly in ISO format as expected by javascript
-  // Before submission of form
-  const formatToIso = (date) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
-  };
 
   // Use the formatToIso function when setting due date during onChange handler
   const handleDateChange = (newDate) => {

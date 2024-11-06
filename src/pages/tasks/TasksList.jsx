@@ -170,6 +170,8 @@ function TasksList({
                 </Dropdown.ItemText>
                 {allCategories.map(([value, label]) => (
                   <Dropdown.Item
+                    as="button"
+                    role="menuitem"
                     key={value}
                     onClick={() => handleCategoryFilterChange(value)}
                   >

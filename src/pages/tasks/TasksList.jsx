@@ -95,6 +95,12 @@ function TasksList({
     (task) => task.priority === priority,
   );
 
+  // Function to clear filters and display normal content
+  const handleClearFilters = () => {
+    setPriority("");
+    setIsFiltering(false);
+  };
+
   return (
     <>
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
@@ -103,11 +109,14 @@ function TasksList({
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
             <DropdownButton
               id="priority-filter-dropdown"
-              title="Filter priority"
+              title="Filter"
               className="mb-2"
               variant="info"
               role="menu"
             >
+              <Dropdown.ItemText className="text-decoration-underline">
+                Priority
+              </Dropdown.ItemText>
               <Dropdown.Item
                 as="button"
                 role="menuitem"
@@ -128,6 +137,13 @@ function TasksList({
                 onClick={() => handlePrioFilterChange("H")}
               >
                 High
+              </Dropdown.Item>
+              <Dropdown.Item
+                as="button"
+                role="menuitem"
+                className="text-body-secondary"
+              >
+                <i class="fa-solid fa-xmark"></i> Clear filters
               </Dropdown.Item>
             </DropdownButton>
             {!isFiltering && (

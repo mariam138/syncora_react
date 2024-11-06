@@ -27,6 +27,7 @@ function TasksList({
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
   const [key, setKey] = useState("uncompleted");
+  const [priority, setPriority] = useState('')
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
 
@@ -85,6 +86,10 @@ function TasksList({
   const filterTasksByPriority = (priority) => {
     return tasksList.results.filter((task) => task.priority === priority);
   };
+  // Change filter based on button click
+  const handlePrioFilterChange = (newPriority) => {
+    setPriority(newPriority)
+  }
 
   return (
     <>

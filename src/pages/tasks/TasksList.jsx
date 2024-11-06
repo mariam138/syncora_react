@@ -136,6 +136,7 @@ function TasksList({
                                       >
                                         {task.priority_display}
                                       </span>
+                                      <span className="ms-5 text-danger">Overdue</span>
                                       <div className="me-auto">
                                         {" "}
                                         Due: {dueDateRep}

@@ -103,6 +103,17 @@ function TasksList({
     setKey("uncompleted");
   };
 
+  const allCategories = [
+    ["WORK", "Work"],
+    ["SOC", "Social"],
+    ["FAM", "Family"],
+    ["HOME", "Home"],
+    ["EDU", "Learning"],
+    ["FIN", "Finance"],
+    ["HEALTH", "Health"],
+    ["PER", "Personal"],
+  ];
+
   return (
     <>
       <Tab.Container id="tasks-tabs" activeKey={key}>

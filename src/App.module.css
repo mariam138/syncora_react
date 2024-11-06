@@ -26,6 +26,11 @@
   width: 100%;
 }
 
+/* Allow content to be scrollable to avoid moving the sidebar with the page */
+.Container {
+  overflow-y: scroll;
+}
+
 @media (min-width: 992px) {
   .Container {
     margin-top: 80px;

@@ -31,8 +31,10 @@
   overflow-y: scroll;
 }
 
+/* Remove scrollable component on larger screens */
 @media (min-width: 992px) {
   .Container {
     margin-top: 80px;
+    overflow-y: unset;
   }
 }

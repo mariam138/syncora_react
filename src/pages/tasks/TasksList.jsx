@@ -81,6 +81,11 @@ function TasksList({
   // with the task due date
   const now = formatToIso(new Date());
 
+  // Function to filter tasks by priority
+  const filterTasksByPriority = (priority) => {
+    return tasksList.results.filter((task) => task.priority === priority);
+  };
+
   return (
     <>
       <Tab.Container id="tasks-tabs" defaultActiveKey={key}>

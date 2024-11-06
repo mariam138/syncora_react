@@ -12,7 +12,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { formatDueDate } from "../../functions/dateFormat";
+import { formatDueDate, formatToIso } from "../../functions/dateFormat";
 import styles from "../../styles/CreateLink.module.css";
 import taskStyles from "../../styles/TaskList.module.css";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
@@ -77,7 +77,7 @@ function TasksList({
     }
   };
 
-  const now = new Date();
+  const now = formatToIso(new Date());
 
   return (
     <>

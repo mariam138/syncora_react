@@ -99,11 +99,12 @@ function TasksList({
   const handleClearFilters = () => {
     setPriority("");
     setIsFiltering(false);
+    setKey("uncompleted");
   };
 
   return (
     <>
-      <Tab.Container id="tasks-tabs" defaultActiveKey={key}>
+      <Tab.Container id="tasks-tabs" activeKey={key}>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
@@ -152,6 +153,7 @@ function TasksList({
                 {showCompletedTab && (
                   <Card.Header>
                     <Nav
+                      fill
                       variant="tabs"
                       onSelect={(k) => {
                         setKey(k);

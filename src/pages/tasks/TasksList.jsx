@@ -22,6 +22,7 @@ function TasksList({
   showCreateLink = true,
   showCompletedTab = true,
   showCheck = true,
+  className = "",
 }) {
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -82,7 +83,7 @@ function TasksList({
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
-            <Card className="mb-3">
+            <Card className={`mb-3 ${className}`}>
               {showCompletedTab && (
                 <Card.Header>
                   <Nav

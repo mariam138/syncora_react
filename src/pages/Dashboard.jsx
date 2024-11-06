@@ -4,6 +4,7 @@ import appStyles from "../App.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TasksList from "./tasks/TasksList";
+import styles from '../styles/Dashboard.module.css'
 
 function Dashboard() {
   return (
@@ -29,6 +30,7 @@ function Dashboard() {
           showCreateLink={false}
           showCompletedTab={false}
           showCheck={false}
+          className={styles.ScrollCard}
         />
         {/* </Col> */}
       </Row>

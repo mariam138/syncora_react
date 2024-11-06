@@ -89,17 +89,19 @@ function TasksList({
 
   // Change filter based on button click
   const handlePrioFilterChange = (newPriority) => {
+    setCategory("");
     setPriority(newPriority);
     setIsFiltering(true);
   };
 
   const handleCategoryFilterChange = (newCategory) => {
+    setPriority("");
     setCategory(newCategory);
     setIsFiltering(true);
   };
 
   const filteredTasks = tasksList.results.filter(
-    (task) => task.priority === priority,
+    (task) => task.priority === priority || task.category === category,
   );
 
   // Function to clear filters and display normal content

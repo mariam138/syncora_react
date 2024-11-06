@@ -267,6 +267,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 - Code to add time to the current user's local time is adapted from [this post](https://javascript.plainenglish.io/javascript-add-hours-to-date-6e3a39bb9345) by Tari Ibaba
 - Code to complete tasks using the form checkbox is adapted from [React School](https://react.school/todo-list/completing-tasks)
 - Code to allow the tasks list component to be scrollable on the dashboard is adapted from [this post](https://community.plotly.com/t/set-max-height-to-a-div-and-make-the-content-vertically-scrollable/28873) on community.plotly.com
+- Code to allow filtering by user input is adapted from [this post](https://www.dhiwise.com/post/reactjs-filter-array-of-objects-effortless-data-handling) by Kesar Bhimani on www.dhiwise.com
 
 ### Media
 

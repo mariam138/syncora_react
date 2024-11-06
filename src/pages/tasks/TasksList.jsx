@@ -87,19 +87,26 @@ function TasksList({
   // with the task due date
   const now = formatToIso(new Date());
 
-  // Change filter based on button click
+  // Functions to allow filtering of tasks adapted from:
+  // https://www.dhiwise.com/post/reactjs-filter-array-of-objects-effortless-data-handling
+
+  /* Sets category back to an empty string so only the
+  priority is changed. Sets new priority for filtering. */
   const handlePrioFilterChange = (newPriority) => {
     setCategory("");
     setPriority(newPriority);
     setIsFiltering(true);
   };
 
+  /* Sets priority back to an empty string so only the
+  category is changed. Sets new category for filtering.*/
   const handleCategoryFilterChange = (newCategory) => {
     setPriority("");
     setCategory(newCategory);
     setIsFiltering(true);
   };
 
+  // Filters the tasksList results either by priority or by category
   const filteredTasks = tasksList.results.filter(
     (task) => task.priority === priority || task.category === category,
   );
@@ -112,6 +119,7 @@ function TasksList({
     setKey("uncompleted");
   };
 
+  // Gets categories labels and values to make filter button for each category
   const allCategories = [
     ["WORK", "Work"],
     ["SOC", "Social"],

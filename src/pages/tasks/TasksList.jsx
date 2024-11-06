@@ -27,7 +27,7 @@ function TasksList({
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
   const [key, setKey] = useState("uncompleted");
-  const [priority, setPriority] = useState('')
+  const [priority, setPriority] = useState("");
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
 
@@ -88,8 +88,12 @@ function TasksList({
   };
   // Change filter based on button click
   const handlePrioFilterChange = (newPriority) => {
-    setPriority(newPriority)
-  }
+    setPriority(newPriority);
+  };
+
+  const filteredTasks = tasksList.results.filter(
+    (task) => task.priority === priority,
+  );
 
   return (
     <>
@@ -288,6 +292,65 @@ function TasksList({
                 New Task <i class="fa-solid fa-plus"></i>
               </Link>
             )}
+
+            <div>
+              <Button onClick={() => handlePrioFilterChange("L")}>
+                Filter
+              </Button>
+              {filteredTasks.length > 0 ? (
+                <ListGroup variant="flush">
+                  {filteredTasks.map((task) => (
+                    <ListGroup.Item key={task.id}>
+                      <div className="d-flex align-items-start flex-column flex-sm-row">
+                        <div className="me-auto">
+                          <span className={taskStyles.Title}>{task.title}</span>
+                          <span
+                            className={`${
+                              task.priority_display === "Low"
+                                ? taskStyles.Low
+                                : task.priority_display === "Medium"
+                                  ? taskStyles.Medium
+                                  : task.priority_display === "High"
+                                    ? taskStyles.High
+                                    : ""
+                            } ps-3`}
+                          >
+                            {task.priority_display}
+                          </span>
+                          <div className="me-auto">
+                            Due: {formatDueDate(task.due_date)}
+                          </div>
+                        </div>
+
+                        <Button
+                          variant="outline-secondary"
+                          size="sm"
+                          onClick={() => viewTask(task.id)}
+                        >
+                          View task
+                        </Button>
+                      </div>
+                      {showCheck && (
+                        <Form>
+                          <Form.Check
+                            reverse
+                            label="Completed"
+                            checked={task.completed}
+                            onChange={(e) =>
+                              toggleCompleted(task.id, e.target.checked)
+                            }
+                          />
+                        </Form>
+                      )}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              ) : (
+                <p className="fs-5 text-body-secondary">
+                  No tasks found with this priority.
+                </p>
+              )}
+            </div>
           </Col>
         </Row>
       </Tab.Container>

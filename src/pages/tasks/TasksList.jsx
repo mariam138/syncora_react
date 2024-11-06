@@ -25,6 +25,7 @@ function TasksList({
   showCompletedTab = true,
   showCheck = true,
   className = "",
+  showFilters = true,
 }) {
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -108,46 +109,49 @@ function TasksList({
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
-            <DropdownButton
-              id="priority-filter-dropdown"
-              title="Filter"
-              className="mb-2"
-              variant="info"
-              role="menu"
-            >
-              <Dropdown.ItemText className="text-decoration-underline">
-                Priority
-              </Dropdown.ItemText>
-              <Dropdown.Item
-                as="button"
-                role="menuitem"
-                onClick={() => handlePrioFilterChange("L")}
+            {showFilters && (
+              <DropdownButton
+                id="priority-filter-dropdown"
+                title="Filter"
+                className="mb-2"
+                variant="info"
+                role="menu"
               >
-                Low
-              </Dropdown.Item>
-              <Dropdown.Item
-                as="button"
-                role="menuitem"
-                onClick={() => handlePrioFilterChange("M")}
-              >
-                Medium
-              </Dropdown.Item>
-              <Dropdown.Item
-                as="button"
-                role="menuitem"
-                onClick={() => handlePrioFilterChange("H")}
-              >
-                High
-              </Dropdown.Item>
-              <Dropdown.Item
-                as="button"
-                role="menuitem"
-                onClick={() => handleClearFilters()}
-                className="text-body-secondary"
-              >
-                <i class="fa-solid fa-xmark"></i> Clear filters
-              </Dropdown.Item>
-            </DropdownButton>
+                <Dropdown.ItemText className="text-decoration-underline">
+                  Priority
+                </Dropdown.ItemText>
+                <Dropdown.Item
+                  as="button"
+                  role="menuitem"
+                  onClick={() => handlePrioFilterChange("L")}
+                >
+                  Low
+                </Dropdown.Item>
+                <Dropdown.Item
+                  as="button"
+                  role="menuitem"
+                  onClick={() => handlePrioFilterChange("M")}
+                >
+                  Medium
+                </Dropdown.Item>
+                <Dropdown.Item
+                  as="button"
+                  role="menuitem"
+                  onClick={() => handlePrioFilterChange("H")}
+                >
+                  High
+                </Dropdown.Item>
+                <Dropdown.Item
+                  as="button"
+                  role="menuitem"
+                  onClick={() => handleClearFilters()}
+                  className="text-body-secondary"
+                >
+                  <i class="fa-solid fa-xmark"></i> Clear filters
+                </Dropdown.Item>
+              </DropdownButton>
+            )}
+
             {!isFiltering && (
               <Card className={`mb-3 ${className} ${taskStyles.TaskScroll}`}>
                 {showCompletedTab && (

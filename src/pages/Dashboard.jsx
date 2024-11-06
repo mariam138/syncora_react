@@ -31,6 +31,7 @@ function Dashboard() {
           showCompletedTab={false}
           showCheck={false}
           className={styles.ScrollCard}
+          showFilters={false}
         />
         {/* </Col> */}
       </Row>

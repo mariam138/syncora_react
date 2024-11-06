@@ -31,6 +31,7 @@ function TasksList({
   const [isLoaded, setIsLoaded] = useState(false);
   const [key, setKey] = useState("uncompleted");
   const [priority, setPriority] = useState("");
+  const [category, setCategory] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
@@ -92,6 +93,11 @@ function TasksList({
     setIsFiltering(true);
   };
 
+  const handleCategoryFilterChange = (newCategory) => {
+    setCategory(newCategory);
+    setIsFiltering(true);
+  };
+
   const filteredTasks = tasksList.results.filter(
     (task) => task.priority === priority,
   );
@@ -99,6 +105,7 @@ function TasksList({
   // Function to clear filters and display normal content
   const handleClearFilters = () => {
     setPriority("");
+    setCategory("");
     setIsFiltering(false);
     setKey("uncompleted");
   };
@@ -152,6 +159,17 @@ function TasksList({
                 >
                   High
                 </Dropdown.Item>
+                <Dropdown.ItemText className="text-decoration-underline">
+                  Category
+                </Dropdown.ItemText>
+                {allCategories.map(([value, label]) => (
+                  <Dropdown.Item
+                    key={value}
+                    onClick={() => handleCategoryFilterChange(value)}
+                  >
+                    {label}
+                  </Dropdown.Item>
+                ))}
                 <Dropdown.Item
                   as="button"
                   role="menuitem"
@@ -160,14 +178,6 @@ function TasksList({
                 >
                   <i class="fa-solid fa-xmark"></i> Clear filters
                 </Dropdown.Item>
-                {allCategories.map(([value, label]) => (
-                  <Dropdown.Item
-                    key={value}
-                    onClick={() => handlePrioFilterChange(value)}
-                  >
-                    {label}
-                  </Dropdown.Item>
-                ))}
               </DropdownButton>
             )}
 

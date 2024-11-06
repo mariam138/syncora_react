@@ -1,3 +1,7 @@
+.TaskScroll {
+  overflow-y: auto;
+}
+
 .Low {
   color: #2b8700;
 }

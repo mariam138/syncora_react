@@ -83,7 +83,7 @@ function TasksList({
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
-            <Card className={`mb-3 ${className}`}>
+            <Card className={`mb-3 ${className} ${taskStyles.TaskScroll}`}>
               {showCompletedTab && (
                 <Card.Header>
                   <Nav

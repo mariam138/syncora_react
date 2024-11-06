@@ -160,6 +160,14 @@ function TasksList({
                 >
                   <i class="fa-solid fa-xmark"></i> Clear filters
                 </Dropdown.Item>
+                {allCategories.map(([value, label]) => (
+                  <Dropdown.Item
+                    key={value}
+                    onClick={() => handlePrioFilterChange(value)}
+                  >
+                    {label}
+                  </Dropdown.Item>
+                ))}
               </DropdownButton>
             )}
 

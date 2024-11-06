@@ -11,6 +11,8 @@ import Tab from "react-bootstrap/Tab";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { formatDueDate, formatToIso } from "../../functions/dateFormat";
 import styles from "../../styles/CreateLink.module.css";
@@ -82,10 +84,6 @@ function TasksList({
   // with the task due date
   const now = formatToIso(new Date());
 
-  // Function to filter tasks by priority
-  const filterTasksByPriority = (priority) => {
-    return tasksList.results.filter((task) => task.priority === priority);
-  };
   // Change filter based on button click
   const handlePrioFilterChange = (newPriority) => {
     setPriority(newPriority);
@@ -101,6 +99,23 @@ function TasksList({
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
+            <DropdownButton
+              id="priority-filter-dropdown"
+              title="Filter priority"
+              className="mb-2"
+              variant="info"
+              role="menu"
+            >
+              <Dropdown.Item as="button" role="menuitem">
+                Low
+              </Dropdown.Item>
+              <Dropdown.Item as="button" role="menuitem">
+                Medium
+              </Dropdown.Item>
+              <Dropdown.Item as="button" role="menuitem">
+                High
+              </Dropdown.Item>
+            </DropdownButton>
             <Card className={`mb-3 ${className} ${taskStyles.TaskScroll}`}>
               {showCompletedTab && (
                 <Card.Header>
@@ -298,7 +313,7 @@ function TasksList({
                 Filter
               </Button>
               {filteredTasks.length > 0 ? (
-                <ListGroup variant="flush">
+                <ListGroup>
                   {filteredTasks.map((task) => (
                     <ListGroup.Item key={task.id}>
                       <div className="d-flex align-items-start flex-column flex-sm-row">

@@ -106,13 +106,25 @@ function TasksList({
               variant="info"
               role="menu"
             >
-              <Dropdown.Item as="button" role="menuitem">
+              <Dropdown.Item
+                as="button"
+                role="menuitem"
+                onClick={() => handlePrioFilterChange("L")}
+              >
                 Low
               </Dropdown.Item>
-              <Dropdown.Item as="button" role="menuitem">
+              <Dropdown.Item
+                as="button"
+                role="menuitem"
+                onClick={() => handlePrioFilterChange("M")}
+              >
                 Medium
               </Dropdown.Item>
-              <Dropdown.Item as="button" role="menuitem">
+              <Dropdown.Item
+                as="button"
+                role="menuitem"
+                onClick={() => handlePrioFilterChange("H")}
+              >
                 High
               </Dropdown.Item>
             </DropdownButton>
@@ -309,9 +321,6 @@ function TasksList({
             )}
 
             <div>
-              <Button onClick={() => handlePrioFilterChange("L")}>
-                Filter
-              </Button>
               {filteredTasks.length > 0 ? (
                 <ListGroup>
                   {filteredTasks.map((task) => (

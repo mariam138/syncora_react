@@ -141,6 +141,7 @@ function TasksList({
               <Dropdown.Item
                 as="button"
                 role="menuitem"
+                onClick={() => handleClearFilters()}
                 className="text-body-secondary"
               >
                 <i class="fa-solid fa-xmark"></i> Clear filters

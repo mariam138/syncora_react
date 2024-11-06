@@ -131,6 +131,13 @@ function TasksList({
     ["PER", "Personal"],
   ];
 
+  // Gets priority labels and values for filtering buttons
+  const allPriorities = [
+    ["L", "Low"],
+    ["M", "Medium"],
+    ["H", "High"],
+  ];
+
   return (
     <>
       <Tab.Container id="tasks-tabs" activeKey={key}>
@@ -139,7 +146,7 @@ function TasksList({
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
             {showFilters && (
               <DropdownButton
-                id="priority-filter-dropdown"
+                id="filter-dropdown"
                 title="Filter"
                 className="mb-2"
                 variant="info"
@@ -148,27 +155,16 @@ function TasksList({
                 <Dropdown.ItemText className="text-decoration-underline">
                   Priority
                 </Dropdown.ItemText>
-                <Dropdown.Item
-                  as="button"
-                  role="menuitem"
-                  onClick={() => handlePrioFilterChange("L")}
-                >
-                  Low
-                </Dropdown.Item>
-                <Dropdown.Item
-                  as="button"
-                  role="menuitem"
-                  onClick={() => handlePrioFilterChange("M")}
-                >
-                  Medium
-                </Dropdown.Item>
-                <Dropdown.Item
-                  as="button"
-                  role="menuitem"
-                  onClick={() => handlePrioFilterChange("H")}
-                >
-                  High
-                </Dropdown.Item>
+                {allPriorities.map(([value, label]) => (
+                  <Dropdown.Item
+                    key={value}
+                    as="button"
+                    role="menuitem"
+                    onClick={() => handlePrioFilterChange(value)}
+                  >
+                    {label}
+                  </Dropdown.Item>
+                ))}
                 <Dropdown.ItemText className="text-decoration-underline">
                   Category
                 </Dropdown.ItemText>

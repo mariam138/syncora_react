@@ -142,10 +142,14 @@ function TasksList({
                                       </span>
                                       {/* Displays overdue status where the current time is after the due date */}
                                       {now > task.due_date && (
-                                        <span className="ms-5 ms-md-3 text-danger">
-                                          <i class="fa-solid fa-circle-exclamation"></i>{" "}
-                                          Overdue
-                                        </span>
+                                        <>
+                                          {" "}
+                                          <br />
+                                          <span className="text-danger">
+                                            <i class="fa-solid fa-circle-exclamation"></i>{" "}
+                                            Overdue
+                                          </span>
+                                        </>
                                       )}
                                       <div className="me-auto">
                                         {" "}

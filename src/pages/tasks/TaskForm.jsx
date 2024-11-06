@@ -81,6 +81,10 @@ function TaskForm({
     }));
   };
 
+  // Use the checked property of the checkbox with the completed section
+  // Used in the onChange handler for the checkbox
+  // Code adapted from:
+  // https://react.school/todo-list/completing-tasks
   const toggleCompleted = (e) => {
     setTaskData((prevTaskData) => ({
       ...prevTaskData,
@@ -266,6 +270,10 @@ function TaskForm({
                   />
                 </Form.Group>
 
+                {/* Only display checkbox in form when editing so that new tasks which are
+                created are set to false as default. The checked attribute is true/false 
+                based on the status of completed. toggleCompleted is the handler used for the
+                onChange attribute. Code adapted from: https://react.school/todo-list/completing-tasks */}
                 {isEditing && (
                   <Form.Check
                     type="checkbox"

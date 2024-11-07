@@ -137,9 +137,12 @@ function TasksList({
   };
 
   // Filters the tasksList results either by priority or by category
-  const filteredTasks = tasksList.results.filter(
-    (task) => task.priority === priority || task.category === category,
-  );
+  const filteredTasks = tasksList.results.filter((task) => {
+    const isPriorityMatch = priority ? task.priority === priority : true;
+    const isCategoryMatch = category ? task.category === category : true;
+    const isSearchMatch = task.name.toLowerCase().includes(query.toLowerCase());
+    return isCategoryMatch && isPriorityMatch && isSearchMatch;
+  });
 
   // Gets categories labels and values to make filter button for each category
   const allCategories = [

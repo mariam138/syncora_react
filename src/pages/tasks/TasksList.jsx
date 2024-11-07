@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
+
+//Custom functions
+import { SuccessToast, WarningToast } from "../../functions/toasts";
+import { formatDueDate, formatToIso } from "../../functions/dateFormat";
+
+// Bootstrap imports
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import Tab from "react-bootstrap/Tab";
@@ -13,11 +18,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+
+// Custom components and styles
 import LoadingSpinner from "../../components/LoadingSpinner";
-import { formatDueDate, formatToIso } from "../../functions/dateFormat";
 import styles from "../../styles/CreateLink.module.css";
 import taskStyles from "../../styles/TaskList.module.css";
-import { SuccessToast, WarningToast } from "../../functions/toasts";
+import appStyles from "../../App.module.css";
 
 function TasksList({
   showHeader = true,

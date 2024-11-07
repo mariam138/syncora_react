@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import LoadingSpinner from "../../components/LoadingSpinner";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SuccessToast } from "../../functions/toasts";
 import { formatDate, formatToIsoDateOnly } from "../../functions/dateFormat";
@@ -21,6 +20,7 @@ import Form from "react-bootstrap/Form";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/CreateLink.module.css";
 import accordStyles from "../../styles/Accordion.module.css";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import DeleteModal from "../../components/DeleteModal";
 
 function EventsList({

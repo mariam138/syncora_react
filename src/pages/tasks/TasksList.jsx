@@ -436,7 +436,7 @@ function TasksList({
                   </ListGroup>
                 ) : (
                   <p className="fs-5 text-body-secondary">
-                    No tasks found with this priority.
+                    No tasks found with this filter.
                   </p>
                 )}
               </div>

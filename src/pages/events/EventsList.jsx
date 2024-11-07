@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/CreateLink.module.css";
 import DeleteModal from "../../components/DeleteModal";
@@ -84,7 +85,7 @@ function EventsList({
     setIsFiltering(true);
   };
 
-  const filteredTasks = eventsList.results.filter(
+  const filteredEvents = eventsList.results.filter(
     (event) => event.category === category,
   );
 
@@ -138,50 +139,90 @@ function EventsList({
               </Dropdown.Item>
             </DropdownButton>
           )}
-          <Accordion alwaysOpen className="mb-3">
-            {isLoaded ? (
-              eventsList.results.length > 0 ? (
-                eventsList.results.map((event) => {
-                  const dateRep = formatDate(event.date);
-                  return (
-                    <Accordion.Item eventKey={`${event.id}`} key={event.id}>
-                      <Accordion.Header>
-                        {event.name}
-                        <br />
-                        {dateRep} | {event.start_time} | {event.location}
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <ButtonGroup aria-label="View event and delete event buttons">
+          {!isFiltering && (
+            <Accordion alwaysOpen className="mb-3">
+              {isLoaded ? (
+                eventsList.results.length > 0 ? (
+                  eventsList.results.map((event) => {
+                    const dateRep = formatDate(event.date);
+                    return (
+                      <Accordion.Item eventKey={`${event.id}`} key={event.id}>
+                        <Accordion.Header>
+                          {event.name}
+                          <br />
+                          {dateRep} | {event.start_time} | {event.location}
+                        </Accordion.Header>
+                        <Accordion.Body>
+                          <ButtonGroup aria-label="View event and delete event buttons">
+                            <Button
+                              variant="outline-secondary"
+                              onClick={() => viewEvent(event.id)}
+                            >
+                              View event
+                            </Button>
+
+                            {showDeleteButton && (
+                              <Button
+                                variant="danger"
+                                onClick={() => {
+                                  setShowModal(true);
+                                  setEventId(event.id);
+                                }}
+                              >
+                                Delete
+                              </Button>
+                            )}
+                          </ButtonGroup>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    );
+                  })
+                ) : (
+                  <p className="fs-5">No upcoming events</p>
+                )
+              ) : (
+                <LoadingSpinner />
+              )}
+            </Accordion>
+          )}
+
+          {isFiltering && (
+            <div>
+              {filteredEvents.length > 0 ? (
+                <ListGroup>
+                  {filteredEvents.map((event) => {
+                    const dateRep = formatDate(event.date);
+                    return (
+                      <ListGroup.Item key={event.id}>
+                        <div className="d-flex align-items-start flex-column flex-sm-row">
+                          <div className="me-auto mt-1 mb-0">
+                            <h6 className="fs-5">{event.name}</h6>
+                            <p>
+                              {dateRep} | {event.start_time} | {event.location}
+                            </p>
+                          </div>
+
                           <Button
+                            className="align-self-center"
                             variant="outline-secondary"
-                            onClick={() => viewEvent(event.id)}
+                            size="sm"
+                            onClick={() => viewTask(task.id)}
                           >
                             View event
                           </Button>
-
-                          {showDeleteButton && (
-                            <Button
-                              variant="danger"
-                              onClick={() => {
-                                setShowModal(true);
-                                setEventId(event.id);
-                              }}
-                            >
-                              Delete
-                            </Button>
-                          )}
-                        </ButtonGroup>
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  );
-                })
+                        </div>
+                      </ListGroup.Item>
+                    );
+                  })}
+                </ListGroup>
               ) : (
-                <p className="fs-5">No upcoming events</p>
-              )
-            ) : (
-              <LoadingSpinner />
-            )}
-          </Accordion>
+                <p className="fs-5 text-body-secondary">
+                  No tasks found with this category.
+                </p>
+              )}
+            </div>
+          )}
+
           {showCreateLink && (
             <Link to="new/" className={styles.Link}>
               New Event <i class="fa-solid fa-plus"></i>

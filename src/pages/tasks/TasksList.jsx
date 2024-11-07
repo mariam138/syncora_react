@@ -48,19 +48,22 @@ function TasksList({
   // with the task due date
   const now = formatToIso(new Date());
 
-  const handleMount = async () => {
-    try {
-      const { data } = await apiReq.get("/tasks/");
-      setTasksList(data);
-      setIsLoaded(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await apiReq.get("/tasks/");
+        setTasksList(data);
+        setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setIsLoaded(false);
+    const timer = setTimeout(() => handleMount(), 500);
+    return () => clearTimeout(timer);
     handleMount();
-  }, [currentUser]);
+  }, [currentUser, query]);
 
   const viewTask = (taskId) => {
     navigate(`/tasks/${taskId}/`);

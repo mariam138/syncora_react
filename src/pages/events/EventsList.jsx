@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { SuccessToast } from "../../functions/toasts";
 import { formatDate, formatToIsoDateOnly } from "../../functions/dateFormat";
 
+// Bootstrap imports
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
@@ -16,6 +17,8 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
 
+// Custom components and styles
+import appStyles from "../../App.module.css";
 import styles from "../../styles/CreateLink.module.css";
 import accordStyles from "../../styles/Accordion.module.css";
 import DeleteModal from "../../components/DeleteModal";
@@ -26,27 +29,30 @@ function EventsList({
   showDeleteButton = true,
   showFilters = true,
 }) {
+  /* States for events, filtering and UI */
   // Set events list to an empty results array
   const [eventsList, setEventsList] = useState({ results: [] });
   // Initially set loaded state to false
   const [isLoaded, setIsLoaded] = useState(false);
   const [category, setCategory] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
-  const currentUser = useCurrentUser();
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);
   const [query, setQuery] = useState("");
   const [searchList, setSearchList] = useState({ results: [] });
 
+  const currentUser = useCurrentUser();
+  const navigate = useNavigate();
+  // Get current pathname with react router's useLocation hook
+  const { pathname } = useLocation();
+  // Format current date to match api date format
+  const now = formatToIsoDateOnly(new Date());
+
   // Check current user against event owner
   const eventOwner = eventsList.results[0]?.owner;
   const is_owner = currentUser?.username === eventOwner;
 
-  const navigate = useNavigate();
-
-  // Get current pathname with react router's useLocation hook
-  const { pathname } = useLocation();
-
+  /* Fetch events on mount and when query, pathname or currentUser change */
   useEffect(() => {
     const handleMount = async () => {
       try {
@@ -64,6 +70,7 @@ function EventsList({
     return () => clearTimeout(timer);
   }, [query, pathname, currentUser]);
 
+  /* Event handlers */
   const viewEvent = (eventId) => {
     navigate(`/events/${eventId}/`);
   };
@@ -95,29 +102,11 @@ function EventsList({
     setCategory(newCategory);
     setIsFiltering(true);
   };
-  // Format current date to match api date format
-  const now = formatToIsoDateOnly(new Date());
-  const filteredEvents = eventsList.results.filter((event) => {
-    const isCategoryMatch = category ? event.category === category : true;
-    const isSearchMatch = event.name
-      .toLowerCase()
-      .includes(query.toLowerCase());
-    return isCategoryMatch && isSearchMatch && now <= event.date;
-  });
 
   const handleClearFilters = () => {
     setCategory("");
     setIsFiltering(false);
   };
-
-  const allCategories = [
-    ["WORK", "Work"],
-    ["SOC", "Social"],
-    ["FAM", "Family"],
-    ["EDU", "Education"],
-    ["APP", "Appointment"],
-    ["TRAVEL", "Travel"],
-  ];
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -129,6 +118,23 @@ function EventsList({
 
     setSearchList({ results: searchedEvents });
   };
+
+  const filteredEvents = eventsList.results.filter((event) => {
+    const isCategoryMatch = category ? event.category === category : true;
+    const isSearchMatch = event.name
+      .toLowerCase()
+      .includes(query.toLowerCase());
+    return isCategoryMatch && isSearchMatch && now <= event.date;
+  });
+
+  const allCategories = [
+    ["WORK", "Work"],
+    ["SOC", "Social"],
+    ["FAM", "Family"],
+    ["EDU", "Education"],
+    ["APP", "Appointment"],
+    ["TRAVEL", "Travel"],
+  ];
 
   return (
     <>

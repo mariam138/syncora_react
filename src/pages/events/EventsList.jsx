@@ -11,7 +11,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "../../styles/CreateLink.module.css";
 import accordStyles from "../../styles/Accordion.module.css";
 import DeleteModal from "../../components/DeleteModal";
@@ -33,6 +33,7 @@ function EventsList({
   const currentUser = useCurrentUser();
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);
+  const [query, setQuery] = useState("");
 
   // Check current user against event owner
   const eventOwner = eventsList.results[0]?.owner;
@@ -40,9 +41,12 @@ function EventsList({
 
   const navigate = useNavigate();
 
+  // Get current pathname with react router's useLocation hook
+  const { pathname } = useLocation();
+
   const handleMount = async () => {
     try {
-      const { data } = await apiReq.get("/events/");
+      const { data } = await apiReq.get(`/events/?qsearch=${query}`);
       setEventsList(data);
       setIsLoaded(true);
     } catch (error) {
@@ -51,8 +55,10 @@ function EventsList({
   };
 
   useEffect(() => {
-    handleMount();
-  }, [currentUser]);
+    // handleMount();
+    const timer = setTimeout(() => handleMount(), 1000);
+    return () => clearTimeout(timer);
+  }, [currentUser, query, pathname]);
 
   const viewEvent = (eventId) => {
     navigate(`/events/${eventId}/`);

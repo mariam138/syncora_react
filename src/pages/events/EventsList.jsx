@@ -35,7 +35,7 @@ function EventsList({
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);
   const [query, setQuery] = useState("");
-  const [searchList, setSearchList] = useState("");
+  const [searchList, setSearchList] = useState({ results: [] });
 
   // Check current user against event owner
   const eventOwner = eventsList.results[0]?.owner;
@@ -46,21 +46,22 @@ function EventsList({
   // Get current pathname with react router's useLocation hook
   const { pathname } = useLocation();
 
-  const handleMount = async () => {
-    try {
-      const { data } = await apiReq.get(`/events/`);
-      setEventsList(data);
-      setIsLoaded(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    // handleMount();
+    const handleMount = async () => {
+      try {
+        const { data } = await apiReq.get(`/events/`);
+        setEventsList(data);
+        setSearchList(data);
+        setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setIsLoaded(false);
     const timer = setTimeout(() => handleMount(), 1000);
     return () => clearTimeout(timer);
-  }, [currentUser, query, pathname]);
+  }, [query, pathname, currentUser]);
 
   const viewEvent = (eventId) => {
     navigate(`/events/${eventId}/`);
@@ -123,7 +124,7 @@ function EventsList({
       event.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
-    setSearchList(searchedEvents);
+    setSearchList({ results: searchedEvents });
   };
 
   return (
@@ -132,7 +133,7 @@ function EventsList({
         <Col sm={{ span: 6, offset: 3 }}>
           <Form className="d-flex w-75 mx-auto mb-3">
             <Form.Control
-              type="search"
+              type="text"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
@@ -142,6 +143,11 @@ function EventsList({
             <Button className={`btn ${appStyles.Button}`}>Search</Button>
           </Form>
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
+          <ul>
+            {(query ? searchList.results : eventsList.results)?.map((event) => (
+              <li key={event.id}>{event.name}</li>
+            ))}
+          </ul>
           {showFilters && (
             <DropdownButton
               id="filter-dropdown"

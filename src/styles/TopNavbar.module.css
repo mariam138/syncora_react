@@ -1,20 +1,32 @@
 .Navbar {
-    z-index: 100;
-    background-color: #FFF5F5;
+  z-index: 100;
+  background-color: #fff5f5;
 }
 
 .NavbarLinks {
-    color: #000010;
-    padding: 0 10px;
-    text-decoration: none;
+  color: #000010;
+  padding: 0 10px;
+  text-decoration: none;
 }
 
 .NavbarLinks:hover {
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.SearchBtn {
+  background-color: #fb6083 !important;
+  color: #000010 !important;
+  border-color: #000010 !important;
+}
+
+.SearchBtn:hover {
+  background-color: #f5dfbb !important;
+  color: #000010 !important;
+  border-color: #00001014 !important;
 }
 
 @media (min-width: 1200px) {
-    .NavbarLinks {
-        font-size: 1.375rem;
-    }
+  .NavbarLinks {
+    font-size: 1.375rem;
+  }
 }

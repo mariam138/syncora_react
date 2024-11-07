@@ -25,12 +25,12 @@ function TopNavbar() {
                   <Col xs="auto">
                     <Form.Control
                       type="text"
-                      placeholder="Search"
+                      placeholder="Search here..."
                       className="mr-sm-2"
                     />
                   </Col>
                   <Col xs="auto">
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" variant="info">Search</Button>
                   </Col>
                 </Row>
               </Form>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -11,8 +11,12 @@ import styles from "../styles/TopNavbar.module.css";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 function TopNavbar() {
+  const [query, setQuery] = useState("");
   // Gets current user information to display username
   const currentUser = useCurrentUser();
+  const handleSearch = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -20,13 +24,15 @@ function TopNavbar() {
         <Container fluid>
           <Nav className="d-flex w-100 align-items-center justify-content-between">
             <div className="mx-auto">
-              <Form inline>
+              <Form inline onSubmit={handleSearch}>
                 <Row>
                   <Col xs="auto">
                     <Form.Control
                       type="text"
                       placeholder="Search here..."
                       className="mr-sm-2"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
                     />
                   </Col>
                   <Col xs="auto">

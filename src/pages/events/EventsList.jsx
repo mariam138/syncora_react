@@ -23,6 +23,7 @@ function EventsList({
   showCreateLink = true,
   showDeleteButton = true,
   showFilters = true,
+  query
 }) {
   // Set events list to an empty results array
   const [eventsList, setEventsList] = useState({ results: [] });
@@ -33,7 +34,7 @@ function EventsList({
   const currentUser = useCurrentUser();
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);
-  const [query, setQuery] = useState("");
+  // const [query, setQuery] = useState("");
 
   // Check current user against event owner
   const eventOwner = eventsList.results[0]?.owner;

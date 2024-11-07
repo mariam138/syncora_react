@@ -94,10 +94,15 @@ function EventsList({
     setCategory(newCategory);
     setIsFiltering(true);
   };
-
-  const filteredEvents = eventsList.results.filter(
-    (event) => event.category === category,
-  );
+  // Format current date to match api date format
+  const now = formatToIsoDateOnly(new Date());
+  const filteredEvents = eventsList.results.filter((event) => {
+    const isCategoryMatch = category ? event.category === category : true;
+    const isSearchMatch = event.name
+      .toLowerCase()
+      .includes(query.toLowerCase());
+    return isCategoryMatch && isSearchMatch && now <= event.date;
+  });
 
   const handleClearFilters = () => {
     setCategory("");
@@ -112,9 +117,6 @@ function EventsList({
     ["APP", "Appointment"],
     ["TRAVEL", "Travel"],
   ];
-
-  // Format current date to match api date format
-  const now = formatToIsoDateOnly(new Date());
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -131,7 +133,7 @@ function EventsList({
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
-          <Form className="d-flex w-75 mx-auto mb-3">
+          <Form className="d-flex w-50 mx-auto mb-3">
             <Form.Control
               type="text"
               placeholder="Search"
@@ -140,14 +142,8 @@ function EventsList({
               value={query}
               onChange={handleSearch}
             />
-            <Button className={`btn ${appStyles.Button}`}>Search</Button>
           </Form>
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
-          <ul>
-            {(query ? searchList.results : eventsList.results)?.map((event) => (
-              <li key={event.id}>{event.name}</li>
-            ))}
-          </ul>
           {showFilters && (
             <DropdownButton
               id="filter-dropdown"
@@ -182,8 +178,8 @@ function EventsList({
           {!isFiltering && (
             <Accordion alwaysOpen className="mb-3">
               {isLoaded ? (
-                eventsList.results.length > 0 ? (
-                  eventsList.results
+                (query ? searchList.results : eventsList.results).length > 0 ? (
+                  (query ? searchList.results : eventsList.results)
                     .filter((event) => now <= event.date)
                     .map((event) => {
                       const dateRep = formatDate(event.date);

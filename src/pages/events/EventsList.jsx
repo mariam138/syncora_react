@@ -206,7 +206,7 @@ function EventsList({
                             className="align-self-center"
                             variant="outline-secondary"
                             size="sm"
-                            onClick={() => viewTask(task.id)}
+                            onClick={() => viewEvent(event.id)}
                           >
                             View event
                           </Button>

@@ -80,7 +80,6 @@ function TasksList({
     try {
       const formData = new FormData();
       formData.append("completed", completed);
-      await apiReq.patch(`/tasks/${taskId}/`, formData);
       setTasksList((prevTaskList) => ({
         ...prevTaskList,
         results: prevTaskList.results.map((task) =>
@@ -92,6 +91,7 @@ function TasksList({
       {
         completed && SuccessToast("Task complete!");
       }
+      await apiReq.patch(`/tasks/${taskId}/`, formData);
     } catch (error) {
       console.log(error);
       WarningToast("There was an error. Please try again.");

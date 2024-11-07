@@ -117,11 +117,6 @@ function TasksList({
     setIsFiltering(true);
   };
 
-  // Filters the tasksList results either by priority or by category
-  const filteredTasks = tasksList.results.filter(
-    (task) => task.priority === priority || task.category === category,
-  );
-
   // Function to clear filters and display normal content
   const handleClearFilters = () => {
     setPriority("");
@@ -129,6 +124,22 @@ function TasksList({
     setIsFiltering(false);
     setKey("uncompleted");
   };
+
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    setQuery(searchTerm);
+
+    const searchedTasks = tasksList.results.filter((task) => {
+      return task.title.toLowerCase().includes(searchTerm);
+    });
+
+    setSearchList({ results: searchedTasks });
+  };
+
+  // Filters the tasksList results either by priority or by category
+  const filteredTasks = tasksList.results.filter(
+    (task) => task.priority === priority || task.category === category,
+  );
 
   // Gets categories labels and values to make filter button for each category
   const allCategories = [

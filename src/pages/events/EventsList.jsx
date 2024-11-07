@@ -86,6 +86,11 @@ function EventsList({
     (event) => event.category === category,
   );
 
+  const handleClearFilters = () => {
+    setCategory("");
+    setIsFiltering(false);
+  }
+
   return (
     <>
       <Row>

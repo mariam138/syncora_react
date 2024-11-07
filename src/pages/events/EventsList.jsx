@@ -142,6 +142,9 @@ function EventsList({
               value={query}
               onChange={handleSearch}
             />
+            <Button variant="outline-secondary" onClick={() => setQuery("")}>
+              Clear
+            </Button>
           </Form>
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
           {showFilters && (

@@ -106,6 +106,9 @@ function EventsList({
     setIsFiltering(false);
   };
 
+  // Create search handlers and a filtered events array based on searches or filters
+  // Code adapted from:
+  // https://dev.to/alais29dev/building-a-real-time-search-filter-in-react-a-step-by-step-guide-3lmm#step-2-creating-the-input
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);

@@ -117,11 +117,11 @@ function EventsList({
   const now = formatToIsoDateOnly(new Date());
 
   const handleSearch = (e) => {
-    const searchTerm = e.target.value;
+    const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
 
     const searchedEvents = eventsList.results.filter((event) => {
-      event.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return event.name.toLowerCase().includes(searchTerm);
     });
 
     setSearchList({ results: searchedEvents });

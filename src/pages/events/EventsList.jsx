@@ -11,6 +11,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import ListGroup from "react-bootstrap/ListGroup";
+import Form from "react-bootstrap/Form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "../../styles/CreateLink.module.css";
 import accordStyles from "../../styles/Accordion.module.css";
@@ -23,7 +24,7 @@ function EventsList({
   showCreateLink = true,
   showDeleteButton = true,
   showFilters = true,
-  query
+  query,
 }) {
   // Set events list to an empty results array
   const [eventsList, setEventsList] = useState({ results: [] });
@@ -118,6 +119,15 @@ function EventsList({
     <>
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
+          <Form className="d-flex w-75 mx-auto mb-3">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button className={`btn ${appStyles.Button}`}>Search</Button>
+          </Form>
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
           {showFilters && (
             <DropdownButton

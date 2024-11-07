@@ -30,7 +30,9 @@ function TopNavbar() {
                     />
                   </Col>
                   <Col xs="auto">
-                    <Button type="submit" variant="info">Search</Button>
+                    <Button type="submit" className={`btn ${styles.SearchBtn}`}>
+                      Search
+                    </Button>
                   </Col>
                 </Row>
               </Form>

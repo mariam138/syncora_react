@@ -13,6 +13,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/CreateLink.module.css";
+import accordStyles from "../../styles/Accordion.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast } from "../../functions/toasts";
 import { formatDate } from "../../functions/dateFormat";
@@ -147,7 +148,11 @@ function EventsList({
                     const dateRep = formatDate(event.date);
                     return (
                       <Accordion.Item eventKey={`${event.id}`} key={event.id}>
-                        <Accordion.Header>{event.name}</Accordion.Header>
+                        <Accordion.Header
+                          className={accordStyles.AccordionHeader}
+                        >
+                          <i class="fa-solid fa-scroll"></i> {event.name}
+                        </Accordion.Header>
                         <Accordion.Body>
                           <div className="mb-2">
                             <i className="fa-regular fa-calendar"></i> {dateRep}{" "}

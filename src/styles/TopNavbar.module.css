@@ -16,7 +16,7 @@
 .SearchBtn {
   background-color: #fb6083 !important;
   color: #000010 !important;
-  border-color: #000010 !important;
+  border-color: transparent !important;
 }
 
 .SearchBtn:hover {

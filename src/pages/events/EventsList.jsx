@@ -47,7 +47,7 @@ function EventsList({
 
   const handleMount = async () => {
     try {
-      const { data } = await apiReq.get(`/events/?search=${query}`);
+      const { data } = await apiReq.get(`/events/`);
       setEventsList(data);
       setIsLoaded(true);
     } catch (error) {

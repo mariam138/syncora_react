@@ -18,11 +18,14 @@ function EventsList({
   showHeader = true,
   showCreateLink = true,
   showDeleteButton = true,
+  showFilters = true,
 }) {
   // Set events list to an empty results array
   const [eventsList, setEventsList] = useState({ results: [] });
   // Initially set loaded state to false
   const [isLoaded, setIsLoaded] = useState(false);
+  const [category, setCategory] = useState("");
+  const [isFiltering, setIsFiltering] = useState(false);
   const currentUser = useCurrentUser();
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);

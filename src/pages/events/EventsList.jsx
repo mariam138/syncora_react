@@ -147,12 +147,15 @@ function EventsList({
                     const dateRep = formatDate(event.date);
                     return (
                       <Accordion.Item eventKey={`${event.id}`} key={event.id}>
-                        <Accordion.Header>
-                          {event.name}
-                          <br />
-                          {dateRep} | {event.start_time} | {event.location}
-                        </Accordion.Header>
+                        <Accordion.Header>{event.name}</Accordion.Header>
                         <Accordion.Body>
+                          <div className="mb-2">
+                            <i className="fa-regular fa-calendar"></i> {dateRep}{" "}
+                            | <i className="fa-solid fa-hourglass-start"></i>{" "}
+                            {event.start_time} |{" "}
+                            <i className="fa-solid fa-location-dot"></i>{" "}
+                            {event.location}
+                          </div>
                           <ButtonGroup aria-label="View event and delete event buttons">
                             <Button
                               variant="outline-secondary"

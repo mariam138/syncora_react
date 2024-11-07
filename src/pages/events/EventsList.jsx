@@ -104,6 +104,7 @@ function EventsList({
     ["TRAVEL", "Travel"],
   ];
 
+  // Format current date to match api date format
   const now = formatToIsoDateOnly(new Date());
 
   return (
@@ -146,51 +147,54 @@ function EventsList({
             <Accordion alwaysOpen className="mb-3">
               {isLoaded ? (
                 eventsList.results.length > 0 ? (
-                  eventsList.results.map((event) => {
-                    const dateRep = formatDate(event.date);
-                    return (
-                      <Accordion.Item eventKey={`${event.id}`} key={event.id}>
-                        <Accordion.Header
-                          className={accordStyles.AccordionHeader}
-                        >
-                          <i class="fa-solid fa-scroll"></i> {event.name}
-                          {/* Inidicate to user if event is today */}
-                          {now === event.date && (
-                            <span className="ms-3 text-success">Today</span>
-                          )}
-                        </Accordion.Header>
-                        <Accordion.Body>
-                          <div className="mb-2">
-                            <i className="fa-regular fa-calendar"></i> {dateRep}{" "}
-                            | <i className="fa-solid fa-hourglass-start"></i>{" "}
-                            {event.start_time} |{" "}
-                            <i className="fa-solid fa-location-dot"></i>{" "}
-                            {event.location}
-                          </div>
-                          <ButtonGroup aria-label="View event and delete event buttons">
-                            <Button
-                              variant="outline-secondary"
-                              onClick={() => viewEvent(event.id)}
-                            >
-                              View event
-                            </Button>
-
-                            {showDeleteButton && (
-                              <Button
-                                variant="danger"
-                                onClick={() => {
-                                  setShowModal(true);
-                                  setEventId(event.id);
-                                }}
-                              >
-                                Delete
-                              </Button>
+                  eventsList.results
+                    .filter((event) => now <= event.date)
+                    .map((event) => {
+                      const dateRep = formatDate(event.date);
+                      return (
+                        <Accordion.Item eventKey={`${event.id}`} key={event.id}>
+                          <Accordion.Header
+                            className={accordStyles.AccordionHeader}
+                          >
+                            <i class="fa-solid fa-scroll"></i> {event.name}
+                            {/* Inidicate to user if event is today */}
+                            {now === event.date && (
+                              <span className="ms-3 text-success">Today</span>
                             )}
-                          </ButtonGroup>
-                        </Accordion.Body>
-                      </Accordion.Item>
-                    );
-                  })
+                          </Accordion.Header>
+                          <Accordion.Body>
+                            <div className="mb-2">
+                              <i className="fa-regular fa-calendar"></i>{" "}
+                              {dateRep} |{" "}
+                              <i className="fa-solid fa-hourglass-start"></i>{" "}
+                              {event.start_time} |{" "}
+                              <i className="fa-solid fa-location-dot"></i>{" "}
+                              {event.location}
+                            </div>
+                            <ButtonGroup aria-label="View event and delete event buttons">
+                              <Button
+                                variant="outline-secondary"
+                                onClick={() => viewEvent(event.id)}
+                              >
+                                View event
+                              </Button>
+
+                              {showDeleteButton && (
+                                <Button
+                                  variant="danger"
+                                  onClick={() => {
+                                    setShowModal(true);
+                                    setEventId(event.id);
+                                  }}
+                                >
+                                  Delete
+                                </Button>
+                              )}
+                            </ButtonGroup>
+                          </Accordion.Body>
+                        </Accordion.Item>
+                      );
+                    })
                 ) : (
                   <p className="fs-5">No upcoming events</p>
                 )

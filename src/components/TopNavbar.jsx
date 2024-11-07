@@ -1,7 +1,11 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
-import { Nav } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/TopNavbar.module.css";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
@@ -15,6 +19,20 @@ function TopNavbar() {
       <Navbar fixed="top" className={styles.Navbar}>
         <Container fluid>
           <Nav className="ms-auto d-flex align-items-center">
+            <Form inline>
+              <Row>
+                <Col xs="auto">
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    className=" mr-sm-2"
+                  />
+                </Col>
+                <Col xs="auto">
+                  <Button type="submit">Submit</Button>
+                </Col>
+              </Row>
+            </Form>
             <NavLink to="/events/new/" className={styles.NavbarLinks}>
               New Event <i class="fa-regular fa-calendar-plus"></i>
             </NavLink>
@@ -25,7 +43,9 @@ function TopNavbar() {
               New Note <i class="fa-solid fa-notes-medical"></i>
             </NavLink>
             {/* Welcome text to user when logged in */}
-            <Navbar.Text className="px-2">Welcome, {currentUser.username}</Navbar.Text>
+            <Navbar.Text className="px-2">
+              Welcome, {currentUser.username}
+            </Navbar.Text>
           </Nav>
         </Container>
       </Navbar>

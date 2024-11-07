@@ -89,7 +89,16 @@ function EventsList({
   const handleClearFilters = () => {
     setCategory("");
     setIsFiltering(false);
-  }
+  };
+
+  const allCategories = [
+    ["WORK", "Work"],
+    ["SOC", "Social"],
+    ["FAM", "Family"],
+    ["EDU", "Education"],
+    ["APP", "Appointment"],
+    ["TRAVEL", "Travel"],
+  ];
 
   return (
     <>

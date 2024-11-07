@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { apiReq } from "../../api/axiosDefaults";
-import LoadingSpinner from "../../components/LoadingSpinner";
-import appStyles from "../../App.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { SuccessToast } from "../../functions/toasts";
+import { formatDate, formatToIsoDateOnly } from "../../functions/dateFormat";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
@@ -12,12 +15,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import Form from "react-bootstrap/Form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import styles from "../../styles/CreateLink.module.css";
 import accordStyles from "../../styles/Accordion.module.css";
 import DeleteModal from "../../components/DeleteModal";
-import { SuccessToast } from "../../functions/toasts";
-import { formatDate, formatToIsoDateOnly } from "../../functions/dateFormat";
 
 function EventsList({
   showHeader = true,
@@ -59,7 +60,7 @@ function EventsList({
     };
 
     setIsLoaded(false);
-    const timer = setTimeout(() => handleMount(), 1000);
+    const timer = setTimeout(() => handleMount(), 500);
     return () => clearTimeout(timer);
   }, [query, pathname, currentUser]);
 

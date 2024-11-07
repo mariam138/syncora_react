@@ -201,7 +201,12 @@ function EventsList({
                           <div className="me-auto mt-1 mb-0">
                             <h6 className="fs-5">{event.name}</h6>
                             <p>
-                              {dateRep} | {event.start_time} | {event.location}
+                              <i className="fa-regular fa-calendar"></i>{" "}
+                              {dateRep} |{" "}
+                              <i className="fa-solid fa-hourglass-start"></i>{" "}
+                              {event.start_time} |{" "}
+                              <i className="fa-solid fa-location-dot"></i>{" "}
+                              {event.location}
                             </p>
                           </div>
 

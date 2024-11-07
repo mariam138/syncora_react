@@ -82,6 +82,10 @@ function EventsList({
     setIsFiltering(true);
   };
 
+  const filteredTasks = eventsList.results.filter(
+    (event) => event.category === category,
+  );
+
   return (
     <>
       <Row>

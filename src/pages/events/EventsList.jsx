@@ -114,7 +114,29 @@ function EventsList({
               className="mb-2"
               variant="info"
               role="menu"
-            ></DropdownButton>
+            >
+              <Dropdown.ItemText className="text-decoration-underline">
+                Category
+              </Dropdown.ItemText>
+              {allCategories.map(([value, label]) => (
+                <Dropdown.Item
+                  key={value}
+                  as="button"
+                  role="menuitem"
+                  onClick={() => handleCategoryFilter(value)}
+                >
+                  {label}
+                </Dropdown.Item>
+              ))}
+              <Dropdown.Item
+                as="button"
+                role="menuitem"
+                onClick={() => handleClearFilters()}
+                className="text-body-secondary"
+              >
+                <i class="fa-solid fa-xmark"></i> Clear filters
+              </Dropdown.Item>
+            </DropdownButton>
           )}
           <Accordion alwaysOpen className="mb-3">
             {isLoaded ? (

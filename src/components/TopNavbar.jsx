@@ -18,34 +18,39 @@ function TopNavbar() {
     <>
       <Navbar fixed="top" className={styles.Navbar}>
         <Container fluid>
-          <Nav className="ms-auto d-flex align-items-center">
-            <Form inline>
-              <Row>
-                <Col xs="auto">
-                  <Form.Control
-                    type="text"
-                    placeholder="Search"
-                    className=" mr-sm-2"
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button type="submit">Submit</Button>
-                </Col>
-              </Row>
-            </Form>
-            <NavLink to="/events/new/" className={styles.NavbarLinks}>
-              New Event <i class="fa-regular fa-calendar-plus"></i>
-            </NavLink>
-            <NavLink to="/tasks/new/" className={styles.NavbarLinks}>
-              New Task <i class="fa-solid fa-file-circle-plus"></i>
-            </NavLink>
-            <NavLink to="/notes/new/" className={styles.NavbarLinks}>
-              New Note <i class="fa-solid fa-notes-medical"></i>
-            </NavLink>
-            {/* Welcome text to user when logged in */}
-            <Navbar.Text className="px-2">
-              Welcome, {currentUser.username}
-            </Navbar.Text>
+          <Nav className="d-flex w-100 align-items-center justify-content-between">
+            <div className="mx-auto">
+              <Form inline>
+                <Row>
+                  <Col xs="auto">
+                    <Form.Control
+                      type="text"
+                      placeholder="Search"
+                      className="mr-sm-2"
+                    />
+                  </Col>
+                  <Col xs="auto">
+                    <Button type="submit">Submit</Button>
+                  </Col>
+                </Row>
+              </Form>
+            </div>
+
+            <div className="d-flex align-items-center">
+              <NavLink to="/events/new/" className={styles.NavbarLinks}>
+                New Event <i class="fa-regular fa-calendar-plus"></i>
+              </NavLink>
+              <NavLink to="/tasks/new/" className={styles.NavbarLinks}>
+                New Task <i class="fa-solid fa-file-circle-plus"></i>
+              </NavLink>
+              <NavLink to="/notes/new/" className={styles.NavbarLinks}>
+                New Note <i class="fa-solid fa-notes-medical"></i>
+              </NavLink>
+              {/* Welcome text to user when logged in */}
+              <Navbar.Text className="px-2">
+                Welcome, {currentUser.username}
+              </Navbar.Text>
+            </div>
           </Nav>
         </Container>
       </Navbar>

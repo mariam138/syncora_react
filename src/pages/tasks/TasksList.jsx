@@ -39,8 +39,14 @@ function TasksList({
   const [priority, setPriority] = useState("");
   const [category, setCategory] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
+  const [query, setQuery] = useState("");
+  const [searchList, setSearchList] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
+  // Converts the current datetime into iso format for comparison
+  // with the task due date
+  const now = formatToIso(new Date());
 
   const handleMount = async () => {
     try {
@@ -88,10 +94,6 @@ function TasksList({
       WarningToast("There was an error. Please try again.");
     }
   };
-
-  // Converts the current datetime into iso format for comparison
-  // with the task due date
-  const now = formatToIso(new Date());
 
   // Functions to allow filtering of tasks adapted from:
   // https://www.dhiwise.com/post/reactjs-filter-array-of-objects-effortless-data-handling

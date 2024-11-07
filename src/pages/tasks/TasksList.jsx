@@ -172,68 +172,66 @@ function TasksList({
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
             {showFilters && (
-              <>
-                <div className="d-flex align-items-center mb-2">
-                  <DropdownButton
-                    id="filter-dropdown"
-                    title="Filter"
-                    className="me-3"
-                    variant="info"
-                    role="menu"
-                  >
-                    <Dropdown.ItemText className="text-decoration-underline">
-                      Priority
-                    </Dropdown.ItemText>
-                    {allPriorities.map(([value, label]) => (
-                      <Dropdown.Item
-                        key={value}
-                        as="button"
-                        role="menuitem"
-                        onClick={() => handlePrioFilterChange(value)}
-                      >
-                        {label}
-                      </Dropdown.Item>
-                    ))}
-                    <Dropdown.ItemText className="text-decoration-underline">
-                      Category
-                    </Dropdown.ItemText>
-                    {allCategories.map(([value, label]) => (
-                      <Dropdown.Item
-                        as="button"
-                        role="menuitem"
-                        key={value}
-                        onClick={() => handleCategoryFilterChange(value)}
-                      >
-                        {label}
-                      </Dropdown.Item>
-                    ))}
+              <div className="d-flex align-items-center mb-2">
+                <DropdownButton
+                  id="filter-dropdown"
+                  title="Filter"
+                  className="me-3"
+                  variant="info"
+                  role="menu"
+                >
+                  <Dropdown.ItemText className="text-decoration-underline">
+                    Priority
+                  </Dropdown.ItemText>
+                  {allPriorities.map(([value, label]) => (
+                    <Dropdown.Item
+                      key={value}
+                      as="button"
+                      role="menuitem"
+                      onClick={() => handlePrioFilterChange(value)}
+                    >
+                      {label}
+                    </Dropdown.Item>
+                  ))}
+                  <Dropdown.ItemText className="text-decoration-underline">
+                    Category
+                  </Dropdown.ItemText>
+                  {allCategories.map(([value, label]) => (
                     <Dropdown.Item
                       as="button"
                       role="menuitem"
-                      onClick={() => handleClearFilters()}
-                      className="text-body-secondary"
+                      key={value}
+                      onClick={() => handleCategoryFilterChange(value)}
                     >
-                      <i class="fa-solid fa-xmark"></i> Clear filters
+                      {label}
                     </Dropdown.Item>
-                  </DropdownButton>
-                  <Form className="d-flex w-50 ms-auto">
-                    <Form.Control
-                      type="text"
-                      placeholder="Search"
-                      className="me-2"
-                      aria-label="Search"
-                      value={query}
-                      onChange={handleSearch}
-                    />
-                    <Button
-                      variant="outline-secondary"
-                      onClick={() => setQuery("")}
-                    >
-                      Clear
-                    </Button>
-                  </Form>
-                </div>
-              </>
+                  ))}
+                  <Dropdown.Item
+                    as="button"
+                    role="menuitem"
+                    onClick={() => handleClearFilters()}
+                    className="text-body-secondary"
+                  >
+                    <i className="fa-solid fa-xmark"></i> Clear filters
+                  </Dropdown.Item>
+                </DropdownButton>
+                <Form className="d-flex w-50 ms-auto">
+                  <Form.Control
+                    type="text"
+                    placeholder="Search"
+                    className="me-2"
+                    aria-label="Search"
+                    value={query}
+                    onChange={handleSearch}
+                  />
+                  <Button
+                    variant="outline-secondary"
+                    onClick={() => setQuery("")}
+                  >
+                    Clear
+                  </Button>
+                </Form>
+              </div>
             )}
 
             {!isFiltering && (
@@ -261,12 +259,10 @@ function TasksList({
                   <Tab.Content>
                     <Tab.Pane eventKey="uncompleted">
                       <ListGroup variant="flush">
-                        {/* Checks if there are any incomplete tasks before filtering
-                                          incomplete tasks and displaying each one in a list item */}
                         {isLoaded ? (
-                          tasksList.results.filter((task) => !task.completed)
+                          filteredTasks.filter((task) => !task.completed)
                             .length > 0 ? (
-                            tasksList.results
+                            filteredTasks
                               .filter((task) => !task.completed)
                               .map((task) => {
                                 const dueDateRep = formatDueDate(task.due_date);
@@ -293,7 +289,6 @@ function TasksList({
                                         >
                                           {task.priority_display}
                                         </span>
-                                        {/* Displays overdue status where the current time is after the due date */}
                                         {now > task.due_date && (
                                           <>
                                             {" "}
@@ -304,194 +299,93 @@ function TasksList({
                                             </span>
                                           </>
                                         )}
-                                        <div className="me-auto">
-                                          {" "}
-                                          Due: {dueDateRep}
+                                        <div className="d-flex align-items-start flex-column flex-sm-row">
+                                          <span className="text-muted me-auto">
+                                            Due: {dueDateRep}
+                                          </span>
                                         </div>
                                       </div>
-
                                       <Button
-                                        variant="outline-secondary"
-                                        size="sm"
-                                        onClick={() => viewTask(task.id)}
+                                        variant="outline-success"
+                                        onClick={() =>
+                                          toggleCompleted(task.id, true)
+                                        }
                                       >
-                                        View task
+                                        Mark Complete
                                       </Button>
                                     </div>
-                                    {showCheck && (
-                                      <Form>
-                                        <Form.Check
-                                          reverse
-                                          label="Completed"
-                                          checked={task.completed}
-                                          onChange={(e) =>
-                                            toggleCompleted(
-                                              task.id,
-                                              e.target.checked,
-                                            )
-                                          }
-                                        />
-                                      </Form>
-                                    )}
                                   </ListGroup.Item>
                                 );
                               })
                           ) : (
-                            <p className="fs-5 text-body-secondary">
-                              No tasks due
-                            </p>
+                            <p>No tasks found</p>
                           )
                         ) : (
                           <LoadingSpinner />
                         )}
                       </ListGroup>
                     </Tab.Pane>
-                    {showCompletedTab && (
-                      <Tab.Pane eventKey="completed">
-                        <ListGroup variant="flush">
-                          {/* Checks if there are any complete tasks before filtering
-                                          complete tasks and displaying each one in a list item */}
-                          {isLoaded ? (
-                            tasksList.results.filter((task) => task.completed)
-                              .length > 0 ? (
-                              tasksList.results
-                                .filter((task) => task.completed)
-                                .map((task) => {
-                                  const dueDateRep = formatDueDate(
-                                    task.due_date,
-                                  );
+                    <Tab.Pane eventKey="completed">
+                      <ListGroup variant="flush">
+                        {isLoaded ? (
+                          filteredTasks.filter((task) => task.completed)
+                            .length > 0 ? (
+                            filteredTasks
+                              .filter((task) => task.completed)
+                              .map((task) => {
+                                const dueDateRep = formatDueDate(task.due_date);
 
-                                  return (
-                                    <ListGroup.Item key={task.id}>
-                                      <div className="d-flex align-items-start flex-column flex-sm-row text-body-secondary">
-                                        <div className="me-auto">
-                                          <span className={taskStyles.Title}>
-                                            {task.title}
-                                          </span>
-                                          <span
-                                            className={`${
-                                              task.priority_display === "Low"
-                                                ? taskStyles.Low
+                                return (
+                                  <ListGroup.Item key={task.id}>
+                                    <div className="d-flex align-items-start flex-column flex-sm-row">
+                                      <div className="me-auto">
+                                        <span className={taskStyles.Title}>
+                                          {task.title}
+                                        </span>
+                                        <span
+                                          className={`${
+                                            task.priority_display === "Low"
+                                              ? taskStyles.Low
+                                              : task.priority_display ===
+                                                  "Medium"
+                                                ? taskStyles.Medium
                                                 : task.priority_display ===
-                                                    "Medium"
-                                                  ? taskStyles.Medium
-                                                  : task.priority_display ===
-                                                      "High"
-                                                    ? taskStyles.High
-                                                    : ""
-                                            } ps-3`}
-                                          >
-                                            {task.priority_display}
-                                          </span>
-                                          <div className="me-auto">
-                                            {" "}
-                                            Due: {dueDateRep}
-                                          </div>
-                                        </div>
-
-                                        <Button
-                                          variant="outline-secondary"
-                                          size="sm"
-                                          onClick={() => viewTask(task.id)}
+                                                    "High"
+                                                  ? taskStyles.High
+                                                  : ""
+                                          } ps-3`}
                                         >
-                                          View task
-                                        </Button>
+                                          {task.priority_display}
+                                        </span>
+                                        <div className="d-flex align-items-start flex-column flex-sm-row">
+                                          <span className="text-muted me-auto">
+                                            Due: {dueDateRep}
+                                          </span>
+                                        </div>
                                       </div>
-
-                                      <Form>
-                                        <Form.Check
-                                          reverse
-                                          label="Completed"
-                                          checked={task.completed}
-                                          onChange={(e) => {
-                                            toggleCompleted(
-                                              task.id,
-                                              e.target.checked,
-                                            );
-                                          }}
-                                        />
-                                      </Form>
-                                    </ListGroup.Item>
-                                  );
-                                })
-                            ) : (
-                              <p className="fs-5 text-body-secondary">
-                                You haven't completed any tasks yet!
-                              </p>
-                            )
+                                      <Button
+                                        variant="outline-secondary"
+                                        onClick={() =>
+                                          toggleCompleted(task.id, false)
+                                        }
+                                      >
+                                        Mark Incomplete
+                                      </Button>
+                                    </div>
+                                  </ListGroup.Item>
+                                );
+                              })
                           ) : (
-                            <LoadingSpinner />
-                          )}
-                        </ListGroup>
-                      </Tab.Pane>
-                    )}
+                            <p>No completed tasks found</p>
+                          )
+                        ) : (
+                          <LoadingSpinner />
+                        )}
+                      </ListGroup>
+                    </Tab.Pane>
                   </Tab.Content>
                 </Card.Body>
               </Card>
-            )}
-            {isFiltering && (
-              <div>
-                {filteredTasks.length > 0 ? (
-                  <ListGroup>
-                    {filteredTasks.map((task) => (
-                      <ListGroup.Item key={task.id}>
-                        <div className="d-flex align-items-start flex-column flex-sm-row">
-                          <div className="me-auto">
-                            <span className={taskStyles.Title}>
-                              {task.title}
-                            </span>
-                            <span
-                              className={`${
-                                task.priority_display === "Low"
-                                  ? taskStyles.Low
-                                  : task.priority_display === "Medium"
-                                    ? taskStyles.Medium
-                                    : task.priority_display === "High"
-                                      ? taskStyles.High
-                                      : ""
-                              } ps-3`}
-                            >
-                              {task.priority_display}
-                            </span>
-                            <div className="me-auto">
-                              Due: {formatDueDate(task.due_date)}
-                            </div>
-                          </div>
-
-                          <Button
-                            variant="outline-secondary"
-                            size="sm"
-                            onClick={() => viewTask(task.id)}
-                          >
-                            View task
-                          </Button>
-                        </div>
-                        {showCheck && (
-                          <Form>
-                            <Form.Check
-                              reverse
-                              label="Completed"
-                              checked={task.completed}
-                              onChange={(e) =>
-                                toggleCompleted(task.id, e.target.checked)
-                              }
-                            />
-                          </Form>
-                        )}
-                      </ListGroup.Item>
-                    ))}
-                  </ListGroup>
-                ) : (
-                  <p className="fs-5 text-body-secondary">
-                    No tasks found with this filter.
-                  </p>
-                )}
-              </div>
-            )}
-            {showCreateLink && (
-              <Link to="new/" className={styles.Link}>
-                New Task <i class="fa-solid fa-plus"></i>
-              </Link>
             )}
           </Col>
         </Row>

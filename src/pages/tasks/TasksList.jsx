@@ -140,7 +140,9 @@ function TasksList({
   const filteredTasks = tasksList.results.filter((task) => {
     const isPriorityMatch = priority ? task.priority === priority : true;
     const isCategoryMatch = category ? task.category === category : true;
-    const isSearchMatch = task.name.toLowerCase().includes(query.toLowerCase());
+    const isSearchMatch = task.title
+      .toLowerCase()
+      .includes(query.toLowerCase());
     return isCategoryMatch && isPriorityMatch && isSearchMatch;
   });
 
@@ -170,48 +172,68 @@ function TasksList({
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
             {showFilters && (
-              <DropdownButton
-                id="filter-dropdown"
-                title="Filter"
-                className="mb-2"
-                variant="info"
-                role="menu"
-              >
-                <Dropdown.ItemText className="text-decoration-underline">
-                  Priority
-                </Dropdown.ItemText>
-                {allPriorities.map(([value, label]) => (
-                  <Dropdown.Item
-                    key={value}
-                    as="button"
-                    role="menuitem"
-                    onClick={() => handlePrioFilterChange(value)}
+              <>
+                <div className="d-flex align-items-center mb-2">
+                  <DropdownButton
+                    id="filter-dropdown"
+                    title="Filter"
+                    className="me-3"
+                    variant="info"
+                    role="menu"
                   >
-                    {label}
-                  </Dropdown.Item>
-                ))}
-                <Dropdown.ItemText className="text-decoration-underline">
-                  Category
-                </Dropdown.ItemText>
-                {allCategories.map(([value, label]) => (
-                  <Dropdown.Item
-                    as="button"
-                    role="menuitem"
-                    key={value}
-                    onClick={() => handleCategoryFilterChange(value)}
-                  >
-                    {label}
-                  </Dropdown.Item>
-                ))}
-                <Dropdown.Item
-                  as="button"
-                  role="menuitem"
-                  onClick={() => handleClearFilters()}
-                  className="text-body-secondary"
-                >
-                  <i class="fa-solid fa-xmark"></i> Clear filters
-                </Dropdown.Item>
-              </DropdownButton>
+                    <Dropdown.ItemText className="text-decoration-underline">
+                      Priority
+                    </Dropdown.ItemText>
+                    {allPriorities.map(([value, label]) => (
+                      <Dropdown.Item
+                        key={value}
+                        as="button"
+                        role="menuitem"
+                        onClick={() => handlePrioFilterChange(value)}
+                      >
+                        {label}
+                      </Dropdown.Item>
+                    ))}
+                    <Dropdown.ItemText className="text-decoration-underline">
+                      Category
+                    </Dropdown.ItemText>
+                    {allCategories.map(([value, label]) => (
+                      <Dropdown.Item
+                        as="button"
+                        role="menuitem"
+                        key={value}
+                        onClick={() => handleCategoryFilterChange(value)}
+                      >
+                        {label}
+                      </Dropdown.Item>
+                    ))}
+                    <Dropdown.Item
+                      as="button"
+                      role="menuitem"
+                      onClick={() => handleClearFilters()}
+                      className="text-body-secondary"
+                    >
+                      <i class="fa-solid fa-xmark"></i> Clear filters
+                    </Dropdown.Item>
+                  </DropdownButton>
+                  <Form className="d-flex w-50 ms-auto">
+                    <Form.Control
+                      type="text"
+                      placeholder="Search"
+                      className="me-2"
+                      aria-label="Search"
+                      value={query}
+                      onChange={handleSearch}
+                    />
+                    <Button
+                      variant="outline-secondary"
+                      onClick={() => setQuery("")}
+                    >
+                      Clear
+                    </Button>
+                  </Form>
+                </div>
+              </>
             )}
 
             {!isFiltering && (

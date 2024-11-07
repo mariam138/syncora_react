@@ -20,6 +20,7 @@ function Dashboard() {
           showHeader={false}
           showCreateLink={false}
           showDeleteButton={false}
+          showFilters={false}
         />
         {/* </Col> */}
         {/* <Col> */}

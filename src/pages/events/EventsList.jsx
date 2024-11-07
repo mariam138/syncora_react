@@ -43,8 +43,6 @@ function EventsList({
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
-  // Get current pathname with react router's useLocation hook
-  const { pathname } = useLocation();
   // Format current date to match api date format
   const now = formatToIsoDateOnly(new Date());
 
@@ -68,7 +66,7 @@ function EventsList({
     setIsLoaded(false);
     const timer = setTimeout(() => handleMount(), 500);
     return () => clearTimeout(timer);
-  }, [query, pathname, currentUser]);
+  }, [query, currentUser]);
 
   /* Event handlers */
   const viewEvent = (eventId) => {

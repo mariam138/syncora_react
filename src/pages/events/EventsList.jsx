@@ -35,6 +35,7 @@ function EventsList({
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);
   const [query, setQuery] = useState("");
+  const [searchList, setSearchList] = useState("");
 
   // Check current user against event owner
   const eventOwner = eventsList.results[0]?.owner;
@@ -114,6 +115,17 @@ function EventsList({
   // Format current date to match api date format
   const now = formatToIsoDateOnly(new Date());
 
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setQuery(searchTerm);
+
+    const searchedEvents = eventsList.results.filter((event) => {
+      event.name.toLowerCase().includes(searchTerm.toLowerCase());
+    });
+
+    setSearchList(searchedEvents);
+  };
+
   return (
     <>
       <Row>
@@ -125,7 +137,7 @@ function EventsList({
               className="me-2"
               aria-label="Search"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={handleSearch}
             />
             <Button className={`btn ${appStyles.Button}`}>Search</Button>
           </Form>

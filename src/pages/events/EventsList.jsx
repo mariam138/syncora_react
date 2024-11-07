@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../styles/CreateLink.module.css";
 import DeleteModal from "../../components/DeleteModal";
@@ -105,6 +107,15 @@ function EventsList({
       <Row>
         <Col sm={{ span: 6, offset: 3 }}>
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
+          {showFilters && (
+            <DropdownButton
+              id="filter-dropdown"
+              title="Filter"
+              className="mb-2"
+              variant="info"
+              role="menu"
+            ></DropdownButton>
+          )}
           <Accordion alwaysOpen className="mb-3">
             {isLoaded ? (
               eventsList.results.length > 0 ? (

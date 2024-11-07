@@ -16,7 +16,7 @@ import styles from "../../styles/CreateLink.module.css";
 import accordStyles from "../../styles/Accordion.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast } from "../../functions/toasts";
-import { formatDate } from "../../functions/dateFormat";
+import { formatDate, formatToIso } from "../../functions/dateFormat";
 
 function EventsList({
   showHeader = true,
@@ -104,6 +104,8 @@ function EventsList({
     ["TRAVEL", "Travel"],
   ];
 
+  const now = formatToIso(new Date());
+
   return (
     <>
       <Row>
@@ -152,6 +154,7 @@ function EventsList({
                           className={accordStyles.AccordionHeader}
                         >
                           <i class="fa-solid fa-scroll"></i> {event.name}
+                          {/* {console.log(now == event.date)} */}
                         </Accordion.Header>
                         <Accordion.Body>
                           <div className="mb-2">

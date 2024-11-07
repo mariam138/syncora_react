@@ -77,6 +77,11 @@ function EventsList({
     }
   };
 
+  const handleCategoryFilter = (newCategory) => {
+    setCategory(newCategory);
+    setIsFiltering(true);
+  };
+
   return (
     <>
       <Row>

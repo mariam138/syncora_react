@@ -306,13 +306,27 @@ function TasksList({
                                         </div>
                                       </div>
                                       <Button
-                                        variant="outline-success"
-                                        onClick={() =>
-                                          toggleCompleted(task.id, true)
-                                        }
+                                        variant="outline-secondary"
+                                        size="sm"
+                                        onClick={() => viewTask(task.id)}
                                       >
-                                        Mark Complete
+                                        View task
                                       </Button>
+                                      {showCheck && (
+                                        <Form>
+                                          <Form.Check
+                                            reverse
+                                            label="Completed"
+                                            checked={task.completed}
+                                            onChange={(e) =>
+                                              toggleCompleted(
+                                                task.id,
+                                                e.target.checked,
+                                              )
+                                            }
+                                          />
+                                        </Form>
+                                      )}
                                     </div>
                                   </ListGroup.Item>
                                 );

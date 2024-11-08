@@ -72,8 +72,17 @@ function EventForm() {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const now = new Date();
+    const eventDate = new Date(date);
+
+    if (eventDate < now) {
+      setError({ date: ["Events cannot be set in the past."] });
+      return;
+    }
+
     if (currentUser) {
-      e.preventDefault();
       const formData = new FormData();
       formData.append("name", name);
       formData.append("date", date);

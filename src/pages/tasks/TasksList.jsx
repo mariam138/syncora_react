@@ -62,7 +62,6 @@ function TasksList({
     setIsLoaded(false);
     const timer = setTimeout(() => handleMount(), 500);
     return () => clearTimeout(timer);
-    handleMount();
   }, [currentUser, query]);
 
   const viewTask = (taskId) => {
@@ -100,7 +99,6 @@ function TasksList({
 
   // Functions to allow filtering of tasks adapted from:
   // https://www.dhiwise.com/post/reactjs-filter-array-of-objects-effortless-data-handling
-
   /* Sets category back to an empty string so only the
   priority is changed. Sets new priority for filtering. */
   const handlePrioFilterChange = (newPriority) => {
@@ -125,6 +123,7 @@ function TasksList({
     setKey("uncompleted");
   };
 
+  // Handler for searching through tasks
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
@@ -171,6 +170,7 @@ function TasksList({
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
+            {/* Dropdown button for filters and search bar */}
             {showFilters && (
               <div className="d-flex align-items-center mb-2">
                 <DropdownButton
@@ -234,6 +234,7 @@ function TasksList({
               </div>
             )}
 
+            {/* If using a filter, displays the relevant tasks in a list group */}
             {isFiltering ? (
               <div>
                 {filteredTasks.length > 0 ? (
@@ -293,6 +294,7 @@ function TasksList({
                 )}
               </div>
             ) : (
+              // If not filtering, create a tabbed pane to separate completed and incomplete tasks
               <Card className={`mb-3 ${className} ${taskStyles.TaskScroll}`}>
                 {showCompletedTab && (
                   <Card.Header>
@@ -315,9 +317,11 @@ function TasksList({
 
                 <Card.Body>
                   <Tab.Content>
+                    {/* To do tasks */}
                     <Tab.Pane eventKey="uncompleted">
                       <ListGroup variant="flush">
                         {isLoaded ? (
+                          // Loads only tasks which are not completed
                           filteredTasks.filter((task) => !task.completed)
                             .length > 0 ? (
                             filteredTasks
@@ -397,9 +401,11 @@ function TasksList({
                         )}
                       </ListGroup>
                     </Tab.Pane>
+                    {/* Tab for completed tasks */}
                     <Tab.Pane eventKey="completed">
                       <ListGroup variant="flush">
                         {isLoaded ? (
+                          // Filters only completed tasks
                           filteredTasks.filter((task) => task.completed)
                             .length > 0 ? (
                             filteredTasks

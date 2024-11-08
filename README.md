@@ -253,11 +253,11 @@ When either creating or editing a task, a form will be displayed to the user. Th
 
 5. While testing out the registration and sign in feature on the deployed site to fix any bugs, a discrepancy occurred between a user's primary key and the corresponding profile primary key. A user was able to sign in properly, but clicking on the profile link would display a profile with an id that had yet to be created. Checking the network requests in the front end showed that the profile pk did not match the user pk. For example, a user which had the pk of 24 had a profile pk of 47. This discrepancy was confirmed by print statements in the back end of this project. I was not fully able to understand where the issue had come from, but potentially as there was an issue with Safari not logging users in after signing up, perhaps more user accounts were being created without a profile. However I do not think this was very likely. To overcome this bug, I created a new database and took the existing database information, removed the users from where the discrepancy began and reloaded that data into the new database. This fixed the issue and there were no longer discrepancies between the user and profile pk's.
 
-### Future Features
+### Future Features and Improvements
 
 ## Frameworks, libraries and dependencies
 
-- **vite 5.4.8** - Vite's React template was used to start and set up the Syncora front-end project. This was chosen over **create-react-app** as it is more up-to-date and maintained. The template was installed using the command `npm create vite@latest -- --template react`.
+- **vite 5.4.10** - Vite's React template was used to start and set up the Syncora front-end project. This was chosen over **create-react-app** as it is more up-to-date and maintained. The template was installed using the command `npm create vite@latest -- --template react`.
 - **react-bootstrap** - Bootstrap is the framework used to style the front-end of Syncora. react-bootstrap is used to ensure compatability with React.
 - **react-router-dom** - This is used to create routes/URLs for the front end of the application.
 - **CDBReact** - This framework was installed to be able to use it's responsive sidebar component, made mobile-first and compatible with React and Boostrap.

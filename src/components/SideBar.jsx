@@ -8,7 +8,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import styles from "../styles/SideBar.module.css";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 /** Separate function for the menu links, destructuring

@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useNavigate } from "react-router-dom";
+
+// Bootstrap imports
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 
+// Custom styles
 import appStyles from "../../App.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
 
 function NotesList({ showHeader = true, showSearchBar = true }) {
   const [query, setQuery] = useState("");

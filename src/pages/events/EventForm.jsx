@@ -81,6 +81,10 @@ function EventForm() {
       setError({ date: ["Events cannot be set in the past."] });
       return;
     }
+    if (endTime < startTime) {
+      setError({ end_time: ["Events cannot end before they begin."] });
+      return;
+    }
 
     if (currentUser) {
       const formData = new FormData();
@@ -179,6 +183,11 @@ function EventForm() {
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+                {error.end_time?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>

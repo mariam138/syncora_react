@@ -2,7 +2,6 @@
   margin-right: 0.5rem;
 }
 
-.HeaderBtn button {
-  text-decoration: line-through;
+.HeaderBtn > button {
   color: rgba(97, 100, 102, 0.5);
 }

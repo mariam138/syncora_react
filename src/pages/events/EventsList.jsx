@@ -248,6 +248,7 @@ function EventsList({
                           {now === event.date && (
                             <span className="ms-3 text-success">Today</span>
                           )}
+                          {now > event.date && (<span className="ms-3">Event passed</span>)}
                         </Accordion.Header>
                         <Accordion.Body>
                           <div className="mb-2">

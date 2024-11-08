@@ -140,51 +140,56 @@ function EventsList({
   return (
     <>
       <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
-          <Form className="d-flex w-50 mx-auto mb-3">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-              value={query}
-              onChange={handleSearch}
-            />
-            <Button variant="outline-secondary" onClick={() => setQuery("")}>
-              Clear
-            </Button>
-          </Form>
+        <Col md={{ span: 6, offset: 3 }}>
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
           {showFilters && (
-            <DropdownButton
-              id="filter-dropdown"
-              title="Filter"
-              className="mb-2"
-              variant="info"
-              role="menu"
-            >
-              <Dropdown.ItemText className="text-decoration-underline">
-                Category
-              </Dropdown.ItemText>
-              {allCategories.map(([value, label]) => (
+            <div className="d-flex align-items-center mb-2">
+              <DropdownButton
+                id="filter-dropdown"
+                title="Filter"
+                className="me-3"
+                variant="info"
+                role="menu"
+              >
+                <Dropdown.ItemText className="text-decoration-underline">
+                  Category
+                </Dropdown.ItemText>
+                {allCategories.map(([value, label]) => (
+                  <Dropdown.Item
+                    key={value}
+                    as="button"
+                    role="menuitem"
+                    onClick={() => handleCategoryFilter(value)}
+                  >
+                    {label}
+                  </Dropdown.Item>
+                ))}
                 <Dropdown.Item
-                  key={value}
                   as="button"
                   role="menuitem"
-                  onClick={() => handleCategoryFilter(value)}
+                  onClick={() => handleClearFilters()}
+                  className="text-body-secondary"
                 >
-                  {label}
+                  <i class="fa-solid fa-xmark"></i> Clear filters
                 </Dropdown.Item>
-              ))}
-              <Dropdown.Item
-                as="button"
-                role="menuitem"
-                onClick={() => handleClearFilters()}
-                className="text-body-secondary"
-              >
-                <i class="fa-solid fa-xmark"></i> Clear filters
-              </Dropdown.Item>
-            </DropdownButton>
+              </DropdownButton>
+              <Form className="d-flex w-50 ms-auto">
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  className="me-2"
+                  aria-label="Search"
+                  value={query}
+                  onChange={handleSearch}
+                />
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => setQuery("")}
+                >
+                  Clear
+                </Button>
+              </Form>
+            </div>
           )}
           {!isFiltering && (
             <Accordion alwaysOpen className="mb-3">

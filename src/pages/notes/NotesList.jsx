@@ -19,6 +19,7 @@ function NotesList({
   showHeader = true,
   showSearchBar = true,
   showCreateLink = true,
+  className = "",
 }) {
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
@@ -61,7 +62,7 @@ function NotesList({
   return (
     <>
       <Row>
-        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }} className={className}>
           {showHeader && <h1 className={appStyles.Header}>Notes</h1>}
           {/* Search bar for notes */}
           {showSearchBar && (

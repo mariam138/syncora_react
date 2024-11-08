@@ -4,7 +4,8 @@ import appStyles from "../App.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TasksList from "./tasks/TasksList";
-import styles from '../styles/Dashboard.module.css'
+import styles from "../styles/Dashboard.module.css";
+import NotesList from "./notes/NotesList";
 
 function Dashboard() {
   return (
@@ -33,6 +34,15 @@ function Dashboard() {
           showCheck={false}
           className={styles.ScrollCard}
           showFilters={false}
+        />
+
+        <h2 className={appStyles.Header}>Notes</h2>
+
+        <NotesList
+          showHeader={false}
+          showSearchBar={false}
+          showCreateLink={false}
+          className={styles.ScrollCard}
         />
         {/* </Col> */}
       </Row>

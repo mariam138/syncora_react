@@ -82,7 +82,10 @@ function EventForm() {
       return;
     }
     if (endTime < startTime) {
-      setError({ end_time: ["Events cannot end before they begin."] });
+      setError({
+        end_time: ["Events cannot end before they begin."],
+        start_time: ["Start time cannot be after end time."],
+      });
       return;
     }
 
@@ -170,6 +173,11 @@ function EventForm() {
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+                {error.start_time?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formEndTime">
                   <Form.Label className="me-2">

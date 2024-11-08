@@ -72,7 +72,10 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
                 />
                 <Button
                   variant="outline-secondary"
-                  onClick={() => setQuery("")}
+                  onClick={() => {
+                    setQuery("");
+                    setIsSearching(false);
+                  }}
                 >
                   Clear
                 </Button>

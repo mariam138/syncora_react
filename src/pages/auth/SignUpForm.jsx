@@ -96,7 +96,13 @@ const SignUpForm = () => {
               ))}
 
               <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label className="fs-5 d-flex flex-column flex-lg-row align-content-center">
+                  Email address
+                  <span className="text-body-secondary fs-6 ms-lg-3 align-self-lg-center">
+                    <i className="fa-solid fa-circle-info"></i> Email is not
+                    required.
+                  </span>
+                </Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email"

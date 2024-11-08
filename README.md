@@ -187,6 +187,8 @@ When the user clicks the 'Events' icon in the sidebar, they are redirected to th
 
 When viewing the event detail, the user can see the date, start time, end time, location, category and any notes that they have added. Underneath is the option to either edit the event or delete the event. Editing the event will bring up the event form, allowing them to easily update any information.
 
+![Event detail](readme_assets/event-detail.png)
+
 #### Create/Edit Events
 
 When either creating or editing an event, a form will be displayed to the user. They will be able to enter or update the name, date, start time, end time, location, category and notes.

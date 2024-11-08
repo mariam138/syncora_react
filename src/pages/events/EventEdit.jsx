@@ -177,6 +177,7 @@ function EventEdit({
                     <option value="FAM">Family</option>
                     <option value="APP">Appointment</option>
                     <option value="EDU">Education</option>
+                    <option value="TRAVEL">Travel</option>
                   </Form.Select>
                 </Form.Group>
                 {!category &&

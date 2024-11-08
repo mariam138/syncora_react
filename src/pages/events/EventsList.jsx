@@ -191,7 +191,48 @@ function EventsList({
               </Form>
             </div>
           )}
-          {!isFiltering && (
+
+          {isFiltering ? (
+            <div>
+              {filteredEvents.length > 0 ? (
+                <ListGroup>
+                  {filteredEvents.map((event) => {
+                    const dateRep = formatDate(event.date);
+                    return (
+                      <ListGroup.Item key={event.id}>
+                        <div className="d-flex align-items-start flex-column flex-sm-row">
+                          <div className="me-auto mt-1 mb-0">
+                            <h6 className="fs-5">{event.name}</h6>
+                            <p>
+                              <i className="fa-regular fa-calendar"></i>{" "}
+                              {dateRep} |{" "}
+                              <i className="fa-solid fa-hourglass-start"></i>{" "}
+                              {event.start_time} |{" "}
+                              <i className="fa-solid fa-location-dot"></i>{" "}
+                              {event.location}
+                            </p>
+                          </div>
+
+                          <Button
+                            className="align-self-center"
+                            variant="outline-secondary"
+                            size="sm"
+                            onClick={() => viewEvent(event.id)}
+                          >
+                            View event
+                          </Button>
+                        </div>
+                      </ListGroup.Item>
+                    );
+                  })}
+                </ListGroup>
+              ) : (
+                <p className="fs-5 text-body-secondary">
+                  No tasks found with this category.
+                </p>
+              )}
+            </div>
+          ) : (
             <Accordion alwaysOpen className="mb-3">
               {isLoaded ? (
                 filteredEvents.length > 0 ? (
@@ -245,48 +286,6 @@ function EventsList({
                 <LoadingSpinner />
               )}
             </Accordion>
-          )}
-
-          {isFiltering && (
-            <div>
-              {filteredEvents.length > 0 ? (
-                <ListGroup>
-                  {filteredEvents.map((event) => {
-                    const dateRep = formatDate(event.date);
-                    return (
-                      <ListGroup.Item key={event.id}>
-                        <div className="d-flex align-items-start flex-column flex-sm-row">
-                          <div className="me-auto mt-1 mb-0">
-                            <h6 className="fs-5">{event.name}</h6>
-                            <p>
-                              <i className="fa-regular fa-calendar"></i>{" "}
-                              {dateRep} |{" "}
-                              <i className="fa-solid fa-hourglass-start"></i>{" "}
-                              {event.start_time} |{" "}
-                              <i className="fa-solid fa-location-dot"></i>{" "}
-                              {event.location}
-                            </p>
-                          </div>
-
-                          <Button
-                            className="align-self-center"
-                            variant="outline-secondary"
-                            size="sm"
-                            onClick={() => viewEvent(event.id)}
-                          >
-                            View event
-                          </Button>
-                        </div>
-                      </ListGroup.Item>
-                    );
-                  })}
-                </ListGroup>
-              ) : (
-                <p className="fs-5 text-body-secondary">
-                  No tasks found with this category.
-                </p>
-              )}
-            </div>
           )}
 
           {showCreateLink && (

@@ -12,6 +12,7 @@ import Card from "react-bootstrap/Card";
 // Custom styles
 import appStyles from "../../App.module.css";
 import { apiReq } from "../../api/axiosDefaults";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function NotesList({ showHeader = true, showSearchBar = true }) {
   const [query, setQuery] = useState("");
@@ -30,7 +31,6 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
         const { data } = await apiReq.get("/notes/");
         setNotesList(data);
         setIsLoaded(true);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -79,15 +79,28 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
               </Form>
             </div>
           )}
-
-          <Card>
-            <Card.Body>
-              <Card.Title>Note title</Card.Title>
-              <Card.Text>First line of note</Card.Text>
-              <Button variant="primary">View note detail</Button>
-            </Card.Body>
-            <Card.Footer className="text-muted">Note created date</Card.Footer>
-          </Card>
+          {isLoaded ? (
+            notesList.results.length > 0 ? (
+              notesList.results.map((note) => (
+                <Card className="mb-3">
+                  <Card.Body>
+                    {note.title && <Card.Title>{note.title}</Card.Title>}
+                    <Card.Text>{`${note.content.slice(0, 60)}...`}</Card.Text>
+                    <Button size="sm" className={`btn ${appStyles.Button}`}>
+                      See more
+                    </Button>
+                  </Card.Body>
+                  <Card.Footer className="text-muted">
+                    {note.date_updated}
+                  </Card.Footer>
+                </Card>
+              ))
+            ) : (
+              <p className="fs-5">No notes</p>
+            )
+          ) : (
+            <LoadingSpinner />
+          )}
         </Col>
       </Row>
     </>

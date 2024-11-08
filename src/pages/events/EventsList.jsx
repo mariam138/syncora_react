@@ -125,7 +125,7 @@ function EventsList({
     const isSearchMatch = event.name
       .toLowerCase()
       .includes(query.toLowerCase());
-    return isCategoryMatch && isSearchMatch && now <= event.date;
+    return isCategoryMatch && isSearchMatch /* && now <= event.date */;
   });
 
   const allCategories = [
@@ -241,7 +241,7 @@ function EventsList({
                     return (
                       <Accordion.Item eventKey={`${event.id}`} key={event.id}>
                         <Accordion.Header
-                          className={accordStyles.AccordionHeader}
+                          className={`${accordStyles.AccordionHeader} ${accordStyles.HeaderBtn}`}
                         >
                           <i className="fa-solid fa-scroll"></i> {event.name}
                           {now === event.date && (

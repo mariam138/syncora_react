@@ -1,3 +1,8 @@
 .AccordionHeader i {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.HeaderBtn button {
+  text-decoration: line-through;
+  color: rgba(97, 100, 102, 0.5);
 }

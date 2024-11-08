@@ -377,6 +377,7 @@ function TasksList({
                                           </span>
                                           {showCheck && (
                                             <Form.Check
+                                              isValid
                                               className="text-muted"
                                               reverse
                                               label="Completed"
@@ -387,7 +388,7 @@ function TasksList({
                                                   e.target.checked,
                                                 )
                                               }
-                                            />
+                                            ></Form.Check>
                                           )}
                                         </div>
                                       </div>

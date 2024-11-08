@@ -21,6 +21,7 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
   const [noteId, setNoteId] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [searchList, setSearchList] = useState({ results: [] });
+  const [isSearching, setIsSearching] = useState(false);
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
       try {
         const { data } = await apiReq.get("/notes/");
         setNotesList(data);
+        setSearchList(data);
         setIsLoaded(true);
       } catch (error) {
         console.log(error);
@@ -43,12 +45,10 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
+    setIsSearching(!!searchTerm);
 
     const searchedNotes = notesList.results.filter((note) => {
-      return (
-        note.title.toLowerCase().includes(searchTerm) ||
-        note.content.toLowerCase().includes(searchTerm)
-      );
+      return note.content.toLowerCase().includes(query);
     });
 
     setSearchList({ results: searchedNotes });
@@ -79,24 +79,27 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
               </Form>
             </div>
           )}
+
           {isLoaded ? (
-            notesList.results.length > 0 ? (
-              notesList.results.map((note) => (
-                <Card className="mb-3">
-                  <Card.Body>
-                    {note.title && <Card.Title>{note.title}</Card.Title>}
-                    <Card.Text>{`${note.content.slice(0, 60)}...`}</Card.Text>
-                    <Button size="sm" className={`btn ${appStyles.Button}`}>
-                      See more
-                    </Button>
-                  </Card.Body>
-                  <Card.Footer className="text-muted">
-                    {note.date_updated}
-                  </Card.Footer>
-                </Card>
-              ))
+            (isSearching ? searchList.results : notesList.results).length ? (
+              (isSearching ? searchList.results : notesList.results).map(
+                (note) => (
+                  <Card key={note.id} className="mb-3">
+                    <Card.Body>
+                      {note.title && <Card.Title>{note.title}</Card.Title>}
+                      <Card.Text>{`${note.content.slice(0, 60)}...`}</Card.Text>
+                      <Button size="sm" className={`btn ${appStyles.Button}`}>
+                        See more
+                      </Button>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                      {note.date_created}
+                    </Card.Footer>
+                  </Card>
+                ),
+              )
             ) : (
-              <p className="fs-5">No notes</p>
+              <p className="fs-5">No notes found</p>
             )
           ) : (
             <LoadingSpinner />

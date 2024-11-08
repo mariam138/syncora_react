@@ -221,6 +221,18 @@ When 'View task' is clicked, the user is able to view the task in detail. This i
 
 ![Task detail](readme_assets/task-detail.png)
 
+#### Create/Edit Task
+
+When either creating or editing a task, a form will be displayed to the user. They will be able to enter or update the title, due date, priority, category and description. Only when editing will the user also be able to click the 'Completed?' checkbox. This checkbox is not visible in the creation form.
+
+##### Create Task Form
+
+![Create task form](readme_assets/create-task-form.png)
+
+##### Edit Task Form
+
+![Edit task form](readme_assets/edit-task-form.png)
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

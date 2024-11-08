@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,7 @@ import Card from "react-bootstrap/Card";
 
 // Custom styles
 import appStyles from "../../App.module.css";
+import { apiReq } from "../../api/axiosDefaults";
 
 function NotesList({ showHeader = true, showSearchBar = true }) {
   const [query, setQuery] = useState("");
@@ -21,6 +22,22 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const { data } = await apiReq.get("/notes/");
+        setNotesList(data);
+        setIsLoaded(true);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setIsLoaded(false);
+    fetchNotes();
+  }, [currentUser]);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();

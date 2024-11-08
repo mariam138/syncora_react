@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Card from "react-bootstrap/Card";
 
 import appStyles from "../../App.module.css";
 
@@ -18,6 +19,7 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
       <Row>
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           {showHeader && <h1 className={appStyles.Header}>Notes</h1>}
+          {/* Search bar for notes */}
           {showSearchBar && (
             <div className="d-flex align-items-center mb-2">
               <Form className="d-flex w-auto ms-auto">
@@ -38,6 +40,15 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
               </Form>
             </div>
           )}
+
+          <Card>
+            <Card.Body>
+              <Card.Title>Note title</Card.Title>
+              <Card.Text>First line of note</Card.Text>
+              <Button variant="primary">View note detail</Button>
+            </Card.Body>
+            <Card.Footer className="text-muted">Note created date</Card.Footer>
+          </Card>
         </Col>
       </Row>
     </>

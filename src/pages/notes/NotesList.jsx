@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Bootstrap imports
 import Row from "react-bootstrap/Row";
@@ -11,10 +11,15 @@ import Card from "react-bootstrap/Card";
 
 // Custom styles
 import appStyles from "../../App.module.css";
+import linkStyles from "../../styles/CreateLink.module.css";
 import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
-function NotesList({ showHeader = true, showSearchBar = true }) {
+function NotesList({
+  showHeader = true,
+  showSearchBar = true,
+  showCreateLink = true,
+}) {
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [notesList, setNotesList] = useState({ results: [] });
@@ -106,6 +111,11 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
             )
           ) : (
             <LoadingSpinner />
+          )}
+          {showCreateLink && (
+            <Link to="new/" className={linkStyles.Link}>
+              New Note <i class="fa-solid fa-plus"></i>
+            </Link>
           )}
         </Col>
       </Row>

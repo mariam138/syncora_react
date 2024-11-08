@@ -193,6 +193,14 @@ When viewing the event detail, the user can see the date, start time, end time, 
 
 When either creating or editing an event, a form will be displayed to the user. They will be able to enter or update the name, date, start time, end time, location, category and notes.
 
+##### New Event Form
+
+![Event creation form](readme_assets/event-create-form.png)
+
+##### Edit form
+
+![Event edit form](readme_assets/event-edit-form.png)
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

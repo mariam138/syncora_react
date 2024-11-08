@@ -240,8 +240,9 @@ function EventsList({
                     const dateRep = formatDate(event.date);
                     return (
                       <Accordion.Item eventKey={`${event.id}`} key={event.id}>
+                        {/* Add conditional styling if the event has passed */}
                         <Accordion.Header
-                          className={`${accordStyles.AccordionHeader} ${accordStyles.HeaderBtn}`}
+                          className={`${accordStyles.AccordionHeader} ${now > event.date ? accordStyles.HeaderBtn : ""} `}
                         >
                           <i className="fa-solid fa-scroll"></i> {event.name}
                           {now === event.date && (

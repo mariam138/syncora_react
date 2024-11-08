@@ -305,6 +305,7 @@ function TasksList({
                                           </div>
                                           {showCheck && (
                                             <Form.Check
+                                              isValid
                                               reverse
                                               label="Completed"
                                               checked={task.completed}
@@ -370,19 +371,33 @@ function TasksList({
                                         >
                                           {task.priority_display}
                                         </span>
-                                        <div className="d-flex align-items-start flex-column flex-sm-row">
+                                        <div className="d-flex align-items-start flex-column">
                                           <span className="text-muted me-auto">
                                             Due: {dueDateRep}
                                           </span>
+                                          {showCheck && (
+                                            <Form.Check
+                                              className="text-muted"
+                                              reverse
+                                              label="Completed"
+                                              checked={task.completed}
+                                              onChange={(e) =>
+                                                toggleCompleted(
+                                                  task.id,
+                                                  e.target.checked,
+                                                )
+                                              }
+                                            />
+                                          )}
                                         </div>
                                       </div>
                                       <Button
+                                        className="me-2"
                                         variant="outline-secondary"
-                                        onClick={() =>
-                                          toggleCompleted(task.id, false)
-                                        }
+                                        size="sm"
+                                        onClick={() => viewTask(task.id)}
                                       >
-                                        Mark Incomplete
+                                        View task
                                       </Button>
                                     </div>
                                   </ListGroup.Item>

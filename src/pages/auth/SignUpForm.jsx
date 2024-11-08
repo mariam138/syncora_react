@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Alert, Card, Col, Row } from "react-bootstrap";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import api from "../../api/axiosDefaults";
@@ -35,7 +35,7 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log(api)
+    console.log(api);
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
@@ -54,7 +54,7 @@ const SignUpForm = () => {
     <Row className="mx-md-4">
       <div className="text-center px-3">
         <h1 className={appStyles.Header}>Syncora</h1>
-        <h2 className={appStyles.Header}>Let's get organised.</h2>
+        <h2 className={appStyles.Header}>Let&apos;s get organised.</h2>
       </div>
       <Col md={6} className="gx-md-0">
         <Card>

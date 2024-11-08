@@ -6,6 +6,8 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 
 import appStyles from "../../App.module.css";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useNavigate } from "react-router-dom";
 
 function NotesList({ showHeader = true, showSearchBar = true }) {
   const [query, setQuery] = useState("");
@@ -13,6 +15,9 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
   const [notesList, setNotesList] = useState({ results: [] });
   const [noteId, setNoteId] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  const currentUser = useCurrentUser();
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();

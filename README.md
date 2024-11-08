@@ -201,6 +201,20 @@ When either creating or editing an event, a form will be displayed to the user. 
 
 ![Event edit form](readme_assets/event-edit-form.png)
 
+### Tasks
+
+#### Tasks List
+
+When the user clicks the tasks icon in the sidebar, they are redirected to the tasks list page. A list of tasks are displayed which are split into two panes: To Do and Completed. Each task shows the title, priority level and the due date. The option to complete the task is also present, saving the need for the user to enter the edit form to complete them. Once completed, the task will move into the 'Completed' tab. If checked by accident, then the user is able to uncheck the task which will automatically move it back to the 'To Do' tab. Each task also allows the user to view the task in detail. Tasks can also be categorised using the filter button by priority or category, and will display all tasks whether they have been completed or not. Tasks can also be searched for by a simple text search. Underneath the list is the option to create a new task.
+
+##### To do list
+
+![Todo task list](readme_assets/todo-task-list.png)
+
+##### Completed list
+
+![Completed task list](readme_assets/completed-task-list.png)
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

@@ -19,6 +19,7 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
   const [notesList, setNotesList] = useState({ results: [] });
   const [noteId, setNoteId] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [searchList, setSearchList] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
@@ -42,6 +43,15 @@ function NotesList({ showHeader = true, showSearchBar = true }) {
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
+
+    const searchedNotes = notesList.results.filter((note) => {
+      return (
+        note.title.toLowerCase().includes(searchTerm) ||
+        note.content.toLowerCase().includes(searchTerm)
+      );
+    });
+
+    setSearchList({ results: searchedNotes });
   };
   return (
     <>

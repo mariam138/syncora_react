@@ -299,34 +299,33 @@ function TasksList({
                                             </span>
                                           </>
                                         )}
-                                        <div className="d-flex align-items-start flex-column flex-sm-row">
-                                          <span className="text-muted me-auto">
+                                        <div className="d-flex align-items-start flex-column">
+                                          <div className="text-muted me-auto">
                                             Due: {dueDateRep}
-                                          </span>
+                                          </div>
+                                          {showCheck && (
+                                            <Form.Check
+                                              reverse
+                                              label="Completed"
+                                              checked={task.completed}
+                                              onChange={(e) =>
+                                                toggleCompleted(
+                                                  task.id,
+                                                  e.target.checked,
+                                                )
+                                              }
+                                            />
+                                          )}
                                         </div>
                                       </div>
                                       <Button
+                                        className="me-2"
                                         variant="outline-secondary"
                                         size="sm"
                                         onClick={() => viewTask(task.id)}
                                       >
                                         View task
                                       </Button>
-                                      {showCheck && (
-                                        <Form>
-                                          <Form.Check
-                                            reverse
-                                            label="Completed"
-                                            checked={task.completed}
-                                            onChange={(e) =>
-                                              toggleCompleted(
-                                                task.id,
-                                                e.target.checked,
-                                              )
-                                            }
-                                          />
-                                        </Form>
-                                      )}
                                     </div>
                                   </ListGroup.Item>
                                 );

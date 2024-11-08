@@ -173,7 +173,7 @@ function EventsList({
                   <i class="fa-solid fa-xmark"></i> Clear filters
                 </Dropdown.Item>
               </DropdownButton>
-              <Form className="d-flex w-50 ms-auto">
+              <Form className="d-flex w-auto ms-auto">
                 <Form.Control
                   type="text"
                   placeholder="Search"

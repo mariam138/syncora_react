@@ -15,6 +15,7 @@ import EventForm from "./pages/events/EventForm.jsx";
 import TasksList from "./pages/tasks/TasksList.jsx";
 import TaskDetail from "./pages/tasks/TaskDetail.jsx";
 import TaskForm from "./pages/tasks/TaskForm.jsx";
+import NotesList from "./pages/notes/NotesList.jsx";
 
 /** Wraps the Root element with the CurrentUserProvider
  * ensuring context is available to all components in the app.
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "tasks/:pk/",
         element: <TaskDetail />,
+      },
+      {
+        path: "notes/",
+        element: <NotesList />,
       },
     ],
   },

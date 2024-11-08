@@ -9,6 +9,10 @@ import appStyles from "../../App.module.css";
 
 function NotesList({ showHeader = true, showSearchBar = true }) {
   const [query, setQuery] = useState("");
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [notesList, setNotesList] = useState({ results: [] });
+  const [noteId, setNoteId] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();

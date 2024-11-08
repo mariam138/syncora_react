@@ -179,7 +179,9 @@ For future features where users can be linked on tasks and events together, I ha
 
 #### Events List
 
-When the user clicks the 'Events' icon in the sidebar, they are redirected to the Events page where they are shown all their events in a list. The basic information is displayed for each event, including the name, date, start time and location for each event. Each event can be clicked to produce a drop down menu which allows the user to either view the event in detail or to delete the event. Underneath the list is the option to create a new event.
+When the user clicks the 'Events' icon in the sidebar, they are redirected to the Events page where they are shown all their events in a list. The event title is displayed in a preview, and more basic information is displayed when opening the drop down. Each event also gives the option to view the event in more detail or delete the event. Users are also able to filter their events by category, or do a simple text search for an event. Past events are muted to allow more visual differentiation between each event. If an event is happening on the same day as the user has the app open, this will also be indicated. Underneath the list is the option to create a new event.
+
+![Events list](readme_assets/events-list.png)
 
 #### Event Detail
 

@@ -416,6 +416,11 @@ function TasksList({
                 </Card.Body>
               </Card>
             )}
+            {showCreateLink && (
+              <Link to="new/" className={styles.Link}>
+                New Task <i class="fa-solid fa-plus"></i>
+              </Link>
+            )}
           </Col>
         </Row>
       </Tab.Container>

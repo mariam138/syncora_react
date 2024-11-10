@@ -9,6 +9,9 @@ import Alert from "react-bootstrap/Alert";
 
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { apiReq } from "../../api/axiosDefaults";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function NoteForm() {
   const navigate = useNavigate();
@@ -19,6 +22,7 @@ function NoteForm() {
   });
 
   const { title, content } = noteData;
+  const currentUser = useCurrentUser();
 
   const goBack = () => {
     navigate(-1);
@@ -31,6 +35,29 @@ function NoteForm() {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (currentUser) {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("content", content);
+      try {
+        await apiReq.post("/notes/new/", formData);
+        navigate("/notes/");
+        SuccessToast("Note created");
+      } catch (error) {
+        console.log(error);
+        if (error.response.status !== 400) {
+          WarningToast("Note could not be created. Please try again.");
+        }
+        setError(error.response?.data);
+      }
+    } else {
+      navigate("/signin");
+    }
+  };
+
   return (
     <>
       <Row>
@@ -38,7 +65,7 @@ function NoteForm() {
           <h1>New Note</h1>
           <Card className="mb-3">
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formTitle">
                   <Form.Label className="fs-5 d-flex flex-column flex-lg-row align-content-center">
                     <span>

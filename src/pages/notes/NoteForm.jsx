@@ -48,6 +48,11 @@ function NoteForm() {
               </Form>
             </Card.Body>
           </Card>
+          <div className="text-center mb-3">
+            <Button variant="outline-secondary">
+              <i class="fa-solid fa-arrow-left"></i> Back
+            </Button>
+          </div>
         </Col>
       </Row>
     </>

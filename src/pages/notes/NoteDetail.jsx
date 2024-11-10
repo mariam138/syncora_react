@@ -5,7 +5,8 @@ import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-import styles from "../../styles/DetailPageButtons.module.css";
+import styles from "../../styles/Notes.module.css";
+import btnStyles from "../../styles/DetailPageButtons.module.css";
 import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -51,11 +52,11 @@ function NoteDetail() {
       <Row>
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <h1
-            className={`$ {appStyles.Header} ${!title && "text-body-tertiary"}`}
+            className={`${appStyles.Header} ${!title && "text-body-tertiary"}`}
           >
             {title ? title : "Untitled"}
           </h1>
-          <Card bg="warning">
+          <Card className={`mx-auto ${styles.Note}`}>
             <Card.Body>
               <Card.Text>{content}</Card.Text>
             </Card.Body>
@@ -63,17 +64,17 @@ function NoteDetail() {
           </Card>
 
           <div className="text-center mt-4">
-            <Button variant="info" className={`mx-2 ${styles.BtnText}`}>
+            <Button variant="info" className={`mx-2 ${btnStyles.BtnText}`}>
               Edit <i className="fa-solid fa-pencil"></i>
             </Button>
-            <Button variant="danger" className={`mx-2 ${styles.BtnText}`}>
+            <Button variant="danger" className={`mx-2 ${btnStyles.BtnText}`}>
               Delete <i className="fa-solid fa-trash"></i>
             </Button>
           </div>
 
           <div className="text-center mt-4">
             <Button
-              className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
+              className={`btn ${appStyles.Button} mx-2 ${btnStyles.BtnText}`}
               onClick={goBack}
             >
               <i className="fa-solid fa-arrow-left"></i> Back

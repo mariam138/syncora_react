@@ -174,7 +174,7 @@ const SideBar = () => {
   return (
     <div className={styles.Div}>
       {/* Sidebar will be collapsed on large screens and smaller */}
-      <CDBSidebar breakpoint={992} toggled minWidth="75px">
+      <CDBSidebar toggled minWidth="75px">
         {/* Header of sidebar */}
         <CDBSidebarHeader
           prefix={<i className="fa fa-bars fa-large"></i>}

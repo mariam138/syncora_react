@@ -1,15 +1,15 @@
 import { jwtDecode } from "jwt-decode";
 
 export const setTokenTimestamp = (data) => {
-  const refreshTokenTimestamp = jwtDecode(data?.access).exp;
-  localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+  const accessTokenTimestamp = jwtDecode(data?.access).exp;
+  localStorage.setItem("accessTokenTimestamp", accessTokenTimestamp);
 };
 
 // Create bool to check if token needs refreshing
 export const shouldRefreshToken = () => {
-  return !!localStorage.getItem("refreshTokenTimestamp");
+  return !!localStorage.getItem("accessTokenTimestamp");
 };
 
 export const removeTokenTimestamp = () => {
-  localStorage.removeItem("refreshTokenTimestamp");
+  localStorage.removeItem("accessTokenTimestamp");
 };

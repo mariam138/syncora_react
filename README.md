@@ -312,6 +312,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 - Code to complete tasks using the form checkbox is adapted from [React School](https://react.school/todo-list/completing-tasks)
 - Code to allow the tasks list component to be scrollable on the dashboard is adapted from [this post](https://community.plotly.com/t/set-max-height-to-a-div-and-make-the-content-vertically-scrollable/28873) on community.plotly.com
 - Code to allow filtering by user input is adapted from [this post](https://www.dhiwise.com/post/reactjs-filter-array-of-objects-effortless-data-handling) by Kesar Bhimani on www.dhiwise.com
+- Code to create a real time search filter for events, tasks and notes is adapted from [this post](https://dev.to/alais29dev/building-a-real-time-search-filter-in-react-a-step-by-step-guide-3lmm#step-2-creating-the-input) by Alfonsina Lizardo on dev.to
 
 ### Media
 

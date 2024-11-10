@@ -253,6 +253,12 @@ When either creating or editing a task, a form will be displayed to the user. Th
 
 5. While testing out the registration and sign in feature on the deployed site to fix any bugs, a discrepancy occurred between a user's primary key and the corresponding profile primary key. A user was able to sign in properly, but clicking on the profile link would display a profile with an id that had yet to be created. Checking the network requests in the front end showed that the profile pk did not match the user pk. For example, a user which had the pk of 24 had a profile pk of 47. This discrepancy was confirmed by print statements in the back end of this project. I was not fully able to understand where the issue had come from, but potentially as there was an issue with Safari not logging users in after signing up, perhaps more user accounts were being created without a profile. However I do not think this was very likely. To overcome this bug, I created a new database and took the existing database information, removed the users from where the discrepancy began and reloaded that data into the new database. This fixed the issue and there were no longer discrepancies between the user and profile pk's.
 
+6. An issue arose where the sidebar component would not toggle open and closed on smaller screensizes. Initially I thought it was a potential conflict with the screen size prop I had in my sidebar component which would conditionally render some sidebar links. However after adjusting the code this didn't work. Some console logs during development showed that the click handler was working, but not when actually clicking on the menu icon.
+
+   ![Screenshot of console.log click event](readme_assets/click-console-log.png)
+
+   I created some utility functions to refresh the access token timestamp, thinking that there was a conflict between the currentUser not being gotten properly which was affecting the toggle functionality. This also did not fix the issue. After some tutor help, it turned out that the Welcome user message I was displaying on smaller screensizes had a higher z-index than the sidebar, as a Navbar component was used to create this message. Creating a custom css class to lower the z-index of this navbar to below the z-index of the sidebar solved the bug.
+
 ### Future Features and Improvements
 
 ## Frameworks, libraries and dependencies

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import api, { apiReq, apiResp } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
+import { shouldRefreshToken } from "../utils/utils";
 
 // Creates custom context object for the current user to be passed down the component tree
 export const CurrentUserContext = createContext();
@@ -45,17 +46,20 @@ export const CurrentUserProvider = ({ children }) => {
     // and set current user to null
     apiReq.interceptors.request.use(
       async (config) => {
-        try {
-          await api.post("/dj-rest-auth/token/refresh/");
-        } catch (error) {
-          setCurrentUser((prevCurrentUser) => {
-            if (prevCurrentUser) {
-              navigate("/signin");
-            }
-            return null;
-          });
-          return config;
+        if (shouldRefreshToken()) {
+          try {
+            await api.post("/dj-rest-auth/token/refresh/");
+          } catch (error) {
+            setCurrentUser((prevCurrentUser) => {
+              if (prevCurrentUser) {
+                navigate("/signin");
+              }
+              return null;
+            });
+            return config;
+          }
         }
+
         return config;
       },
       // Reject the error if one is returned

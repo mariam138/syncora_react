@@ -5,6 +5,9 @@ import Row from "react-bootstrap/Row";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
+import styles from "../../styles/DetailPageButtons.module.css";
+import appStyles from "../../App.module.css";
+
 function NoteDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -19,6 +22,23 @@ function NoteDetail() {
               <Card.Text>Date updated</Card.Text>
             </Card.Body>
           </Card>
+
+          <div className="text-center mt-4">
+            <Button variant="info" className={`mx-2 ${styles.BtnText}`}>
+              Edit <i className="fa-solid fa-pencil"></i>
+            </Button>
+            <Button variant="danger" className={`mx-2 ${styles.BtnText}`}>
+              Delete <i className="fa-solid fa-trash"></i>
+            </Button>
+          </div>
+
+          <div className="text-center mt-4">
+            <Button
+              className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
+            >
+              <i className="fa-solid fa-arrow-left"></i> Back
+            </Button>
+          </div>
         </Col>
       </Row>
     </>

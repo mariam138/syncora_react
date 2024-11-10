@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -7,8 +7,9 @@ import Button from "react-bootstrap/Button";
 
 import styles from "../../styles/DetailPageButtons.module.css";
 import appStyles from "../../App.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { apiReq } from "../../api/axiosDefaults";
 
 function NoteDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,12 +19,28 @@ function NoteDetail() {
     date_updated: "",
     content: "",
   });
-    
-    const { owner, title, date_updated, content } = noteDetail;
-    const navigate = useNavigate();
-    const currentUser = useCurrentUser();
 
-    const is_owner = currentUser?.username === owner;
+  const { owner, title, date_updated, content } = noteDetail;
+  const { pk } = useParams();
+  const navigate = useNavigate();
+  const currentUser = useCurrentUser();
+
+  const is_owner = currentUser?.username === owner;
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await apiReq.get(`/notes/${pk}/`);
+        setNoteDetail(data);
+        setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setIsLoaded(false);
+    handleMount();
+  }, [pk]);
 
   const goBack = () => {
     navigate(-1);

@@ -19,19 +19,25 @@ function NoteForm() {
             <Card.Body>
               <Form>
                 <Form.Group className="mb-3" controlId="formTitle">
-                  <Form.Label>
-                    Title <i class="fa-solid fa-heading"></i>
+                  <Form.Label className="fs-5 d-flex flex-column flex-lg-row align-content-center">
+                    <span>
+                      Title <i class="fa-solid fa-heading"></i>
+                    </span>
+                    <span className="text-body-secondary fs-6 ms-lg-3 align-self-lg-center">
+                      <i className="fa-solid fa-circle-info"></i> Title is not
+                      required.
+                    </span>
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Task title"
+                    placeholder="Note title"
                     name="title"
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formTitle">
+                <Form.Group className="mb-3" controlId="formContent">
                   <Form.Label>
-                    Content <i class="fa-solid fa-heading"></i>
+                    Content <i class="fa-solid fa-pencil"></i>
                   </Form.Label>
                   <Form.Control
                     as="textarea"

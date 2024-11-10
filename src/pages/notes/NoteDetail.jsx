@@ -50,12 +50,16 @@ function NoteDetail() {
     <>
       <Row>
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-          <h1>Note title</h1>
+          <h1
+            className={`$ {appStyles.Header} ${!title && "text-body-tertiary"}`}
+          >
+            {title ? title : "Untitled"}
+          </h1>
           <Card bg="warning">
             <Card.Body>
-              <Card.Text>Note content blah blah blah</Card.Text>
+              <Card.Text>{content}</Card.Text>
             </Card.Body>
-            <Card.Footer>Date updated</Card.Footer>
+            <Card.Footer>{date_updated}</Card.Footer>
           </Card>
 
           <div className="text-center mt-4">

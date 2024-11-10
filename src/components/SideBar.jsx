@@ -194,11 +194,8 @@ const SideBar = () => {
             ) : (
               <LoggedOutMenuLinks />
             )}
-            {/* <LoggedInMenuLinks /> */}
           </CDBSidebarMenu>
 
-          {/* Separate menu for sign in and register links */}
-          {/* <CDBSidebarMenu>Sign in link</CDBSidebarMenu> */}
         </CDBSidebarContent>
       </CDBSidebar>
     </div>

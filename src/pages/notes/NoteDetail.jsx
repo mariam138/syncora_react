@@ -58,7 +58,7 @@ function NoteDetail() {
           </h1>
           <Card className={`mx-auto ${styles.Note}`}>
             <Card.Body>
-              <Card.Text>{content}</Card.Text>
+              <Card.Text className="fs-5">{content}</Card.Text>
             </Card.Body>
             <Card.Footer>{date_updated}</Card.Footer>
           </Card>

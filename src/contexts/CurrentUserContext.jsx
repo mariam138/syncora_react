@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import api, { apiReq, apiResp } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
-import { shouldRefreshToken } from "../utils/utils";
+import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 
 // Creates custom context object for the current user to be passed down the component tree
 export const CurrentUserContext = createContext();
@@ -56,6 +56,7 @@ export const CurrentUserProvider = ({ children }) => {
               }
               return null;
             });
+            removeTokenTimestamp();
             return config;
           }
         }
@@ -86,6 +87,7 @@ export const CurrentUserProvider = ({ children }) => {
               }
               return null;
             });
+            removeTokenTimestamp();
           }
           return api(error.config);
         }

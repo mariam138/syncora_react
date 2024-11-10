@@ -17,6 +17,7 @@ import TaskDetail from "./pages/tasks/TaskDetail.jsx";
 import TaskForm from "./pages/tasks/TaskForm.jsx";
 import NotesList from "./pages/notes/NotesList.jsx";
 import NoteDetail from "./pages/notes/NoteDetail.jsx";
+import NoteForm from "./pages/notes/NoteForm.jsx";
 
 /** Wraps the Root element with the CurrentUserProvider
  * ensuring context is available to all components in the app.
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: "notes/:pk/",
         element: <NoteDetail />,
+      },
+      {
+        path: "notes/new/",
+        element: <NoteForm />,
       },
     ],
   },

@@ -8,10 +8,22 @@ import Button from "react-bootstrap/Button";
 import styles from "../../styles/DetailPageButtons.module.css";
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function NoteDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const navigate = useNavigate();
+  const [noteDetail, setNoteDetail] = useState({
+    owner: "",
+    title: "",
+    date_updated: "",
+    content: "",
+  });
+    
+    const { owner, title, date_updated, content } = noteDetail;
+    const navigate = useNavigate();
+    const currentUser = useCurrentUser();
+
+    const is_owner = currentUser?.username === owner;
 
   const goBack = () => {
     navigate(-1);

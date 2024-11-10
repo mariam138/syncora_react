@@ -7,7 +7,8 @@ import appStyles from "../../App.module.css";
 import api, { apiReq } from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import Image from "react-bootstrap/Image";
-import styles from '../../styles/SignInForm.module.css'
+import styles from "../../styles/SignInForm.module.css";
+import { setTokenTimestamp } from "../../utils/utils";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -33,7 +34,9 @@ const SignInForm = () => {
     try {
       // Destructure data from user login to be used to set the current user
       const { data } = await api.post("/dj-rest-auth/login/", signInData);
+      console.log('data:', data)
       setCurrentUser(data.user);
+      setTokenTimestamp(data);
       navigate("/dashboard");
     } catch (error) {
       console.log(error);
@@ -64,11 +67,12 @@ const SignInForm = () => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              {error.username?.map((message, i) => (
-                <Alert variant="warning" key={i}>
-                  {message}
-                </Alert>
-              ))}
+              {error &&
+                error.username?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
               <Form.Group className="mb-3" controlId="formPassword">
                 <Form.Label>Password</Form.Label>
@@ -80,11 +84,12 @@ const SignInForm = () => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              {error.password?.map((message, i) => (
-                <Alert variant="warning" key={i}>
-                  {message}
-                </Alert>
-              ))}
+              {error &&
+                error.password?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
               <div
                 className="text-center
               "

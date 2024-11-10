@@ -25,8 +25,8 @@ function NoteDetail() {
           <Card bg="warning">
             <Card.Body>
               <Card.Text>Note content blah blah blah</Card.Text>
-              <Card.Text>Date updated</Card.Text>
             </Card.Body>
+            <Card.Footer>Date updated</Card.Footer>
           </Card>
 
           <div className="text-center mt-4">

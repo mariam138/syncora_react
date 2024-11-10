@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api, { apiReq } from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import appStyles from '../../App.module.css'
+import { removeTokenTimestamp } from "../../utils/utils";
 
 export default function SignOutPage() {
   // Use react-router's useNavigate hook to allow the user to go back
@@ -18,6 +19,7 @@ export default function SignOutPage() {
     try {
       await api.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
+      removeTokenTimestamp();
       navigate("/signin");
     } catch (error) {
       console.log(error);

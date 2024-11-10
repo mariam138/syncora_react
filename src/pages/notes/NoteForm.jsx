@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -8,8 +8,29 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
 import appStyles from "../../App.module.css";
+import { useNavigate } from "react-router-dom";
 
 function NoteForm() {
+  const navigate = useNavigate();
+
+  const [noteData, setNoteData] = useState({
+    title: "",
+    content: "",
+  });
+
+  const { title, content } = noteData;
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  const handleChange = (e) => {
+    setNoteData({
+      ...noteData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <Row>

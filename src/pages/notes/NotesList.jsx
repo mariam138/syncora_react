@@ -48,6 +48,10 @@ function NotesList({
     fetchNotes();
   }, [currentUser]);
 
+  const viewNote = (noteId) => {
+    navigate(`/notes/${noteId}/`);
+  };
+
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
@@ -62,7 +66,11 @@ function NotesList({
   return (
     <>
       <Row>
-        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }} className={className}>
+        <Col
+          md={{ span: 8, offset: 2 }}
+          lg={{ span: 6, offset: 3 }}
+          className={className}
+        >
           {showHeader && <h1 className={appStyles.Header}>Notes</h1>}
           {/* Search bar for notes */}
           {showSearchBar && (
@@ -97,7 +105,11 @@ function NotesList({
                     <Card.Body>
                       {note.title && <Card.Title>{note.title}</Card.Title>}
                       <Card.Text>{`${note.content.slice(0, 60)}...`}</Card.Text>
-                      <Button size="sm" className={`btn ${appStyles.Button}`}>
+                      <Button
+                        size="sm"
+                        className={`btn ${appStyles.Button}`}
+                        onClick={() => viewNote(note.id)}
+                      >
                         See more
                       </Button>
                     </Card.Body>

@@ -31,6 +31,7 @@
   overflow-y: scroll;
 }
 
+/* Adjust z-index of welcome text navbar to allow the sidebar to be toggled on smaller screens */
 .WelcomeNav {
   z-index: 1000 !important;
 }

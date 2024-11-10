@@ -27,7 +27,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       {screenSize && (
         <>
           {/* Quick create links for mobile */}
-          <NavLink exact to="/events/new/" activeClassName="activeClicked">
+          <NavLink exact to="/events/new/">
             <CDBSidebarMenuItem
               icon="calendar-plus"
               iconSize="lg"
@@ -36,7 +36,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
               New Event
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/tasks/new/" activeClassName="activeClicked">
+          <NavLink exact to="/tasks/new/">
             <CDBSidebarMenuItem
               icon="file-circle-plus"
               iconSize="lg"
@@ -45,7 +45,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
               New Task
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/notes/new/" activeClassName="activeClicked">
+          <NavLink exact to="/notes/new/">
             <CDBSidebarMenuItem
               icon="square-plus"
               iconSize="lg"
@@ -57,7 +57,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
           <hr />
         </>
       )}
-      <NavLink exact to="/dashboard" activeClassName="activeClicked">
+      <NavLink exact to="/dashboard">
         <CDBSidebarMenuItem
           icon="table-columns"
           iconSize="lg"
@@ -68,7 +68,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Events page link */}
-      <NavLink exact to="/events/" activeClassName="activeClicked">
+      <NavLink exact to="/events/">
         <CDBSidebarMenuItem
           icon="calendar-day"
           iconSize="lg"
@@ -79,7 +79,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Tasks page link */}
-      <NavLink exact to="/tasks" activeClassName="activeClicked">
+      <NavLink exact to="/tasks">
         <CDBSidebarMenuItem
           icon="list"
           iconSize="lg"
@@ -90,7 +90,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Notes page link */}
-      <NavLink exact to="/notes" activeClassName="activeClicked">
+      <NavLink exact to="/notes">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="sticky-note"
@@ -101,7 +101,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Profile page link */}
-      <NavLink exact to={`/profiles/${currentUser?.pk}`} activeClassName="activeClicked">
+      <NavLink exact to={`/profiles/${currentUser?.pk}`}>
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="user"
@@ -112,7 +112,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       </NavLink>
 
       {/* Sign out link */}
-      <NavLink exact to="/signout" activeClassName="activeClicked">
+      <NavLink exact to="/signout">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="right-from-bracket"
@@ -128,7 +128,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 const LoggedOutMenuLinks = () => {
   return (
     <>
-      <NavLink exact to="signin" activeClassName="activeClicked">
+      <NavLink exact to="signin">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="right-to-bracket"
@@ -139,7 +139,7 @@ const LoggedOutMenuLinks = () => {
       </NavLink>
 
       {/* Register link */}
-      <NavLink to="signup" activeClassName="activeClicked">
+      <NavLink to="signup">
         <CDBSidebarMenuItem
           className={styles.SidebarMenuItem}
           icon="user-plus"
@@ -174,7 +174,7 @@ const SideBar = () => {
   return (
     <div className={styles.Div}>
       {/* Sidebar will be collapsed on large screens and smaller */}
-      <CDBSidebar toggled minWidth="75px">
+      <CDBSidebar breakpoint={992} toggled minWidth="75px">
         {/* Header of sidebar */}
         <CDBSidebarHeader
           prefix={<i className="fa fa-bars fa-large"></i>}

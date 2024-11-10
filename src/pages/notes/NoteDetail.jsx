@@ -11,6 +11,7 @@ import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { apiReq } from "../../api/axiosDefaults";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 function NoteDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -47,7 +48,7 @@ function NoteDetail() {
     navigate(-1);
   };
 
-  return (
+  return isLoaded ? (
     <>
       <Row>
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
@@ -83,6 +84,8 @@ function NoteDetail() {
         </Col>
       </Row>
     </>
+  ) : (
+    <LoadingSpinner />
   );
 }
 

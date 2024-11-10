@@ -40,7 +40,7 @@ const root = () => {
         {/* Displays username only if user is authenticated and
         the screensize is smaller than 992px */}
         {currentUser && screenSize && (
-          <Navbar fixed="top">
+          <Navbar fixed="top" className={appStyles.WelcomeNav}>
             <Container>
               <Navbar.Text className="ms-auto">
                 Welcome {currentUser?.username}

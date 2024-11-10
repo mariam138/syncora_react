@@ -31,6 +31,10 @@
   overflow-y: scroll;
 }
 
+.WelcomeNav {
+  z-index: 1000 !important;
+}
+
 /* Remove scrollable component on larger screens */
 @media (min-width: 992px) {
   .Container {

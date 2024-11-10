@@ -7,9 +7,15 @@ import Button from "react-bootstrap/Button";
 
 import styles from "../../styles/DetailPageButtons.module.css";
 import appStyles from "../../App.module.css";
+import { useNavigate } from "react-router-dom";
 
 function NoteDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
 
   return (
     <>
@@ -35,6 +41,7 @@ function NoteDetail() {
           <div className="text-center mt-4">
             <Button
               className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
+              onClick={goBack}
             >
               <i className="fa-solid fa-arrow-left"></i> Back
             </Button>

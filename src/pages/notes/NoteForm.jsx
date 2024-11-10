@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 function NoteForm() {
   const navigate = useNavigate();
-
+  const [error, setError] = useState({});
   const [noteData, setNoteData] = useState({
     title: "",
     content: "",
@@ -57,6 +57,11 @@ function NoteForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {error.title?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formContent">
                   <Form.Label>
@@ -71,6 +76,11 @@ function NoteForm() {
                     onChange={handleChange}
                   />
                 </Form.Group>
+                {error.content?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
                 <div className="text-center">
                   <Button className={`${appStyles.Button} btn`} type="submit">
                     Create <i class="fa-solid fa-plus"></i>

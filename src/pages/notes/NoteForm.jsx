@@ -53,6 +53,8 @@ function NoteForm() {
                     type="text"
                     placeholder="Note title"
                     name="title"
+                    value={title}
+                    onChange={handleChange}
                   />
                 </Form.Group>
 
@@ -65,6 +67,8 @@ function NoteForm() {
                     rows={3}
                     placeholder="A penny for your thoughts?"
                     name="content"
+                    value={content}
+                    onChange={handleChange}
                   />
                 </Form.Group>
                 <div className="text-center">

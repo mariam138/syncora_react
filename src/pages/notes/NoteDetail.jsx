@@ -13,6 +13,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import DeleteModal from "../../components/DeleteModal";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function NoteDetail() {
   const [showModal, setShowModal] = useState(false);
@@ -52,7 +53,22 @@ function NoteDetail() {
   };
 
   const handleDelete = async () => {
-    console.log("Delete");
+    if (is_owner) {
+      try {
+        setIsDeleting(true);
+        await apiReq.delete(`/notes/${pk}/`);
+        navigate("/notes/");
+        SuccessToast("Note deleted");
+      } catch (error) {
+        console.log(error);
+        setShowModal(false);
+        WarningToast(
+          "There was a problem deleting your note. Please try again later.",
+        );
+      }
+    } else {
+      navigate("/signin");
+    }
   };
 
   return (

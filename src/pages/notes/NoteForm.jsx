@@ -24,8 +24,8 @@ function NoteForm({
   const navigate = useNavigate();
   const [error, setError] = useState({});
   const [noteData, setNoteData] = useState({
-    title: "",
-    content: "",
+    title: noteTitle || "",
+    content: noteContent || "",
   });
 
   const { title, content } = noteData;
@@ -33,6 +33,11 @@ function NoteForm({
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const cancelEdit = () => {
+    setIsEditing(false);
+    WarningToast("Your changes were not saved.");
   };
 
   const handleChange = (e) => {

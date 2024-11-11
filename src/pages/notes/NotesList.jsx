@@ -16,7 +16,6 @@ import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 function NotesList({
-  showHeader = true,
   showSearchBar = true,
   showCreateLink = true,
   className = "",
@@ -72,7 +71,7 @@ function NotesList({
   const ContentNotesList = () => {
     return (
       <>
-        {showHeader && <h1 className={appStyles.Header}>Notes</h1>}
+        <h1 className={appStyles.Header}>Notes</h1>
         {/* Search bar for notes */}
         {showSearchBar && (
           <div className="d-flex align-items-center mb-2">

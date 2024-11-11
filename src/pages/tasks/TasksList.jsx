@@ -485,7 +485,7 @@ function TasksList({
     <>
       <Tab.Container id="tasks-tabs" activeKey={key}>
         {dashboardLayout ? (
-          <Col md={6}>
+          <Col md={{ span: 5, offset: 1 }}>
             <ContentTasksList />
           </Col>
         ) : (

@@ -138,7 +138,7 @@ function NotesList({
   return (
     <>
       {dashboardLayout ? (
-        <Col md={6} className={className}>
+        <Col md={5} className={className}>
           <ContentNotesList />
         </Col>
       ) : (

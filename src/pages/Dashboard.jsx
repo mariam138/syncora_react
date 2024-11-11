@@ -14,22 +14,8 @@ function Dashboard() {
         <h1 className={appStyles.Header}>Dashboard</h1>
       </Row>
 
-      {/* Row for Events */}
-      <Row className="mb-4">
-        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-          <h2 className={appStyles.Header}>Events</h2>
-        </Col>
-        <EventsList
-          showHeader={false}
-          showCreateLink={false}
-          showDeleteButton={false}
-          showFilters={false}
-          dashboardLayout={true}
-        />
-      </Row>
-
       <Row>
-        <Col md={{ span: 5, offset: 1 }}>
+        <Col md={{ span: 4, offset: 2 }}>
           <h2 className={appStyles.Header}>Tasks</h2>
         </Col>
         <Col md={4}>
@@ -55,6 +41,19 @@ function Dashboard() {
           showSearchBar={false}
           showCreateLink={false}
           className={styles.ScrollCard}
+          dashboardLayout={true}
+        />
+      </Row>
+      {/* Row for Events */}
+      <Row className="mb-4">
+        <Col md={{ span: 8, offset: 2 }}>
+          <h2 className={appStyles.Header}>Events</h2>
+        </Col>
+        <EventsList
+          showHeader={false}
+          showCreateLink={false}
+          showDeleteButton={false}
+          showFilters={false}
           dashboardLayout={true}
         />
       </Row>

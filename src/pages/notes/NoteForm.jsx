@@ -64,7 +64,12 @@ function NoteForm({
           onUpdateNoteDetail(data);
         }
         SuccessToast("Note updated");
+      } else if (currentUser) {
+        await apiReq.post("/notes/new/", formData);
+        navigate("/notes/");
+        SuccessToast("Note created");
       } else {
+        navigate("/signin");
       }
     } catch (error) {}
 

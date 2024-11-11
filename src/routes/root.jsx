@@ -51,7 +51,7 @@ const root = () => {
         <ToastContainer />
 
         <Container
-          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto overflow-y-scroll`}
+          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto overflow-y-scroll pb-3`}
         >
           <Outlet />
         </Container>

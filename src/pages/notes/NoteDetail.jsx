@@ -55,58 +55,59 @@ function NoteDetail() {
     console.log("Delete");
   };
 
-  return isLoaded ? (
+  return (
     <>
-      <Row>
-        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-          <h1
-            className={`${appStyles.Header} ${!title && "text-body-tertiary"}`}
-          >
-            {title ? title : "Untitled"}
-          </h1>
-          <Card className={`mx-auto ${styles.Note}`}>
-            <Card.Body>
-              <Card.Text className="fs-5">{content}</Card.Text>
-            </Card.Body>
-            <Card.Footer>{date_updated}</Card.Footer>
-          </Card>
-
-          <div className="text-center mt-4">
-            <Button variant="info" className={`mx-2 ${btnStyles.BtnText}`}>
-              Edit <i className="fa-solid fa-pencil"></i>
-            </Button>
-            <Button
-              variant="danger"
-              className={`mx-2 ${btnStyles.BtnText}`}
-              onClick={() => setShowModal(true)}
+      {isLoaded ? (
+        <Row>
+          <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+            <h1
+              className={`${appStyles.Header} ${!title && "text-body-tertiary"}`}
             >
-              Delete <i className="fa-solid fa-trash"></i>
-            </Button>
-          </div>
+              {title ? title : "Untitled"}
+            </h1>
+            <Card className={`mx-auto ${styles.Note}`}>
+              <Card.Body>
+                <Card.Text className="fs-5">{content}</Card.Text>
+              </Card.Body>
+              <Card.Footer>{date_updated}</Card.Footer>
+            </Card>
 
-          <div className="text-center mt-4">
-            <Button
-              className={`btn ${appStyles.Button} mx-2 ${btnStyles.BtnText}`}
-              onClick={goBack}
-            >
-              <i className="fa-solid fa-arrow-left"></i> Back
-            </Button>
-          </div>
-        </Col>
-      </Row>
+            <div className="text-center mt-4">
+              <Button variant="info" className={`mx-2 ${btnStyles.BtnText}`}>
+                Edit <i className="fa-solid fa-pencil"></i>
+              </Button>
+              <Button
+                variant="danger"
+                className={`mx-2 ${btnStyles.BtnText}`}
+                onClick={() => setShowModal(true)}
+              >
+                Delete <i className="fa-solid fa-trash"></i>
+              </Button>
+            </div>
+
+            <div className="text-center mt-4">
+              <Button
+                className={`btn ${appStyles.Button} mx-2 ${btnStyles.BtnText}`}
+                onClick={goBack}
+              >
+                <i className="fa-solid fa-arrow-left"></i> Back
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      ) : (
+        <LoadingSpinner />
+      )}
+      <DeleteModal
+        show={showModal}
+        handleClose={() => setShowModal(false)}
+        feature="note"
+        modalContent="Are you sure you want to delete this note"
+        handleDelete={handleDelete}
+        isDeleting={isDeleting}
+      />
     </>
-  ) : (
-    <LoadingSpinner />
   );
-
-  <DeleteModal
-    show={showModal}
-    handleClose={() => setShowModal(false)}
-    feature="note"
-    modalContent="Are you sure you want to delete this note"
-    handleDelete={handleDelete}
-    isDeleting={isDeleting}
-  />;
 }
 
 export default NoteDetail;

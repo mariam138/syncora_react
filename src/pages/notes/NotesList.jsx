@@ -25,7 +25,6 @@ function NotesList({
   const [isLoaded, setIsLoaded] = useState(false);
   const [notesList, setNotesList] = useState({ results: [] });
   const [noteId, setNoteId] = useState(null);
-  const [showModal, setShowModal] = useState(false);
   const [searchList, setSearchList] = useState({ results: [] });
   const [isSearching, setIsSearching] = useState(false);
 
@@ -119,7 +118,7 @@ function NotesList({
                       </Button>
                     </Card.Body>
                     <Card.Footer className="text-muted">
-                      {note.date_created}
+                      {note.date_updated}
                     </Card.Footer>
                   </Card>
                 ),

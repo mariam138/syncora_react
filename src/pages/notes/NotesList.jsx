@@ -79,7 +79,7 @@ function NotesList({
           {/* Search bar for notes */}
           {showSearchBar && (
             <div className="d-flex align-items-center mb-2">
-              <Form className="d-flex w-auto ms-auto">
+              <Form className="d-flex w-auto me-auto">
                 <Form.Control
                   type="text"
                   placeholder="Search"

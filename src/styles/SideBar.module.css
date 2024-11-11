@@ -1,7 +1,11 @@
 .Div {
   display: flex;
   height: 100vh;
-  overflow: scroll initial;
+  overflow: initial;
+  bottom: 0;
+  position: sticky;
+  z-index: 100;
+  top: 0;
 }
 
 .Sidebar {

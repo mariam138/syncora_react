@@ -142,8 +142,8 @@ function EventsList({
     <>
       <Row>
         <Col
-          md={dashboardLayout ? 6 : { span: 8, offset: 2 }}
-          lg={dashboardLayout ? 6 : { span: 6, offset: 3 }}
+          md={dashboardLayout ? 12 : { span: 8, offset: 2 }}
+          lg={dashboardLayout ? 12 : { span: 6, offset: 3 }}
         >
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
           {showFilters && (

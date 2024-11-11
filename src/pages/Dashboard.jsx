@@ -38,6 +38,7 @@ function Dashboard() {
           showCheck={false}
           className={styles.ScrollCard}
           showFilters={false}
+          dashboardLayout={true}
         />
 
         <h2 className={appStyles.Header}>Notes</h2>

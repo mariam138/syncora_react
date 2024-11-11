@@ -32,6 +32,7 @@ function TasksList({
   showCheck = true,
   className = "",
   showFilters = true,
+  dashboardLayout = false,
 }) {
   const [tasksList, setTasksList] = useState({ results: [] });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -168,7 +169,10 @@ function TasksList({
     <>
       <Tab.Container id="tasks-tabs" activeKey={key}>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col
+            md={dashboardLayout ? 6 : { span: 8, offset: 2 }}
+            lg={dashboardLayout ? 6 : { span: 6, offset: 3 }}
+          >
             {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
             {/* Dropdown button for filters and search bar */}
             {showFilters && (

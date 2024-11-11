@@ -13,7 +13,14 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
-function NoteForm() {
+function NoteForm({
+  noteTitle,
+  noteContent,
+  isEditing,
+  setIsEditing,
+  isOwner,
+  onUpdateNoteDetail,
+}) {
   const navigate = useNavigate();
   const [error, setError] = useState({});
   const [noteData, setNoteData] = useState({

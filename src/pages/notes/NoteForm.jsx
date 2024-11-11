@@ -84,7 +84,9 @@ function NoteForm({
     <>
       <Row>
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-          <h1>New Note</h1>
+          <h1 className={appStyles.Header}>
+            {isEditing ? "Edit Note" : "New Note"}
+          </h1>
           <Card className="mb-3">
             <Card.Body>
               <Form onSubmit={handleSubmit}>
@@ -106,11 +108,12 @@ function NoteForm({
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {error.title?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {error &&
+                  error.title?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
 
                 <Form.Group className="mb-3" controlId="formContent">
                   <Form.Label>
@@ -125,11 +128,12 @@ function NoteForm({
                     onChange={handleChange}
                   />
                 </Form.Group>
-                {error.content?.map((message, i) => (
-                  <Alert variant="warning" key={i}>
-                    {message}
-                  </Alert>
-                ))}
+                {error &&
+                  error.content?.map((message, i) => (
+                    <Alert variant="warning" key={i}>
+                      {message}
+                    </Alert>
+                  ))}
                 <div className="text-center">
                   <Button className={`${appStyles.Button} btn`} type="submit">
                     Create <i class="fa-solid fa-plus"></i>

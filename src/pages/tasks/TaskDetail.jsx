@@ -85,6 +85,9 @@ function TaskDetail() {
     }
   };
 
+  // Takes the updated task and spreads it into the previous
+  // task detail, then sets isEditing back to false
+  // to display task detail again
   const handleTaskUpdate = (updatedTask) => {
     setTaskDetail((prevTaskDetail) => ({
       ...prevTaskDetail,

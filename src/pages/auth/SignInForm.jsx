@@ -34,7 +34,6 @@ const SignInForm = () => {
     try {
       // Destructure data from user login to be used to set the current user
       const { data } = await api.post("/dj-rest-auth/login/", signInData);
-      console.log('data:', data)
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       navigate("/dashboard");

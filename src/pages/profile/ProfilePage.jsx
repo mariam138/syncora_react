@@ -176,7 +176,7 @@ function ProfilePage() {
         setIsDeleting(true);
         await apiReq.delete(`/profiles/${currentUser.pk}`);
         setCurrentUser(null);
-        navigate("/");
+        navigate("/signup");
         SuccessToast("Account deleted!");
       } catch (error) {
         console.log(error);

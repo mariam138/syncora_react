@@ -141,13 +141,14 @@ function EventsList({
     <>
       <Row>
         <Col
-          md={{ span: 8, offset: 2 }
-          }
-          lg={
-            dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }
-          }
+          md={{ span: 8, offset: 2 }}
+          lg={dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }}
         >
-          <h1 className={appStyles.Header}>Events</h1>
+          {dashboardLayout ? (
+            <h2 className={appStyles.Header}>Events</h2>
+          ) : (
+            <h1 className={appStyles.Header}>Events</h1>
+          )}
           {showFilters && (
             <div className="d-flex align-items-center mb-2">
               <DropdownButton

@@ -274,19 +274,13 @@ function TaskForm({
                   />
                 )}
                 {/* Conditionally display save/create button based on editing state */}
-                {isEditing ? (
-                  <div className="text-center">
-                    <Button className={`${appStyles.Button} btn`} type="submit">
-                      Save changes <i class="fa-solid fa-plus"></i>
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    <Button className={`${appStyles.Button} btn`} type="submit">
-                      Create <i class="fa-solid fa-plus"></i>
-                    </Button>
-                  </div>
-                )}
+
+                <div className="text-center">
+                  <Button className={`${appStyles.Button} btn`} type="submit">
+                    {isEditing ? "Save changes" : "Create"}{" "}
+                    <i class="fa-solid fa-plus"></i>
+                  </Button>
+                </div>
               </Form>
             </Card.Body>
           </Card>

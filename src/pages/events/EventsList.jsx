@@ -28,6 +28,7 @@ function EventsList({
   showCreateLink = true,
   showDeleteButton = true,
   showFilters = true,
+  dashboardLayout = false,
 }) {
   /* States for events, filtering and UI */
   // Set events list to an empty results array
@@ -140,7 +141,10 @@ function EventsList({
   return (
     <>
       <Row>
-        <Col md={{ span: 6, offset: 3 }}>
+        <Col
+          md={dashboardLayout ? 6 : { span: 8, offset: 2 }}
+          lg={dashboardLayout ? 6 : { span: 6, offset: 3 }}
+        >
           {showHeader && <h1 className={appStyles.Header}>Events</h1>}
           {showFilters && (
             <div className="d-flex align-items-center mb-2">
@@ -248,7 +252,9 @@ function EventsList({
                           {now === event.date && (
                             <span className="ms-3 text-success">Today</span>
                           )}
-                          {now > event.date && (<span className="ms-3">Event passed</span>)}
+                          {now > event.date && (
+                            <span className="ms-3">Event passed</span>
+                          )}
                         </Accordion.Header>
                         <Accordion.Body>
                           <div className="mb-2">

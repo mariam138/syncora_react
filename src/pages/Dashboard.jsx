@@ -19,25 +19,26 @@ function Dashboard() {
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <h2 className={appStyles.Header}>Events</h2>
         </Col>
-          <EventsList
-            showHeader={false}
-            showCreateLink={false}
-            showDeleteButton={false}
-            showFilters={false}
-          />
+        <EventsList
+          showHeader={false}
+          showCreateLink={false}
+          showDeleteButton={false}
+          showFilters={false}
+          dashboardLayout={true}
+        />
       </Row>
 
       {/* Row for Tasks and Notes on larger screens */}
       <Row>
-          <h2 className={appStyles.Header}>Tasks</h2>
-          <TasksList
-            showHeader={false}
-            showCreateLink={false}
-            showCompletedTab={false}
-            showCheck={false}
-            className={styles.ScrollCard}
-            showFilters={false}
-          />
+        <h2 className={appStyles.Header}>Tasks</h2>
+        <TasksList
+          showHeader={false}
+          showCreateLink={false}
+          showCompletedTab={false}
+          showCheck={false}
+          className={styles.ScrollCard}
+          showFilters={false}
+        />
 
         <h2 className={appStyles.Header}>Notes</h2>
         <NotesList

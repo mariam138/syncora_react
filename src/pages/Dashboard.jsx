@@ -10,8 +10,10 @@ import NotesList from "./notes/NotesList";
 function Dashboard() {
   return (
     <>
-      <Row>
-        <h1 className={appStyles.Header}>Dashboard</h1>
+      <Row className="mb-3">
+        <Col md={{ span: 8, offset: 2 }}>
+          <h1 className={`${appStyles.Header} text-decoration-underline`}>Dashboard</h1>
+        </Col>
       </Row>
 
       {/* Row for Tasks and Notes on larger screens */}

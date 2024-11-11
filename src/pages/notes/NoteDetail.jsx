@@ -12,8 +12,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import DeleteModal from "../../components/DeleteModal";
 
 function NoteDetail() {
+  const [showModal, setShowModal] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [noteDetail, setNoteDetail] = useState({
     owner: "",
@@ -48,6 +51,10 @@ function NoteDetail() {
     navigate(-1);
   };
 
+  const handleDelete = async () => {
+    console.log("Delete");
+  };
+
   return isLoaded ? (
     <>
       <Row>
@@ -68,7 +75,11 @@ function NoteDetail() {
             <Button variant="info" className={`mx-2 ${btnStyles.BtnText}`}>
               Edit <i className="fa-solid fa-pencil"></i>
             </Button>
-            <Button variant="danger" className={`mx-2 ${btnStyles.BtnText}`}>
+            <Button
+              variant="danger"
+              className={`mx-2 ${btnStyles.BtnText}`}
+              onClick={() => setShowModal(true)}
+            >
               Delete <i className="fa-solid fa-trash"></i>
             </Button>
           </div>
@@ -87,6 +98,15 @@ function NoteDetail() {
   ) : (
     <LoadingSpinner />
   );
+
+  <DeleteModal
+    show={showModal}
+    handleClose={() => setShowModal(false)}
+    feature="note"
+    modalContent="Are you sure you want to delete this note"
+    handleDelete={handleDelete}
+    isDeleting={isDeleting}
+  />;
 }
 
 export default NoteDetail;

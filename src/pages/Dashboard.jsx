@@ -14,41 +14,44 @@ function Dashboard() {
         <h1 className={appStyles.Header}>Dashboard</h1>
       </Row>
 
-      <Row>
-        {/* <Col> */}
+      {/* Row for Events */}
+      <Row className="mb-4">
         <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <h2 className={appStyles.Header}>Events</h2>
         </Col>
-        <Col>
+        <Col xs={12}>
+          <EventsList
+            showHeader={false}
+            showCreateLink={false}
+            showDeleteButton={false}
+            showFilters={false}
+          />
         </Col>
-        <EventsList
-          showHeader={false}
-          showCreateLink={false}
-          showDeleteButton={false}
-          showFilters={false}
-        />
-        {/* </Col> */}
-        {/* <Col> */}
-        <h2 className={appStyles.Header}>Tasks</h2>
+      </Row>
 
-        <TasksList
-          showHeader={false}
-          showCreateLink={false}
-          showCompletedTab={false}
-          showCheck={false}
-          className={styles.ScrollCard}
-          showFilters={false}
-        />
+      {/* Row for Tasks and Notes on larger screens */}
+      <Row>
+        <Col lg={6} className="mb-4">
+          <h2 className={appStyles.Header}>Tasks</h2>
+          <TasksList
+            showHeader={false}
+            showCreateLink={false}
+            showCompletedTab={false}
+            showCheck={false}
+            className={styles.ScrollCard}
+            showFilters={false}
+          />
+        </Col>
 
-        <h2 className={appStyles.Header}>Notes</h2>
-
-        <NotesList
-          showHeader={false}
-          showSearchBar={false}
-          showCreateLink={false}
-          className={styles.ScrollCard}
-        />
-        {/* </Col> */}
+        <Col lg={6} className="mb-4">
+          <h2 className={appStyles.Header}>Notes</h2>
+          <NotesList
+            showHeader={false}
+            showSearchBar={false}
+            showCreateLink={false}
+            className={styles.ScrollCard}
+          />
+        </Col>
       </Row>
     </>
   );

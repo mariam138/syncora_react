@@ -16,6 +16,7 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import DeleteModal from "../../components/DeleteModal";
 import LoadingSpinner from "../../components/LoadingSpinner.jsx";
+import { SuccessToast } from "../../functions/toasts.js";
 
 function ProfilePage() {
   // Gets the pk from the url
@@ -176,6 +177,7 @@ function ProfilePage() {
         await apiReq.delete(`/profiles/${currentUser.pk}`);
         setCurrentUser(null);
         navigate("/");
+        SuccessToast("Account deleted!");
       } catch (error) {
         console.log(error);
       }

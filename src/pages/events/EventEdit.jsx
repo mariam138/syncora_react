@@ -25,6 +25,7 @@ function EventEdit({
   const { owner, name, date, start_time, end_time, category, location, notes } =
     eventDetail;
   const [error, setError] = useState({});
+  const [isSaving, setIsSaving] = useState(false);
   const navigate = useNavigate();
   const { pk } = useParams();
   const currentUser = useCurrentUser();
@@ -50,6 +51,7 @@ function EventEdit({
       formData.append("end_time", end_time);
       formData.append("notes", notes);
       try {
+        setIsSaving(true);
         await apiReq.put(`/events/${pk}/`, formData);
         setIsEditing(false);
         navigate(`/events/${pk}/`);
@@ -201,8 +203,13 @@ function EventEdit({
                   />
                 </Form.Group>
                 <div className="text-center">
-                  <Button className={`${appStyles.Button} btn`} type="submit">
-                    Save changes <i class="fa-solid fa-plus"></i>
+                  <Button
+                    className={`${appStyles.Button} btn`}
+                    type="submit"
+                    disabled={isSaving}
+                  >
+                    {isSaving ? "Saving..." : "Save changes"}{" "}
+                    <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>

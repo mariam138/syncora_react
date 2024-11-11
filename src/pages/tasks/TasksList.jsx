@@ -26,7 +26,6 @@ import taskStyles from "../../styles/TaskList.module.css";
 import appStyles from "../../App.module.css";
 
 function TasksList({
-  showHeader = true,
   showCreateLink = true,
   showCompletedTab = true,
   showCheck = true,
@@ -169,7 +168,7 @@ function TasksList({
   const ContentTasksList = () => {
     return (
       <>
-        {showHeader && <h1 className={appStyles.Header}>Tasks</h1>}
+        <h1 className={appStyles.Header}>Tasks</h1>
         {/* Dropdown button for filters and search bar */}
         {showFilters && (
           <div className="d-flex align-items-center mb-2">

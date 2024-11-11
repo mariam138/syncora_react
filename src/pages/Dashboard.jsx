@@ -14,19 +14,18 @@ function Dashboard() {
         <h1 className={appStyles.Header}>Dashboard</h1>
       </Row>
 
-      <Row>
+      {/* <Row>
         <Col md={{ span: 4, offset: 2 }}>
           <h2 className={appStyles.Header}>Tasks</h2>
         </Col>
         <Col md={4}>
           <h2 className={appStyles.Header}>Notes</h2>
         </Col>
-      </Row>
+      </Row> */}
 
       {/* Row for Tasks and Notes on larger screens */}
       <Row>
         <TasksList
-          showHeader={false}
           showCreateLink={false}
           showCompletedTab={false}
           showCheck={false}
@@ -37,7 +36,7 @@ function Dashboard() {
 
         {/* <h2 className={appStyles.Header}>Notes</h2> */}
         <NotesList
-          showHeader={false}
+          showHeader={true}
           showSearchBar={false}
           showCreateLink={false}
           className={styles.ScrollCard}

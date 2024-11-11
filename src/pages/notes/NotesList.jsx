@@ -57,8 +57,12 @@ function NotesList({
     setQuery(searchTerm);
     setIsSearching(!!searchTerm);
 
+    // Checks against the title or the content of a note
     const searchedNotes = notesList.results.filter((note) => {
-      return note.content.toLowerCase().includes(query);
+      return (
+        note.content.toLowerCase().includes(query) ||
+        note.title.toLowerCase().includes(query)
+      );
     });
 
     setSearchList({ results: searchedNotes });

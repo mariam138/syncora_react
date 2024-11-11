@@ -71,23 +71,13 @@ function NoteForm({
       } else {
         navigate("/signin");
       }
-    } catch (error) {}
-
-    // if (currentUser) {
-    //   try {
-    //     await apiReq.post("/notes/new/", formData);
-    //     navigate("/notes/");
-    //     SuccessToast("Note created");
-    //   } catch (error) {
-    //     console.log(error);
-    //     if (error.response.status !== 400) {
-    //       WarningToast("Note could not be created. Please try again.");
-    //     }
-    //     setError(error.response?.data);
-    //   }
-    // } else {
-    //   navigate("/signin");
-    // }
+    } catch (error) {
+      console.log(error);
+      if (error.response.status !== 400) {
+        WarningToast("Note could not be created. Please try again.");
+      }
+      setError(error.response?.data);
+    }
   };
 
   return (

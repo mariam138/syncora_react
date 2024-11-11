@@ -73,6 +73,17 @@ function NoteDetail() {
     }
   };
 
+  // Takes the updated note and spreads it into the previous
+  // note detail, then sets isEditing back to false
+  // to display note detail again
+  const handleNoteUpdate = (updatedNote) => {
+    setNoteDetail((prevNoteDetail) => ({
+      ...prevNoteDetail,
+      ...updatedNote,
+    }));
+    setIsEditing(false);
+  };
+
   return (
     <>
       {isEditing ? (

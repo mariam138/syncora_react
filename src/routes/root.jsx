@@ -40,7 +40,7 @@ const root = () => {
         {/* Displays username only if user is authenticated and
         the screensize is smaller than 992px */}
         {currentUser && screenSize && (
-          <Navbar fixed="top" className={appStyles.WelcomeNav}>
+          <Navbar fixed="top" className={`${appStyles.WelcomeNav}`}>
             <Container>
               <Navbar.Text className="ms-auto">
                 Welcome {currentUser?.username}
@@ -51,7 +51,7 @@ const root = () => {
         <ToastContainer />
 
         <Container
-          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto overflow-y-scroll pb-3`}
+          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto overflow-y-auto overflow-x-hidden pb-3`}
         >
           <Outlet />
         </Container>

@@ -26,11 +26,6 @@
   width: 100%;
 }
 
-/* Allow content to be scrollable to avoid moving the sidebar with the page */
-.Container {
-  overflow-y: scroll;
-}
-
 /* Adjust z-index of welcome text navbar to allow the sidebar to be toggled on smaller screens */
 .WelcomeNav {
   z-index: 999 !important;
@@ -40,6 +35,5 @@
 @media (min-width: 992px) {
   .Container {
     margin-top: 80px;
-    overflow-y: unset;
   }
 }

@@ -286,15 +286,20 @@ function TaskForm({
           </Card>
           <div className="text-center mb-3">
             {/* Conditionally display cancel/back button based on editing state */}
-            {isEditing ? (
-              <Button variant="outline-secondary" onClick={cancelEdit}>
-                Cancel <i class="fa-solid fa-xmark"></i>
-              </Button>
-            ) : (
-              <Button variant="outline-secondary" onClick={goBack}>
-                <i class="fa-solid fa-arrow-left"></i> Back
-              </Button>
-            )}
+            <Button
+              variant="outline-secondary"
+              onClick={isEditing ? cancelEdit : goBack}
+            >
+              {isEditing ? (
+                <>
+                  Cancel <i class="fa-solid fa-xmark"></i>
+                </>
+              ) : (
+                <>
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </>
+              )}
+            </Button>
           </div>
         </Col>
       </Row>

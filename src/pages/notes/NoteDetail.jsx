@@ -18,6 +18,7 @@ import { SuccessToast, WarningToast } from "../../functions/toasts";
 function NoteDetail() {
   const [showModal, setShowModal] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [noteDetail, setNoteDetail] = useState({
     owner: "",
@@ -89,7 +90,11 @@ function NoteDetail() {
             </Card>
 
             <div className="text-center mt-4">
-              <Button variant="info" className={`mx-2 ${btnStyles.BtnText}`}>
+              <Button
+                variant="info"
+                className={`mx-2 ${btnStyles.BtnText}`}
+                onClick={() => setIsEditing(true)}
+              >
                 Edit <i className="fa-solid fa-pencil"></i>
               </Button>
               <Button

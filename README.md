@@ -233,6 +233,12 @@ When either creating or editing a task, a form will be displayed to the user. Th
 
 ![Edit task form](readme_assets/edit-task-form.png)
 
+### Notes
+
+#### Notes List
+
+When navigating to the notes page, all of the user's notes are displayed with the most recently updated at the top. The title of the note is displayed (if there is one) and a brief overview of the content can be seen. Each note has a 'See more' button to view the note in detail. Undearneath the list is a link to create a new note.
+
 ### Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.

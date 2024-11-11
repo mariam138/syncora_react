@@ -40,11 +40,13 @@ function NoteForm({
     WarningToast("Your changes were not saved.");
   };
 
+  // Allows changing of input fields values by creating a copy
+  // of the previous data before updating
   const handleChange = (e) => {
-    setNoteData({
-      ...noteData,
+    setNoteData((prevNoteData) => ({
+      ...prevNoteData,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const handleSubmit = async (e) => {

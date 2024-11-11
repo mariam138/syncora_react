@@ -136,7 +136,8 @@ function NoteForm({
                   ))}
                 <div className="text-center">
                   <Button className={`${appStyles.Button} btn`} type="submit">
-                    Create <i class="fa-solid fa-plus"></i>
+                    {isEditing ? "Save changes" : "Create"}{" "}
+                    <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>

@@ -24,11 +24,12 @@ function NoteDetail() {
   const [noteDetail, setNoteDetail] = useState({
     owner: "",
     title: "",
+    date_created: "",
     date_updated: "",
     content: "",
   });
 
-  const { owner, title, date_updated, content } = noteDetail;
+  const { owner, title, date_created, date_updated, content } = noteDetail;
   const { pk } = useParams();
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
@@ -107,7 +108,11 @@ function NoteDetail() {
               <Card.Body>
                 <Card.Text className="fs-5">{content}</Card.Text>
               </Card.Body>
-              <Card.Footer>{date_updated}</Card.Footer>
+              <Card.Footer className="text-body-secondary">
+                <strong>Created:</strong> {date_created}
+                <br />
+                <strong>Updated:</strong> {date_updated}
+              </Card.Footer>
             </Card>
 
             <div className="text-center mt-4">

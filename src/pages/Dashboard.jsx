@@ -16,7 +16,11 @@ function Dashboard() {
 
       <Row>
         {/* <Col> */}
-        <h2 className={appStyles.Header}>Events</h2>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+          <h2 className={appStyles.Header}>Events</h2>
+        </Col>
+        <Col>
+        </Col>
         <EventsList
           showHeader={false}
           showCreateLink={false}

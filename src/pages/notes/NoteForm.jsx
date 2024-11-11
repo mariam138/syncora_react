@@ -22,6 +22,8 @@ function NoteForm({
   onUpdateNoteDetail,
 }) {
   const navigate = useNavigate();
+  const [isCreating, setIsCreating] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState({});
   const [noteData, setNoteData] = useState({
     title: noteTitle || "",
@@ -59,12 +61,14 @@ function NoteForm({
 
     try {
       if (isEditing && isOwner) {
+        setIsSaving(true);
         const { data } = await apiReq.put(`/notes/${pk}/`, formData);
         if (onUpdateNoteDetail) {
           onUpdateNoteDetail(data);
         }
         SuccessToast("Note updated");
       } else if (currentUser) {
+        setIsCreating(true);
         await apiReq.post("/notes/new/", formData);
         navigate("/notes/");
         SuccessToast("Note created");
@@ -135,8 +139,18 @@ function NoteForm({
                     </Alert>
                   ))}
                 <div className="text-center">
-                  <Button className={`${appStyles.Button} btn`} type="submit">
-                    {isEditing ? "Save changes" : "Create"}{" "}
+                  <Button
+                    className={`${appStyles.Button} btn`}
+                    type="submit"
+                    disabled={isSaving || isCreating}
+                  >
+                    {isEditing
+                      ? isSaving
+                        ? "Saving..."
+                        : "Save changes"
+                      : isCreating
+                        ? "Creating task..."
+                        : "Create"}{" "}
                     <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>

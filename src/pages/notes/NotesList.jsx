@@ -20,7 +20,7 @@ function NotesList({
   showSearchBar = true,
   showCreateLink = true,
   className = "",
-  dashboardLayout = true,
+  dashboardLayout = false,
 }) {
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);

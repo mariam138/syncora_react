@@ -124,7 +124,8 @@ function EventsList({
     const isSearchMatch = event.name
       .toLowerCase()
       .includes(query.toLowerCase());
-    return isCategoryMatch && isSearchMatch;
+    const isUpcoming = dashboardLayout ? event.date >= now : true;
+    return isCategoryMatch && isSearchMatch && isUpcoming;
   });
 
   const allCategories = [

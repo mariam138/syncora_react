@@ -245,9 +245,15 @@ When clicking the 'See more' button on the notes list, the user is then able to 
 
 #### Create/Edit Note
 
+When creating a new note, a simple form is displayed to the user with Title and Content inputs. The title is an optional feature for the note. The user can also navigate back to the previous page. If editing, the note detail is inserted into the form. The user is able to save the changes or cancel the edit.
 
+##### Note Create Form
 
-### Bugs
+##### Note Edit Form
+
+### Future Features and Improvements
+
+## Bugs
 
 1. When testing for form errors during creation of the sign up form, I came across an error stating the one of the field names was not defined. In my sign up form, I had included a name field so that when a user registered, it would become a part of their profile automatically, set up by the signals I created in the backend. I tried changing the name and value of the field to `fname`, `first_name` and just `name`, however none of these worked. Looking at the [dj-rest-auth](https://dj-rest-auth.readthedocs.io/en/stable/api_endpoints.html#registration) documentation, only four fields were accepted in the POST data: username, password1, password2 and email. So to overcome this bug, I removed the name field from the registration form, no longer producing the error.
 
@@ -272,8 +278,6 @@ When clicking the 'See more' button on the notes list, the user is then able to 
    ![Screenshot of console.log click event](readme_assets/click-console-log.png)
 
    I created some utility functions to refresh the access token timestamp, thinking that there was a conflict between the currentUser not being gotten properly which was affecting the toggle functionality. This also did not fix the issue. After some tutor help, it turned out that the Welcome user message I was displaying on smaller screensizes had a higher z-index than the sidebar, as a Navbar component was used to create this message. Creating a custom css class to lower the z-index of this navbar to below the z-index of the sidebar solved the bug.
-
-### Future Features and Improvements
 
 ## Frameworks, libraries and dependencies
 

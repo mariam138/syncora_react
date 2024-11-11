@@ -144,8 +144,21 @@ function NoteForm({
             </Card.Body>
           </Card>
           <div className="text-center mb-3">
-            <Button variant="outline-secondary">
-              <i class="fa-solid fa-arrow-left"></i> Back
+            {/* Conditionally display different btn text and different onClick handlers
+            based on editing state of the form */}
+            <Button
+              variant="outline-secondary"
+              onClick={isEditing ? cancelEdit : goBack}
+            >
+              {isEditing ? (
+                <>
+                  Cancel <i class="fa-solid fa-xmark"></i>
+                </>
+              ) : (
+                <>
+                  <i class="fa-solid fa-arrow-left"></i> Back
+                </>
+              )}
             </Button>
           </div>
         </Col>

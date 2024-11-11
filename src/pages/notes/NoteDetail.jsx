@@ -14,6 +14,7 @@ import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import DeleteModal from "../../components/DeleteModal";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
+import NoteForm from "./NoteForm";
 
 function NoteDetail() {
   const [showModal, setShowModal] = useState(false);
@@ -74,7 +75,16 @@ function NoteDetail() {
 
   return (
     <>
-      {isLoaded ? (
+      {isEditing ? (
+        <NoteForm
+          noteTitle={title}
+          noteContent={content}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          isOwner={is_owner}
+          onUpdateNoteDetail={handleNoteUpdate}
+        />
+      ) : isLoaded ? (
         <Row>
           <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
             <h1

@@ -75,6 +75,7 @@ function TaskDetail() {
         SuccessToast("Task deleted");
       } catch (error) {
         console.log(error);
+        setShowModal(false);
         WarningToast(
           "There was a problem deleting your task. Please try again later.",
         );

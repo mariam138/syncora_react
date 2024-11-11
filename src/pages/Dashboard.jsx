@@ -45,11 +45,7 @@ function Dashboard() {
       </Row>
       {/* Row for Events */}
       <Row className="mb-4">
-        <Col md={{ span: 8, offset: 2 }}>
-          <h2 className={appStyles.Header}>Events</h2>
-        </Col>
         <EventsList
-          showHeader={false}
           showCreateLink={false}
           showDeleteButton={false}
           showFilters={false}

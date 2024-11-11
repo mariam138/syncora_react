@@ -24,7 +24,6 @@ import LoadingSpinner from "../../components/LoadingSpinner";
 import DeleteModal from "../../components/DeleteModal";
 
 function EventsList({
-  showHeader = true,
   showCreateLink = true,
   showDeleteButton = true,
   showFilters = true,
@@ -148,7 +147,7 @@ function EventsList({
             dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }
           }
         >
-          {showHeader && <h1 className={appStyles.Header}>Events</h1>}
+          <h1 className={appStyles.Header}>Events</h1>
           {showFilters && (
             <div className="d-flex align-items-center mb-2">
               <DropdownButton

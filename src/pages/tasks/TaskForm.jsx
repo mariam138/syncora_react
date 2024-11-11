@@ -150,7 +150,7 @@ function TaskForm({
   return (
     <>
       <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           {/* Conditionally display title based on whether user is editing or not */}
           <h1 className={appStyles.Header}>
             {isEditing ? "Edit Task" : "New Task"}

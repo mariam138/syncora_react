@@ -58,35 +58,36 @@ function ProfilePage() {
   const [cancelUpload, setCancelUpload] = useState(false);
   // Sets loaded state
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   // Checks to see if current user matches the profile id
   // Sets to either true or false
   const is_owner = currentUser?.pk === profileData.id;
 
-  /** Get current user's profile by their primary
-   * key and set the data as the profile state.
-   * This is done on component mount, so is called
-   * in the useEffect() hook below.
-   * Log an error to the console if applicable.
-   */
-  const handleMount = async () => {
-    try {
-      const { data } = await apiResp.get(`/profiles/${pk}/`);
-      const { id, name, username, email, profile_image } = data;
-      setProfileData({
-        id,
-        name,
-        username,
-        email,
-        profile_image,
-      });
-      setIsLoaded(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // Ensure mount only happens if pk value has changed
   useEffect(() => {
+    /** Get current user's profile by their primary
+     * key and set the data as the profile state.
+     * This is done on component mount, so is called
+     * in the useEffect() hook below.
+     * Log an error to the console if applicable.
+     */
+    const handleMount = async () => {
+      try {
+        const { data } = await apiResp.get(`/profiles/${pk}/`);
+        const { id, name, username, email, profile_image } = data;
+        setProfileData({
+          id,
+          name,
+          username,
+          email,
+          profile_image,
+        });
+        setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    setIsLoaded(false);
     handleMount();
   }, [pk]);
 
@@ -168,10 +169,10 @@ function ProfilePage() {
     }
   };
 
-  const handleDelete = async (e) => {
+  const handleDelete = async () => {
     if (is_owner) {
-      e.preventDefault();
       try {
+        setIsDeleting(true);
         await apiReq.delete(`/profiles/${currentUser.pk}`);
         setCurrentUser(null);
         navigate("/");
@@ -330,6 +331,7 @@ function ProfilePage() {
         feature="account"
         modalContent="Are you sure you want to delete your account"
         handleDelete={handleDelete}
+        isDeleting={isDeleting}
       />
     </>
   );

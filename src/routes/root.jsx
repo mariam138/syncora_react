@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import appStyles from "../App.module.css";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.min.css';
+import "react-toastify/dist/ReactToastify.min.css";
 
 /**
  * This defines the root function, where all remaining roots become
@@ -51,7 +51,7 @@ const root = () => {
         <ToastContainer />
 
         <Container
-          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto`}
+          className={`${screenSize ? "mt-5" : appStyles.Container} mb-auto overflow-y-scroll`}
         >
           <Outlet />
         </Container>

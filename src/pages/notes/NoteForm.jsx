@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 
 import appStyles from "../../App.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
@@ -30,6 +30,7 @@ function NoteForm({
 
   const { title, content } = noteData;
   const currentUser = useCurrentUser();
+  const { pk } = useParams();
 
   const goBack = () => {
     navigate(-1);
@@ -52,24 +53,36 @@ function NoteForm({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (currentUser) {
-      const formData = new FormData();
-      formData.append("title", title);
-      formData.append("content", content);
-      try {
-        await apiReq.post("/notes/new/", formData);
-        navigate("/notes/");
-        SuccessToast("Note created");
-      } catch (error) {
-        console.log(error);
-        if (error.response.status !== 400) {
-          WarningToast("Note could not be created. Please try again.");
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+
+    try {
+      if (isEditing && isOwner) {
+        const { data } = await apiReq.put(`/notes/${pk}/`, formData);
+        if (onUpdateNoteDetail) {
+          onUpdateNoteDetail(data);
         }
-        setError(error.response?.data);
+        SuccessToast("Note updated");
+      } else {
       }
-    } else {
-      navigate("/signin");
-    }
+    } catch (error) {}
+
+    // if (currentUser) {
+    //   try {
+    //     await apiReq.post("/notes/new/", formData);
+    //     navigate("/notes/");
+    //     SuccessToast("Note created");
+    //   } catch (error) {
+    //     console.log(error);
+    //     if (error.response.status !== 400) {
+    //       WarningToast("Note could not be created. Please try again.");
+    //     }
+    //     setError(error.response?.data);
+    //   }
+    // } else {
+    //   navigate("/signin");
+    // }
   };
 
   return (

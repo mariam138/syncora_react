@@ -47,17 +47,18 @@ function TaskDetail() {
 
   const is_owner = currentUser?.username === owner;
 
-  const handleMount = async () => {
-    try {
-      const { data } = await apiResp.get(`/tasks/${pk}/`);
-      setTaskDetail(data);
-      setIsLoaded(true);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await apiResp.get(`/tasks/${pk}/`);
+        setTaskDetail(data);
+        setIsLoaded(true);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    setIsLoaded(false);
     handleMount();
   }, [pk]);
 

@@ -33,7 +33,7 @@
 
 /* Adjust z-index of welcome text navbar to allow the sidebar to be toggled on smaller screens */
 .WelcomeNav {
-  z-index: 1000 !important;
+  z-index: 999 !important;
 }
 
 /* Remove scrollable component on larger screens */

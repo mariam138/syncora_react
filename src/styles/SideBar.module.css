@@ -4,7 +4,7 @@
   overflow: initial;
   bottom: 0;
   position: sticky;
-  z-index: 100;
+  z-index: 1000;
   top: 0;
 }
 

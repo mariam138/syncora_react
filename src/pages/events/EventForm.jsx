@@ -16,6 +16,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function EventForm() {
+  const [isCreating, setIsCreating] = useState(false);
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   // Create function to add hours to current time
@@ -99,6 +100,7 @@ function EventForm() {
       formData.append("end_time", endTime);
       formData.append("notes", notes);
       try {
+        setIsCreating(true);
         await apiReq.post("/events/new/", formData);
         navigate(`/events/`);
         SuccessToast("Event created");
@@ -254,8 +256,13 @@ function EventForm() {
                   />
                 </Form.Group>
                 <div className="text-center">
-                  <Button className={`${appStyles.Button} btn`} type="submit">
-                    Create <i class="fa-solid fa-plus"></i>
+                  <Button
+                    className={`${appStyles.Button} btn`}
+                    type="submit"
+                    disabled={isCreating}
+                  >
+                    {isCreating ? "Creating event..." : "Create"}{" "}
+                    <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>

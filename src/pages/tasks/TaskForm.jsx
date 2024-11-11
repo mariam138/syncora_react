@@ -28,6 +28,8 @@ function TaskForm({
   isOwner,
   onUpdateTaskDetail,
 }) {
+  const [isCreating, setIsCreating] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const navigate = useNavigate();
   const currentUser = useCurrentUser();
   const [dueDate, setDueDate] = useState(detailDueDate || new Date());
@@ -122,12 +124,14 @@ function TaskForm({
     client error, display a notification telling user to try again later. */
     try {
       if (isEditing && isOwner) {
+        setIsSaving(true);
         const { data } = await apiReq.put(`/tasks/${pk}/`, formData);
         if (onUpdateTaskDetail) {
           onUpdateTaskDetail(data);
         }
         SuccessToast("Task updated");
       } else if (currentUser) {
+        setIsCreating(true);
         await apiReq.post("/tasks/new/", formData);
         navigate("/tasks/");
         SuccessToast("Task created");
@@ -276,8 +280,18 @@ function TaskForm({
 
                 {/* Conditionally display save/create button based on editing state */}
                 <div className="text-center">
-                  <Button className={`${appStyles.Button} btn`} type="submit">
-                    {isEditing ? "Save changes" : "Create"}{" "}
+                  <Button
+                    className={`${appStyles.Button} btn`}
+                    type="submit"
+                    disabled={isSaving || isCreating}
+                  >
+                    {isEditing
+                      ? isSaving
+                        ? "Saving..."
+                        : "Save changes"
+                      : isCreating
+                        ? "Creating task..."
+                        : "Create"}{" "}
                     <i class="fa-solid fa-plus"></i>
                   </Button>
                 </div>

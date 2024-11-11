@@ -60,9 +60,8 @@ function TasksList({
     };
 
     setIsLoaded(false);
-    const timer = setTimeout(() => handleMount(), 500);
-    return () => clearTimeout(timer);
-  }, [currentUser, query]);
+    handleMount();
+  }, [currentUser]);
 
   const viewTask = (taskId) => {
     navigate(`/tasks/${taskId}/`);

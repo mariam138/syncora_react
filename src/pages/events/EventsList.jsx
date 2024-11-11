@@ -64,9 +64,8 @@ function EventsList({
     };
 
     setIsLoaded(false);
-    const timer = setTimeout(() => handleMount(), 500);
-    return () => clearTimeout(timer);
-  }, [query, currentUser]);
+    handleMount();
+  }, [currentUser]);
 
   /* Event handlers */
   const viewEvent = (eventId) => {

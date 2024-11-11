@@ -3,5 +3,5 @@ up as much space on the screen vertically compared to it's own page.
 Styling adapted from https://community.plotly.com/t/set-max-height-to-a-div-and-make-the-content-vertically-scrollable/28873  */
 .ScrollCard {
   max-height: 200px;
-  overflow: scroll;
+  overflow: auto;
 }

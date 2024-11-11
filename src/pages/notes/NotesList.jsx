@@ -71,7 +71,11 @@ function NotesList({
   const ContentNotesList = () => {
     return (
       <>
-        <h1 className={appStyles.Header}>Notes</h1>
+        {dashboardLayout ? (
+          <h2 className={appStyles.Header}>Notes</h2>
+        ) : (
+          <h1 className={appStyles.Header}>Notes</h1>
+        )}
         {/* Search bar for notes */}
         {showSearchBar && (
           <div className="d-flex align-items-center mb-2">

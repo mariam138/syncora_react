@@ -168,7 +168,11 @@ function TasksList({
   const ContentTasksList = () => {
     return (
       <>
-        <h1 className={appStyles.Header}>Tasks</h1>
+        {dashboardLayout ? (
+          <h2 className={appStyles.Header}>Tasks</h2>
+        ) : (
+          <h1 className={appStyles.Header}>Tasks</h1>
+        )}
         {/* Dropdown button for filters and search bar */}
         {showFilters && (
           <div className="d-flex align-items-center mb-2">

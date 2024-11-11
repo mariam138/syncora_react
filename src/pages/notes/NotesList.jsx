@@ -108,7 +108,8 @@ function NotesList({
                   <Card key={note.id} className="mb-3">
                     <Card.Body>
                       {note.title && <Card.Title>{note.title}</Card.Title>}
-                      <Card.Text>{`${note.content.slice(0, 60)}...`}</Card.Text>
+                      {/* Shows summary of note only if the length is longer than 60 characters */}
+                      <Card.Text>{`${note.content.length > 60 ? `${note.content.slice(0, 60)}...` : note.content}`}</Card.Text>
                       <Button
                         size="sm"
                         className={`btn ${appStyles.Button}`}

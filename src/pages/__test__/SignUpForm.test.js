@@ -2,8 +2,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, test } from "vitest";
 import SignUpForm from "../auth/SignUpForm";
 
-
-// TypeError: default is not a function
 describe("Empty registration form", () => {
   beforeEach(() => {
     render(<SignUpForm />);

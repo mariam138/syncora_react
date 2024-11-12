@@ -149,7 +149,7 @@ function EventsList({
           lg={dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }}
         >
           {dashboardLayout ? (
-            <h2 className={appStyles.Header}>Events</h2>
+            <h2 className={appStyles.Header}>Upcoming Events</h2>
           ) : (
             <h1 className={appStyles.Header}>Events</h1>
           )}

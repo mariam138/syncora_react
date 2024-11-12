@@ -110,7 +110,6 @@ function EventForm() {
         if (error.response.status !== 400) {
           WarningToast("Event could not be created. Please try again.");
         }
-        console.log(error);
         setError(error.response?.data);
       }
     } else {

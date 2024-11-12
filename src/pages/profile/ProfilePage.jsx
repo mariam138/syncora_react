@@ -60,6 +60,7 @@ function ProfilePage() {
   // Sets loaded state
   const [isLoaded, setIsLoaded] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   // Checks to see if current user matches the profile id
   // Sets to either true or false
   const is_owner = currentUser?.pk === profileData.id;
@@ -142,8 +143,8 @@ function ProfilePage() {
    * was successful. Logs any errors to the console in the catch block.
    */
   const handleSubmit = async (e) => {
+    e.preventDefault();
     if (is_owner) {
-      e.preventDefault();
       const formData = new FormData();
       if (imageFile.current?.files[0]) {
         formData.append("profile_image", imageFile?.current?.files[0]);
@@ -152,6 +153,7 @@ function ProfilePage() {
       }
 
       try {
+        setIsUploading(true);
         const { data } = await apiReq.put(
           `/profiles/${currentUser.pk}/`,
           formData,
@@ -167,6 +169,7 @@ function ProfilePage() {
         }));
         setUploadedFileName(null);
         setSubmitSuccess(true);
+        setIsUploading(false);
       } catch (error) {
         console.log(error);
       }
@@ -287,10 +290,10 @@ function ProfilePage() {
                         <Button
                           variant="info"
                           type="submit"
-                          disabled={disableSubmit}
+                          disabled={disableSubmit || isUploading}
                           className="mx-2"
                         >
-                          Save
+                          {isUploading ? "Saving..." : "Save"}
                         </Button>
                         <Button
                           variant="outline-secondary"

@@ -121,7 +121,7 @@ function EventForm() {
   return (
     <>
       <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <h1 className={appStyles.Header}>New Event</h1>
           <Card className="mb-3">
             <Card.Body>

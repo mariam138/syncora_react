@@ -117,7 +117,7 @@ function EventDetail() {
   return (
     <>
       <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           {isEditing ? (
             <EventEdit
               setEventDetail={setEventDetail}

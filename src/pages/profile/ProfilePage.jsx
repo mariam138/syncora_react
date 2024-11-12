@@ -231,7 +231,7 @@ function ProfilePage() {
   return (
     <>
       <Row>
-        <Col sm={{ span: 6, offset: 3 }}>
+        <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <h1 className={appStyles.Header}>Your Profile</h1>
           {/* Alert if profile picture upload was successful */}
           {submitSuccess && (

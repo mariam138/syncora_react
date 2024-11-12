@@ -114,7 +114,7 @@ function TaskDetail() {
       ) : isLoaded ? (
         <>
           <Row>
-            <Col md={{ span: 6, offset: 3 }}>
+            <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
               <h1 className={appStyles.Header}>{title}</h1>
               <Card className="my-3">
                 <Card.Body>

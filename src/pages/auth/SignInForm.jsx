@@ -9,6 +9,7 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import Image from "react-bootstrap/Image";
 import styles from "../../styles/SignInForm.module.css";
 import { setTokenTimestamp } from "../../utils/utils";
+import { SuccessToast } from "../../functions/toasts";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -39,6 +40,7 @@ const SignInForm = () => {
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       navigate("/dashboard");
+      SuccessToast("Login successful!");
     } catch (error) {
       console.log(error);
       setError(error.response?.data);

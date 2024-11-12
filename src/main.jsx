@@ -5,7 +5,6 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import SignUpForm from "./pages/auth/SignUpForm.jsx";
 import Dashboard from "./pages/others/Dashboard.jsx";
 import SignInForm from "./pages/auth/SignInForm.jsx";
-import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
 import SignOutPage from "./pages/auth/SignOutPage.jsx";
 import ProfilePage from "./pages/profile/ProfilePage.jsx";
 import EventsList from "./pages/events/EventsList.jsx";

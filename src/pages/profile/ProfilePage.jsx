@@ -16,7 +16,7 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import DeleteModal from "../../components/DeleteModal";
 import LoadingSpinner from "../../components/LoadingSpinner.jsx";
-import { SuccessToast } from "../../functions/toasts.js";
+import { SuccessToast, WarningToast } from "../../functions/toasts.js";
 
 function ProfilePage() {
   // Gets the pk from the url
@@ -86,7 +86,9 @@ function ProfilePage() {
         });
         setIsLoaded(true);
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was a problem loading your profile. Please try again later.",
+        );
       }
     };
     setIsLoaded(false);
@@ -171,7 +173,9 @@ function ProfilePage() {
         setSubmitSuccess(true);
         setIsUploading(false);
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was a problem saving your profile picture. Please try again later.",
+        );
       }
     } else {
       navigate("/");
@@ -187,7 +191,9 @@ function ProfilePage() {
         navigate("/signup");
         SuccessToast("Account deleted!");
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was a problem deleting your account. Please try again later.",
+        );
       }
     } else {
       navigate("/");

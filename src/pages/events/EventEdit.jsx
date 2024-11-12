@@ -39,9 +39,24 @@ function EventEdit({
   };
 
   const handleEdit = async (e) => {
+    e.preventDefault();
+
+    const now = new Date();
+    const eventDate = new Date(date);
+
+    if (eventDate < now) {
+      setError({ date: ["Events cannot be set in the past."] });
+      return;
+    }
+    if (end_time < start_time) {
+      setError({
+        end_time: ["Events cannot end before they begin."],
+        start_time: ["Start time cannot be after end time."],
+      });
+      return;
+    }
+
     if (is_owner) {
-      e.preventDefault();
-      setError({});
       const formData = new FormData();
       formData.append("name", name);
       formData.append("date", date);
@@ -127,6 +142,11 @@ function EventEdit({
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+                {error.start_time?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formEndTime">
                   <Form.Label className="me-2">
@@ -144,6 +164,11 @@ function EventEdit({
                     clearAriaLabel="Clear time"
                   />
                 </Form.Group>
+                {error.end_time?.map((message, i) => (
+                  <Alert variant="warning" key={i}>
+                    {message}
+                  </Alert>
+                ))}
 
                 <Form.Group className="mb-3" controlId="formLocation">
                   <Form.Label>

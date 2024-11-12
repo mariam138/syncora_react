@@ -18,6 +18,7 @@ import TaskForm from "./pages/tasks/TaskForm.jsx";
 import NotesList from "./pages/notes/NotesList.jsx";
 import NoteDetail from "./pages/notes/NoteDetail.jsx";
 import NoteForm from "./pages/notes/NoteForm.jsx";
+import LandingPage from "./pages/others/LandingPage.jsx";
 
 /** Wraps the Root element with the CurrentUserProvider
  * ensuring context is available to all components in the app.
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
     element: <WrappedRoot />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <LandingPage />,
+      },
       {
         path: "signup",
         element: <SignUpForm />,

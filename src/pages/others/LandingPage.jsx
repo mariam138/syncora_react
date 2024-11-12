@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import Row from "react-bootstrap/Row";
@@ -21,16 +20,18 @@ function LandingPage() {
       <Col md={6} className="gx-md-0">
         <Card className={styles.FormCard}>
           <Card.Header className="text-center">
-            <Card.Title className="fs-4 pt-2">Organise Your Life with Syncora</Card.Title>
+            <Card.Title className="fs-4 pt-2">
+              Organise Your Life with Syncora
+            </Card.Title>
           </Card.Header>
           <Card.Body className="text-center">
             <Card.Text className="fs-5">
               Syncora brings together your tasks, events and notes in one place.
-              It's the perfect digital solution to stay on top of your
+              It&apos;s the perfect digital solution to stay on top of your
               day-to-day life and be more productive.
             </Card.Text>
             <Button className={appStyles.Button} as={Link} to="/signup">
-              Sign Up Now <i class="fa-solid fa-user-plus"></i>
+              Sign Up Now <i className="fa-solid fa-user-plus"></i>
             </Button>
             <Card.Text className="mt-3">
               Already have an account? <Link to="/signin">Sign in here</Link>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { apiReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { SuccessToast } from "../../functions/toasts";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 import { formatDate, formatToIsoDateOnly } from "../../functions/dateFormat";
 
 // Bootstrap imports
@@ -59,7 +59,9 @@ function EventsList({
         setSearchList(data);
         setIsLoaded(true);
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was an issue loading your events. Please try again later.",
+        );
       }
     };
 
@@ -88,7 +90,9 @@ function EventsList({
 
         SuccessToast("Event deleted");
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was a problem deleting your event. Please try again later.",
+        );
       }
     } else {
       navigate("/");

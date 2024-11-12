@@ -182,6 +182,7 @@ function TasksList({
               className="me-3"
               variant="info"
               role="menu"
+              drop="end"
             >
               <Dropdown.ItemText className="text-decoration-underline">
                 Priority
@@ -492,7 +493,7 @@ function TasksList({
             <ContentTasksList />
           </Col>
         ) : (
-          <Row>
+          <Row className="mb-5">
             <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
               <ContentTasksList />
             </Col>

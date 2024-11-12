@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiReq, apiResp } from "../../api/axiosDefaults";
 import Col from "react-bootstrap/Col";
@@ -49,41 +49,43 @@ function EventDetail() {
   const is_owner = currentUser?.username === owner;
   const navigate = useNavigate();
 
-  const handleMount = async () => {
-    try {
-      const { data } = await apiResp.get(`/events/${pk}/`);
-      const {
-        id,
-        owner,
-        name,
-        date,
-        start_time,
-        end_time,
-        category,
-        category_display,
-        location,
-        notes,
-      } = data;
-      setEventDetail({
-        id,
-        owner,
-        name,
-        date,
-        start_time,
-        end_time,
-        category,
-        category_display,
-        location,
-        notes,
-      });
-      setOriginalEventDetail(data);
-      setHasLoaded(true);
-    } catch (error) {
-      WarningToast("There was an issue loading your event. Please try again.");
-    }
-  };
-
   useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await apiResp.get(`/events/${pk}/`);
+        const {
+          id,
+          owner,
+          name,
+          date,
+          start_time,
+          end_time,
+          category,
+          category_display,
+          location,
+          notes,
+        } = data;
+        setEventDetail({
+          id,
+          owner,
+          name,
+          date,
+          start_time,
+          end_time,
+          category,
+          category_display,
+          location,
+          notes,
+        });
+        setOriginalEventDetail(data);
+        setHasLoaded(true);
+      } catch (error) {
+        WarningToast(
+          "There was an issue loading your event. Please try again.",
+        );
+      }
+    };
+    setHasLoaded(false);
     handleMount();
   }, [pk]);
 
@@ -184,7 +186,7 @@ function EventDetail() {
                     setIsEditing(true);
                   }}
                 >
-                  Edit <i class="fa-solid fa-pencil"></i>
+                  Edit <i className="fa-solid fa-pencil"></i>
                 </Button>
                 <Button
                   variant="danger"
@@ -193,7 +195,7 @@ function EventDetail() {
                     setShowModal(true);
                   }}
                 >
-                  Delete <i class="fa-solid fa-trash"></i>
+                  Delete <i className="fa-solid fa-trash"></i>
                 </Button>
               </div>
 
@@ -202,7 +204,7 @@ function EventDetail() {
                   className={`btn ${appStyles.Button} mx-2 ${styles.BtnText}`}
                   onClick={goBack}
                 >
-                  <i class="fa-solid fa-arrow-left"></i> Back
+                  <i className="fa-solid fa-arrow-left"></i> Back
                 </Button>
               </div>
             </>

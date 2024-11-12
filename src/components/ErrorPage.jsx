@@ -20,8 +20,8 @@ function ErrorPage() {
   };
 
   return (
-    <Row className="justify-content-center align-items-center">
-      <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+    <Row className="justify-content-center align-items-center mt-5">
+      <Col md={8}>
         <h1 className={`${appStyles.Header} text-center mb-4`}>
           Oops! There's an error.
         </h1>

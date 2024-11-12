@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -76,7 +76,7 @@ function EventEdit({
               <Form onSubmit={handleEdit}>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>
-                    Name <i class="fa-solid fa-tag"></i>
+                    Name <i className="fa-solid fa-tag"></i>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -209,7 +209,7 @@ function EventEdit({
                     disabled={isSaving}
                   >
                     {isSaving ? "Saving..." : "Save changes"}{" "}
-                    <i class="fa-solid fa-plus"></i>
+                    <i className="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>
@@ -217,7 +217,7 @@ function EventEdit({
           </Card>
           <div className="text-center mb-3">
             <Button variant="outline-secondary" onClick={goBack}>
-              Cancel <i class="fa-solid fa-xmark"></i>
+              Cancel <i className="fa-solid fa-xmark"></i>
             </Button>
           </div>
         </Col>

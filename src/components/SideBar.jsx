@@ -45,42 +45,66 @@ const LoggedInMenuLinks = ({ screenSize }) => {
           <hr />
         </>
       )}
-      <NavLink exact to="/dashboard" className={({isActive})=> isActive ? "activeClicked" : ''}>
+      <NavLink
+        exact
+        to="/dashboard"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="table-columns" iconSize="lg">
           Dashboard
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Events page link */}
-      <NavLink exact to="/events/">
+      <NavLink
+        exact
+        to="/events/"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="calendar-day" iconSize="lg">
           Events
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Tasks page link */}
-      <NavLink exact to="/tasks">
+      <NavLink
+        exact
+        to="/tasks"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="list" iconSize="lg">
           Tasks
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Notes page link */}
-      <NavLink exact to="/notes">
+      <NavLink
+        exact
+        to="/notes"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="sticky-note" iconSize="lg">
           Notes
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Profile page link */}
-      <NavLink exact to={`/profiles/${currentUser?.pk}`}>
+      <NavLink
+        exact
+        to={`/profiles/${currentUser?.pk}`}
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="user" iconSize="lg">
           Profile
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Sign out link */}
-      <NavLink exact to="/signout">
+      <NavLink
+        exact
+        to="/signout"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="right-from-bracket" iconSize="lg">
           Sign Out
         </CDBSidebarMenuItem>
@@ -92,14 +116,21 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 const LoggedOutMenuLinks = () => {
   return (
     <>
-      <NavLink exact to="signin">
+      <NavLink
+        exact
+        to="signin"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="right-to-bracket" iconSize="lg">
           Sign In
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Register link */}
-      <NavLink to="signup">
+      <NavLink
+        to="signup"
+        className={({ isActive }) => (isActive ? "activeClicked" : "")}
+      >
         <CDBSidebarMenuItem icon="user-plus" iconSize="lg">
           Register
         </CDBSidebarMenuItem>
@@ -150,7 +181,7 @@ const SideBar = () => {
           </Link>
         </CDBSidebarHeader>
 
-        <CDBSidebarContent >
+        <CDBSidebarContent>
           <CDBSidebarMenu id="sideBar">
             {/* Takes in screenSize as a prop for the conditional rendering in the
             sidebar menu links function above */}

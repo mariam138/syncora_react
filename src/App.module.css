@@ -31,6 +31,10 @@
   z-index: 999 !important;
 }
 
+.RowHeight {
+  height: 500px;
+}
+
 @media (min-width: 992px) {
   .Container {
     margin-top: 80px;

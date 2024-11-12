@@ -493,7 +493,7 @@ function TasksList({
             <ContentTasksList />
           </Col>
         ) : (
-          <Row className="mb-5">
+          <Row className={appStyles.RowHeight}>
             <Col md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
               <ContentTasksList />
             </Col>

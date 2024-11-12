@@ -8,25 +8,11 @@
   top: 0;
 }
 
-/* .Sidebar {
-  background-color: #fb6083;
-  color: #000010;
-} */
-
-/* .SidebarHeaderLink {
+.SidebarHeaderLink {
   font-family: Comfortaa, sans-serif;
   text-decoration: none;
   color: #000010;
-} */
-
-/* .SidebarMenuItem {
-  color: #000010;
 }
-
-.SidebarMenuItem.active {
-  background-color: #000010;
-  color: #fff5f5;
-} */
 
 @media (min-width: 1200px) {
   .SidebarHeaderLink {

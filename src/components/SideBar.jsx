@@ -28,100 +28,60 @@ const LoggedInMenuLinks = ({ screenSize }) => {
         <>
           {/* Quick create links for mobile */}
           <NavLink exact to="/events/new/">
-            <CDBSidebarMenuItem
-              icon="calendar-plus"
-              iconSize="lg"
-              
-            >
+            <CDBSidebarMenuItem icon="calendar-plus" iconSize="lg">
               New Event
             </CDBSidebarMenuItem>
           </NavLink>
           <NavLink exact to="/tasks/new/">
-            <CDBSidebarMenuItem
-              icon="file-circle-plus"
-              iconSize="lg"
-              
-            >
+            <CDBSidebarMenuItem icon="file-circle-plus" iconSize="lg">
               New Task
             </CDBSidebarMenuItem>
           </NavLink>
           <NavLink exact to="/notes/new/">
-            <CDBSidebarMenuItem
-              icon="square-plus"
-              iconSize="lg"
-              
-            >
+            <CDBSidebarMenuItem icon="square-plus" iconSize="lg">
               New Note
             </CDBSidebarMenuItem>
           </NavLink>
           <hr />
         </>
       )}
-      <NavLink exact to="/dashboard">
-        <CDBSidebarMenuItem
-          icon="table-columns"
-          iconSize="lg"
-          
-        >
+      <NavLink exact to="/dashboard" className={({isActive})=> isActive ? "activeClicked" : ''}>
+        <CDBSidebarMenuItem icon="table-columns" iconSize="lg">
           Dashboard
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Events page link */}
-      <NavLink
-        exact
-        to="/events/"
-        
-      >
-        <CDBSidebarMenuItem
-          icon="calendar-day"
-          iconSize="lg"
-          
-        >
+      <NavLink exact to="/events/">
+        <CDBSidebarMenuItem icon="calendar-day" iconSize="lg">
           Events
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Tasks page link */}
       <NavLink exact to="/tasks">
-        <CDBSidebarMenuItem
-          icon="list"
-          iconSize="lg"
-          
-        >
+        <CDBSidebarMenuItem icon="list" iconSize="lg">
           Tasks
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Notes page link */}
       <NavLink exact to="/notes">
-        <CDBSidebarMenuItem
-          
-          icon="sticky-note"
-          iconSize="lg"
-        >
+        <CDBSidebarMenuItem icon="sticky-note" iconSize="lg">
           Notes
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Profile page link */}
       <NavLink exact to={`/profiles/${currentUser?.pk}`}>
-        <CDBSidebarMenuItem
-          
-          icon="user"
-          iconSize="lg"
-        >
+        <CDBSidebarMenuItem icon="user" iconSize="lg">
           Profile
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Sign out link */}
       <NavLink exact to="/signout">
-        <CDBSidebarMenuItem
-          
-          icon="right-from-bracket"
-          iconSize="lg"
-        >
+        <CDBSidebarMenuItem icon="right-from-bracket" iconSize="lg">
           Sign Out
         </CDBSidebarMenuItem>
       </NavLink>
@@ -133,22 +93,14 @@ const LoggedOutMenuLinks = () => {
   return (
     <>
       <NavLink exact to="signin">
-        <CDBSidebarMenuItem
-          
-          icon="right-to-bracket"
-          iconSize="lg"
-        >
+        <CDBSidebarMenuItem icon="right-to-bracket" iconSize="lg">
           Sign In
         </CDBSidebarMenuItem>
       </NavLink>
 
       {/* Register link */}
       <NavLink to="signup">
-        <CDBSidebarMenuItem
-          
-          icon="user-plus"
-          iconSize="lg"
-        >
+        <CDBSidebarMenuItem icon="user-plus" iconSize="lg">
           Register
         </CDBSidebarMenuItem>
       </NavLink>
@@ -178,7 +130,12 @@ const SideBar = () => {
   return (
     <div className={styles.Div}>
       {/* Sidebar will be collapsed on large screens and smaller */}
-      <CDBSidebar toggled minWidth="75px" backgroundColor="#fb6083" textColor="#000010">
+      <CDBSidebar
+        toggled
+        minWidth="75px"
+        backgroundColor="#fb6083"
+        textColor="#000010"
+      >
         {/* Header of sidebar */}
         <CDBSidebarHeader
           prefix={<i className="fa fa-bars fa-large"></i>}
@@ -193,8 +150,8 @@ const SideBar = () => {
           </Link>
         </CDBSidebarHeader>
 
-        <CDBSidebarContent className={styles.Sidebar}>
-          <CDBSidebarMenu>
+        <CDBSidebarContent >
+          <CDBSidebarMenu id="sideBar">
             {/* Takes in screenSize as a prop for the conditional rendering in the
             sidebar menu links function above */}
             {currentUser ? (

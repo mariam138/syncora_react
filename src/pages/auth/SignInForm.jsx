@@ -12,6 +12,7 @@ import { setTokenTimestamp } from "../../utils/utils";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
+  const [signingIn, setSigningIn] = useState(false);
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -32,6 +33,7 @@ const SignInForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setSigningIn(true);
       // Destructure data from user login to be used to set the current user
       const { data } = await api.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
@@ -93,8 +95,12 @@ const SignInForm = () => {
                 className="text-center
               "
               >
-                <Button type="submit" className={appStyles.Button}>
-                  Sign In
+                <Button
+                  type="submit"
+                  className={appStyles.Button}
+                  disabled={signingIn}
+                >
+                  {signingIn ? "Signing in..." : "Sign In"}
                 </Button>
               </div>
               <Card.Text className="text-center">

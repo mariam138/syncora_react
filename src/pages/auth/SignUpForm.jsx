@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
-import { SuccessToast } from "../../functions/toasts";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -35,7 +35,6 @@ const SignUpForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    console.log(api);
     // Prevents page refresh when sign up button is pressed
     e.preventDefault();
     try {
@@ -44,7 +43,7 @@ const SignUpForm = () => {
       navigate("/signin");
       SuccessToast("Sign up successful!");
     } catch (error) {
-      console.log(error);
+      WarningToast("There was an issue signing up. Please try again later.");
       // Set any errors if applicable to the error repsonse data
       setError(error.response?.data);
     }

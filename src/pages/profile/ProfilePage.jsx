@@ -330,7 +330,7 @@ function ProfilePage() {
 
           <div className="text-center mt-4">
             <Button variant="outline-secondary" onClick={goBack}>
-              Back
+              <i className="fa-solid fa-arrow-left"></i> Back
             </Button>
           </div>
         </Col>

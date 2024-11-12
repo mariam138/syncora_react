@@ -44,6 +44,9 @@ function EventEdit({
     const now = new Date();
     const eventDate = new Date(date);
 
+    // Validation to ensure date cannot be set in the past, however
+    // user can set the date to an earlier date (provided it is not in the past)
+    // To allow for user to correct mistakes on initial event creation
     if (eventDate < now) {
       setError({ date: ["Events cannot be set in the past."] });
       return;

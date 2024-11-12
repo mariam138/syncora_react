@@ -54,7 +54,7 @@ function TaskDetail() {
         setTaskDetail(data);
         setIsLoaded(true);
       } catch (error) {
-        console.log(error);
+        WarningToast("There was a problem loading your task. Please try again later.")
       }
     };
 
@@ -74,7 +74,6 @@ function TaskDetail() {
         navigate("/tasks/");
         SuccessToast("Task deleted");
       } catch (error) {
-        console.log(error);
         setShowModal(false);
         WarningToast(
           "There was a problem deleting your task. Please try again later.",

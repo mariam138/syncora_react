@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api, { apiReq } from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
-import appStyles from '../../App.module.css'
+import appStyles from "../../App.module.css";
 import { removeTokenTimestamp } from "../../utils/utils";
+import { SuccessToast } from "../../functions/toasts";
 
 export default function SignOutPage() {
   // Use react-router's useNavigate hook to allow the user to go back
@@ -13,14 +14,17 @@ export default function SignOutPage() {
   // https://reactrouter.com/en/main/start/tutorial#cancel-button
   const navigate = useNavigate();
   const setCurrentUser = useSetCurrentUser();
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoggingOut(true);
       await api.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
       removeTokenTimestamp();
       navigate("/signin");
+      SuccessToast("You have logged out.");
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +35,9 @@ export default function SignOutPage() {
       <Container fluid="sm">
         <Row>
           <Col className="text-center">
-            <h1 className={appStyles.Header}>Are you sure you want to sign out?</h1>
+            <h1 className={appStyles.Header}>
+              Are you sure you want to sign out?
+            </h1>
           </Col>
         </Row>
         <Row>
@@ -50,9 +56,10 @@ export default function SignOutPage() {
               className="mx-2"
               variant="danger"
               type="submit"
+              disabled={loggingOut}
               onClick={handleSubmit}
             >
-              Sign Out
+              {loggingOut ? "Please wait..." : "Sign Out"}
             </Button>
           </Col>
         </Row>

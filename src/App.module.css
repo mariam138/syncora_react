@@ -31,7 +31,6 @@
   z-index: 999 !important;
 }
 
-/* Remove scrollable component on larger screens */
 @media (min-width: 992px) {
   .Container {
     margin-top: 80px;

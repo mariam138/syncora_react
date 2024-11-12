@@ -2,12 +2,12 @@
 matches the height of the hero image on medium screens */
 @media (min-width: 768px) {
     .FormCard {
-        height: 380px;
+        height: 400px !important;
     }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1440px) {
     .FormCard {
-        height: 440px;
+        height: 416px !important;
     }
 }

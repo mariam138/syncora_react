@@ -8,20 +8,23 @@ import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 
 import appStyles from "../../App.module.css";
+import styles from '../../styles/SignInForm.module.css'
 
 function LandingPage() {
   return (
     <Row className="mx-md-4">
-      <div className="text-center px-3">
+      <div className="text-center px-3 mb-4">
         <h1 className={appStyles.Header}>Syncora</h1>
         <h2 className={appStyles.Header}>Your Digital Organiser</h2>
       </div>
 
       <Col md={6} className="gx-md-0">
-        <Card className="my-4">
+        <Card className={styles.FormCard}>
           <Card.Body className="text-center">
-            <Card.Title>Organise Your Life with Syncora</Card.Title>
-            <Card.Text>
+            <Card.Title className="fs-4">
+              Organise Your Life with Syncora
+            </Card.Title>
+            <Card.Text className="fs-5">
               Syncora brings together your tasks, events and notes in one place.
               It's the perfect digital solution to stay on top of your
               day-to-day life and be more productive.
@@ -38,7 +41,7 @@ function LandingPage() {
 
       <Col md={6} className="gx-md-0">
         <Image
-          className={`d-none d-md-block ${appStyles.Hero}`}
+          className={`d-md-block ${appStyles.Hero}`}
           src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"
           alt="Illustration of organized notes and lists"
         />

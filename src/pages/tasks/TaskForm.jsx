@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/useCurrentUser";
 import Card from "react-bootstrap/Card";

@@ -1,10 +1,10 @@
 import React from "react";
-import appStyles from "../../App.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import TasksList from "../tasks/TasksList";
+import appStyles from "../../App.module.css";
 import styles from "../../styles/Dashboard.module.css";
 import NotesList from "../notes/NotesList";
+import TasksList from "../tasks/TasksList";
 import EventsList from "../events/EventsList";
 
 function Dashboard() {

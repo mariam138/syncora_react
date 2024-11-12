@@ -159,7 +159,7 @@ const SignUpForm = () => {
 
               <Card.Text className="text-center">
                 Already have an account? Sign in{" "}
-                <Link exact to="/signin">
+                <Link exact="true" to="/signin">
                   here.
                 </Link>
               </Card.Text>

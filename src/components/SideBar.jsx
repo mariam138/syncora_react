@@ -27,17 +27,17 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       {screenSize && (
         <>
           {/* Quick create links for mobile */}
-          <NavLink exact to="/events/new/">
+          <NavLink exact="true" to="/events/new/">
             <CDBSidebarMenuItem icon="calendar-plus" iconSize="lg">
               New Event
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/tasks/new/">
+          <NavLink exact="true" to="/tasks/new/">
             <CDBSidebarMenuItem icon="file-circle-plus" iconSize="lg">
               New Task
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact to="/notes/new/">
+          <NavLink exact="true" to="/notes/new/">
             <CDBSidebarMenuItem icon="square-plus" iconSize="lg">
               New Note
             </CDBSidebarMenuItem>
@@ -46,7 +46,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
         </>
       )}
       <NavLink
-        exact
+        exact="true"
         to="/dashboard"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -57,7 +57,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Events page link */}
       <NavLink
-        exact
+        exact="true"
         to="/events/"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -68,7 +68,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Tasks page link */}
       <NavLink
-        exact
+        exact="true"
         to="/tasks"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -79,7 +79,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Notes page link */}
       <NavLink
-        exact
+        exact="true"
         to="/notes"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -90,7 +90,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Profile page link */}
       <NavLink
-        exact
+        exact="true"
         to={`/profiles/${currentUser?.pk}`}
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -101,7 +101,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Sign out link */}
       <NavLink
-        exact
+        exact="true"
         to="/signout"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -117,7 +117,7 @@ const LoggedOutMenuLinks = () => {
   return (
     <>
       <NavLink
-        exact
+        exact="true"
         to="signin"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -173,7 +173,7 @@ const SideBar = () => {
           className={styles.Sidebar}
         >
           <Link
-            exact
+            exact="true"
             to={currentUser ? "/dashboard" : "/"}
             className={styles.SidebarHeaderLink}
           >

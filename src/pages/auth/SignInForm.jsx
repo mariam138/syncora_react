@@ -107,7 +107,7 @@ const SignInForm = () => {
               </div>
               <Card.Text className="text-center">
                 Don&apos;t have an account? Sign up{" "}
-                <Link exact to="/signup">
+                <Link exact="true" to="/signup">
                   here.
                 </Link>
               </Card.Text>

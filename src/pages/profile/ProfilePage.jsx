@@ -48,7 +48,7 @@ function ProfilePage() {
   // Sets error when file size is too big for image upload
   const [fileSizeError, setFileSizeError] = useState(null);
   // Used to disable the submit button if user uploads an image too large
-  const [disableSubmit, setDisableSumit] = useState(false);
+  const [disableSubmit, setDisableSubmit] = useState(false);
   // Displays a success alert when user uploads new profile image
   const [submitSuccess, setSubmitSuccess] = useState(false);
   // Allows modal to be displayed
@@ -113,22 +113,23 @@ function ProfilePage() {
    */
   const handleChange = () => {
     setFileSizeError(null);
-    setDisableSumit(false);
+    setDisableSubmit(false);
     setSubmitSuccess(false);
     setDisableCancel(false);
-    {
-      imageFile.current?.files &&
-        setUploadedFileName(imageFile.current.files[0].name),
-        SuccessToast("Image uploaded!");
-    }
 
-    if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
+    if (
+      imageFile.current?.files &&
+      imageFile.current.files[0].size < 2 * 1024 * 1024
+    ) {
+      setUploadedFileName(imageFile.current.files[0].name);
+      SuccessToast("Image uploaded!");
+    } else if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
       setFileSizeError(
         "Image size is larger than 2MB. Please choose a smaller image.",
       );
       setUploadedFileName(null);
       imageFile.current.value = null;
-      setDisableSumit(true);
+      setDisableSubmit(true);
     }
   };
 

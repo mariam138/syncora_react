@@ -9,7 +9,7 @@ import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import Image from "react-bootstrap/Image";
 import styles from "../../styles/SignInForm.module.css";
 import { setTokenTimestamp } from "../../utils/utils";
-import { SuccessToast } from "../../functions/toasts";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -42,7 +42,7 @@ const SignInForm = () => {
       navigate("/dashboard");
       SuccessToast("Login successful!");
     } catch (error) {
-      console.log(error);
+      WarningToast("There was a problem signing in. Please try again.");
       setError(error.response?.data);
     }
   };

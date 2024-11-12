@@ -26,7 +26,6 @@ export const CurrentUserProvider = ({ children }) => {
       const { data } = await apiResp.get("/dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (error) {
-      console.log(error);
     }
   };
 

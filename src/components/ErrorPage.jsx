@@ -6,7 +6,6 @@ function ErrorPage() {
   // https://reactrouter.com/en/main/start/tutorial#handling-not-found-errors
 
   const error = useRouteError();
-  console.log(error);
   return (
     <div className={styles.App}>
       <h1>Error Page</h1>

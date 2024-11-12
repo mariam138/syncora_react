@@ -55,7 +55,9 @@ function TasksList({
         setTasksList(data);
         setIsLoaded(true);
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was a problem loading your tasks. Please try again later.",
+        );
       }
     };
 
@@ -91,7 +93,6 @@ function TasksList({
       }
       await apiReq.patch(`/tasks/${taskId}/`, formData);
     } catch (error) {
-      console.log(error);
       WarningToast("There was an error. Please try again.");
     }
   };

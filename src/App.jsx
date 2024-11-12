@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Root from "./routes/root";
+import Root from "./routes/Root";
 
 function App() {
   return (

@@ -7,9 +7,6 @@ import { CurrentUserContext, SetCurrentUserContext } from "./currentUserContext"
 
 
 
-export const useSetCurrentUser = () => {
-  return useContext(SetCurrentUserContext);
-};
 
 export const CurrentUserProvider = ({ children }) => {
   // This will be used to check whether a use is logged in or not

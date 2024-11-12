@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import api, { apiReq, apiResp } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
+import { WarningToast } from "../functions/toasts";
 
 // Creates custom context object for the current user to be passed down the component tree
 export const CurrentUserContext = createContext();
@@ -26,6 +27,9 @@ export const CurrentUserProvider = ({ children }) => {
       const { data } = await apiResp.get("/dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (error) {
+      WarningToast(
+        "There was an issue loading your user data. Please try again later.",
+      );
     }
   };
 

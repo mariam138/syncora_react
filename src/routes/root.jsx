@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.min.css";
  * a user is authenticated and the screen size is larger
  * than 992 px.
  */
-const root = () => {
+const Root = () => {
   const currentUser = useCurrentUser();
   const [screenSize, setScreenSize] = useState(window.innerWidth < 992);
   const updateTopNavbar = () => {
@@ -60,4 +60,4 @@ const root = () => {
   );
 };
 
-export default root;
+export default Root;

@@ -6,10 +6,7 @@ import { WarningToast } from "../functions/toasts";
 import { CurrentUserContext, SetCurrentUserContext } from "./currentUserContext";
 
 
-// Create custom context hooks
-export const useCurrentUser = () => {
-  return useContext(CurrentUserContext);
-};
+
 export const useSetCurrentUser = () => {
   return useContext(SetCurrentUserContext);
 };

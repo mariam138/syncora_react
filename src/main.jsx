@@ -19,7 +19,6 @@ import NoteForm from "./pages/notes/NoteForm.jsx";
 import LandingPage from "./pages/others/LandingPage.jsx";
 import WrappedRoot from "./components/WrappedRoot.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/*",
@@ -27,64 +26,69 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
-        element: <LandingPage />,
-      },
-      {
-        path: "signup",
-        element: <SignUpForm />,
-      },
-      {
-        path: "signin",
-        element: <SignInForm />,
-      },
-      {
-        path: "signout",
-        element: <SignOutPage />,
-      },
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "profiles/:pk/",
-        element: <ProfilePage />,
-      },
-      {
-        path: "events/",
-        element: <EventsList />,
-      },
-      {
-        path: "events/:pk/",
-        element: <EventDetail />,
-      },
-      {
-        path: "events/new/",
-        element: <EventForm />,
-      },
-      {
-        path: "tasks/",
-        element: <TasksList />,
-      },
-      {
-        path: "tasks/new/",
-        element: <TaskForm />,
-      },
-      {
-        path: "tasks/:pk/",
-        element: <TaskDetail />,
-      },
-      {
-        path: "notes/",
-        element: <NotesList />,
-      },
-      {
-        path: "notes/:pk/",
-        element: <NoteDetail />,
-      },
-      {
-        path: "notes/new/",
-        element: <NoteForm />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <LandingPage />,
+          },
+          {
+            path: "signup",
+            element: <SignUpForm />,
+          },
+          {
+            path: "signin",
+            element: <SignInForm />,
+          },
+          {
+            path: "signout",
+            element: <SignOutPage />,
+          },
+          {
+            path: "dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "profiles/:pk/",
+            element: <ProfilePage />,
+          },
+          {
+            path: "events/",
+            element: <EventsList />,
+          },
+          {
+            path: "events/:pk/",
+            element: <EventDetail />,
+          },
+          {
+            path: "events/new/",
+            element: <EventForm />,
+          },
+          {
+            path: "tasks/",
+            element: <TasksList />,
+          },
+          {
+            path: "tasks/new/",
+            element: <TaskForm />,
+          },
+          {
+            path: "tasks/:pk/",
+            element: <TaskDetail />,
+          },
+          {
+            path: "notes/",
+            element: <NotesList />,
+          },
+          {
+            path: "notes/:pk/",
+            element: <NoteDetail />,
+          },
+          {
+            path: "notes/new/",
+            element: <NoteForm />,
+          },
+        ],
       },
     ],
   },

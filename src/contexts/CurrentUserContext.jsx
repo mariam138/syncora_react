@@ -1,12 +1,12 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import api, { apiReq, apiResp } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 import { WarningToast } from "../functions/toasts";
-import { CurrentUserContext, SetCurrentUserContext } from "./currentUserContext";
-
-
-
+import {
+  CurrentUserContext,
+  SetCurrentUserContext,
+} from "./currentUserContextVars";
 
 export const CurrentUserProvider = ({ children }) => {
   // This will be used to check whether a use is logged in or not

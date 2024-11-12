@@ -3,7 +3,6 @@ import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage.jsx";
 import SignUpForm from "./pages/auth/SignUpForm.jsx";
-import Root from "./routes/root.jsx";
 import Dashboard from "./pages/others/Dashboard.jsx";
 import SignInForm from "./pages/auth/SignInForm.jsx";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
@@ -19,18 +18,8 @@ import NotesList from "./pages/notes/NotesList.jsx";
 import NoteDetail from "./pages/notes/NoteDetail.jsx";
 import NoteForm from "./pages/notes/NoteForm.jsx";
 import LandingPage from "./pages/others/LandingPage.jsx";
+import WrappedRoot from "./components/WrappedRoot.jsx";
 
-/** Wraps the Root element with the CurrentUserProvider
- * ensuring context is available to all components in the app.
- * This also allows the useNavigate hook to be available to use
- * in the CurrentUserContext. The WrappedRoot element is then set
- * as the main element for the /* path.
- */
-const WrappedRoot = () => (
-  <CurrentUserProvider>
-    <Root />
-  </CurrentUserProvider>
-);
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -127,7 +127,7 @@ function EventForm() {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>
-                    Name <i class="fa-solid fa-tag"></i>
+                    Name <i className="fa-solid fa-tag"></i>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -261,7 +261,7 @@ function EventForm() {
                     disabled={isCreating}
                   >
                     {isCreating ? "Creating event..." : "Create"}{" "}
-                    <i class="fa-solid fa-plus"></i>
+                    <i className="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>
@@ -269,7 +269,7 @@ function EventForm() {
           </Card>
           <div className="text-center mb-3">
             <Button variant="outline-secondary" onClick={goBack}>
-              <i class="fa-solid fa-arrow-left"></i> Back
+              <i className="fa-solid fa-arrow-left"></i> Back
             </Button>
           </div>
         </Col>

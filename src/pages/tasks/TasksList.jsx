@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { Link, useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
 

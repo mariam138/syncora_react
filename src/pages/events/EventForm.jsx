@@ -12,7 +12,7 @@ import "react-clock/dist/Clock.css";
 import appStyles from "../../App.module.css";
 import { useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 function EventForm() {

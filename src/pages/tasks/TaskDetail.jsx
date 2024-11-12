@@ -5,7 +5,7 @@ import appStyles from "../../App.module.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { apiReq, apiResp } from "../../api/axiosDefaults";
 import styles from "../../styles/DetailPageButtons.module.css";
@@ -54,7 +54,9 @@ function TaskDetail() {
         setTaskDetail(data);
         setIsLoaded(true);
       } catch (error) {
-        WarningToast("There was a problem loading your task. Please try again later.")
+        WarningToast(
+          "There was a problem loading your task. Please try again later.",
+        );
       }
     };
 

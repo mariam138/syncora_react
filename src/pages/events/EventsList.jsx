@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiReq } from "../../api/axiosDefaults";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
+import { Link, useNavigate } from "react-router-dom";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 import { formatDate, formatToIsoDateOnly } from "../../functions/dateFormat";
 

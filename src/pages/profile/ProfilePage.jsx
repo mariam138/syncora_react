@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  useCurrentUser,
-  useSetCurrentUser,
-} from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser.js";
+import { useSetCurrentUser } from "../../contexts/useSetCurrentUser.js";
 import api, { apiReq, apiResp } from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";

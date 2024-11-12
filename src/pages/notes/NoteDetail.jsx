@@ -9,7 +9,7 @@ import styles from "../../styles/Notes.module.css";
 import btnStyles from "../../styles/DetailPageButtons.module.css";
 import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import DeleteModal from "../../components/DeleteModal";
@@ -43,7 +43,9 @@ function NoteDetail() {
         setNoteDetail(data);
         setIsLoaded(true);
       } catch (error) {
-        WarningToast("There was a problem loading your note. Please try again later.")
+        WarningToast(
+          "There was a problem loading your note. Please try again later.",
+        );
       }
     };
 

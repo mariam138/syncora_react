@@ -9,7 +9,7 @@ import Alert from "react-bootstrap/Alert";
 
 import appStyles from "../../App.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 

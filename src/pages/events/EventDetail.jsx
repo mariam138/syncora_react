@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/useCurrentUser";
 import EventEdit from "./EventEdit";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 import { formatDate } from "../../functions/dateFormat";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api, { apiReq } from "../../api/axiosDefaults";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { useSetCurrentUser } from "../../contexts/useSetCurrentUser";
 import appStyles from "../../App.module.css";
 import { removeTokenTimestamp } from "../../utils/utils";
 import { SuccessToast, WarningToast } from "../../functions/toasts";

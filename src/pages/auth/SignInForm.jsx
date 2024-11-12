@@ -4,12 +4,13 @@ import { Alert, Card, Col, Row } from "react-bootstrap";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
-import api, { apiReq } from "../../api/axiosDefaults";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import api from "../../api/axiosDefaults";
 import Image from "react-bootstrap/Image";
 import styles from "../../styles/SignInForm.module.css";
 import { setTokenTimestamp } from "../../utils/utils";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
+import { useSetCurrentUser } from "../../contexts/useSetCurrentUser";
+
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();

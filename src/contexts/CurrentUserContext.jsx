@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 import { WarningToast } from "../functions/toasts";
 
-// Creates custom context object for the current user to be passed down the component tree
-export const CurrentUserContext = createContext();
-export const SetCurrentUserContext = createContext();
 
 // Create custom context hooks
 export const useCurrentUser = () => {

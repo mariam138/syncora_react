@@ -180,7 +180,11 @@ const SideBar = () => {
           prefix={<i className="fa fa-bars fa-large"></i>}
           className={styles.Sidebar}
         >
-          <Link exact to="/" className={styles.SidebarHeaderLink}>
+          <Link
+            exact
+            to={currentUser ? "/dashboard" : "/"}
+            className={styles.SidebarHeaderLink}
+          >
             Syncora
           </Link>
         </CDBSidebarHeader>
@@ -195,7 +199,6 @@ const SideBar = () => {
               <LoggedOutMenuLinks />
             )}
           </CDBSidebarMenu>
-
         </CDBSidebarContent>
       </CDBSidebar>
     </div>

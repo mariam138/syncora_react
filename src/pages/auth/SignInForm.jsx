@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Alert, Card, Col, Row } from "react-bootstrap";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import api from "../../api/axiosDefaults";
@@ -10,7 +10,6 @@ import styles from "../../styles/SignInForm.module.css";
 import { setTokenTimestamp } from "../../utils/utils";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 import { useSetCurrentUser } from "../../contexts/useSetCurrentUser";
-
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -52,7 +51,7 @@ const SignInForm = () => {
     <Row className="mx-md-4">
       <div className="text-center px-3">
         <h1 className={appStyles.Header}>Syncora</h1>
-        <h2 className={appStyles.Header}>Let's get organised.</h2>
+        <h2 className={appStyles.Header}>Let&apos;s get organised.</h2>
       </div>
       <Col md={6} className="gx-md-0">
         <Card className={styles.FormCard}>
@@ -107,7 +106,7 @@ const SignInForm = () => {
                 </Button>
               </div>
               <Card.Text className="text-center">
-                Don't have an account? Sign up{" "}
+                Don&apos;t have an account? Sign up{" "}
                 <Link exact to="/signup">
                   here.
                 </Link>

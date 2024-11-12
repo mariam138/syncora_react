@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/TopNavbar.module.css";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser } from "../contexts/useCurrentUser";
 
 function TopNavbar() {
   // Gets current user information to display username

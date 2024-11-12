@@ -9,7 +9,7 @@ import { Link, NavLink } from "react-router-dom";
 import styles from "../styles/SideBar.module.css";
 
 import { useEffect, useState } from "react";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser } from "../contexts/useCurrentUser";
 
 /** Separate function for the menu links, destructuring
  * screenSize as a prop. If screenSize = true, then the

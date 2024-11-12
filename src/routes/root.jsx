@@ -2,7 +2,7 @@ import SideBar from "../components/SideBar";
 import Container from "react-bootstrap/Container";
 import Stack from "react-bootstrap/Stack";
 import { Outlet } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser } from "../contexts/useCurrentUser";
 import TopNavbar from "../components/TopNavbar";
 import { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CurrentUserContext } from "./currentUserContext";
+import { CurrentUserContext } from "./currentUserContextVars";
 
 // Create custom context hooks
 export const useCurrentUser = () => {

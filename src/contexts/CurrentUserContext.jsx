@@ -15,6 +15,13 @@ export const CurrentUserProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const handleMount = async () => {
+    // Checks for valid token before retreiving user data
+    // Avoids 401 unauthorised errors
+    if (!shouldRefreshToken()) {
+      setCurrentUser(null);
+      return;
+    }
+
     try {
       const { data } = await apiResp.get("/dj-rest-auth/user/");
       setCurrentUser(data);

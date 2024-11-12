@@ -120,12 +120,12 @@ function TaskDetail() {
               <Card className="my-3">
                 <Card.Body>
                   <Card.Title>
-                    Due Date <i class="fa-regular fa-calendar-check"></i>
+                    Due Date <i className="fa-regular fa-calendar-check"></i>
                   </Card.Title>
                   <Card.Text>{due_date && formatDueDate(due_date)}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Priority <i class="fa-solid fa-triangle-exclamation"></i>
+                    Priority <i className="fa-solid fa-triangle-exclamation"></i>
                   </Card.Title>
                   <Card.Text>{priority_display}</Card.Text>
                   <hr />
@@ -135,14 +135,14 @@ function TaskDetail() {
                   <Card.Text>{category_display}</Card.Text>
                   <hr />
                   <Card.Title>
-                    Description <i class="fa-solid fa-pencil"></i>
+                    Description <i className="fa-solid fa-pencil"></i>
                   </Card.Title>
                   <Card.Text className={`!description && text-body-secondary`}>
                     {description || "No description available"}
                   </Card.Text>
                   <hr />
                   <Card.Title>
-                    Completed? <i class="fa-solid fa-list-check"></i>
+                    Completed? <i className="fa-solid fa-list-check"></i>
                   </Card.Title>
                   <Card.Text>{completed ? "Yes" : "No"}</Card.Text>
                 </Card.Body>

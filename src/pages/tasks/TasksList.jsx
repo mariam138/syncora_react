@@ -352,7 +352,7 @@ function TasksList({
                                         {" "}
                                         <br />
                                         <span className="text-danger">
-                                          <i class="fa-solid fa-circle-exclamation"></i>{" "}
+                                          <i className="fa-solid fa-circle-exclamation"></i>{" "}
                                           Overdue
                                         </span>
                                       </>
@@ -477,7 +477,7 @@ function TasksList({
 
         {showCreateLink && (
           <Link to="new/" className={styles.Link}>
-            New Task <i class="fa-solid fa-plus"></i>
+            New Task <i className="fa-solid fa-plus"></i>
           </Link>
         )}
       </>

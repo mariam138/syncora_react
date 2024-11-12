@@ -162,7 +162,7 @@ function TaskForm({
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formTitle">
                   <Form.Label>
-                    Title <i class="fa-solid fa-heading"></i>
+                    Title <i className="fa-solid fa-heading"></i>
                   </Form.Label>
                   <Form.Control
                     type="text"
@@ -181,7 +181,7 @@ function TaskForm({
 
                 <Form.Group className="mb-3" controlId="formDueDate">
                   <Form.Label className="pe-3">
-                    Due date <i class="fa-regular fa-calendar-check"></i>
+                    Due date <i className="fa-regular fa-calendar-check"></i>
                   </Form.Label>
                   <DateTimePicker
                     name="due_date"
@@ -199,7 +199,7 @@ function TaskForm({
 
                 <Form.Group className="mb-3" controlId="formPriority">
                   <Form.Label>
-                    Priority <i class="fa-solid fa-triangle-exclamation"></i>
+                    Priority <i className="fa-solid fa-triangle-exclamation"></i>
                   </Form.Label>
                   <Form.Select
                     aria-label="Choose a priority"
@@ -250,7 +250,7 @@ function TaskForm({
 
                 <Form.Group className="mb-3" controlId="formDescription">
                   <Form.Label>
-                    Description <i class="fa-solid fa-pencil"></i>
+                    Description <i className="fa-solid fa-pencil"></i>
                   </Form.Label>
                   <Form.Control
                     as="textarea"
@@ -291,7 +291,7 @@ function TaskForm({
                       : isCreating
                         ? "Creating task..."
                         : "Create"}{" "}
-                    <i class="fa-solid fa-plus"></i>
+                    <i className="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>
@@ -305,11 +305,11 @@ function TaskForm({
             >
               {isEditing ? (
                 <>
-                  Cancel <i class="fa-solid fa-xmark"></i>
+                  Cancel <i className="fa-solid fa-xmark"></i>
                 </>
               ) : (
                 <>
-                  <i class="fa-solid fa-arrow-left"></i> Back
+                  <i className="fa-solid fa-arrow-left"></i> Back
                 </>
               )}
             </Button>

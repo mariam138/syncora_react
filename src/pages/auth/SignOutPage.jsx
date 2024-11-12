@@ -5,7 +5,7 @@ import api, { apiReq } from "../../api/axiosDefaults";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import appStyles from "../../App.module.css";
 import { removeTokenTimestamp } from "../../utils/utils";
-import { SuccessToast } from "../../functions/toasts";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 export default function SignOutPage() {
   // Use react-router's useNavigate hook to allow the user to go back
@@ -26,7 +26,7 @@ export default function SignOutPage() {
       navigate("/signin");
       SuccessToast("You have logged out.");
     } catch (error) {
-      console.log(error);
+      WarningToast("We couldn't sign you out. Please try again.");
     }
   };
 

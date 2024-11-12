@@ -25,7 +25,6 @@ function NotesList({
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [notesList, setNotesList] = useState({ results: [] });
-  const [noteId, setNoteId] = useState(null);
   const [searchList, setSearchList] = useState({ results: [] });
   const [isSearching, setIsSearching] = useState(false);
 
@@ -135,7 +134,7 @@ function NotesList({
         )}
         {showCreateLink && (
           <Link to="new/" className={linkStyles.Link}>
-            New Note <i class="fa-solid fa-plus"></i>
+            New Note <i className="fa-solid fa-plus"></i>
           </Link>
         )}
       </>

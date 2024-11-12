@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
@@ -96,7 +96,7 @@ function NoteForm({
                 <Form.Group className="mb-3" controlId="formTitle">
                   <Form.Label className="fs-5 d-flex flex-column flex-lg-row align-content-center">
                     <span>
-                      Title <i class="fa-solid fa-heading"></i>
+                      Title <i className="fa-solid fa-heading"></i>
                     </span>
                     <span className="text-body-secondary fs-6 ms-lg-3 align-self-lg-center">
                       <i className="fa-solid fa-circle-info"></i> Title is not
@@ -120,7 +120,7 @@ function NoteForm({
 
                 <Form.Group className="mb-3" controlId="formContent">
                   <Form.Label>
-                    Content <i class="fa-solid fa-pencil"></i>
+                    Content <i className="fa-solid fa-pencil"></i>
                   </Form.Label>
                   <Form.Control
                     as="textarea"
@@ -150,7 +150,7 @@ function NoteForm({
                       : isCreating
                         ? "Creating task..."
                         : "Create"}{" "}
-                    <i class="fa-solid fa-plus"></i>
+                    <i className="fa-solid fa-plus"></i>
                   </Button>
                 </div>
               </Form>
@@ -165,11 +165,11 @@ function NoteForm({
             >
               {isEditing ? (
                 <>
-                  Cancel <i class="fa-solid fa-xmark"></i>
+                  Cancel <i className="fa-solid fa-xmark"></i>
                 </>
               ) : (
                 <>
-                  <i class="fa-solid fa-arrow-left"></i> Back
+                  <i className="fa-solid fa-arrow-left"></i> Back
                 </>
               )}
             </Button>

@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 
 import appStyles from "../../App.module.css";
-import styles from '../../styles/SignInForm.module.css'
+import styles from "../../styles/SignInForm.module.css";
 
 function LandingPage() {
   return (
@@ -30,7 +30,7 @@ function LandingPage() {
               day-to-day life and be more productive.
             </Card.Text>
             <Button className={appStyles.Button} as={Link} to="/signup">
-              Sign Up Now
+              Sign Up Now <i class="fa-solid fa-user-plus"></i>
             </Button>
             <Card.Text className="mt-3">
               Already have an account? <Link to="/signin">Sign in here</Link>

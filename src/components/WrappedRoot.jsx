@@ -1,5 +1,5 @@
 import { CurrentUserProvider } from "../contexts/CurrentUserContext";
-import Root from "../routes/Root";
+import Root from "../routes/Root.jsx";
 
 /** Wraps the Root element with the CurrentUserProvider
  * ensuring context is available to all components in the app.

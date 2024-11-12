@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./components/ErrorPage.jsx";
 import SignUpForm from "./pages/auth/SignUpForm.jsx";
 import Root from "./routes/root.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
+import Dashboard from "./pages/others/Dashboard.jsx";
 import SignInForm from "./pages/auth/SignInForm.jsx";
 import { CurrentUserProvider } from "./contexts/CurrentUserContext.jsx";
 import SignOutPage from "./pages/auth/SignOutPage.jsx";

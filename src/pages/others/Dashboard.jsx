@@ -1,18 +1,20 @@
 import React from "react";
-import EventsList from "./events/EventsList";
-import appStyles from "../App.module.css";
+import appStyles from "../../App.module.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import TasksList from "./tasks/TasksList";
-import styles from "../styles/Dashboard.module.css";
-import NotesList from "./notes/NotesList";
+import TasksList from "../tasks/TasksList";
+import styles from "../../styles/Dashboard.module.css";
+import NotesList from "../notes/NotesList";
+import EventsList from "../events/EventsList";
 
 function Dashboard() {
   return (
     <>
       <Row className="mb-3">
         <Col md={{ span: 8, offset: 2 }}>
-          <h1 className={`${appStyles.Header} text-decoration-underline`}>Dashboard</h1>
+          <h1 className={`${appStyles.Header} text-decoration-underline`}>
+            Dashboard
+          </h1>
         </Col>
       </Row>
 

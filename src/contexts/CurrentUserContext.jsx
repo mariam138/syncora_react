@@ -1,8 +1,9 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import api, { apiReq, apiResp } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
 import { removeTokenTimestamp, shouldRefreshToken } from "../utils/utils";
 import { WarningToast } from "../functions/toasts";
+import { CurrentUserContext, SetCurrentUserContext } from "./currentUserContext";
 
 
 // Create custom context hooks

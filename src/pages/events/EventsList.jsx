@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { apiReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { Link, useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ function EventsList({
   const [showModal, setShowModal] = useState(false);
   const [eventId, setEventId] = useState(null);
   const [query, setQuery] = useState("");
-  const [searchList, setSearchList] = useState({ results: [] });
+  const [, setSearchList] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
@@ -181,7 +181,7 @@ function EventsList({
                   onClick={() => handleClearFilters()}
                   className="text-body-secondary"
                 >
-                  <i class="fa-solid fa-xmark"></i> Clear filters
+                  <i className="fa-solid fa-xmark"></i> Clear filters
                 </Dropdown.Item>
               </DropdownButton>
               <Form className="d-flex w-auto ms-auto">
@@ -305,7 +305,7 @@ function EventsList({
 
           {showCreateLink && (
             <Link to="new/" className={styles.Link}>
-              New Event <i class="fa-solid fa-plus"></i>
+              New Event <i className="fa-solid fa-plus"></i>
             </Link>
           )}
         </Col>

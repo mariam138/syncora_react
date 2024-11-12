@@ -43,7 +43,7 @@ function NoteDetail() {
         setNoteDetail(data);
         setIsLoaded(true);
       } catch (error) {
-        console.log(error);
+        WarningToast("There was a problem loading your note. Please try again later.")
       }
     };
 
@@ -63,7 +63,6 @@ function NoteDetail() {
         navigate("/notes/");
         SuccessToast("Note deleted");
       } catch (error) {
-        console.log(error);
         setShowModal(false);
         WarningToast(
           "There was a problem deleting your note. Please try again later.",

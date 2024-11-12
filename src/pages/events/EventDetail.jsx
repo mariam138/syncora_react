@@ -11,7 +11,7 @@ import styles from "../../styles/DetailPageButtons.module.css";
 import DeleteModal from "../../components/DeleteModal";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import EventEdit from "./EventEdit";
-import { SuccessToast } from "../../functions/toasts";
+import { SuccessToast, WarningToast } from "../../functions/toasts";
 import { formatDate } from "../../functions/dateFormat";
 
 function EventDetail() {
@@ -79,7 +79,7 @@ function EventDetail() {
       setOriginalEventDetail(data);
       setHasLoaded(true);
     } catch (error) {
-      console.log(error);
+      WarningToast("There was an issue loading your event. Please try again.");
     }
   };
 
@@ -98,7 +98,10 @@ function EventDetail() {
         navigate("/events/");
         SuccessToast("Event deleted");
       } catch (error) {
-        console.log(error);
+        setShowModal(false);
+        WarningToast(
+          "There was an issue deleting your event. Please try again later.",
+        );
       }
     } else {
       navigate("/");

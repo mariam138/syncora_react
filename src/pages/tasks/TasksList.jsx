@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { Link, useNavigate } from "react-router-dom";
 import { apiReq } from "../../api/axiosDefaults";
@@ -40,7 +40,7 @@ function TasksList({
   const [category, setCategory] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const [query, setQuery] = useState("");
-  const [searchList, setSearchList] = useState({ results: [] });
+  const [, setSearchList] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();

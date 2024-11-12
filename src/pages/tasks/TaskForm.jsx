@@ -139,7 +139,6 @@ function TaskForm({
         navigate("/signin");
       }
     } catch (error) {
-      console.log(error);
       setError(error.response?.data);
       if (error.response.status !== 400) {
         WarningToast("Server error. Please try again");

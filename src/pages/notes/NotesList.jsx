@@ -14,6 +14,7 @@ import appStyles from "../../App.module.css";
 import linkStyles from "../../styles/CreateLink.module.css";
 import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import { WarningToast } from "../../functions/toasts";
 
 function NotesList({
   showSearchBar = true,
@@ -39,7 +40,9 @@ function NotesList({
         setSearchList(data);
         setIsLoaded(true);
       } catch (error) {
-        console.log(error);
+        WarningToast(
+          "There was a problem loading your notes. Please try again later.",
+        );
       }
     };
 

@@ -116,8 +116,12 @@ function ProfilePage() {
     setDisableSumit(false);
     setSubmitSuccess(false);
     setDisableCancel(false);
-    imageFile.current?.files &&
-      setUploadedFileName(imageFile.current.files[0].name);
+    {
+      imageFile.current?.files &&
+        setUploadedFileName(imageFile.current.files[0].name),
+        SuccessToast("Image uploaded!");
+    }
+
     if (imageFile.current.files[0].size > 2 * 1024 * 1024) {
       setFileSizeError(
         "Image size is larger than 2MB. Please choose a smaller image.",

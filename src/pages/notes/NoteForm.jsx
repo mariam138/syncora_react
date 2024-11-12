@@ -76,7 +76,6 @@ function NoteForm({
         navigate("/signin");
       }
     } catch (error) {
-      console.log(error);
       if (error.response.status !== 400) {
         WarningToast("Note could not be created. Please try again.");
       }

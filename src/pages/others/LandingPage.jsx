@@ -20,10 +20,10 @@ function LandingPage() {
 
       <Col md={6} className="gx-md-0">
         <Card className={styles.FormCard}>
+          <Card.Header className="text-center">
+            <Card.Title className="fs-4 pt-2">Organise Your Life with Syncora</Card.Title>
+          </Card.Header>
           <Card.Body className="text-center">
-            <Card.Title className="fs-4">
-              Organise Your Life with Syncora
-            </Card.Title>
             <Card.Text className="fs-5">
               Syncora brings together your tasks, events and notes in one place.
               It's the perfect digital solution to stay on top of your

@@ -43,7 +43,7 @@ function LandingPage() {
       <Col md={6} className="gx-md-0">
         <Image
           className={`d-md-block ${appStyles.Hero}`}
-          src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1729512622/lists-6131220_1280_xvupzh.jpg"
+          src="https://res.cloudinary.com/dy1xfelbe/image/upload/v1731487405/lists-6131220_1280_hviaxt.webp"
           alt="Illustration of organized notes and lists"
         />
       </Col>

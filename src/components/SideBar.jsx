@@ -27,17 +27,25 @@ const LoggedInMenuLinks = ({ screenSize }) => {
       {screenSize && (
         <>
           {/* Quick create links for mobile */}
-          <NavLink exact="true" to="/events/new/">
+          <NavLink
+            exact="true"
+            to="/events/new/"
+            aria-label="Create a new event"
+          >
             <CDBSidebarMenuItem icon="calendar-plus" iconSize="lg">
               New Event
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact="true" to="/tasks/new/">
+          <NavLink exact="true" to="/tasks/new/" aria-label="Create a new task">
             <CDBSidebarMenuItem icon="file-circle-plus" iconSize="lg">
               New Task
             </CDBSidebarMenuItem>
           </NavLink>
-          <NavLink exact="true" to="/notes/new/">
+          <NavLink
+            exact="true"
+            to="/notes/new/"
+            aria-label="Create a new note"
+          >
             <CDBSidebarMenuItem icon="square-plus" iconSize="lg">
               New Note
             </CDBSidebarMenuItem>
@@ -46,6 +54,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
         </>
       )}
       <NavLink
+        aria-label="Go to your dashboard"
         exact="true"
         to="/dashboard"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -57,6 +66,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Events page link */}
       <NavLink
+        aria-label="View your events"
         exact="true"
         to="/events/"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -68,6 +78,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Tasks page link */}
       <NavLink
+        aria-label="View your tasks"
         exact="true"
         to="/tasks"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -79,6 +90,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Notes page link */}
       <NavLink
+        aria-label="View your notes"
         exact="true"
         to="/notes"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -90,6 +102,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Profile page link */}
       <NavLink
+        aria-label="Go to your profile"
         exact="true"
         to={`/profiles/${currentUser?.pk}`}
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -101,6 +114,7 @@ const LoggedInMenuLinks = ({ screenSize }) => {
 
       {/* Sign out link */}
       <NavLink
+        aria-label="Click here to sign out"
         exact="true"
         to="/signout"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -117,6 +131,7 @@ const LoggedOutMenuLinks = () => {
   return (
     <>
       <NavLink
+        aria-label="Go to sign in page"
         exact="true"
         to="signin"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
@@ -128,6 +143,7 @@ const LoggedOutMenuLinks = () => {
 
       {/* Register link */}
       <NavLink
+        aria-label="Go to sign up page"
         to="signup"
         className={({ isActive }) => (isActive ? "activeClicked" : "")}
       >
@@ -182,7 +198,7 @@ const SideBar = () => {
         </CDBSidebarHeader>
 
         <CDBSidebarContent>
-          <CDBSidebarMenu id="sideBar">
+          <CDBSidebarMenu>
             {/* Takes in screenSize as a prop for the conditional rendering in the
             sidebar menu links function above */}
             {currentUser ? (

@@ -188,6 +188,8 @@ function TaskForm({
                     value={dueDate}
                     required
                     onChange={handleDateChange}
+                    clearAriaLabel="Click to clear the due date"
+                    calendarAriaLabel="Click to pick a due date"
                   />
                 </Form.Group>
                 {error &&

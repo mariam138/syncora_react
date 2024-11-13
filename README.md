@@ -1,5 +1,13 @@
 # Syncora
 
+![Syncora home page](readme_assets/syncora-responsive.png)
+
+Image courtesy of [Am I responsive?](https://ui.dev/amiresponsive)
+
+[Click to view the live site!](https://syncora-react-8ad6bbfd3f41.herokuapp.com/)
+
+**PLEASE NOTE**: If you would like to create your own account and sign, please ensure that you have 'Prevent Cross Site Tracking' turned **off** on your browser to allow it to work.
+
 ## Introduction
 
 Syncora is a web application designed to help improve your productivity and organisation in day to day life. It allows you to view all your events, tasks and any notes you write down all in one place, making everything easier to find. Why not sign up today and start being the organised person you've always wanted to be?
@@ -12,9 +20,15 @@ This repository is for the front-end of the application, made using the React fr
 
 1. Help users to stay organised by writing down tasks which need completing and any upcoming events. All of this information can then be found in one place in a much more condensed version compared to a paper diary.
 
+User stories: [#38](https://github.com/mariam138/syncora_react/issues/38), [#50](https://github.com/mariam138/syncora_react/issues/50), [#22](https://github.com/mariam138/syncora_react/issues/22), [#23](https://github.com/mariam138/syncora_react/issues/23)
+
 2. Provide a place to write down any notes quickly and easily, compared to having to search around for a pen and paper to jot something down.
 
+User stories: [#24](https://github.com/mariam138/syncora_react/issues/24), [#28](https://github.com/mariam138/syncora_react/issues/28), [#64](https://github.com/mariam138/syncora_react/issues/64), [#66](https://github.com/mariam138/syncora_react/issues/66)
+
 3. Provide a simple and easy to use interface, making it intuitive for anyone over the age of 13 to use.
+
+User stories: [#22](https://github.com/mariam138/syncora_react/issues/22), [#23](https://github.com/mariam138/syncora_react/issues/23), [#24](https://github.com/mariam138/syncora_react/issues/24), [#26](https://github.com/mariam138/syncora_react/issues/26), [#27](https://github.com/mariam138/syncora_react/issues/27), [#28](https://github.com/mariam138/syncora_react/issues/28)
 
 4. Offer minimal but impactful features in an achievable development time, with the ability to further improve the app with more useful features in the future.
 
@@ -38,20 +52,20 @@ The above themes were then split down further into the following epics:
 
 - **User Account**
 
-  - [#4](https://github.com/mariam138/syncora_react/issues/4) Account Registration
-  - [#5](https://github.com/mariam138/syncora_react/issues/5) User Sign In/Out
-  - [#6](https://github.com/mariam138/syncora_react/issues/6) Account Deletion
-  - [#9](https://github.com/mariam138/syncora_react/issues/9) User Profile
+- [#4](https://github.com/mariam138/syncora_react/issues/4) Account Registration
+- [#5](https://github.com/mariam138/syncora_react/issues/5) User Sign In/Out
+- [#6](https://github.com/mariam138/syncora_react/issues/6) Account Deletion
+- [#9](https://github.com/mariam138/syncora_react/issues/9) User Profile
 
 - **User Interface**
 
-  - [#7](https://github.com/mariam138/syncora_react/issues/7) Dashboard
-  - [#8](https://github.com/mariam138/syncora_react/issues/8) Navigation
+- [#7](https://github.com/mariam138/syncora_react/issues/7) Dashboard
+- [#8](https://github.com/mariam138/syncora_react/issues/8) Navigation
 
 - **App Features**
-  - [#10](https://github.com/mariam138/syncora_react/issues/10) Tasks
-  - [#11](https://github.com/mariam138/syncora_react/issues/11) Events
-  - [#12](https://github.com/mariam138/syncora_react/issues/12) Notes
+- [#10](https://github.com/mariam138/syncora_react/issues/10) Tasks
+- [#11](https://github.com/mariam138/syncora_react/issues/11) Events
+- [#12](https://github.com/mariam138/syncora_react/issues/12) Notes
 
 Each epic above is directly linked to the issue created on Github as part of the Agile methodology used to create the app.
 
@@ -125,13 +139,19 @@ Once a user is logged in, the links change to access different features of the a
 
 #### Top Navigation Bar
 
-Alongside the sidebar menu, I created a simple and non-obstructive top navigation bar, building of the _React Bootstrap_ Navbar component. In this top nav bar, all that was included were three quick links for a user to create a new event, task or note, rather than clicking on to their respective pages first and then click to create a new entry. Also included in the top navigation bar is a simple welcome message for the user, used as a simple indication that they are logged in. Finally, on certain pages, I included a search bar to allow for the user to text search through their events, notes and tasks. This top navigation bar only appears on screens larger than 992px so as to not take up screen space on smaller screens. These three quick links are available in the sidebar menu instead when a user is on a smaller device.
+Alongside the sidebar menu, I created a simple and non-obstructive top navigation bar, building of the _React Bootstrap_ Navbar component. In this top nav bar, all that was included were three quick links for a user to create a new event, task or note, rather than clicking on to their respective pages first and then click to create a new entry. Also included in the top navigation bar is a simple welcome message for the user, used as a simple indication that they are logged in. This top navigation bar only appears on screens larger than 992px so as to not take up screen space on smaller screens. These three quick links are available in the sidebar menu instead when a user is on a smaller device.
+
+![Screenshot of top navigation bar](readme_assets/top-navbar.png)
 
 #### Loading Spinner
 
 Using the **Spinner** component from _React Boostrap_, I created a reusable loading spinner component. This component is used to visually indicate to users when something is loading, so was imported into other pages as needed.
 
 #### Error Page
+
+In case of any errors, I have created a page which will display any errors and allow users to navigate back to the website.
+
+![Screenshot of error page](readme_assets/error-page.png)
 
 #### Delete Modal
 
@@ -143,13 +163,25 @@ During development, I realised I would be using a modal throughout the website t
 
 I downloaded **react-toastify** to quickly create a toast notification to use rather than the standard bootstrap alerts, which take more space on the screen. The **react-toastify** library also allows the notifications to appear on screens which are navigated to after an action has occurred. For example, when a user signs up and are then redirected to the sign in page, a toast notification will appear telling them that registration was successful. This library made it easier to alert user's of events throughout the app seamlessly.
 
+![Screenshot of toast notification](readme_assets/toast-notification.png)
+
+### Landing Page
+
+When the user first visits Syncora, they are greeted with a landing page which gives a brief description of what the purpose of the website is. From here, they are able to sign up with a call to action button, or sign in. The sign in and sign up links are also available in the sidebar.
+
+![Screenshot of landing page](readme_assets/landing-page.png)
+
 ### Sign Up Form
+
+User story: [#13](https://github.com/mariam138/syncora_react/issues/13)
 
 The sign up form allows users to access the full functionality of the website. The user is asked to enter a username, an e-mail, and a password which is confirmed again. If any fields are blank, or if a username has already been taken, this is alerted to the user. E-mail is an optional field as set by the back-end library **dj-rest-auth**, so an alert does not show up here. Underneath the form is the option to sign in if a user already has an account. This redirects the user to the sign in form instead.
 
 ![Syncora Registration Form](readme_assets/registration-form.png)
 
 ### Sign In Form
+
+User stories: [#16](https://github.com/mariam138/syncora_react/issues/16), [#18](https://github.com/mariam138/syncora_react/issues/18)
 
 The sign in form is laid out similarly to the registration form, but instead only asks for a username and password to be entered. There is also a link below for users who don't have an account yet to allow them to register.
 
@@ -163,11 +195,23 @@ For both the sign up and sign in forms, a hero image appears to the right when v
 
 ### Sign Out Page
 
+User Story: [#17](https://github.com/mariam138/syncora_react/issues/17)
+
 When a user clicks the sign out link in the sidebar, they will be redirected to a page asking them to confirm if they would like to sign out. They also have the option to go back to the previous page if they change their mind. Upon signing out, the user then gets redirected back to the sign in page.
 
 ![Sign out page](readme_assets/sign-out-page.png)
 
+### Dashboard
+
+User stories: [#22](https://github.com/mariam138/syncora_react/issues/22), [#23](https://github.com/mariam138/syncora_react/issues/23), [#24](https://github.com/mariam138/syncora_react/issues/24)
+
+Once the user logs in, they are taken to their dashboard page. On the dashboard is a brief overview of all their to do tasks, notes and any upcoming events.
+
+![Screenshot of dashboard](readme_assets/dashboard.png)
+
 ### Profile Page
+
+User Stories: [#33](https://github.com/mariam138/syncora_react/issues/33), [#34](https://github.com/mariam138/syncora_react/issues/34), [#35](https://github.com/mariam138/syncora_react/issues/35), [#36](https://github.com/mariam138/syncora_react/issues/36), [#37](https://github.com/mariam138/syncora_react/issues/37)
 
 A user is able to view their own profile. Their profile picture, name, username and e-mail will be displayed. On initial registration, a defaul avatar will be provided. This can be changed on the profile page by uploading a new one. Images over 2MB won't be allowed. The user is also able to delete their own account. A modal will pop up asking the user to confirm their action.
 
@@ -179,17 +223,23 @@ For future features where users can be linked on tasks and events together, I ha
 
 #### Events List
 
+User Stories: [#52](https://github.com/mariam138/syncora_react/issues/52), [#61](https://github.com/mariam138/syncora_react/issues/61), [#62](https://github.com/mariam138/syncora_react/issues/62)
+
 When the user clicks the 'Events' icon in the sidebar, they are redirected to the Events page where they are shown all their events in a list. The event title is displayed in a preview, and more basic information is displayed when opening the drop down. Each event also gives the option to view the event in more detail or delete the event. Users are also able to filter their events by category, or do a simple text search for an event. Past events are muted to allow more visual differentiation between each event. If an event is happening on the same day as the user has the app open, this will also be indicated. Underneath the list is the option to create a new event.
 
 ![Events list](readme_assets/events-list.png)
 
 #### Event Detail
 
+User Stories: [#51](https://github.com/mariam138/syncora_react/issues/51), [#54](https://github.com/mariam138/syncora_react/issues/54)
+
 When viewing the event detail, the user can see the date, start time, end time, location, category and any notes that they have added. Underneath is the option to either edit the event or delete the event. Editing the event will bring up the event form, allowing them to easily update any information.
 
 ![Event detail](readme_assets/event-detail.png)
 
 #### Create/Edit Events
+
+User Stories: [#50](https://github.com/mariam138/syncora_react/issues/50),[#53](https://github.com/mariam138/syncora_react/issues/53), [#55](https://github.com/mariam138/syncora_react/issues/55), [#57](https://github.com/mariam138/syncora_react/issues/57)
 
 When either creating or editing an event, a form will be displayed to the user. They will be able to enter or update the name, date, start time, end time, location, category and notes.
 
@@ -205,6 +255,8 @@ When either creating or editing an event, a form will be displayed to the user. 
 
 #### Tasks List
 
+User stories: [#30](https://github.com/mariam138/syncora_react/issues/30), [#40](https://github.com/mariam138/syncora_react/issues/40), [#48](https://github.com/mariam138/syncora_react/issues/48), [#49](https://github.com/mariam138/syncora_react/issues/49)
+
 When the user clicks the tasks icon in the sidebar, they are redirected to the tasks list page. A list of tasks are displayed which are split into two panes: To Do and Completed. Each task shows the title, priority level and the due date. The option to complete the task is also present, saving the need for the user to enter the edit form to complete them. Once completed, the task will move into the 'Completed' tab. If checked by accident, then the user is able to uncheck the task which will automatically move it back to the 'To Do' tab. Each task also allows the user to view the task in detail. Tasks can also be categorised using the filter button by priority or category, and will display all tasks whether they have been completed or not. Tasks can also be searched for by a simple text search. Underneath the list is the option to create a new task.
 
 ##### To do list
@@ -217,11 +269,15 @@ When the user clicks the tasks icon in the sidebar, they are redirected to the t
 
 #### Task Detail
 
+User stories: [#39](https://github.com/mariam138/syncora_react/issues/39), [#42](https://github.com/mariam138/syncora_react/issues/42)
+
 When 'View task' is clicked, the user is able to view the task in detail. This includes the due date, priority, category, any description included and whether the task has been completed or not. From here, the user is able to either edit or delete the task.
 
 ![Task detail](readme_assets/task-detail.png)
 
 #### Create/Edit Task
+
+User Stories: [#38](https://github.com/mariam138/syncora_react/issues/38), [#41](https://github.com/mariam138/syncora_react/issues/41), [#43](https://github.com/mariam138/syncora_react/issues/43), [#44](https://github.com/mariam138/syncora_react/issues/44), [#46](https://github.com/mariam138/syncora_react/issues/46)
 
 When either creating or editing a task, a form will be displayed to the user. They will be able to enter or update the title, due date, priority, category and description. Only when editing will the user also be able to click the 'Completed?' checkbox. This checkbox is not visible in the creation form.
 
@@ -237,21 +293,43 @@ When either creating or editing a task, a form will be displayed to the user. Th
 
 #### Notes List
 
+User stories: [#31](https://github.com/mariam138/syncora_react/issues/31), [#66](https://github.com/mariam138/syncora_react/issues/66), [#72](https://github.com/mariam138/syncora_react/issues/72)
+
 When navigating to the notes page, all of the user's notes are displayed with the most recently updated at the top. The title of the note is displayed (if there is one) and a brief overview of the content can be seen. Each note has a 'See more' button to view the note in detail. Undearneath the list is a link to create a new note.
+
+![Screenshot of notes list](readme_assets/notes-list.png)
 
 #### Note Detail
 
+User stories: [#65](https://github.com/mariam138/syncora_react/issues/65), [#68](https://github.com/mariam138/syncora_react/issues/68)
+
 When clicking the 'See more' button on the notes list, the user is then able to see the note in detail. The user can see the title is available, the full content and the date it was updated. Underneath the note are some 'Edit' and 'Delete' buttons for the note and then the option to return to the previous screen.
 
+![Screenshot of note detail](readme_assets/note-detail.png)
+
 #### Create/Edit Note
+
+User stories: [#64](https://github.com/mariam138/syncora_react/issues/64), [#67](https://github.com/mariam138/syncora_react/issues/67)
 
 When creating a new note, a simple form is displayed to the user with Title and Content inputs. The title is an optional feature for the note. The user can also navigate back to the previous page. If editing, the note detail is inserted into the form. The user is able to save the changes or cancel the edit.
 
 ##### Note Create Form
 
+![Screenshot of the new note form](readme_assets/new-note.png)
+
 ##### Note Edit Form
 
-### Future Features and Improvements
+![Screenshot of the edit note form](readme_assets/edit-note.png)
+
+### Future Features
+
+1. The first feature I would like to implement in the future is allowing the customisation of the dashboard layout. Currently the layout is set so that tasks are followed by notes with events at the bottom. Implementing a drag and drop feature for each component would be a feature I could include, for example using the [Swapy](swapy.tahazsh.com) framework.
+
+2. Another feature I would like to include is allowing users to create their own categories for tasks and events. Currently it could feel restrictive or that the categories don't correctly represent the task/event at hand. One way this could be implemented is creating a separate API end point for the categories for tasks and events, and allowing it to be a read and write endpoint.
+
+3. Implementing reminders for upcoming events would further improve Syncora. This could be done currently using the **react-toastify** library that is downloaded. Creating e-mail reminders could further improve this functionality, allowing the user to not have to be logged in/ have the web page open constantly.
+
+4. A final feature I would possibly like to implement is allowing users of the app to follow each other to allow a more collaborative environment. For example, is work colleagues could follow each other and then create events together and be tagged in those events.
 
 ## Bugs
 
@@ -259,25 +337,25 @@ When creating a new note, a simple form is displayed to the user with Title and 
 
 2. Following on from the previous error, I then encountered another bug when testing the form errors for the registration form. Below is a screenshot of the console error I recieved:
 
-   ![Screenshot of CORS console error](readme_assets/cors-error-bug.png)
+![Screenshot of CORS console error](readme_assets/cors-error-bug.png)
 
-   I double checked that all my settings were correct in both my front-end (_under api/axiosDefaults.js_) and the back-end (_under syncora_api/settings.py_). I had also ensured I followed both the instructions from Code Institute's React walkthrough project and the **axios** documentation to ensure I had set up my API correctly. After contacting some tutors for help, it appeared that it was due to package discrepencies in the backend. Changing the version of Django used to an older but still supported version fixed the error, allowing requests to be made to the API. More information about this error can be found in the back end [README](https://github.com/mariam138/syncora_drf#bugs).
+I double checked that all my settings were correct in both my front-end (_under api/axiosDefaults.js_) and the back-end (_under syncora_api/settings.py_). I had also ensured I followed both the instructions from Code Institute's React walkthrough project and the **axios** documentation to ensure I had set up my API correctly. After contacting some tutors for help, it appeared that it was due to package discrepencies in the backend. Changing the version of Django used to an older but still supported version fixed the error, allowing requests to be made to the API. More information about this error can be found in the back end [README](https://github.com/mariam138/syncora_drf#bugs).
 
 3. When testing registration of users to Syncora, I noticed that the page wasn't refreshing or being redirected to the index like I had coded. Looking at the console showed a 500 error after registration. However, when I clicked the sign up button again with the same information, a form error would display stating that a user with that username already exists. I double checked that registration was successful by logging into the back end and finding their profile in the API. So it was unclear why a 500 error was being shown. After searching, I found a similar issue on GitHub under the **dj-rest-auth** repository. It seemed that the issue was with the e-mail set up in the back end. After adding the new email settings, I tested the registration feature again and was successfully being redirected to the index page as planned. More information about this bug can be found in the back end [documentation](https://github.com/mariam138/syncora_drf#bugs).
 
 4. I was able to get signing in to the application up and running quickly and smoothly, however I then came across a bug when trying to implement custom context hooks. I wanted to be able to tell when a user was logged in so that I could conditionally render links in the sidebar based on that property. Following along with Code Institute's Moments [walkthrough](https://github.com/Code-Institute-Solutions/moments/blob/304244f540308ff4dd3c961352f55a633a4b3bed/src/contexts/CurrentUserContext.js) to create a _Current User_ hook, I tried to import this hook into my sign up form. However, when testing the sign in functionality again, I came across this error:
 
-   > TypeError: setCurrentUser is not a function
+> TypeError: setCurrentUser is not a function
 
-   Even after checking all my imports, my `setCurrentUser` function was not being recognised. Logging it to the console gave the result `undefined`. Initially, when creating the `CustomUserProvider`, I had it wrapped around the routes in App.jsx. When moving the provider to main.jsx and having it wrap around the `<RouterProvider>` element, console logging the function no longer showed undefined. Testing the log in function again, it worked successfully and the links in the sidebar menu rendered as expected.
+Even after checking all my imports, my `setCurrentUser` function was not being recognised. Logging it to the console gave the result `undefined`. Initially, when creating the `CustomUserProvider`, I had it wrapped around the routes in App.jsx. When moving the provider to main.jsx and having it wrap around the `<RouterProvider>` element, console logging the function no longer showed undefined. Testing the log in function again, it worked successfully and the links in the sidebar menu rendered as expected.
 
 5. While testing out the registration and sign in feature on the deployed site to fix any bugs, a discrepancy occurred between a user's primary key and the corresponding profile primary key. A user was able to sign in properly, but clicking on the profile link would display a profile with an id that had yet to be created. Checking the network requests in the front end showed that the profile pk did not match the user pk. For example, a user which had the pk of 24 had a profile pk of 47. This discrepancy was confirmed by print statements in the back end of this project. I was not fully able to understand where the issue had come from, but potentially as there was an issue with Safari not logging users in after signing up, perhaps more user accounts were being created without a profile. However I do not think this was very likely. To overcome this bug, I created a new database and took the existing database information, removed the users from where the discrepancy began and reloaded that data into the new database. This fixed the issue and there were no longer discrepancies between the user and profile pk's.
 
 6. An issue arose where the sidebar component would not toggle open and closed on smaller screensizes. Initially I thought it was a potential conflict with the screen size prop I had in my sidebar component which would conditionally render some sidebar links. However after adjusting the code this didn't work. Some console logs during development showed that the click handler was working, but not when actually clicking on the menu icon.
 
-   ![Screenshot of console.log click event](readme_assets/click-console-log.png)
+![Screenshot of console.log click event](readme_assets/click-console-log.png)
 
-   I created some utility functions to refresh the access token timestamp, thinking that there was a conflict between the currentUser not being gotten properly which was affecting the toggle functionality. This also did not fix the issue. After some tutor help, it turned out that the Welcome user message I was displaying on smaller screensizes had a higher z-index than the sidebar, as a Navbar component was used to create this message. Creating a custom css class to lower the z-index of this navbar to below the z-index of the sidebar solved the bug.
+I created some utility functions to refresh the access token timestamp, thinking that there was a conflict between the currentUser not being gotten properly which was affecting the toggle functionality. This also did not fix the issue. After some tutor help, it turned out that the Welcome user message I was displaying on smaller screensizes had a higher z-index than the sidebar, as a Navbar component was used to create this message. Creating a custom css class to lower the z-index of this navbar to below the z-index of the sidebar solved the bug.
 
 ## Frameworks, libraries and dependencies
 
@@ -295,13 +373,72 @@ When creating a new note, a simple form is displayed to the user with Title and 
 
 ### Manual Testing
 
-### Automated Testing
+Manual testing took place throughout the development of the app, for both the front-end and back-end. This section will focus on the front end React testing.
+
+Testing tables were created using Google Sheets. Each row containted the feature being tested, the expected outcome, whether the test passed or failed and an extra notes column for further explanation. The tables have been converted to markdown format and can be found [here](https://github.com/mariam138/syncora_react/blob/main/testing.md).
 
 ### Validators
 
+#### W3 HTML Validation
+
+The HTML for Syncora was validated using the W3 online validator. Validation passed, results can be seen [here](https://validator.w3.org/nu/?doc=https%3A%2F%2Fsyncora-react-8ad6bbfd3f41.herokuapp.com%2F).
+
 #### W3C CSS Validator
 
+Each module.css file was validated using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) by direct input. Below are the validation results:
+
+| CSS File                     | Notes                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| App.module.css               | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| Accordion.module.css         | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| CreateLink.module.css        | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| Dashboard.module.css         | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| DetailPageButtons.module.css | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| Notes.module.css             | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| ProfilePage.module.css       | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| SideBar.module.css           | An error was thrown for line 8 where overflow is set to scroll initial. Validator says that initial is not a value of overflow, but looking up this initial property found that it can be used for any css property. The problem seemed to stem from having both scroll and initial set as seen in the dev tools. I changed the value to be initial only to allow it to inherit. Validation then passed. |
+| SignInForm.module.css        | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| Spinner.module.css           | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| TaskList.module.css          | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+| TopNavbar.module.css         | Passes validation.                                                                                                                                                                                                                                                                                                                                                                                       |
+
 #### ESLint JavaScript Validator
+
+For validation for Javascript and JSX files, I downloaded the **ESLint** extension as a development dependency. Files were validated using the command `npx eslint .`. The only errors that are displayed are the **React missing props validation** errors. Reading about it further, the new React [documentation](https://react.dev/reference/react/Component#static-proptypes) lists it as a Legacy API, and also recommend the use of TypeScript instead for checking prop types. For that reason, I have chosen to ignore those errors. There are no other errors and all validation passes otherwise. Below is the table for the validation for each .js/.jsx file:
+
+| Folder        | Component              | Notes                                                                                                                                                                                                             |
+| ------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| api           | axiosDefaults.js       | Passed validation                                                                                                                                                                                                 |
+| components    | DeleteModal.jsx        | Warnings for missing props validation. Looking at the current React docs, this is now a legacy API and is being removed from React 19. For this reason, I have ignored these errors. Passes validation otherwise. |
+|               | ErrorPage.jsx          | Unused 'React' variable removed. Passes validation.                                                                                                                                                               |
+|               | LoadingSpinner.jsx     | Passes validation                                                                                                                                                                                                 |
+|               | SideBar.jsx            | Ignored missing props validation warning. Passes validation otherwise.                                                                                                                                            |
+|               | TopNavbar.jsx          | Passes validation                                                                                                                                                                                                 |
+| contexts      | CurrentUserContext.jsx | Ignored props validation error. Warning for fast refresh only working with export components. Files have been separated.                                                                                          |
+| functions     | toasts.js              | Passes validation                                                                                                                                                                                                 |
+|               | dateFormat.js          | Passes validation                                                                                                                                                                                                 |
+| mocks         | handlers.js            | Unrecognised HttpResponse import. Import added from msw, passes validation.                                                                                                                                       |
+| pages/auth    | SignUpForm.jsx         | Unused React var and an unescaped entity. These have been fixed, validation passes.                                                                                                                               |
+|               | SignInForm.jsx         | Unused React var, no unescaped entities error fixed. Passes validation.                                                                                                                                           |
+|               | SignOutPage.jsx        | Removed unused variables. Passes validation                                                                                                                                                                       |
+| pages/events  | EventDetail.jsx        | Removed unused (e) in handleDelete. Removed unused React var. Changed fontawesome class to className. Solved missing handleMount dependency in useEffect. Passes validation.                                      |
+|               | EventEdit.jsx          | Ignored props validation error. Removed unused React var, changed class to className. Passes validation otherwise.                                                                                                |
+|               | EventForm.jsx          | Removed unused destructured props. Removed unused React var, changed class to className. Passes validation.                                                                                                       |
+|               | EventsList.jsx         | Removed unused React var. Changed class to classname. Ignored missing props validation. Removed unused searchList var from state destructuring. Passes validation otherwise.                                      |
+| pages/notes   | NoteDetail.jsx         | Removed unused React var. Passes validation.                                                                                                                                                                      |
+|               | NoteForm.jsx           | Removed unused React var, changed icons to use className, ignored props validation errors. Passes validation.                                                                                                     |
+|               | NotesList.jsx          | Replaced class with className, removed unused destructured noteId and setNoteId states. Ignored missing props validation error. Passes validation.                                                                |
+| pages/others  | Dashboard.jsx          | Removed unused React var. Passes validation.                                                                                                                                                                      |
+|               | LandingPage.jsx        | Removed unused React var. Escaped comma. Replaced class with className for fa icon. Passes validation.                                                                                                            |
+| pages/profile | ProfilePage.jsx        | Removed unused variables. Passes validation                                                                                                                                                                       |
+| pages/tasks   | TaskDetail.jsx         | Removed unused variables from destructuring data. Changed fa icon class to className. Passes validation.                                                                                                          |
+|               | TaskForm.jsx           | Ignored missing props validation warning. Removed unused React var. Changed fa icons class to className. Passes validation otherwise.                                                                             |
+|               | TasksList.jsx          | Remove unused react var. Change fa icons class to className. Removed searchList var as unused. Passes validation otherwise.                                                                                       |
+| routes        | roots.jsx              | Removed unused variables. Renamed component to use PascalCase. Validation passes.                                                                                                                                 |
+| utils         | utils.js               | Passes validation.                                                                                                                                                                                                |
+| src           | App.jsx                | Passes validation.                                                                                                                                                                                                |
+|               | main.jsx               | Moved WrappedRoot.jsx to separate file for Fast Refresh warning. Removed unused CurrentUserProvider var. Passes validation.                                                                                       |
+|               | setUpTests.js          | Passes validation.                                                                                                                                                                                                |
 
 ### Accessibility Testing
 
@@ -309,11 +446,25 @@ Due to CORS errors when using wave.webaim.org, causing the site not to load, I w
 
 ![Accesibility testing warnings](readme_assets/accesibility-testing.png)
 
-These all stemmed from the sidebar. I added aria labels to the navlinks for each icon in the sidebar to further improve accessibility for accessible names. However, when the sidebar is expanded, more labelling is available for screenreaders, so I have chosen to dismiss this frist warning. 
+These all stemmed from the sidebar. I added aria labels to the navlinks for each icon in the sidebar to further improve accessibility for accessible names. However, when the sidebar is expanded, more labelling is available for screen readers, so I have chosen to dismiss this first warning.
 
 The lists error is again due to the sidebar, where it is rendered as a nav which contains an unordered list. Inside each unordered list is a link which then contains the list item. As this is due to the combined use of React Router's NavLink component with the CDBReact Sidebar Menu Item, I was unable to fix this warning also.
 
 ### Lighthouse Testing
+
+Performance for mobile and desktop loading was done using Google Chrome's Lighthouse testing in the development tools.
+
+#### Mobile Testing
+
+The largest issue affecting the performance when first loading Syncora is due to the hero image. Although the image was converted from .jpeg to .webp to help improve loading time, it was still an issue. Another factor affecting the loading time was the FontAwesome CDN. However this couldn't be removed as FontAwesome icons are used throughout the app. Therefore, no further improvements could be made to the mobile performance, especially due to time constraints.
+
+![Mobile lighthouse testing screenshot](readme_assets/mobile-lighthouse.png)
+
+#### Desktop Testing
+
+Better performance was shown for the desktop Lighthouse test, with a higher performance compared to mobile.
+
+![Desktop lighthouse testing screenshot](readme_assets/desktop-lighthouse.png)
 
 ## Deployment
 
@@ -328,6 +479,25 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 6. Back to the newly created app on Heroku, click the 'Deploy' tab. In the 'Deployment method' section, click on **GitHub**
 7. Search for the repository and link it in the 'App connected to GitHub' section
 8. In the 'Manual deploy' section, click **Deploy Branch**
+
+### Fork repository
+
+To work on this repository independently without affecting the original source code, the repo can be forked.
+
+1. Open the repository to view its details.
+2. Click the arrow on the Fork button to show a dropdown menu.
+3. From the dropdown menu, click Create a new fork
+4. Rename the repository if you wish to do so.
+5. Ensure that the checkbox is ticked to copy the main branch only.
+6. Click Create fork.
+
+### Clone repository
+
+This repository can be cloned onto your own machine locally which will be synced with the repository on GitHub. This can be done to contribute directly.
+
+1. Open the repository to view its details.
+2. Click the green <> Code button to reveal a dropdown menu.
+3. A Clone tab will appear, giving three options to clone the repository: a. Clone via HTTPS using the web URL b. Clone via an SSH using the provided URL c. Clone using the GitHub CLI with the provided command.
 
 ## Accreditation
 
@@ -355,3 +525,7 @@ As this React app was built using Vite, some extra steps had to be taken in orde
 
 - The instructions to prepare the repository for deployment were adapted from [this](https://blog.md.engineer/vite-heroku-clkmnkq8h000709l7hxqe689p) post by Ndagi Stanley
 - The GitHub issue for the 500 console error when registering is found [here](https://github.com/iMerica/dj-rest-auth/issues/61) on the **dj-rest-auth** GitHub repository
+
+## Acknowledgments
+
+A big thank you to my family for allowing me to pursue this Full Stack Development diploma to change my career path. Also for their patience and understanding in the last year. Also a special thank you to my friends and partner for being supportive throughout.

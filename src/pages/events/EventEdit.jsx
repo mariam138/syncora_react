@@ -143,6 +143,7 @@ function EventEdit({
                     value={start_time || ""}
                     required
                     clearAriaLabel="Clear time"
+                    clockAriaLabel="Click to choose a start time"
                   />
                 </Form.Group>
                 {error.start_time?.map((message, i) => (
@@ -165,6 +166,7 @@ function EventEdit({
                     name="end_time"
                     required
                     clearAriaLabel="Clear time"
+                    clockAriaLabel="Click to choose an end time"
                   />
                 </Form.Group>
                 {error.end_time?.map((message, i) => (

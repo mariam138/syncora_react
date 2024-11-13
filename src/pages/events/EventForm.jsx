@@ -167,6 +167,7 @@ function EventForm() {
                     Start Time <i className="fa-solid fa-hourglass-start"></i>
                   </Form.Label>
                   <TimePicker
+                    clockAriaLabel="Click to choose a start time"
                     onChange={changeStartTime}
                     name="start_time"
                     value={startTime}
@@ -185,6 +186,7 @@ function EventForm() {
                     End Time <i className="fa-solid fa-hourglass-end"></i>
                   </Form.Label>
                   <TimePicker
+                    clockAriaLabel="Click to choose an end time"
                     onChange={changeEndTime}
                     value={endTime}
                     name="end_time"

@@ -327,6 +327,11 @@ function TasksList({
                           .filter((task) => !task.completed)
                           .map((task) => {
                             const dueDateRep = formatDueDate(task.due_date);
+                            const formattedTaskDueDate = task.due_date.replace(
+                              " ",
+                              "T",
+                            );
+                            const isOverdue = now > formattedTaskDueDate;
 
                             return (
                               <ListGroup.Item key={task.id}>
@@ -348,7 +353,7 @@ function TasksList({
                                     >
                                       {task.priority_display}
                                     </span>
-                                    {now > task.due_date && (
+                                    {isOverdue && (
                                       <>
                                         {" "}
                                         <br />

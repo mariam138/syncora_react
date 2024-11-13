@@ -303,7 +303,15 @@ When creating a new note, a simple form is displayed to the user with Title and 
 
 #### ESLint JavaScript Validator
 
-### WAVE Accessibility
+### Accessibility Testing
+
+Due to CORS errors when using wave.webaim.org, causing the site not to load, I was unable to use it for accessibility testing. As an alternative, I used the accessibility testing provided by Google Chrome's Lighthouse testing, going through each page. An average accessibility score of 85 was given. The issues listed that were not fixable were mainly from the Sidebar component, built using CDBReact. These were the following warnings given:
+
+![Accesibility testing warnings](readme_assets/accesibility-testing.png)
+
+These all stemmed from the sidebar. I added aria labels to the navlinks for each icon in the sidebar to further improve accessibility for accessible names. However, when the sidebar is expanded, more labelling is available for screenreaders, so I have chosen to dismiss this frist warning. 
+
+The lists error is again due to the sidebar, where it is rendered as a nav which contains an unordered list. Inside each unordered list is a link which then contains the list item. As this is due to the combined use of React Router's NavLink component with the CDBReact Sidebar Menu Item, I was unable to fix this warning also.
 
 ### Lighthouse Testing
 

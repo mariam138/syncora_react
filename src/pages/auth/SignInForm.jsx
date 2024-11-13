@@ -38,12 +38,15 @@ const SignInForm = () => {
       // Destructure data from user login to be used to set the current user
       const { data } = await api.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
+      console.log(data)
       setTokenTimestamp(data);
       navigate("/dashboard");
       SuccessToast("Login successful!");
     } catch (error) {
+      console.log(error)
       WarningToast("There was a problem signing in. Please try again.");
       setError(error.response?.data);
+      setSigningIn(false);
     }
   };
 

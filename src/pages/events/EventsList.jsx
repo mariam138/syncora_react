@@ -143,7 +143,7 @@ function EventsList({
 
   return (
     <>
-      <Row>
+      <Row className={appStyles.RowHeight}>
         <Col
           md={{ span: 8, offset: 2 }}
           lg={dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }}

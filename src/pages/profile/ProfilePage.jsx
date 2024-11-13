@@ -255,6 +255,7 @@ function ProfilePage() {
               <div className="text-center my-2">
                 {isLoaded ? (
                   <Image
+                    alt={`${username}'s profile image`}
                     src={profile_image}
                     roundedCircle
                     className={styles.ProfileImage}

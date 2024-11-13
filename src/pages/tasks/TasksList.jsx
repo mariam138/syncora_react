@@ -364,6 +364,7 @@ function TasksList({
                                       </div>
                                       {showCheck && (
                                         <Form.Check
+                                          aria-label="Click to complete the task"
                                           isValid
                                           reverse
                                           label="Completed"
@@ -436,6 +437,7 @@ function TasksList({
                                       </span>
                                       {showCheck && (
                                         <Form.Check
+                                          aria-label="Click to complete the task"
                                           isValid
                                           className="text-muted"
                                           reverse

@@ -5,7 +5,7 @@ import axios from "axios";
 // Allow images to also be uploaded when changing profile pic
 // Avoid CORS errors while sending cookies
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "https://syncora-api-ecc74194384c.herokuapp.com/",
   headers: { post: { "Content-Type": "multipart/form-data" } },
   withCredentials: true,
 });

@@ -16,6 +16,12 @@ import { apiReq } from "../../api/axiosDefaults";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import { WarningToast } from "../../functions/toasts";
 
+/*
+* BUGS TO FIX:
+* 1. When using search bar, the search bar only accepts one letter at a time. User has to
+* reselect search bar to keep typing
+*/
+
 function NotesList({
   showSearchBar = true,
   showCreateLink = true,

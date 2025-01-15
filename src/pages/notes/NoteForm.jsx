@@ -13,6 +13,12 @@ import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
+/*
+* BUGS TO FIX: 
+* 1. If user attempts to submit form without content, the 'create' button remains in a disabled state
+*    and the user has to refresh the page to reaccess the form
+*/
+
 function NoteForm({
   noteTitle,
   noteContent,

@@ -1,3 +1,5 @@
+<!-- ADD MANUAL TESTING FILE AND REFERENCE CORRECTLY -->
+
 # Syncora
 
 ![Syncora home page](readme_assets/syncora-responsive.png)

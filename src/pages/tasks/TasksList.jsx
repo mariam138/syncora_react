@@ -25,6 +25,12 @@ import styles from "../../styles/CreateLink.module.css";
 import taskStyles from "../../styles/TaskList.module.css";
 import appStyles from "../../App.module.css";
 
+/*
+* BUGS TO FIX:
+* 1. When using search bar, the search bar only accepts one letter at a time. User has to
+* reselect search bar to keep typing
+*/
+
 function TasksList({
   showCreateLink = true,
   showCompletedTab = true,

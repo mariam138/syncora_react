@@ -13,12 +13,6 @@ import { useCurrentUser } from "../../contexts/useCurrentUser";
 import { apiReq } from "../../api/axiosDefaults";
 import { SuccessToast, WarningToast } from "../../functions/toasts";
 
-/*
-* BUGS TO FIX: 
-* 1. If user attempts to submit form without content, the 'create' button remains in a disabled state
-*    and the user has to refresh the page to reaccess the form
-*/
-
 function NoteForm({
   noteTitle,
   noteContent,
@@ -82,6 +76,8 @@ function NoteForm({
         navigate("/signin");
       }
     } catch (error) {
+      // Reenables create button if user tries to submit empty form to prevent manual page refreshing
+      setIsCreating(false);
       if (error.response.status !== 400) {
         WarningToast("Note could not be created. Please try again.");
       }

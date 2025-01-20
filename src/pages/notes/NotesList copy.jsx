@@ -26,7 +26,6 @@ import { WarningToast } from "../../functions/toasts";
 function NotesList({
   showSearchBar = true,
   showCreateLink = true,
-  className = "",
   dashboardLayout = false,
 }) {
   const [query, setQuery] = useState("");
@@ -76,49 +75,83 @@ function NotesList({
     setSearchList({ results: searchedNotes });
   };
 
-  // Separate component for content to avoid duplication for condition Row rendering
-  const ContentNotesList = () => {
-    return (
-      <>
-        {dashboardLayout ? (
-          <h2 className={appStyles.Header}>Notes</h2>
-        ) : (
-          <h1 className={appStyles.Header}>Notes</h1>
-        )}
-        {/* Search bar for notes */}
-        {showSearchBar && (
-          <div className="d-flex align-items-center mb-2">
-            <Form className="d-flex w-auto me-auto">
-              <Form.Control
-                type="text"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-                value={query}
-                onChange={handleSearch}
-              />
-              <Button
-                variant="outline-secondary"
-                onClick={() => {
-                  setQuery("");
-                  setIsSearching(false);
-                }}
-              >
-                Clear
-              </Button>
-            </Form>
-          </div>
-        )}
+  return (
+    <>
+      <Row className={appStyles.RowHeight}>
+        <Col
+          md={{ span: 8, offset: 2 }}
+          lg={dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }}
+        >
+          {dashboardLayout ? (
+            <h2 className={appStyles.Header}>Notes</h2>
+          ) : (
+            <h1 className={appStyles.Header}>Notes</h1>
+          )}
 
-        {isLoaded ? (
-          (isSearching ? searchList.results : notesList.results).length ? (
-            (isSearching ? searchList.results : notesList.results).map(
-              (note) => (
+          {showSearchBar && (
+            <div className="d-flex align-items-center mb-2">
+              <Form className="d-flex w-auto me-auto">
+                <Form.Control
+                  type="text"
+                  placeholder="Search"
+                  className="me-2"
+                  aria-label="Search"
+                  value={query}
+                  onChange={handleSearch}
+                />
+                <Button
+                  variant="outline-secondary"
+                  onClick={() => {
+                    setQuery("");
+                    setIsSearching(false);
+                  }}
+                >
+                  Clear
+                </Button>
+              </Form>
+            </div>
+          )}
+
+          {isSearching ? (
+            <div>
+              {searchedNotes.length > 0 ? (
+                searchedNotes.map((note) => (
+                  <Card key={note.id} className="mb-3">
+                    <Card.Body>
+                      {note.title && <Card.Title>{note.title}</Card.Title>}
+                      <Card.Text>{`${
+                        note.content.length > 60
+                          ? `${note.content.slice(0, 60)}...`
+                          : note.content
+                      }`}</Card.Text>
+                      <Button
+                        size="sm"
+                        className={`btn ${appStyles.Button}`}
+                        onClick={() => viewNote(note.id)}
+                      >
+                        See more
+                      </Button>
+                    </Card.Body>
+                    <Card.Footer className="text-muted">
+                      {note.date_updated}
+                    </Card.Footer>
+                  </Card>
+                ))
+              ) : (
+                <p className="fs-5">No notes found</p>
+              )}
+            </div>
+          ) : isLoaded ? (
+            notesList.length > 0 ? (
+              notesList.map((note) => (
                 <Card key={note.id} className="mb-3">
                   <Card.Body>
                     {note.title && <Card.Title>{note.title}</Card.Title>}
-                    {/* Shows summary of note only if the length is longer than 60 characters */}
-                    <Card.Text>{`${note.content.length > 60 ? `${note.content.slice(0, 60)}...` : note.content}`}</Card.Text>
+                    <Card.Text>{`${
+                      note.content.length > 60
+                        ? `${note.content.slice(0, 60)}...`
+                        : note.content
+                    }`}</Card.Text>
                     <Button
                       size="sm"
                       className={`btn ${appStyles.Button}`}
@@ -131,39 +164,19 @@ function NotesList({
                     {note.date_updated}
                   </Card.Footer>
                 </Card>
-              ),
+              ))
+            ) : (
+              <p className="fs-5">No notes found</p>
             )
-          ) : (
-            <p className="fs-5">No notes found</p>
-          )
-        ) : (
-          <LoadingSpinner />
-        )}
-        {showCreateLink && (
-          <Link to="new/" className={linkStyles.Link}>
-            New Note <i className="fa-solid fa-plus"></i>
-          </Link>
-        )}
-      </>
-    );
-  };
-  return (
-    <>
-      {dashboardLayout ? (
-        <Col md={4} className={className}>
-          <ContentNotesList />
+          ): <LoadingSpinner />}
+
+          {showCreateLink && (
+            <Link to="new/" className={linkStyles.Link}>
+              New Note <i className="fa-solid fa-plus"></i>
+            </Link>
+          )}
         </Col>
-      ) : (
-        <Row>
-          <Col
-            md={{ span: 8, offset: 2 }}
-            lg={{ span: 6, offset: 3 }}
-            className={className}
-          >
-            <ContentNotesList />
-          </Col>
-        </Row>
-      )}
+      </Row>
     </>
   );
 }

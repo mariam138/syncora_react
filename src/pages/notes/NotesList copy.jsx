@@ -20,7 +20,6 @@ import { WarningToast } from "../../functions/toasts";
  * BUGS TO FIX:
  * 1. When using search bar, the search bar only accepts one letter at a time. User has to
  * reselect search bar to keep typing
- * - component is rerendered on each keystroke causing this bug to happen
  */
 
 function NotesList({
@@ -31,7 +30,7 @@ function NotesList({
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [notesList, setNotesList] = useState({ results: [] });
-  const [searchList, setSearchList] = useState({ results: [] });
+  const [, setSearchList] = useState({ results: [] });
   const [isSearching, setIsSearching] = useState(false);
 
   const currentUser = useCurrentUser();

@@ -112,6 +112,8 @@ function EventForm() {
         navigate(`/events/`);
         SuccessToast("Event created");
       } catch (error) {
+        // Re enables create button in case of errors
+        setIsCreating(false);
         // Only display the toast if the error is due to something
         // Other than a 400 code ie a client error
         if (error.response.status !== 400) {

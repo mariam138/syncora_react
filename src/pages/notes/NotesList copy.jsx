@@ -142,8 +142,8 @@ function NotesList({
               )}
             </div>
           ) : isLoaded ? (
-            notesList.length > 0 ? (
-              notesList.map((note) => (
+            notesList.results.length > 0 ? (
+              notesList.results.map((note) => (
                 <Card key={note.id} className="mb-3">
                   <Card.Body>
                     {note.title && <Card.Title>{note.title}</Card.Title>}

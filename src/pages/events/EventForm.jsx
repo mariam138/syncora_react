@@ -17,8 +17,6 @@ import { SuccessToast, WarningToast } from "../../functions/toasts";
 
 /* 
 * BUGS TO FIX:
-* 1. If user attempts to submit empty form, the submit button is left as 'creating event' and is disabled,
-*    leaving user to refresh the page to redo the form and submit again
 * 2. User is unable to leave times unchanged without getting error messages that time is in wrong format
 */
 

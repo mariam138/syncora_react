@@ -18,7 +18,7 @@ function Dashboard() {
       </Row>
 
       {/* Row for Tasks and Notes on larger screens */}
-      <Row>
+      {/* <Row> */}
         <TasksList
           showCreateLink={false}
           showCompletedTab={false}
@@ -34,7 +34,7 @@ function Dashboard() {
           className={styles.ScrollCard}
           dashboardLayout={true}
         />
-      </Row>
+      {/* </Row> */}
       {/* Row for Events */}
       <Row className="mb-4">
         <EventsList

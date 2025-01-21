@@ -30,7 +30,7 @@ function NotesList({
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
   const [notesList, setNotesList] = useState({ results: [] });
-  const [, setSearchList] = useState({ results: [] });
+  const [searchList, setSearchList] = useState({ results: [] });
   const [isSearching, setIsSearching] = useState(false);
 
   const currentUser = useCurrentUser();
@@ -61,7 +61,7 @@ function NotesList({
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
-    // setIsSearching(!!searchTerm);
+    setIsSearching(true);
 
     // Checks against the title or the content of a note
     const searchedNotes = notesList.results.filter((note) => {
@@ -113,8 +113,8 @@ function NotesList({
 
           {isSearching ? (
             <div>
-              {searchedNotes.length > 0 ? (
-                searchedNotes.map((note) => (
+              {searchList.results.length > 0 ? (
+                searchList.results.map((note) => (
                   <Card key={note.id} className="mb-3">
                     <Card.Body>
                       {note.title && <Card.Title>{note.title}</Card.Title>}
@@ -167,7 +167,9 @@ function NotesList({
             ) : (
               <p className="fs-5">No notes found</p>
             )
-          ): <LoadingSpinner />}
+          ) : (
+            <LoadingSpinner />
+          )}
 
           {showCreateLink && (
             <Link to="new/" className={linkStyles.Link}>

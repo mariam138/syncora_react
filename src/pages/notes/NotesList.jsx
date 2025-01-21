@@ -10,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 
 // Custom styles
+import dashStyles from "../../styles/Dashboard.module.css";
 import appStyles from "../../App.module.css";
 import linkStyles from "../../styles/CreateLink.module.css";
 import { apiReq } from "../../api/axiosDefaults";
@@ -81,6 +82,7 @@ function NotesList({
         <Col
           md={{ span: 8, offset: 2 }}
           lg={dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }}
+          className={dashboardLayout && dashStyles.ScrollCard}
         >
           {dashboardLayout ? (
             <h2 className={appStyles.Header}>Notes</h2>

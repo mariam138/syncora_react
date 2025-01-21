@@ -113,6 +113,8 @@ function NotesList({
 
           {isSearching ? (
             <div>
+              {/* - We set searchList as the searchedNotes array in the handleSearch function
+              - so instead of referring to it as searchedNotes we use searchList */}
               {searchList.results.length > 0 ? (
                 searchList.results.map((note) => (
                   <Card key={note.id} className="mb-3">

@@ -46,7 +46,7 @@ function TasksList({
   const [category, setCategory] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const [query, setQuery] = useState("");
-  const [, setSearchList] = useState({ results: [] });
+  const [searchList, setSearchList] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
   const navigate = useNavigate();
@@ -133,6 +133,7 @@ function TasksList({
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
+    // setIsFiltering(true);
 
     const searchedTasks = tasksList.results.filter((task) => {
       return task.title.toLowerCase().includes(searchTerm);
@@ -242,7 +243,10 @@ function TasksList({
                   />
                   <Button
                     variant="outline-secondary"
-                    onClick={() => setQuery("")}
+                    onClick={() => {
+                      setQuery("");
+                      setIsFiltering(false);
+                    }}
                   >
                     Clear
                   </Button>

@@ -18,6 +18,7 @@ import { SuccessToast, WarningToast } from "../../functions/toasts";
 /* 
 * BUGS TO FIX:
 * 2. User is unable to leave times unchanged without getting error messages that time is in wrong format
+* - so far unable to replicate this error to fix the bug so is being left for now
 */
 
 function EventForm() {

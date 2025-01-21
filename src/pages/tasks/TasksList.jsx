@@ -133,13 +133,17 @@ function TasksList({
   const handleSearch = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     setQuery(searchTerm);
-    // setIsFiltering(true);
 
-    const searchedTasks = tasksList.results.filter((task) => {
-      return task.title.toLowerCase().includes(searchTerm);
-    });
+    // Avoid re-rendering a new object for `setSearchList`
+    // Fixes bug of only being able to type one letter at a time
+    const searchedTasks = tasksList.results.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm),
+    );
 
-    setSearchList({ results: searchedTasks });
+    setSearchList((prev) => ({
+      ...prev,
+      results: searchedTasks,
+    }));
   };
 
   // Filters the tasksList results either by priority or by category

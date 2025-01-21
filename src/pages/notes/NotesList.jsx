@@ -26,6 +26,7 @@ function NotesList({
   showSearchBar = true,
   showCreateLink = true,
   dashboardLayout = false,
+  className = '',
 }) {
   const [query, setQuery] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
@@ -80,6 +81,7 @@ function NotesList({
         <Col
           md={{ span: 8, offset: 2 }}
           lg={dashboardLayout ? { span: 8, offset: 2 } : { span: 6, offset: 3 }}
+          className={dashboardLayout ? {className} : null}
         >
           {dashboardLayout ? (
             <h2 className={appStyles.Header}>Notes</h2>

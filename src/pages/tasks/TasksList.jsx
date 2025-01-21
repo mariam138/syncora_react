@@ -178,7 +178,7 @@ function TasksList({
   return (
     <>
       <Tab.Container id="tasks-tabs" activeKey={key}>
-        <Row className={appStyles.RowHeight}>
+        <Row className={!dashboardLayout && appStyles.RowHeight}>
           <Col
             md={
               dashboardLayout ? { span: 4, offset: 2 } : { span: 8, offset: 2 }
